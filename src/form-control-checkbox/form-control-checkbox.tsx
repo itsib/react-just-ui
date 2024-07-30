@@ -3,12 +3,12 @@ import { BaseProps } from '../types';
 import { ControlLabel } from '../common/control-label.tsx';
 import { ControlError } from '../common/control-error.tsx';
 
-export interface IFormFieldCheckbox extends BaseProps<HTMLInputElement> {
+export interface IFormControlCheckbox extends BaseProps<HTMLInputElement> {
   rowReverse?: boolean;
 }
 
-export const FormFieldCheckbox = forwardRef(function FormFieldCheckbox(
-  _props: IFormFieldCheckbox,
+export const FormControlCheckbox = forwardRef(function FormControlCheckbox(
+  _props: IFormControlCheckbox,
   _ref: React.ForwardedRef<HTMLInputElement>
 ) {
   const {
@@ -23,7 +23,7 @@ export const FormFieldCheckbox = forwardRef(function FormFieldCheckbox(
 
   return (
     <div
-      className={`form-control form-field-checkbox ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}
+      className={`form-control form-control-checkbox ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}
     >
       <ControlLabel id={id} label={label} hint={hint} />
 
