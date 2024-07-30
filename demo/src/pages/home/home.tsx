@@ -1,9 +1,15 @@
 import { FC, useEffect } from 'react';
-import { FormControlInput, FormControlCheckbox, FormControlSelect, FormControlVerifyCode } from 'react-form-controls';
+import {
+  FormControlInput,
+  FormControlCheckbox,
+  FormControlSelect,
+  FormControlVerifyCode,
+  FormControlTextarea,
+  FormControlSwitch,
+} from 'react-form-controls';
 import { useForm } from 'react-hook-form';
 import { Trans } from 'react-i18next';
 import './home.css'
-import { FormControlSwitch } from '../../../../src';
 
 const SELECT_OPTIONS = [
   { value: '1', label: 'Option 1' },
@@ -32,6 +38,7 @@ interface FormFields {
   checkbox: boolean;
   switch: boolean;
   select: string;
+  textarea: string;
   code: string;
 }
 
@@ -42,6 +49,7 @@ export const Home: FC = () => {
       checkbox: false,
       switch: false,
       select: '1',
+      textarea: '',
       code: ''
     },
     mode: 'onChange',
@@ -80,6 +88,15 @@ export const Home: FC = () => {
             options={SELECT_OPTIONS}
             error={errors?.select}
             {...register('select', { required: 'required', disabled: false })}
+          />
+        </div>
+        <div>
+          <FormControlTextarea
+            id="textarea"
+            label="summary"
+            placeholder="Some text"
+            error={errors?.textarea}
+            {...register('textarea', { required: 'required' })}
           />
         </div>
         <div>

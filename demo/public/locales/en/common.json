@@ -4,5 +4,6 @@
   "first_name_hint": "Please enter your first name in to field below",
   "accept_terms_checkbox": "Accept <a1>Terms of Service</a1> and <a2>Privacy Policy</a2>",
   "choose_option": "Choose Option",
-  "enter_six_digit_code": "Enter six digit code"
+  "enter_six_digit_code": "Enter six digit code",
+  "summary": "Summary"
 }

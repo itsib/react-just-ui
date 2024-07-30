@@ -29,7 +29,8 @@
   --rfc-height: 40px;
   --rfc-checkbox-size: 20px;
   --rfc-switch-width: 46px;
-  --rfc-padding: 0.25rem 0.75rem;
+  --rfc-padding-x: 0.75rem;
+  --rfc-padding-y: 0.25rem;
   --rfc-border-radius: 6px;
   --rfc-border-width: 1px;
   --rfc-font-size: 1rem;
@@ -122,12 +123,12 @@
     position: relative;
     align-items: stretch;
     justify-content: space-between;
-    transition: all .15s ease-in-out;
+    transition: box-shadow .15s ease-in-out, border-color .15s ease-in-out;
 
     input, select {
       width: 100%;
       height: calc(var(--rfc-height) - (var(--rfc-border-width) * 2));
-      padding: var(--rfc-padding);
+      padding: var(--rfc-padding-y) var(--rfc-padding-x);
       border: none;
       outline: none;
       font-size: inherit;
@@ -183,6 +184,19 @@
       border: var(--rfc-border-width) solid rgb(var(--rfc-border-color));
       opacity: .6;
     }
+  }
+}
+
+.form-control.form-control-textarea {
+
+  .control {
+    width: 100%;
+    max-width: 100%;
+    min-height: var(--rfc-height);
+    padding: var(--rfc-padding-x) var(--rfc-padding-x);
+    line-height: 1;
+    outline: none;
+
   }
 }
 
@@ -463,7 +477,7 @@
     .fake-input {
       width: 100%;
       height: calc(var(--rfc-height) - (var(--rfc-border-width) * 2));
-      padding: var(--rfc-padding);
+      padding: var(--rfc-padding-y) var(--rfc-padding-x);
       user-select: none;
       display: flex;
       align-items: center;
