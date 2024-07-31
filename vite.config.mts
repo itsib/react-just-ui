@@ -9,8 +9,11 @@ export default defineConfig({
   build: {
     target: 'esnext',
     minify: false,
+    // sourcemap: true,
     cssTarget: resolve(__dirname, 'src/styles.css'),
+    cssCodeSplit: false,
     lib: {
+      name: 'reactFormControls',
       entry: resolve(__dirname, 'src/index.ts'),
       fileName: 'index',
       formats: ['es', 'cjs'],

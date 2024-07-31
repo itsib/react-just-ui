@@ -44,34 +44,25 @@ function debounce(callback, delay) {
   };
 }
 
-function onBuildError(stdout) {
-  const frames = stdout.split('\n\n');
-  const errors = frames[frames.length - 1];
-
-  process.stdout.clearLine(-1, () => {
-    process.stdout.write(`\r${errors}\n`);
-  });
+function clear() {
+  process.stdout.write('\x1Bc');
 }
 
 function buildProcess() {
   const interval = setInterval(() => {
-    process.stdout.clearLine(-1, () => {
-      const frame = getFrame();
-      process.stdout.write(`\r\x1b[0;96m${frame}\x1b[0m \x1b[0;93mBuilding...\x1b[0m`);
-    });
+    clear();
+    process.stdout.write(`\x1b[0;96m${getFrame()}\x1b[0m \x1b[0;93mBuilding...\x1b[0m`);
   }, 100);
 
   return error => {
     clearInterval(interval);
 
     if (error) {
-      process.stdout.clearLine(-1, () => {
-        process.stdout.write(`\r\x1b[0;91m✘ Build error, wait changes.\x1b[0m\n\x1b[0;31m${error}\x1b[0m\n`);
-      });
+      clear();
+      process.stdout.write(`\x1b[0;91m✘ Build error, wait changes.\x1b[0m\n\x1b[0;31m${error}\x1b[0m\n`);
     } else {
-      process.stdout.clearLine(-1, () => {
-        process.stdout.write('\r\x1b[0;92m✔ Build success, waiting changes.\x1b[0m')
-      });
+      clear();
+      process.stdout.write('\x1b[0;92m✔ Build success, waiting changes.\x1b[0m');
     }
   }
 }

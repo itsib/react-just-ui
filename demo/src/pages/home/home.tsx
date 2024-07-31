@@ -64,6 +64,7 @@ export const Home: FC = () => {
     return () => {
       sub.unsubscribe();
     }
+    // eslint-disable-next-line
   }, []);
 
   // useEffect(() => {

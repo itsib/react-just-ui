@@ -1,5 +1,5 @@
 {
-  "name": "react-form-controls",
+  "name": "@itsib/react-form-controls",
   "description": "Stylized form elements, with minimal dependencies and maximum performance. select, input, checkbox, etc.",
   "version": "0.0.1",
   "author": "Sergey <itsib.su@gmail.com>",
@@ -32,9 +32,10 @@
     "start": "node scripts/start.cjs",
     "build": "npm run build:lib && npm run build:types",
     "build:lib": "vite build",
-    "build:types": "tsc --emitDeclarationOnly --noEmit false",
+    "build:types": "tsc --emitDeclarationOnly --noEmit false --declaration true",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preversion": "npm run lint",
+    "postversion": "git push && git push --tags"
   },
   "peerDependencies": {
     "react": "^18.2.0",

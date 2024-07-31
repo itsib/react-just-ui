@@ -26,6 +26,8 @@ export const FormControlVerifyCode = forwardRef(function FormControlVerifyCode(
 ) {
   const { id, className, label, hint, error, layout = 'ddd-ddd', upper = false, ..._props} = props;
   const indexRef = useRef(0);
+  const callbacksRef = useRef({ onChange: _props.onChange, onBlur: _props.onBlur });
+  callbacksRef.current = { onChange: _props.onChange, onBlur: _props.onBlur };
 
   const elements = useMemo(() => {
     return (layout || 'ddd-ddd').split('').filter(code => ['-', 'd', 'w', 's'].includes(code));
@@ -48,7 +50,7 @@ export const FormControlVerifyCode = forwardRef(function FormControlVerifyCode(
       const event = new Event('change');
       main.dispatchEvent(event);
 
-      _props?.onChange?.(event as any);
+      callbacksRef.current.onChange?.(event as any);
     };
 
     const focusNext = (index: number) => {
@@ -88,7 +90,7 @@ export const FormControlVerifyCode = forwardRef(function FormControlVerifyCode(
     const onBlur = () => {
       const event = new Event('blur');
       main.dispatchEvent(event);
-      blurFireTimer = setTimeout(() => _props.onBlur?.(event as any), 100);
+      blurFireTimer = setTimeout(() => callbacksRef.current.onBlur?.(event as any), 100);
     };
 
     const onBefore = (event: InputEvent) => {
