@@ -5,7 +5,7 @@
   "author": "Sergey <itsib.su@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/itsib/react-form-controls.git"
+    "url": "git+https://github.com/itsib/react-form-controls.git"
   },
   "license": "ISC",
   "private": false,
