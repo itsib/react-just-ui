@@ -9,8 +9,7 @@
   },
   "license": "ISC",
   "publishConfig": {
-    "access": "public",
-
+    "access": "public"
   },
   "type": "module",
   "files": [
@@ -36,10 +35,8 @@
     "./css": "./dist/style.css"
   },
   "scripts": {
-    "start": "node scripts/start.cjs",
-    "build": "npm run build:lib && npm run build:types",
-    "build:lib": "vite build",
-    "build:types": "tsc --emitDeclarationOnly --noEmit false --declaration true",
+    "start": "vite build --watch",
+    "build": "vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preversion": "npm run lint",
     "postversion": "git push && git push --tags"
@@ -63,9 +60,9 @@
     "eslint-plugin-react-refresh": "^0.4.7",
     "postcss": "^8.4.40",
     "postcss-nesting": "^12.1.5",
-    "typescript": "^5.5.4",
+    "typescript": "5.4.2",
     "vite": "^5.3.5",
-    "vite-dts": "^1.0.4",
+    "vite-plugin-dts": "^4.0.0-beta.2",
     "vitest": "^2.0.4"
   }
 }

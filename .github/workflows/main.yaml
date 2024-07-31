@@ -18,6 +18,7 @@ jobs:
         with:
           node-version: 'lts/*'
           node-version-file: '.nvmrc'
+          always-auth: true
           registry-url: "https://registry.npmjs.org/"
       - run: npm ci
       - run: npm publish --provenance --access public

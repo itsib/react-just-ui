@@ -2,6 +2,7 @@
 import { resolve } from 'node:path';
 import react from '@vitejs/plugin-react-swc';
 import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts'
 import { peerDependencies } from './package.json';
 
 export default defineConfig({
@@ -23,5 +24,8 @@ export default defineConfig({
     },
     outDir: resolve(__dirname, 'dist'),
   },
-  plugins: [react()],
+  plugins: [
+    dts({ rollupTypes: true }),
+    react(),
+  ],
 });

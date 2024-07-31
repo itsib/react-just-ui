@@ -6,7 +6,7 @@ import {
   FormControlVerifyCode,
   FormControlTextarea,
   FormControlSwitch,
-} from 'react-form-controls';
+} from '@itsib/react-form-controls';
 import { useForm } from 'react-hook-form';
 import { Trans } from 'react-i18next';
 import './home.css'
