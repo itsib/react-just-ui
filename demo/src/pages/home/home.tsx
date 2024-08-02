@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import {
   FormControlInput,
   FormControlCheckbox,
@@ -6,7 +6,7 @@ import {
   FormControlVerifyCode,
   FormControlTextarea,
   FormControlSwitch,
-} from '@itsib/react-form-controls';
+} from 'react-just-ui';
 import { useForm } from 'react-hook-form';
 import { Trans } from 'react-i18next';
 import './home.css'
@@ -39,6 +39,7 @@ interface FormFields {
   text3: string;
   number: string;
   checkbox: boolean;
+  disabled: boolean;
   switch: boolean;
   select: string;
   textarea: string;
@@ -46,6 +47,7 @@ interface FormFields {
 }
 
 export const Home: FC = () => {
+  const [disabled, setDisabled] = useState(false);
   const { register, watch, formState } = useForm<FormFields>({
     defaultValues: {
       text: '',
@@ -53,6 +55,7 @@ export const Home: FC = () => {
       text3: '',
       number: '',
       checkbox: false,
+      disabled: false,
       switch: false,
       select: '1',
       textarea: '',
@@ -65,6 +68,9 @@ export const Home: FC = () => {
 
   useEffect(() => {
     const sub = watch((value, { name, type }) => {
+      if (name === 'disabled') {
+        setDisabled(!!value?.disabled);
+      }
       console.log(name, type, value);
     })
     return () => {
@@ -82,10 +88,16 @@ export const Home: FC = () => {
       <div className="container">
         <div>
           <FormControlSwitch
+            id="disabled"
+            label="Disable All"
+            error={errors?.disabled}
+            {...register('disabled', { disabled: false })}
+          />
+          <FormControlSwitch
             id="switch"
-            label="This is switch"
+            label="Best"
             error={errors?.switch}
-            {...register('switch', { disabled: false })}
+            {...register('switch', { disabled })}
           />
         </div>
         <div>
@@ -94,7 +106,7 @@ export const Home: FC = () => {
             label="choose_option"
             options={SELECT_OPTIONS}
             error={errors?.select}
-            {...register('select', { required: 'required', disabled: false })}
+            {...register('select', { required: 'required', disabled: disabled })}
           />
         </div>
         <div>
@@ -104,7 +116,7 @@ export const Home: FC = () => {
             placeholder="Some text"
             error={errors?.textarea}
             minHeight={100}
-            {...register('textarea', { required: 'required', disabled: true })}
+            {...register('textarea', { required: 'required', disabled: disabled })}
           />
         </div>
         <div>
@@ -113,7 +125,7 @@ export const Home: FC = () => {
             label="first_name"
             hint="first_name_hint"
             error={errors?.text}
-            {...register('text', { required: 'required', disabled: false })}
+            {...register('text', { required: 'required', disabled: disabled })}
           />
         </div>
         <div>
@@ -121,7 +133,6 @@ export const Home: FC = () => {
             id="text-input-2"
             label="last_name"
             placeholder="Placeholder"
-            focusMode="manual"
             prefix={
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                 <path fill="currentColor"
@@ -129,7 +140,7 @@ export const Home: FC = () => {
               </svg>
             }
             error={errors?.text2}
-            {...register('text2', { required: 'required', disabled: false })}
+            {...register('text2', { required: 'required', disabled: disabled })}
           />
         </div>
         <div>
@@ -138,7 +149,7 @@ export const Home: FC = () => {
             label="first_name"
             hint="first_name_hint"
             error={errors?.text3}
-            {...register('text3', { required: 'required', disabled: true })}
+            {...register('text3', { required: 'required', disabled: disabled })}
           />
         </div>
         <div>
@@ -148,9 +159,8 @@ export const Home: FC = () => {
             label="amount"
             placeholder="Placeholder"
             error={errors?.number}
-            {...register('number', { required: 'required', min: { message: 'Min value is 0.1', value: 0.1 } })}
+            {...register('number', { required: 'required', min: { message: 'Min value is 0.1', value: 0.1 }, disabled })}
           />
-          <input type="number" />
         </div>
         <div>
           <FormControlVerifyCode
@@ -159,7 +169,7 @@ export const Home: FC = () => {
             upper
             layout="ddd-ddd"
             error={errors?.code}
-            {...register('code', { required: 'required' })}
+            {...register('code', { required: 'required', disabled })}
           />
         </div>
         <div>
@@ -174,7 +184,7 @@ export const Home: FC = () => {
                 }}
               />
             }
-            {...register('checkbox', { disabled: false })}
+            {...register('checkbox', { disabled })}
           />
         </div>
       </div>

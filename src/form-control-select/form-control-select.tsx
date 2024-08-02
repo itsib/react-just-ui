@@ -56,7 +56,7 @@ export const FormControlSelect = forwardRef(function FormControlSelect(
   }, [id]);
 
   return (
-    <div className={`rfc rfc-select ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
+    <div className={`jui jui-select ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
       <ControlLabel id={id} label={label} hint={hint} />
 
       <div className="control" ref={controlRef} onClick={onClick}>
@@ -177,19 +177,19 @@ function FormControlDropdown(props: IFormControlDropdown) {
   }, [points?.scrollY, open]);
 
   return (process || open) && rect && points ? createPortal(
-    <div className="rfc-dropdown">
-      <div className="select-dropdown-overlay" aria-label="dropdown overlay" onClick={onClickOverlay}/>
+    <div className="jui jui-dropdown jui-scroll">
+      <div className="jui-overlay" aria-label="dropdown overlay" onClick={onClickOverlay}/>
 
       <div
-        className={`select-dropdown-options ${dropdownClass}`}
+        className={`jui-dropdown-options ${dropdownClass}`}
         aria-label="dropdown"
         style={{
-          '--rfc-dropdown-top': `${points.top}px`,
-          '--rfc-dropdown-left': `${points.left}px`,
-          '--rfc-dropdown-width': `${points.width}px`,
-          '--rfc-dropdown-height': `${points.height}px`,
-          '--rfc-dropdown-item-height': `${points.itemHeight}px`,
-          '--rfc-dropdown-padding': `${points.padding}px`,
+          '--jui-dropdown-top': `${points.top}px`,
+          '--jui-dropdown-left': `${points.left}px`,
+          '--jui-dropdown-width': `${points.width}px`,
+          '--jui-dropdown-height': `${points.height}px`,
+          '--jui-dropdown-item-height': `${points.itemHeight}px`,
+          '--jui-dropdown-padding': `${points.padding}px`,
         } as CSSProperties}
         ref={optionsRef}
       >
@@ -207,7 +207,7 @@ function Option(props: IFormControlOption & { id: string; active: boolean; onCli
     <button
       id={active ? `${id}-active` : undefined}
       type="button"
-      className={`btn btn-option ${active ? 'active' : ''}`}
+      className={`jui-option ${active ? 'active' : ''}`}
       value={value}
       onClick={() => onClick(value)}
     >

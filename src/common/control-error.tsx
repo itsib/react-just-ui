@@ -24,7 +24,7 @@ export const ControlError: FC<IControlError> = ({ error }) => {
   }, [message]);
 
   return error === false ? null : (
-    <div className={`rfc-error ${message ? 'active' : ''}`} role="alert">
+    <div className={`jui-error ${message ? 'active' : ''}`} role="alert">
       <div>{message || messageRef.current}</div>
     </div>
   );

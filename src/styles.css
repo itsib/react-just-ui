@@ -1,89 +1,96 @@
 :root {
   /* BASE THEME COLORS */
-  --rfc-theme: 0 0 0;
-  --rfc-theme-negative: 255 255 255;
-  --rfc-primary-color: 0 115 229;
-  --rfc-error-color: 220 38 38;
-  --rfc-black-color: 0 0 0;
-  --rfc-white-color: 255 255 255;
-  --rfc-text-color: 255 255 255;
-  --rfc-label-color: 180 180 180;
-  --rfc-border-color: 78 78 78;
-  --rfc-disabled-color: 48 48 48;
-  --rfc-background-color: 29 29 29;
-  --rfc-outline-color: 212 212 216;
-  --rfc-shadow-color: 209 209 209;
-  --rfc-checkbox-color: 255 255 255;
-  --rfc-switch-off-color: 103 103 103;
-  --rfc-hover-color: 68 68 68;
-  --rfc-hint-color: 0 0 0;
+  --jui-black-color: 0 0 0;
+  --jui-white-color: 255 255 255;
+  --jui-accent-color: 0 115 229;
+  --jui-error-color: 220 38 38;
+  --jui-text-color: 255 255 255;
+  --jui-label-color: 180 180 180;
+  --jui-bg-color: 29 29 29;
+  --jui-bg-disabled-color: 48 48 48;
+  --jui-bg-hover-color: 68 68 68;
+  --jui-bg-switch-color: 65 65 65;
+  --jui-border-color: 78 78 78;
+  --jui-border-focus-color: 212 212 212;
+  --jui-shadow-color: 209 209 209;
+  --jui-checkbox-color: 255 255 255;
+  --jui-hint-color: 0 0 0;
 
   /* ADDITIONAL COLORS */
-  --rfc-prefix-color: rgb(var(--rfc-label-color));
-  --rfc-sufix-color: rgb(var(--rfc-label-color));
-  --rfc-checkbox-tick-color: rgb(var(--rfc-checkbox-color));
-  --rfc-outline-shadow: 0 0 0 1px rgb(var(--rfc-theme)), 0 0 3px 0 rgb(var(--rfc-outline-color));
-  --rfc-outline-border: rgb(var(--rfc-outline-color));
-  --rfc-dropdown-shadow: 0 0 12px rgb(var(--rfc-black-color) / 0.5), 0 0 1px 1px rgb(var(--rfc-shadow-color) / 0.3);
-  --rfc-dropdown-background-color: rgb(var(--rfc-background-color));
-  --rfc-dropdown-hover-color: rgb(var(--rfc-hover-color));
-  --rfc-dropdown-active-color: rgb(var(--rfc-hover-color) / 0.6);
+  --jui-prefix-color: rgb(var(--jui-label-color));
+  --jui-sufix-color: rgb(var(--jui-label-color));
+  --jui-checkbox-tick-color: rgb(var(--jui-checkbox-color));
+  --jui-box-shadow-focus: 0 0 0 1px rgb(var(--jui-black-color)), 0 0 3px 0 rgb(var(--jui-border-focus-color));
+  --jui-box-shadow: 0 0 12px rgb(var(--jui-black-color) / 0.5), 0 0 1px 1px rgb(var(--jui-shadow-color) / 0.3);
 
   /* SIZES PADDINGS ETC */
-  --rfc-height: 40px;
-  --rfc-checkbox-size: 20px;
-  --rfc-switch-width: 46px;
-  --rfc-padding-x: 0.75rem;
-  --rfc-padding-y: 0.25rem;
-  --rfc-border-radius: 6px;
-  --rfc-border-width: 1px;
-  --rfc-font-size: 1rem;
-  --rfc-label-font-size: 0.875rem;
-  --rfc-error-font-size: 0.75rem;
-  --rfc-hint-font-size: 0.7rem;
-  --rfc-dropdown-z-index: 500;
+  --jui-height: 40px;
+  --jui-checkbox-size: 24px;
+  --jui-switch-width: 46px;
+  --jui-padding-x: 0.75rem;
+  --jui-padding-y: 0.25rem;
+  --jui-border-radius: 6px;
+  --jui-border-width: 1px;
+  --jui-font-size: 1rem;
+  --jui-label-font-size: 0.875rem;
+  --jui-error-font-size: 0.75rem;
+  --jui-hint-font-size: 0.7rem;
+  --jui-overlay-z-index: 200;
+  --jui-dropdown-z-index: 210;
+
+  @media (prefers-color-scheme: light) {
+
+  }
 }
 
-.rfc {
-  font-size: var(--rfc-font-size);
+.jui {
+  font-size: var(--jui-font-size);
+  box-sizing: border-box;
 
-  .rfc-label {
+  * {
+    box-sizing: border-box;
+
+    &:before, &:after {
+      box-sizing: border-box;
+    }
+  }
+
+  .jui-label {
     margin-bottom: 4px;
 
     .text {
-      color: rgb(var(--rfc-label-color));
-      font-size: var(--rfc-label-font-size);
+      color: rgb(var(--jui-label-color));
+      font-size: var(--jui-label-font-size);
     }
 
     .hint {
-      --rfc-hint-border-color: color-mix(in srgb, rgb(var(--rfc-hint-color) / 0.9) 80%, rgb(var(--rfc-white-color) / 0.9) 20%);
-      --rfc-hint-vertical-offset: 1.4rem;
+      --jui-hint-border-color: color-mix(in srgb, rgb(var(--jui-hint-color) / 0.9) 80%, rgb(var(--jui-white-color) / 0.9) 20%);
+      --jui-hint-vertical-offset: 1.4rem;
 
       position: relative;
-      box-sizing: border-box;
 
       .question {
-        width: var(--rfc-label-font-size);
-        height: var(--rfc-label-font-size);
-        color: rgb(var(--rfc-label-color));
+        width: var(--jui-label-font-size);
+        height: var(--jui-label-font-size);
+        color: rgb(var(--jui-label-color));
         margin-left: 0.5rem;
       }
 
       .popup {
-        left: calc(var(--rfc-label-font-size) / 2 + 0.5rem);
-        bottom: calc(var(--rfc-label-font-size) / 2 + var(--rfc-hint-vertical-offset));
+        left: calc(var(--jui-label-font-size) / 2 + 0.5rem);
+        bottom: calc(var(--jui-label-font-size) / 2 + var(--jui-hint-vertical-offset));
         height: min-content;
         width: max-content;
         max-width: 180px;
         padding: 8px 10px;
         text-wrap: balance;
         white-space: pre-wrap;
-        font-size: var(--rfc-hint-font-size);
+        font-size: var(--jui-hint-font-size);
         line-height: 1.4;
-        background-color: rgba(var(--rfc-hint-color) / 0.9);
-        border: 1px solid var(--rfc-hint-border-color);
-        border-radius: calc(var(--rfc-border-radius) - 2px);
-        box-shadow: 0 0 .1875rem rgb(var(--rfc-hint-color) / 0.8);
+        background-color: rgba(var(--jui-hint-color) / 0.9);
+        border: 1px solid var(--jui-hint-border-color);
+        border-radius: calc(var(--jui-border-radius) - 2px);
+        box-shadow: 0 0 .1875rem rgb(var(--jui-hint-color) / 0.8);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         font-style: normal;
@@ -101,8 +108,8 @@
           height: 0;
           width: 0;
           display: block;
-          border-top-color: var(--rfc-hint-border-color);
-          filter: drop-shadow(0 1px rgb(var(--rfc-hint-color) / 0.8));
+          border-top-color: var(--jui-hint-border-color);
+          filter: drop-shadow(0 1px rgb(var(--jui-hint-color) / 0.8));
           position: absolute;
         }
       }
@@ -116,40 +123,38 @@
   }
 
   .control {
-    height: var(--rfc-height);
-    background-color: rgb(var(--rfc-background-color));
-    box-shadow: 0 0 0 0 rgb(var(--rfc-outline-color));
-    border: var(--rfc-border-width) solid rgb(var(--rfc-border-color));
-    border-radius: var(--rfc-border-radius);
+    height: var(--jui-height);
+    background-color: rgb(var(--jui-bg-color));
+    box-shadow: 0 0 0 0 transparent;
+    border: var(--jui-border-width) solid rgb(var(--jui-border-color));
+    border-radius: var(--jui-border-radius);
     overflow: hidden;
-    box-sizing: border-box;
     display: flex;
     position: relative;
     align-items: stretch;
     justify-content: space-between;
-    transition: box-shadow .15s ease-in-out, border-color .15s ease-in-out;
+    transition: box-shadow .15s ease-in-out, border-color .15s ease-in-out, background-color .15s ease-in-out;
 
     input, select {
       width: 100%;
-      height: calc(var(--rfc-height) - (var(--rfc-border-width) * 2));
-      padding: var(--rfc-padding-y) var(--rfc-padding-x);
+      height: calc(var(--jui-height) - (var(--jui-border-width) * 2));
+      padding: var(--jui-padding-y) var(--jui-padding-x);
       border: none;
       outline: none;
       font-size: inherit;
       background-color: transparent;
-      box-sizing: border-box;
     }
   }
 
-  .rfc-error {
-    height: calc(var(--rfc-error-font-size) + 4px);
+  .jui-error {
+    height: calc(var(--jui-error-font-size) + 4px);
     margin-top: 4px;
     padding-left: 4px;
-    font-size: var(--rfc-error-font-size);
-    line-height: calc(var(--rfc-error-font-size) + 2px);
+    font-size: var(--jui-error-font-size);
+    line-height: calc(var(--jui-error-font-size) + 2px);
     white-space: nowrap;
     text-overflow: ellipsis;
-    color: rgb(var(--rfc-error-color));
+    color: rgb(var(--jui-error-color));
     overflow: hidden;
 
     div {
@@ -165,39 +170,45 @@
     }
   }
 
+  .jui-overlay {
+    inset: 0;
+    position: fixed;
+    z-index: var(--jui-overlay-z-index);
+  }
+
   &:focus-within, &.focus {
 
     .control {
-      border: var(--rfc-border-width) solid var(--rfc-outline-border);
-      box-shadow: var(--rfc-outline-shadow);
+      border: var(--jui-border-width) solid rgb(var(--jui-border-focus-color));
+      box-shadow: var(--jui-box-shadow-focus);
     }
   }
 
   &.error {
 
     .control {
-      border: var(--rfc-border-width) solid rgb(var(--rfc-error-color));
-      box-shadow: 0 0 0 0 rgb(var(--rfc-outline-color));
+      border: var(--jui-border-width) solid rgb(var(--jui-error-color));
+      box-shadow: 0 0 0 0 transparent;
     }
   }
 
   &.disabled {
 
     .control {
-      box-shadow: 0 0 0 0 rgb(var(--rfc-outline-color));
-      border: var(--rfc-border-width) solid rgb(var(--rfc-border-color));
-      background-color: rgb(var(--rfc-disabled-color) / 0.8);
+      box-shadow: none;
+      border: var(--jui-border-width) solid rgb(var(--jui-border-color));
+      background-color: rgb(var(--jui-bg-disabled-color));
       opacity: .8;
     }
   }
 }
 
-.rfc.rfc-input {
+.jui.jui-input {
 
   .control {
 
     .fix {
-      --rfc-inner-border-radius: calc(var(--rfc-border-radius) - 1px);
+      --jui-inner-border-radius: calc(var(--jui-border-radius) - 1px);
       padding: 0 14px;
       display: flex;
       align-items: center;
@@ -205,18 +216,18 @@
       cursor: default;
       user-select: none;
       transition: box-shadow .15s ease-in-out, border-color .15s ease-in-out;
-      box-shadow: 0 0 0 0 rgb(var(--rfc-outline-color));
+      box-shadow: 0 0 0 0 transparent;
 
       &.prefix {
-        color: var(--rfc-prefix-color);
-        border-radius: var(--rfc-inner-border-radius) 0 0 var(--rfc-inner-border-radius);
-        border-right: var(--rfc-border-width) solid rgb(var(--rfc-border-color));
+        color: var(--jui-prefix-color);
+        border-radius: var(--jui-inner-border-radius) 0 0 var(--jui-inner-border-radius);
+        border-right: var(--jui-border-width) solid rgb(var(--jui-border-color));
       }
 
       &.suffix {
-        color: var(--rfc-sufix-color);
-        border-radius: 0 var(--rfc-inner-border-radius) var(--rfc-inner-border-radius) 0;
-        border-left: var(--rfc-border-width) solid rgb(var(--rfc-border-color));
+        color: var(--jui-sufix-color);
+        border-radius: 0 var(--jui-inner-border-radius) var(--jui-inner-border-radius) 0;
+        border-left: var(--jui-border-width) solid rgb(var(--jui-border-color));
       }
     }
   }
@@ -236,8 +247,8 @@
     .control {
 
       .fix {
-        border-color: var(--rfc-outline-border);
-        box-shadow: 0 0 2px 0 rgb(var(--rfc-outline-color)), 0 0 2px -1px inset rgb(var(--rfc-outline-color));
+        border-color: rgb(var(--jui-border-focus-color));
+        box-shadow: 0 0 2px 0 rgb(var(--jui-border-focus-color)), 0 0 2px -1px inset rgb(var(--jui-border-focus-color));
       }
     }
   }
@@ -247,7 +258,8 @@
     .control {
 
       .fix {
-        border-color: rgb(var(--rfc-error-color));
+        border-color: rgb(var(--jui-error-color));
+        box-shadow: 0 0 0 0 transparent;
       }
     }
   }
@@ -257,41 +269,40 @@
     .control {
 
       .fix {
-        border-color: rgb(var(--rfc-border-color));
+        border-color: rgb(var(--jui-border-color));
       }
     }
   }
 }
 
-.rfc.rfc-textarea {
+.jui.jui-textarea {
 
   .control {
     width: 100%;
     max-width: 100%;
-    min-height: var(--rfc-height);
-    padding: var(--rfc-padding-x) var(--rfc-padding-x);
-    font-size: var(--rfc-font-size);
+    min-height: var(--jui-height);
+    padding: var(--jui-padding-x) var(--jui-padding-x);
+    font-size: var(--jui-font-size);
     line-height: 1;
     outline: none;
 
   }
 }
 
-.rfc.rfc-checkbox {
+.jui.jui-checkbox {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 
-  .rfc-label {
+  .jui-label {
     margin-bottom: 0;
     user-select: none;
   }
 
   .control-checkbox {
-    width: var(--rfc-checkbox-size);
-    height: var(--rfc-checkbox-size);
+    width: var(--jui-checkbox-size);
+    height: var(--jui-checkbox-size);
     margin: 5px 10px;
-    box-sizing: border-box;
     position: relative;
     cursor: pointer;
     flex-shrink: 0;
@@ -299,43 +310,55 @@
 
     input[type="checkbox"] {
       margin: 0;
-      width: var(--rfc-checkbox-size);
-      height: var(--rfc-checkbox-size);
-      box-sizing: border-box;
+      width: var(--jui-checkbox-size);
+      height: var(--jui-checkbox-size);
       position: absolute;
       opacity: 0;
       z-index: 2;
     }
 
     .checkbox {
-      width: var(--rfc-checkbox-size);
-      height: var(--rfc-checkbox-size);
-      fill: rgb(var(--rfc-checkbox-color));
+      width: var(--jui-checkbox-size);
+      height: var(--jui-checkbox-size);
       position: absolute;
       z-index: 1;
 
+      .tick, .rect {
+        fill: none;
+        stroke: rgb(var(--jui-checkbox-color));
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+
       .tick {
-        transition: all .1s ease-in-out;
-        fill: transparent;
+        stroke-dasharray: 24;
+        stroke-dashoffset: 24;
       }
     }
 
     input[type="checkbox"]:checked + .checkbox .tick {
-      fill: var(--rfc-checkbox-tick-color);
+      animation: checkbox-tick .3s 0s forwards;
     }
 
     input[type="checkbox"]:disabled + .checkbox {
-      fill: rgb(var(--rfc-disabled-color));
+
+      .tick, .rect {
+        stroke: rgb(var(--jui-border-color));
+      }
+      .rect {
+        fill: rgb(var(--jui-bg-disabled-color));
+      }
     }
   }
 
-  .rfc-error {
+  .jui-error {
     width: 100%;
   }
 
   &.row {
 
-    .rfc-label {
+    .jui-label {
       order: 2;
     }
 
@@ -343,14 +366,14 @@
       order: 1;
     }
 
-    .rfc-error {
+    .jui-error {
       order: 3;
     }
   }
 
   &.row-reverse {
 
-    .rfc-label {
+    .jui-label {
       order: 1;
     }
 
@@ -358,31 +381,31 @@
       order: 2;
     }
 
-    .rfc-error {
+    .jui-error {
       order: 3;
     }
   }
 }
 
-.rfc.rfc-switch {
+.jui.jui-switch {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 
-  .rfc-label {
+  .jui-label {
     margin-bottom: 0;
     user-select: none;
   }
 
   .control-switch {
-    --rfc-switch-aspect-ratio: 1.85;
-    --rfc-switch-padding: 3px;
-    --rfc-switch-height: calc(var(--rfc-switch-width) / var(--rfc-switch-aspect-ratio));
-    --rfc-switch-thumb-size: calc(var(--rfc-switch-height) - (var(--rfc-switch-padding) * 2));
+    --jui-switch-aspect-ratio: 1.85;
+    --jui-switch-padding: 3px;
+    --jui-switch-height: calc(var(--jui-switch-width) / var(--jui-switch-aspect-ratio));
+    --jui-switch-thumb-size: calc(var(--jui-switch-height) - (var(--jui-switch-padding) * 2));
 
-    height: var(--rfc-switch-height);
-    width: var(--rfc-switch-width);
-    aspect-ratio: var(--rfc-switch-aspect-ratio);
+    height: var(--jui-switch-height);
+    width: var(--jui-switch-width);
+    aspect-ratio: var(--jui-switch-aspect-ratio);
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -403,18 +426,19 @@
       inset: 0;
       display: block;
       position: absolute;
-      background-color: rgb(var(--rfc-switch-off-color));
+      background-color: rgb(var(--jui-bg-switch-color));
+      transition: background-color .1s linear;
       border-radius: 99999999px;
 
       .thumb {
-        top: var(--rfc-switch-padding);
-        left: var(--rfc-switch-padding);
-        width: var(--rfc-switch-thumb-size);
-        height: var(--rfc-switch-thumb-size);
+        top: var(--jui-switch-padding);
+        left: var(--jui-switch-padding);
+        width: var(--jui-switch-thumb-size);
+        height: var(--jui-switch-thumb-size);
         aspect-ratio: 1/1;
         border-radius: 50%;
-        background-color: rgb(var(--rfc-white-color));
-        box-shadow: 0 0 2px 2px rgb(var(--rfc-black-color) / 0.1);
+        background-color: rgb(var(--jui-white-color));
+        box-shadow: 0 0 2px 2px rgb(var(--jui-black-color) / 0.1);
         transition: left .1s linear;
         display: block;
         position: absolute;
@@ -423,10 +447,10 @@
     }
 
     input[type="checkbox"]:checked + .switch {
-      background-color: rgb(var(--rfc-primary-color));
+      background-color: rgb(var(--jui-accent-color));
 
       .thumb {
-        left: calc(var(--rfc-switch-width) - var(--rfc-switch-thumb-size) - var(--rfc-switch-padding));
+        left: calc(var(--jui-switch-width) - var(--jui-switch-thumb-size) - var(--jui-switch-padding));
       }
     }
 
@@ -435,18 +459,18 @@
     }
 
     input[type="checkbox"]:disabled + .switch {
-      opacity: .5;
-      background-color: rgb(var(--rfc-disabled-color));
+      background-color: rgb(var(--jui-bg-disabled-color));
+      opacity: .8;
     }
   }
 
-  .rfc-error {
+  .jui-error {
     width: 100%;
   }
 
   &.row {
 
-    .rfc-label {
+    .jui-label {
       order: 2;
     }
 
@@ -455,14 +479,14 @@
       order: 1;
     }
 
-    .rfc-error {
+    .jui-error {
       order: 3;
     }
   }
 
   &.row-reverse {
 
-    .rfc-label {
+    .jui-label {
       order: 1;
     }
 
@@ -471,13 +495,13 @@
       order: 2;
     }
 
-    .rfc-error {
+    .jui-error {
       order: 3;
     }
   }
 }
 
-.rfc.rfc-verify-code {
+.jui.jui-verify-code {
 
   .control-group {
 
@@ -490,25 +514,24 @@
         height: 1px;
         width: 0.6rem;
         margin: 0 3px;
-        background-color: rgb(var(--rfc-text-color));
+        background-color: rgb(var(--jui-text-color));
       }
 
       input {
-        height: var(--rfc-height);
+        height: var(--jui-height);
         width: auto;
         aspect-ratio: 4/5;
         text-align: center;
-        background-color: rgb(var(--rfc-background-color));
-        box-shadow: 0 0 0 0 rgb(var(--rfc-outline-color));
-        border: var(--rfc-border-width) solid rgb(var(--rfc-border-color));
-        border-radius: var(--rfc-border-radius);
+        background-color: rgb(var(--jui-bg-color));
+        box-shadow: 0 0 0 0 transparent;
+        border: var(--jui-border-width) solid rgb(var(--jui-border-color));
+        border-radius: var(--jui-border-radius);
         outline: none;
         transition: all .15s ease-in-out;
-        box-sizing: border-box;
 
         &:focus {
-          border: var(--rfc-border-width) solid var(--rfc-outline-border);
-          box-shadow: var(--rfc-outline-shadow);
+          border: var(--jui-border-width) solid rgb(var(--jui-border-focus-color));
+          box-shadow: var(--jui-box-shadow-focus);
         }
       }
     }
@@ -521,8 +544,8 @@
       .group {
 
         input {
-          border: var(--rfc-border-width) solid rgb(var(--rfc-error-color));
-          box-shadow: 0 0 0 0 rgb(var(--rfc-outline-color));
+          border: var(--jui-border-width) solid rgb(var(--jui-error-color));
+          box-shadow: 0 0 0 0 transparent;
         }
       }
     }
@@ -535,16 +558,17 @@
       .group {
 
         input {
-          box-shadow: 0 0 0 0 rgb(var(--rfc-outline-color));
-          border: var(--rfc-border-width) solid rgb(var(--rfc-border-color));
-          opacity: .6;
+          box-shadow: 0 0 0 0 transparent;
+          border: var(--jui-border-width) solid rgb(var(--jui-border-color));
+          background-color: rgb(var(--jui-bg-disabled-color));
+          opacity: .8;
         }
       }
     }
   }
 }
 
-.rfc.rfc-select {
+.jui.jui-select {
 
   .control {
 
@@ -558,12 +582,11 @@
 
     .fake-input {
       width: 100%;
-      height: calc(var(--rfc-height) - (var(--rfc-border-width) * 2));
-      padding: var(--rfc-padding-y) var(--rfc-padding-x);
+      height: calc(var(--jui-height) - (var(--jui-border-width) * 2));
+      padding: var(--jui-padding-y) var(--jui-padding-x);
       user-select: none;
       display: flex;
       align-items: center;
-      box-sizing: border-box;
     }
 
     .icon {
@@ -574,12 +597,12 @@
   }
 }
 
-.rfc-dropdown {
-  --rfc-dropdown-scrol-width: 4px;
+.jui.jui-scroll {
+  --jui-dropdown-scrol-width: 4px;
 
   ::-webkit-scrollbar {
-    width: var(--rfc-dropdown-scrol-width);
-    height: var(--rfc-dropdown-scrol-width);
+    width: var(--jui-dropdown-scrol-width);
+    height: var(--jui-dropdown-scrol-width);
     transition: all .15s ease-in-out;
   }
 
@@ -596,57 +619,59 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    border-radius: var(--rfc-dropdown-scrol-width);
-    background-color: var(--rfc-dropdown-active-color);
+    border-radius: var(--jui-dropdown-scrol-width);
+    background-color: rgb(var(--jui-bg-hover-color) / 0.6);
   }
 
   ::-webkit-scrollbar-corner {
     display: none;
   }
+}
 
+.jui.jui-dropdown {
   /*noinspection ALL*/
-  .select-dropdown-options {
-    top: var(--rfc-dropdown-top);
-    left: var(--rfc-dropdown-left);
-    width: var(--rfc-dropdown-width);
-    height: var(--rfc-dropdown-height);
-    padding: var(--rfc-dropdown-padding);
+  .jui-dropdown-options {
+    top: var(--jui-dropdown-top);
+    left: var(--jui-dropdown-left);
+    width: var(--jui-dropdown-width);
+    height: var(--jui-dropdown-height);
+    padding: var(--jui-dropdown-padding);
     overflow-y: auto;
-    scroll-padding-top: var(--rfc-dropdown-padding);
+    scroll-padding-top: var(--jui-dropdown-padding);
     scroll-snap-type: y mandatory;
-    background-color: var(--rfc-dropdown-background-color);
-    box-shadow: var(--rfc-dropdown-shadow);
+    background-color: rgb(var(--jui-bg-color));
+    box-shadow: var(--jui-box-shadow);
     box-sizing: border-box;
-    border-radius: calc(var(--rfc-border-radius) + 2px);
+    border-radius: var(--jui-border-radius);
     position: absolute;
     opacity: 1;
     transform: translateY(0) scale(1);
     transition: all .15s ease-in;
-    z-index: var(--rfc-dropdown-z-index);
+    z-index: var(--jui-dropdown-z-index);
 
-    .btn-option {
+    .jui-option {
       width: 100%;
       /*noinspection CssUnresolvedCustomProperty*/
-      height: var(--rfc-dropdown-item-height);
+      height: var(--jui-dropdown-item-height);
       padding: 4px 12px;
       border: 1px solid transparent;
       outline: none;
-      border-radius: var(--rfc-border-radius);
+      border-radius: calc(var(--jui-border-radius) - 1px);
       font-weight: normal;
       font-family: inherit;
       text-align: start;
       scroll-snap-align: start;
-      background-color: var(--rfc-dropdown-background-color);
+      background-color: rgb(var(--jui-bg-color));
       display: flex;
       align-items: center;
       justify-content: space-between;
 
       &.active {
-        background-color: var(--rfc-dropdown-active-color);
+        background-color: rgb(var(--jui-bg-hover-color) / 0.6)
       }
 
       &:hover {
-        background-color: var(--rfc-dropdown-hover-color);
+        background-color: rgb(var(--jui-bg-hover-color));
       }
     }
 
@@ -659,11 +684,13 @@
       opacity: 0;
     }
   }
-
-  .select-dropdown-overlay {
-    inset: 0;
-    position: fixed;
-    z-index: calc(var(--rfc-dropdown-z-index) - 1);
-  }
 }
 
+@keyframes checkbox-tick {
+  from {
+    stroke-dashoffset: 24;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}

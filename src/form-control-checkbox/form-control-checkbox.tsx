@@ -11,19 +11,11 @@ export const FormControlCheckbox = forwardRef(function FormControlCheckbox(
   _props: IFormControlCheckbox,
   _ref: React.ForwardedRef<HTMLInputElement>
 ) {
-  const {
-    id,
-    label,
-    hint,
-    className,
-    rowReverse,
-    error,
-    ...register
-  } = _props;
+  const { id, label, hint, className, rowReverse, error, ...props } = _props;
 
   return (
     <div
-      className={`rfc rfc-checkbox ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}
+      className={`jui jui-checkbox ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}
     >
       <ControlLabel id={id} label={label} hint={hint} />
 
@@ -33,29 +25,15 @@ export const FormControlCheckbox = forwardRef(function FormControlCheckbox(
           type="checkbox"
           role="checkbox"
           ref={_ref}
-          {...register}
+          {...props}
         />
-        <svg
-          className="checkbox"
-          width="18"
-          height="18"
-          viewBox="0 0 16 16"
-          version="1.1"
-          preserveAspectRatio="xMaxYMax"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            className="tick"
-            d="m 11.78,6.28 -4.5,4.5 a 0.75,0.75 0 0 1 -1.06,0 l -2,-2 A 0.75,0.75 0 0 1 4.238,7.738 0.75,0.75 0 0 1 5.28,7.72 l 1.47,1.47 3.97,-3.97 a 0.75,0.75 0 0 1 1.042,0.018 0.75,0.75 0 0 1 0.018,1.042"
-          />
-          <path
-            className=""
-            d="m 2.75,1 h 10.5 C 14.216,1 15,1.784 15,2.75 v 10.5 A 1.75,1.75 0 0 1 13.25,15 H 2.75 A 1.75,1.75 0 0 1 1,13.25 V 2.75 C 1,1.784 1.784,1 2.75,1 M 2.5,2.75 v 10.5 c 0,0.138 0.112,0.25 0.25,0.25 h 10.5 A 0.25,0.25 0 0 0 13.5,13.25 V 2.75 A 0.25,0.25 0 0 0 13.25,2.5 H 2.75 A 0.25,0.25 0 0 0 2.5,2.75"
-          />
+        <svg className="checkbox" viewBox="0 0 24 24" version="1.1" preserveAspectRatio="xMaxYMax" xmlns="http://www.w3.org/2000/svg">
+          <path className="tick" d="M6 11L11 16L18 7" />
+          <rect className="rect" x="1" y="1" width="22" height="22" rx="3px" ry="3px"/>
         </svg>
       </div>
 
-      <ControlError error={!_props.disabled ? error : undefined} />
+      <ControlError error={!_props.disabled ? error : undefined}/>
     </div>
   );
 });

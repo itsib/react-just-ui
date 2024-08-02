@@ -23,7 +23,7 @@ export const FormControlSwitch = forwardRef(function FormControlSwitch(
 
   return (
     <div
-      className={`rfc rfc-switch ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}
+      className={`jui jui-switch ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}
     >
       <ControlLabel id={id} label={label} hint={hint} />
 

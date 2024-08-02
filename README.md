@@ -1,4 +1,4 @@
-# react-form-controls
+# react-just-ui
 
 A set of html form elements for react, with support for react-hook-form.
 
@@ -17,19 +17,19 @@ A set of html form elements for react, with support for react-hook-form.
 ## Installation
 
 ```shell
-npm install @itsib/react-form-controls
+npm install react-just-ui
 ```
 
 If necessary, connect the stylesheet in your index.tsx root file:
 
 ```typescript jsx
-import '@itsib/react-form-controls/css'
+import 'react-just-ui/css'
 ```
 
 Or if you use post css with the postcss-import plugin:
 
 ```css
-@import url("@itsib/react-form-controls/css");
+@import url("react-just-ui/css");
 ```
 
 ## Usage

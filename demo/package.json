@@ -10,13 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@itsib/react-form-controls": "file:..",
     "i18next-browser-languagedetector": "^8.0.0",
     "i18next-http-backend": "^2.5.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.1",
     "react-i18next": "^15.0.0",
+    "react-just-ui": "file:..",
     "react-router-dom": "^6.25.1"
   },
   "devDependencies": {

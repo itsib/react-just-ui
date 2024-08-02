@@ -11,14 +11,13 @@ export interface IFormControlInput extends BaseProps<HTMLInputElement> {
   prefix?: string | React.JSX.Element;
   suffix?: string | React.JSX.Element;
   placeholder?: string;
-  focusMode?: 'auto' | 'manual'
 }
 
 export const FormControlInput = forwardRef(function FormControlInput(
   props: IFormControlInput,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
-  const { id, className, label, hint, type: _type, prefix, suffix, error, focusMode = 'auto', ..._props } = props;
+  const { id, className, label, hint, type: _type, prefix, suffix, error, ..._props } = props;
   const { t } = useTranslation();
   const type = _type === 'number' ? 'text' : _type;
 
@@ -45,73 +44,8 @@ export const FormControlInput = forwardRef(function FormControlInput(
     };
   }, [_type, id]);
 
-  useEffect(() => {
-    if (focusMode === 'auto') {
-      return;
-    }
-    const input = document.getElementById(id) as HTMLInputElement;
-    const container = input.parentElement!.parentElement!;
-    let flashInterval: ReturnType<typeof setInterval>;
-    let isCursor = false;
-    let isKeyPressed = false;
-    let placeholder: string = ''
-
-    const removeCaret = () => {
-      if (isCursor) {
-        input.value = input.value.replace(/\|$/, '');
-        isCursor = false;
-        return;
-      }
-    }
-
-    const onFocus = () => {
-      placeholder = input.placeholder;
-      input.placeholder = '';
-      container.classList.add('focus');
-
-      flashInterval = setInterval(() => {
-        if (isCursor || isKeyPressed) {
-          removeCaret();
-          return;
-        }
-        if (input.selectionStart === input.selectionEnd && input.value.length === input.selectionEnd) {
-          input.value = `${input.value}|`;
-          isCursor = true;
-        }
-      }, 500);
-    };
-
-    const onBlur = () => {
-      input.placeholder = placeholder;
-      removeCaret();
-      container.classList.remove('focus');
-      clearInterval(flashInterval);
-    };
-
-    const onKeydown = () => {
-      removeCaret();
-      isKeyPressed = true;
-    }
-
-    const onKeyup = () => {
-      removeCaret();
-      isKeyPressed = false;
-    }
-
-    input.addEventListener('focus', onFocus);
-    input.addEventListener('blur', onBlur);
-    input.addEventListener('keydown', onKeydown);
-    input.addEventListener('keyup', onKeyup);
-    return () => {
-      input.removeEventListener('focus', onFocus);
-      input.removeEventListener('blur', onBlur);
-      input.removeEventListener('keydown', onKeydown);
-      input.removeEventListener('keyup', onKeyup);
-    };
-  }, [id, focusMode]);
-
   return (
-    <div className={`rfc rfc-input ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} focus-${focusMode} ${className ?? ''}`}>
+    <div className={`jui jui-input ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
       <ControlLabel id={id} label={label} hint={hint} />
 
       <div className="control">
