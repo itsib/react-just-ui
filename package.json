@@ -1,7 +1,7 @@
 {
   "name": "@itsib/react-form-controls",
   "description": "Stylized form elements, with minimal dependencies and maximum performance. select, input, checkbox, etc.",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "author": "Sergey <itsib.su@gmail.com>",
   "repository": {
     "type": "git",
