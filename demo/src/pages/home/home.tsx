@@ -120,6 +120,7 @@ export const Home: FC = () => {
           <FormControlInput
             id="text-input-2"
             label="last_name"
+            focusMode="manual"
             prefix={
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                 <path fill="currentColor"

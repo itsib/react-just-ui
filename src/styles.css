@@ -165,7 +165,7 @@
     }
   }
 
-  &:focus-within {
+  &:focus-within, &.focus {
 
     .control {
       border: var(--rfc-border-width) solid var(--rfc-outline-border);

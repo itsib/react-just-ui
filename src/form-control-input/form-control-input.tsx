@@ -11,13 +11,14 @@ export interface IFormControlInput extends BaseProps<HTMLInputElement> {
   prefix?: string | React.JSX.Element;
   suffix?: string | React.JSX.Element;
   placeholder?: string;
+  focusMode?: 'auto' | 'manual'
 }
 
 export const FormControlInput = forwardRef(function FormControlInput(
   props: IFormControlInput,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
-  const { id, className, label, hint, type: _type, prefix, suffix, error, ..._props } = props;
+  const { id, className, label, hint, type: _type, prefix, suffix, error, focusMode = 'auto', ..._props } = props;
   const { t } = useTranslation();
   const type = _type === 'number' ? 'text' : _type;
 
@@ -43,6 +44,58 @@ export const FormControlInput = forwardRef(function FormControlInput(
       input.removeEventListener('beforeinput', onBefore);
     };
   }, [_type, id]);
+
+  useEffect(() => {
+    if (focusMode === 'auto') {
+      return;
+    }
+    const input = document.getElementById(id) as HTMLInputElement;
+    const container = input.parentElement!.parentElement!;
+    let flashInterval: ReturnType<typeof setInterval>;
+    let isCursor = false;
+
+    const removeCaret = () => {
+      if (isCursor) {
+        input.value = input.value.replace(/\|$/, '');
+        isCursor = false;
+        return;
+      }
+    }
+
+    const onFocus = () => {
+      container.classList.add('focus');
+
+      flashInterval = setInterval(() => {
+        if (isCursor) {
+          removeCaret();
+          return;
+        }
+        if (input.selectionStart === input.selectionEnd && input.value.length === input.selectionEnd) {
+          input.value = `${input.value}|`;
+          isCursor = true;
+        }
+      }, 500);
+    };
+
+    const onBlur = () => {
+      removeCaret();
+      container.classList.remove('focus');
+      clearInterval(flashInterval);
+    };
+
+    const onBefore = () => {
+      removeCaret();
+    }
+
+    input.addEventListener('focus', onFocus);
+    input.addEventListener('blur', onBlur);
+    input.addEventListener('beforeinput', onBefore);
+    return () => {
+      input.removeEventListener('focus', onFocus);
+      input.removeEventListener('blur', onBlur);
+      input.removeEventListener('beforeinput', onBefore);
+    };
+  }, [id, focusMode]);
 
   return (
     <div className={`rfc rfc-input ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
