@@ -144,6 +144,7 @@ export const Home: FC = () => {
             id="number-input"
             type="number"
             label="amount"
+            placeholder="Placeholder"
             error={errors?.number}
             {...register('number', { required: 'required', min: { message: 'Min value is 0.1', value: 0.1 } })}
           />

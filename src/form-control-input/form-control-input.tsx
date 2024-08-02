@@ -10,6 +10,7 @@ export interface IFormControlInput extends BaseProps<HTMLInputElement> {
   type?: IFormControlInputType;
   prefix?: string | React.JSX.Element;
   suffix?: string | React.JSX.Element;
+  placeholder?: string;
 }
 
 export const FormControlInput = forwardRef(function FormControlInput(
