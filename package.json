@@ -1,11 +1,11 @@
 {
-  "name": "@itsib/react-form-controls",
-  "description": "Stylized form elements, with minimal dependencies and maximum performance. select, input, checkbox, etc.",
-  "version": "0.0.14",
+  "name": "react-just-ui",
+  "description": "Frequently used stylized interface elements, form elements.",
+  "version": "0.0.1",
   "author": "Sergey <itsib.su@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/itsib/react-form-controls.git"
+    "url": "git+https://github.com/itsib/react-just-ui.git"
   },
   "license": "ISC",
   "publishConfig": {
