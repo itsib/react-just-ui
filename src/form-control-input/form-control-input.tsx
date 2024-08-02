@@ -54,6 +54,7 @@ export const FormControlInput = forwardRef(function FormControlInput(
     let flashInterval: ReturnType<typeof setInterval>;
     let isCursor = false;
     let isKeyPressed = false;
+    let placeholder: string = ''
 
     const removeCaret = () => {
       if (isCursor) {
@@ -64,6 +65,8 @@ export const FormControlInput = forwardRef(function FormControlInput(
     }
 
     const onFocus = () => {
+      placeholder = input.placeholder;
+      input.placeholder = '';
       container.classList.add('focus');
 
       flashInterval = setInterval(() => {
@@ -79,6 +82,7 @@ export const FormControlInput = forwardRef(function FormControlInput(
     };
 
     const onBlur = () => {
+      input.placeholder = placeholder;
       removeCaret();
       container.classList.remove('focus');
       clearInterval(flashInterval);
