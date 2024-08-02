@@ -53,6 +53,7 @@ export const FormControlInput = forwardRef(function FormControlInput(
     const container = input.parentElement!.parentElement!;
     let flashInterval: ReturnType<typeof setInterval>;
     let isCursor = false;
+    let isKeyPressed = false;
 
     const removeCaret = () => {
       if (isCursor) {
@@ -66,7 +67,7 @@ export const FormControlInput = forwardRef(function FormControlInput(
       container.classList.add('focus');
 
       flashInterval = setInterval(() => {
-        if (isCursor) {
+        if (isCursor || isKeyPressed) {
           removeCaret();
           return;
         }
@@ -83,22 +84,30 @@ export const FormControlInput = forwardRef(function FormControlInput(
       clearInterval(flashInterval);
     };
 
-    const onBefore = () => {
+    const onKeydown = () => {
       removeCaret();
+      isKeyPressed = true;
+    }
+
+    const onKeyup = () => {
+      removeCaret();
+      isKeyPressed = false;
     }
 
     input.addEventListener('focus', onFocus);
     input.addEventListener('blur', onBlur);
-    input.addEventListener('beforeinput', onBefore);
+    input.addEventListener('keydown', onKeydown);
+    input.addEventListener('keyup', onKeyup);
     return () => {
       input.removeEventListener('focus', onFocus);
       input.removeEventListener('blur', onBlur);
-      input.removeEventListener('beforeinput', onBefore);
+      input.removeEventListener('keydown', onKeydown);
+      input.removeEventListener('keyup', onKeyup);
     };
   }, [id, focusMode]);
 
   return (
-    <div className={`rfc rfc-input ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
+    <div className={`rfc rfc-input ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} focus-${focusMode} ${className ?? ''}`}>
       <ControlLabel id={id} label={label} hint={hint} />
 
       <div className="control">

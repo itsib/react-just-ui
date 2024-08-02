@@ -221,6 +221,16 @@
     }
   }
 
+  &.focus-manual {
+
+    .control {
+
+      input {
+        caret-color: transparent;
+      }
+    }
+  }
+
   &:focus-within {
 
     .control {
