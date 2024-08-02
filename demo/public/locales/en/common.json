@@ -6,5 +6,6 @@
   "accept_terms_checkbox": "Accept <a1>Terms of Service</a1> and <a2>Privacy Policy</a2>",
   "choose_option": "Choose Option",
   "enter_six_digit_code": "Enter six digit code",
-  "summary": "Summary"
+  "summary": "Summary",
+  "amount": "Amount"
 }

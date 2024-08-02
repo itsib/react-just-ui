@@ -9,7 +9,8 @@ A set of html form elements for react, with support for react-hook-form.
 - Elastic textarea
 - Display validation error
 - Simple styling width css variables
-- Light 22kb (5.2kb compressed)
+- Code size 12.03 kB (4.26 kB compressed)
+- Style size 14.41 kB (2.69 kB compressed)
 
 <img src="./assets/screenshot.png">
 

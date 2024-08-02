@@ -37,6 +37,7 @@ interface FormFields {
   text: string;
   text2: string;
   text3: string;
+  number: string;
   checkbox: boolean;
   switch: boolean;
   select: string;
@@ -50,6 +51,7 @@ export const Home: FC = () => {
       text: '',
       text2: '',
       text3: '',
+      number: '',
       checkbox: false,
       switch: false,
       select: '1',
@@ -136,6 +138,16 @@ export const Home: FC = () => {
             error={errors?.text3}
             {...register('text3', { required: 'required', disabled: true })}
           />
+        </div>
+        <div>
+          <FormControlInput
+            id="number-input"
+            type="number"
+            label="amount"
+            error={errors?.number}
+            {...register('number', { required: 'required', min: { message: 'Min value is 0.1', value: 0.1 } })}
+          />
+          <input type="number" />
         </div>
         <div>
           <FormControlVerifyCode
