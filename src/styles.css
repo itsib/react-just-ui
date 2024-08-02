@@ -9,7 +9,7 @@
   --rfc-text-color: 255 255 255;
   --rfc-label-color: 180 180 180;
   --rfc-border-color: 78 78 78;
-  --rfc-disabled-color: 78 78 78;
+  --rfc-disabled-color: 48 48 48;
   --rfc-background-color: 29 29 29;
   --rfc-outline-color: 212 212 216;
   --rfc-shadow-color: 209 209 209;
@@ -186,7 +186,7 @@
     .control {
       box-shadow: 0 0 0 0 rgb(var(--rfc-outline-color));
       border: var(--rfc-border-width) solid rgb(var(--rfc-border-color));
-      background-color: color-mix(in srgb, rgb(var(--rfc-background-color)) 80%, rgb(var(--rfc-disabled-color)) 20%);
+      background-color: rgb(var(--rfc-disabled-color) / 0.8);
       opacity: .8;
     }
   }
