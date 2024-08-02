@@ -23,7 +23,7 @@ export const FormControlCheckbox = forwardRef(function FormControlCheckbox(
 
   return (
     <div
-      className={`form-control form-control-checkbox ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}
+      className={`rfc rfc-checkbox ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}
     >
       <ControlLabel id={id} label={label} hint={hint} />
 

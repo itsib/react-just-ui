@@ -45,7 +45,7 @@ export const FormControlInput = forwardRef(function FormControlInput(
   }, [_type, id]);
 
   return (
-    <div className={`form-control form-control-input ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
+    <div className={`rfc rfc-input ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
       <ControlLabel id={id} label={label} hint={hint} />
 
       <div className="control">

@@ -56,7 +56,7 @@ export const FormControlSelect = forwardRef(function FormControlSelect(
   }, [id]);
 
   return (
-    <div className={`form-control form-control-select ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
+    <div className={`rfc rfc-select ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
       <ControlLabel id={id} label={label} hint={hint} />
 
       <div className="control" ref={controlRef} onClick={onClick}>
@@ -177,7 +177,7 @@ function FormControlDropdown(props: IFormControlDropdown) {
   }, [points?.scrollY, open]);
 
   return (process || open) && rect && points ? createPortal(
-    <div className="form-control-dropdown">
+    <div className="rfc-dropdown">
       <div className="select-dropdown-overlay" aria-label="dropdown overlay" onClick={onClickOverlay}/>
 
       <div

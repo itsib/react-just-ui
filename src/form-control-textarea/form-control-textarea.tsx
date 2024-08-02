@@ -73,7 +73,7 @@ export const FormControlTextarea = forwardRef(function FormControlTextarea(
   }, [id, elastic, limit]);
 
   return (
-    <div className={`form-control form-control-textarea ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
+    <div className={`rfc rfc-textarea ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
       <ControlLabel id={id} label={label} hint={hint} />
 
       <textarea placeholder={placeholder} className="control" id={id} ref={ref} style={{ minHeight, minWidth }} {..._props} />

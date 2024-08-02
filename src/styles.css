@@ -44,10 +44,10 @@
   --rfc-dropdown-z-index: 500;
 }
 
-.form-control {
+.rfc {
   font-size: var(--rfc-font-size);
 
-  .control-label {
+  .rfc-label {
     margin-bottom: 4px;
 
     .text {
@@ -141,7 +141,7 @@
     }
   }
 
-  .control-error {
+  .rfc-error {
     height: calc(var(--rfc-error-font-size) + 4px);
     margin-top: 4px;
     padding-left: 4px;
@@ -192,7 +192,7 @@
   }
 }
 
-.form-control.form-control-input {
+.rfc.rfc-input {
 
   .control {
 
@@ -253,7 +253,7 @@
   }
 }
 
-.form-control.form-control-textarea {
+.rfc.rfc-textarea {
 
   .control {
     width: 100%;
@@ -267,12 +267,12 @@
   }
 }
 
-.form-control.form-control-checkbox {
+.rfc.rfc-checkbox {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 
-  .control-label {
+  .rfc-label {
     margin-bottom: 0;
     user-select: none;
   }
@@ -319,13 +319,13 @@
     }
   }
 
-  .control-error {
+  .rfc-error {
     width: 100%;
   }
 
   &.row {
 
-    .control-label {
+    .rfc-label {
       order: 2;
     }
 
@@ -333,14 +333,14 @@
       order: 1;
     }
 
-    .control-error {
+    .rfc-error {
       order: 3;
     }
   }
 
   &.row-reverse {
 
-    .control-label {
+    .rfc-label {
       order: 1;
     }
 
@@ -348,18 +348,18 @@
       order: 2;
     }
 
-    .control-error {
+    .rfc-error {
       order: 3;
     }
   }
 }
 
-.form-control.form-control-switch {
+.rfc.rfc-switch {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 
-  .control-label {
+  .rfc-label {
     margin-bottom: 0;
     user-select: none;
   }
@@ -430,13 +430,13 @@
     }
   }
 
-  .control-error {
+  .rfc-error {
     width: 100%;
   }
 
   &.row {
 
-    .control-label {
+    .rfc-label {
       order: 2;
     }
 
@@ -445,14 +445,14 @@
       order: 1;
     }
 
-    .control-error {
+    .rfc-error {
       order: 3;
     }
   }
 
   &.row-reverse {
 
-    .control-label {
+    .rfc-label {
       order: 1;
     }
 
@@ -461,13 +461,13 @@
       order: 2;
     }
 
-    .control-error {
+    .rfc-error {
       order: 3;
     }
   }
 }
 
-.form-control.form-control-verify-code {
+.rfc.rfc-verify-code {
 
   .control-group {
 
@@ -534,7 +534,7 @@
   }
 }
 
-.form-control.form-control-select {
+.rfc.rfc-select {
 
   .control {
 
@@ -564,7 +564,7 @@
   }
 }
 
-.form-control-dropdown {
+.rfc-dropdown {
   --rfc-dropdown-scrol-width: 4px;
 
   ::-webkit-scrollbar {

@@ -162,7 +162,7 @@ export const FormControlVerifyCode = forwardRef(function FormControlVerifyCode(
   }, [id, upper, elements]);
 
   return (
-    <div className={`form-control form-control-verify-code ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
+    <div className={`rfc rfc-verify-code ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
       <ControlLabel id={id} label={label} hint={hint} />
 
       <div className="control-group">
