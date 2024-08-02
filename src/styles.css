@@ -1,6 +1,7 @@
 :root {
   /* BASE THEME COLORS */
   --rfc-theme: 0 0 0;
+  --rfc-theme-negative: 255 255 255;
   --rfc-primary-color: 0 115 229;
   --rfc-error-color: 220 38 38;
   --rfc-black-color: 0 0 0;
@@ -8,6 +9,7 @@
   --rfc-text-color: 255 255 255;
   --rfc-label-color: 180 180 180;
   --rfc-border-color: 78 78 78;
+  --rfc-disabled-color: 78 78 78;
   --rfc-background-color: 29 29 29;
   --rfc-outline-color: 212 212 216;
   --rfc-shadow-color: 209 209 209;
@@ -17,6 +19,8 @@
   --rfc-hint-color: 0 0 0;
 
   /* ADDITIONAL COLORS */
+  --rfc-prefix-color: rgb(var(--rfc-label-color));
+  --rfc-sufix-color: rgb(var(--rfc-label-color));
   --rfc-checkbox-tick-color: rgb(var(--rfc-checkbox-color));
   --rfc-outline-shadow: 0 0 0 1px rgb(var(--rfc-theme)), 0 0 3px 0 rgb(var(--rfc-outline-color));
   --rfc-outline-border: rgb(var(--rfc-outline-color));
@@ -182,7 +186,69 @@
     .control {
       box-shadow: 0 0 0 0 rgb(var(--rfc-outline-color));
       border: var(--rfc-border-width) solid rgb(var(--rfc-border-color));
-      opacity: .6;
+      background-color: color-mix(in srgb, rgb(var(--rfc-background-color)) 80%, rgb(var(--rfc-disabled-color)) 20%);
+      opacity: .8;
+    }
+  }
+}
+
+.form-control.form-control-input {
+
+  .control {
+
+    .fix {
+      --rfc-inner-border-radius: calc(var(--rfc-border-radius) - 1px);
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+      user-select: none;
+      transition: box-shadow .15s ease-in-out, border-color .15s ease-in-out;
+      box-shadow: 0 0 0 0 rgb(var(--rfc-outline-color));
+
+      &.prefix {
+        color: var(--rfc-prefix-color);
+        border-radius: var(--rfc-inner-border-radius) 0 0 var(--rfc-inner-border-radius);
+        border-right: var(--rfc-border-width) solid rgb(var(--rfc-border-color));
+      }
+
+      &.suffix {
+        color: var(--rfc-sufix-color);
+        border-radius: 0 var(--rfc-inner-border-radius) var(--rfc-inner-border-radius) 0;
+        border-left: var(--rfc-border-width) solid rgb(var(--rfc-border-color));
+      }
+    }
+  }
+
+  &:focus-within {
+
+    .control {
+
+      .fix {
+        border-color: var(--rfc-outline-border);
+        box-shadow: 0 0 2px 0 rgb(var(--rfc-outline-color)), 0 0 2px -1px inset rgb(var(--rfc-outline-color));
+      }
+    }
+  }
+
+  &.error {
+
+    .control {
+
+      .fix {
+        border-color: rgb(var(--rfc-error-color));
+      }
+    }
+  }
+
+  &.disabled {
+
+    .control {
+
+      .fix {
+        border-color: rgb(var(--rfc-border-color));
+      }
     }
   }
 }
@@ -194,6 +260,7 @@
     max-width: 100%;
     min-height: var(--rfc-height);
     padding: var(--rfc-padding-x) var(--rfc-padding-x);
+    font-size: var(--rfc-font-size);
     line-height: 1;
     outline: none;
 
@@ -245,6 +312,10 @@
 
     input[type="checkbox"]:checked + .checkbox .tick {
       fill: var(--rfc-checkbox-tick-color);
+    }
+
+    input[type="checkbox"]:disabled + .checkbox {
+      fill: rgb(var(--rfc-disabled-color));
     }
   }
 
@@ -355,6 +426,7 @@
 
     input[type="checkbox"]:disabled + .switch {
       opacity: .5;
+      background-color: rgb(var(--rfc-disabled-color));
     }
   }
 

@@ -24,9 +24,9 @@ export const FormControlInput = forwardRef(function FormControlInput(
       <ControlLabel id={id} label={label} hint={hint} />
 
       <div className="control">
-        {typeof prefix === 'string' ? t(prefix) : prefix}
+        {prefix ? <div className="fix prefix">{typeof prefix === 'string' ? t(prefix) : prefix}</div> : null}
         <input id={id} type={type} ref={ref} {..._props} />
-        {typeof suffix === 'string' ? t(suffix) : suffix}
+        {suffix ? <div className="fix suffix">{typeof suffix === 'string' ? t(suffix) : suffix}</div> : null}
       </div>
 
       <ControlError error={!_props.disabled ? error : undefined} />

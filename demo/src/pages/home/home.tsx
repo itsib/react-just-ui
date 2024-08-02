@@ -35,6 +35,8 @@ const SELECT_OPTIONS = [
 
 interface FormFields {
   text: string;
+  text2: string;
+  text3: string;
   checkbox: boolean;
   switch: boolean;
   select: string;
@@ -46,6 +48,8 @@ export const Home: FC = () => {
   const { register, watch, formState } = useForm<FormFields>({
     defaultValues: {
       text: '',
+      text2: '',
+      text3: '',
       checkbox: false,
       switch: false,
       select: '1',
@@ -97,7 +101,8 @@ export const Home: FC = () => {
             label="summary"
             placeholder="Some text"
             error={errors?.textarea}
-            {...register('textarea', { required: 'required' })}
+            minHeight={100}
+            {...register('textarea', { required: 'required', disabled: true })}
           />
         </div>
         <div>
@@ -107,6 +112,29 @@ export const Home: FC = () => {
             hint="first_name_hint"
             error={errors?.text}
             {...register('text', { required: 'required', disabled: false })}
+          />
+        </div>
+        <div>
+          <FormControlInput
+            id="text-input-2"
+            label="last_name"
+            prefix={
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                      d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2m-6 9c-1.1 0-2-.9-2-2s.9-2 2-2s2 .9 2 2s-.9 2-2 2m3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1c1.71 0 3.1 1.39 3.1 3.1z"/>
+              </svg>
+            }
+            error={errors?.text2}
+            {...register('text2', { required: 'required', disabled: false })}
+          />
+        </div>
+        <div>
+          <FormControlInput
+            id="text-input-3"
+            label="first_name"
+            hint="first_name_hint"
+            error={errors?.text3}
+            {...register('text3', { required: 'required', disabled: true })}
           />
         </div>
         <div>
@@ -131,6 +159,7 @@ export const Home: FC = () => {
                 }}
               />
             }
+            {...register('checkbox', { disabled: false })}
           />
         </div>
       </div>

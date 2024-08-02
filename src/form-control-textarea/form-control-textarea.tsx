@@ -7,13 +7,15 @@ export interface IFormControlTextarea extends BaseProps<HTMLTextAreaElement> {
   elastic?: boolean;
   placeholder?: string;
   limit?: number;
+  minHeight?: number;
+  minWidth?: number;
 }
 
 export const FormControlTextarea = forwardRef(function FormControlTextarea(
   props: IFormControlTextarea,
   ref: ForwardedRef<HTMLTextAreaElement>,
 ) {
-  const { id, className, placeholder, elastic = true, label, hint, limit = 5000, error, ..._props } = props;
+  const { id, className, placeholder, elastic = true, label, hint, minHeight, minWidth, limit = 5000, error, ..._props } = props;
 
   useEffect(() => {
     if (!elastic) {
@@ -74,7 +76,7 @@ export const FormControlTextarea = forwardRef(function FormControlTextarea(
     <div className={`form-control form-control-textarea ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
       <ControlLabel id={id} label={label} hint={hint} />
 
-      <textarea placeholder={placeholder} className="control" id={id} ref={ref} {..._props} />
+      <textarea placeholder={placeholder} className="control" id={id} ref={ref} style={{ minHeight, minWidth }} {..._props} />
 
       <ControlError error={!_props.disabled ? error : undefined} />
     </div>

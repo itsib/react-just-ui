@@ -110,27 +110,25 @@ function FormControlDropdown(props: IFormControlDropdown) {
     if (!rect) {
       return null;
     }
-    const marginY = 10;
-    const marginX = 20;
+    const margin = 10;
     const padding = 4;
     const itemHeight = 38;
     const itemsDisplay = Math.min(options.length, 7);
     const centerX = rect.left + (rect.width / 2);
     const centerY = rect.top + (rect.height / 2);
     const height = (itemHeight * itemsDisplay) + (padding * 2);
-    const width = Math.max(rect.width, 100) + marginY;
+    const width = Math.min(Math.max(rect.width, 100) + (margin * 2), window.innerWidth - 4);
 
     let left = centerX - (width / 2);
-    left = left < marginX ? marginX : left;
-    left = (left + width) > window.innerWidth ? window.innerWidth - width - marginX : left;
+    left = left < 2 ? 2 : left;
 
     let top = (centerY - (height / 2));
-    top = top < marginY ? marginY : top;
-    top = top + height > window.innerHeight ? window.innerHeight - height - marginY : top;
+    top = top < margin ? margin : top;
+    top = top + height > window.innerHeight ? window.innerHeight - height - margin : top;
 
     const scrollY = (activeIndex - Math.floor(itemsDisplay / 2)) * itemHeight
 
-    return { width, height, left, top, itemHeight, marginY, marginX, padding, itemsDisplay, scrollY }
+    return { width, height, left, top, itemHeight, margin, padding, itemsDisplay, scrollY }
   }, [rect, options.length, activeIndex])
 
   function onClickOverlay(event: React.MouseEvent<HTMLDivElement>) {

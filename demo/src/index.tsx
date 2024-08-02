@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom';
 import { ROUTES } from './pages/routes.tsx';
-import '@itsib/react-form-controls/css'
 import './i18n';
 import './index.css'
 
