@@ -1,0 +1,82 @@
+@font-face {
+  font-family: "IconFont";
+  src: url("/fonts/icon-font/IconFont.eot?2568efd4f790d5feea6f2182db833240#iefix") format("embedded-opentype"),
+url("/fonts/icon-font/IconFont.woff2?2568efd4f790d5feea6f2182db833240") format("woff2"),
+url("/fonts/icon-font/IconFont.woff?2568efd4f790d5feea6f2182db833240") format("woff"),
+url("/fonts/icon-font/IconFont.ttf?2568efd4f790d5feea6f2182db833240") format("truetype"),
+url("/fonts/icon-font/IconFont.svg?2568efd4f790d5feea6f2182db833240#IconFont") format("svg");
+}
+
+.icon {
+  display: inline-block;
+  font-family: "IconFont", sans-serif;
+  font-weight: 400;
+  font-size: inherit;
+  line-height: 1;
+  bottom: -0.11em;
+  position: relative;
+  text-rendering: auto;
+  text-transform: none;
+  font-style: normal;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-tooltip:before {
+  content: "\f101";
+}
+
+.icon-textarea:before {
+  content: "\f102";
+}
+
+.icon-switch:before {
+  content: "\f103";
+}
+
+.icon-select:before {
+  content: "\f104";
+}
+
+.icon-key:before {
+  content: "\f105";
+}
+
+.icon-input:before {
+  content: "\f106";
+}
+
+.icon-home:before {
+  content: "\f107";
+}
+
+.icon-checkbox:before {
+  content: "\f108";
+}
+
+.icon-spinner {
+animation: 2s spin-rotate linear infinite;
+}
+
+@keyframes spin-rotate {
+
+from {
+transform: rotate(0deg);
+}
+
+to {
+transform: rotate(360deg);
+}
+}
+
+@-webkit-keyframes spin-rotate {
+
+from {
+transform: rotate(0deg);
+}
+
+to {
+transform: rotate(360deg);
+}
+}

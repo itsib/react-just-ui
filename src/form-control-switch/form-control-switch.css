@@ -1,0 +1,113 @@
+.jui.jui-switch {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .jui-label {
+    margin-bottom: 0;
+    user-select: none;
+  }
+
+  .control-switch {
+    --jui-switch-aspect-ratio: 1.85;
+    --jui-switch-padding: 3px;
+    --jui-switch-height: calc(var(--jui-switch-width) / var(--jui-switch-aspect-ratio));
+    --jui-switch-thumb-size: calc(var(--jui-switch-height) - (var(--jui-switch-padding) * 2));
+
+    height: var(--jui-switch-height);
+    width: var(--jui-switch-width);
+    aspect-ratio: var(--jui-switch-aspect-ratio);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    flex-grow: 0;
+
+    input[type="checkbox"] {
+      inset: 0;
+      margin: 0;
+      padding: 0;
+      cursor: pointer;
+      position: absolute;
+      opacity: 0;
+      z-index: 3;
+    }
+
+    .switch {
+      inset: 0;
+      display: block;
+      position: absolute;
+      background-color: rgb(var(--jui-bg-switch-color));
+      transition: background-color .1s linear;
+      border-radius: 99999999px;
+
+      .thumb {
+        top: var(--jui-switch-padding);
+        left: var(--jui-switch-padding);
+        width: var(--jui-switch-thumb-size);
+        height: var(--jui-switch-thumb-size);
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        background-color: rgb(var(--jui-white-color));
+        box-shadow: 0 0 2px 1px rgb(var(--jui-black-color) / 0.1);
+        transition: left .1s linear;
+        display: block;
+        position: absolute;
+        z-index: 2;
+      }
+    }
+
+    input[type="checkbox"]:checked + .switch {
+      background-color: rgb(var(--jui-accent-color));
+
+      .thumb {
+        left: calc(var(--jui-switch-width) - var(--jui-switch-thumb-size) - var(--jui-switch-padding));
+      }
+    }
+
+    input[type="checkbox"]:disabled {
+      cursor: default;
+    }
+
+    input[type="checkbox"]:disabled + .switch {
+      background-color: rgb(var(--jui-bg-disabled-color));
+      opacity: .8;
+    }
+  }
+
+  .jui-error {
+    width: 100%;
+  }
+
+  &.row {
+
+    .jui-label {
+      order: 2;
+    }
+
+    .control-switch {
+      margin-right: 15px;
+      order: 1;
+    }
+
+    .jui-error {
+      order: 3;
+    }
+  }
+
+  &.row-reverse {
+
+    .jui-label {
+      order: 1;
+    }
+
+    .control-switch {
+      margin-left: 15px;
+      order: 2;
+    }
+
+    .jui-error {
+      order: 3;
+    }
+  }
+}

@@ -1,7 +1,19 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { resolve } from 'node:path';
+import { readFile } from 'node:fs/promises';
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
+export default defineConfig(async () => {
+  const { name, version } = JSON.parse(await readFile(resolve(__dirname, '..', 'package.json'), 'utf8'));
+
+  return {
+    plugins: [react()],
+    define: {
+      'import.meta.env.VITE_LIB_NAME': JSON.stringify(name),
+      'import.meta.env.VITE_LIB_VERSION': JSON.stringify(version),
+    },
+    server: {
+      port: 3009,
+    }
+  }
 })

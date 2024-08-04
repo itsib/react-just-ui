@@ -3,6 +3,7 @@ import { BaseProps } from '../types';
 import { ControlError } from '../common/control-error.tsx';
 import { ControlLabel } from '../common/control-label.tsx';
 import { useTranslation } from 'react-i18next';
+import './form-control-input.css';
 
 export type IFormControlInputType = 'text' | 'password' | 'email' | 'search' | 'tel' | 'url' | 'number';
 

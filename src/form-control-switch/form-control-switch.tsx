@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react';
 import { BaseProps } from '../types';
 import { ControlLabel } from '../common/control-label.tsx';
 import { ControlError } from '../common/control-error.tsx';
+import './form-control-switch.css';
 
 export interface IFormControlSwitch extends BaseProps<HTMLInputElement> {
   rowReverse?: boolean;

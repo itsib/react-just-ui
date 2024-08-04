@@ -1,13 +1,13 @@
-import React, { HTMLAttributes } from 'react';
+import React, { AllHTMLAttributes } from 'react';
 import { ValidationError } from './validation-error.ts';
 
 export interface LabelBaseProps {
   label?: string | React.JSX.Element;
-  hint?: string | React.JSX.Element;
+  hint?: string;
 }
 
 export type BaseProps<Element extends HTMLElement> = {
   id: string;
   error?: ValidationError | false;
   disabled?: boolean;
-} & Omit<HTMLAttributes<Element>, 'prefix'> & LabelBaseProps;
+} & Omit<AllHTMLAttributes<Element>, 'prefix' | 'label'> & LabelBaseProps;

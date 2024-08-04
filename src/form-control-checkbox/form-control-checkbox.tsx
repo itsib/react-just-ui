@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react';
 import { BaseProps } from '../types';
 import { ControlLabel } from '../common/control-label.tsx';
 import { ControlError } from '../common/control-error.tsx';
+import './form-control-checkbox.css';
 
 export interface IFormControlCheckbox extends BaseProps<HTMLInputElement> {
   rowReverse?: boolean;

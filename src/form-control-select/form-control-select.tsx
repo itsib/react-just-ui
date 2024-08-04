@@ -3,6 +3,7 @@ import { BaseProps } from '../types';
 import { ControlError } from '../common/control-error.tsx';
 import { ControlLabel } from '../common/control-label.tsx';
 import { createPortal } from 'react-dom';
+import './form-control-select.css';
 
 export interface IFormControlOption {
   icon?: string | React.JSX.Element;
@@ -26,6 +27,9 @@ export const FormControlSelect = forwardRef(function FormControlSelect(
   const [rect, setRect] = useState<DOMRect | null>(null);
 
   const activeIndex = useMemo(() => (value != null ? options.findIndex(i => i.value === value) : -1), [value, options]);
+
+  const activeLabel = options[activeIndex]?.label;
+  const activeIcon = options[activeIndex]?.icon;
 
   function onClick(event: React.MouseEvent<HTMLDivElement>) {
     const input = document.getElementById(id) as HTMLInputElement;
@@ -63,10 +67,15 @@ export const FormControlSelect = forwardRef(function FormControlSelect(
         <input id={id} readOnly className="hidden-select" ref={ref} {..._props} />
 
         <div className="fake-input">
-          {options[activeIndex]?.label}
+          {activeIcon ? (
+            <div className="icon">
+              {typeof activeIcon === 'string' ? <i className={activeIcon} /> : <>{activeIcon}</>}
+            </div>
+          ) : null}
+          <div className="label">{activeLabel}</div>
         </div>
 
-        <svg className="icon" height="16px" viewBox="0 0 16 16" width="16px" xmlns="http://www.w3.org/2000/svg">
+        <svg className="drop" height="16px" viewBox="0 0 16 16" width="16px" xmlns="http://www.w3.org/2000/svg">
           <path d="M14,5l-6,6l-6,-6" stroke="currentColor" fill="transparent" strokeLinecap="round"
                 strokeLinejoin="round"/>
         </svg>
@@ -201,7 +210,7 @@ function FormControlDropdown(props: IFormControlDropdown) {
 }
 
 function Option(props: IFormControlOption & { id: string; active: boolean; onClick: (value: string) => void }) {
-  const { id, active, label, value, onClick } = props;
+  const { id, active, label, icon, value, onClick } = props;
 
   return (
     <button
@@ -211,7 +220,18 @@ function Option(props: IFormControlOption & { id: string; active: boolean; onCli
       value={value}
       onClick={() => onClick(value)}
     >
-      <span>{label}</span>
+      {icon ? (
+        <div className="icon">
+          {typeof icon === 'string' ? <i className={icon} /> : <>{icon}</>}
+        </div>
+      ) : null}
+      <div className="label">{label}</div>
+
+      {active ? (
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" className="active">
+          <path d="M13.969 2.969L6.5 10.438l-4.469-4.47L.97 7.032l5.531 5.53 8.531-8.53z" fill="currentColor"/>
+        </svg>
+      ) : null}
     </button>
   );
 }

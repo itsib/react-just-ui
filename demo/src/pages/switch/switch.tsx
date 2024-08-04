@@ -1,0 +1,49 @@
+import { FC, useState } from 'react';
+import { Trans } from 'react-i18next';
+import { useForm } from 'react-hook-form';
+import { FormControlCheckbox, FormControlSwitch } from 'react-just-ui';
+
+export const Switch: FC = () => {
+  const [disabled, setDisabled] = useState(false);
+  const { register, reset, formState: { errors } } = useForm<{ enabled: boolean }>({
+    defaultValues: {
+      enabled: false,
+    },
+    mode: 'onChange',
+  });
+
+  return (
+    <div className="">
+      <h1><Trans i18nKey="switch"/></h1>
+      <p><Trans i18nKey="switch_page_content"/></p>
+
+      <fieldset className="preview">
+        <legend><Trans i18nKey="preview"/></legend>
+
+        <div className="actions">
+          <FormControlCheckbox
+            id="demo-disabled"
+            label="disable_demo_control"
+            value={disabled as any}
+            onChange={event => setDisabled((event.target as any).checked)}
+          />
+        </div>
+
+        <div className="demo">
+          <FormControlSwitch
+            id="switch"
+            label="airplane_mode"
+            error={errors?.enabled}
+            {...register('enabled', { disabled: disabled })}
+          />
+
+          <div style={{ marginTop: '20px' }}>
+            <button className="btn btn-primary" type="button" onClick={() => reset()}>
+              <Trans i18nKey="reset"/>
+            </button>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  );
+};

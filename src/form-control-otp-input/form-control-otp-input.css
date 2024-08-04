@@ -1,0 +1,66 @@
+.jui.jui-verify-code {
+
+  .control-group {
+
+    .group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      .divider {
+        height: 1px;
+        width: 0.6rem;
+        margin: 0 3px;
+        background-color: rgb(var(--jui-fg-color));
+      }
+
+      input {
+        height: var(--jui-height);
+        width: auto;
+        aspect-ratio: 4/5;
+        text-align: center;
+        background-color: rgb(var(--jui-bg-color));
+        box-shadow: 0 0 0 0 transparent;
+        border: var(--jui-border-width) solid rgb(var(--jui-border-color));
+        border-radius: var(--jui-border-radius);
+        outline: none;
+        transition: all .15s ease-in-out;
+
+        &:focus {
+          border: var(--jui-border-width) solid rgb(var(--jui-border-focus-color));
+          box-shadow: var(--jui-box-shadow-focus);
+        }
+      }
+    }
+  }
+
+  &.error {
+
+    .control-group {
+
+      .group {
+
+        input {
+          border: var(--jui-border-width) solid rgb(var(--jui-error-color));
+          box-shadow: 0 0 0 0 transparent;
+        }
+      }
+    }
+  }
+
+  &.disabled {
+
+    .control-group {
+
+      .group {
+
+        input {
+          box-shadow: 0 0 0 0 transparent;
+          border: var(--jui-border-width) solid rgb(var(--jui-border-color));
+          background-color: rgb(var(--jui-bg-disabled-color));
+          opacity: .8;
+        }
+      }
+    }
+  }
+}

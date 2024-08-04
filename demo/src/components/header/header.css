@@ -1,0 +1,45 @@
+.header {
+  top: 0;
+  width: 100%;
+  height: var(--header-height);
+  position: fixed;
+  background-color: rgb(var(--bg-primary));
+  transition: background-color .15s ease-in-out;
+  border-bottom: 1px solid rgb(var(--border-color) / .3);
+  z-index: 10;
+
+  .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+
+      .logo {
+        height: 30px;
+        width: auto;
+      }
+
+      .name {
+        margin-left: 20px;
+      }
+    }
+
+    .theme {
+      color: rgb(var(--text-primary));
+      transition: all .15s ease-in-out;
+
+      &:hover {
+        color: rgb(var(--accent-secondary));
+      }
+
+      &:active {
+        color: rgb(var(--text-primary));
+      }
+    }
+  }
+}

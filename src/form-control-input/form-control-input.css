@@ -1,0 +1,71 @@
+.jui.jui-input {
+
+  .control {
+
+    .fix {
+      --jui-inner-border-radius: calc(var(--jui-border-radius) - 1px);
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+      user-select: none;
+      transition: box-shadow .15s ease-in-out, border-color .15s ease-in-out;
+      box-shadow: 0 0 0 0 transparent;
+
+      &.prefix {
+        color: var(--jui-prefix-color);
+        border-radius: var(--jui-inner-border-radius) 0 0 var(--jui-inner-border-radius);
+        border-right: var(--jui-border-width) solid rgb(var(--jui-border-color));
+      }
+
+      &.suffix {
+        color: var(--jui-sufix-color);
+        border-radius: 0 var(--jui-inner-border-radius) var(--jui-inner-border-radius) 0;
+        border-left: var(--jui-border-width) solid rgb(var(--jui-border-color));
+      }
+    }
+  }
+
+  &.focus-manual {
+
+    .control {
+
+      input {
+        caret-color: transparent;
+      }
+    }
+  }
+
+  &:focus-within {
+
+    .control {
+
+      .fix {
+        border-color: rgb(var(--jui-border-focus-color));
+        box-shadow: 0 0 2px 0 rgb(var(--jui-border-focus-color)), 0 0 2px -1px inset rgb(var(--jui-border-focus-color));
+      }
+    }
+  }
+
+  &.error {
+
+    .control {
+
+      .fix {
+        border-color: rgb(var(--jui-error-color));
+        box-shadow: 0 0 0 0 transparent;
+      }
+    }
+  }
+
+  &.disabled {
+
+    .control {
+
+      .fix {
+        border-color: rgb(var(--jui-border-color));
+      }
+    }
+  }
+}

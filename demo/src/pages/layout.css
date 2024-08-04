@@ -1,0 +1,16 @@
+.layout {
+
+
+  > .container {
+    top: var(--header-height);
+    height: calc(100vh - var(--header-height));
+    display: flex;
+    justify-content: stretch;
+    align-items: start;
+    position: relative;
+
+    .page {
+      width: 100%;
+    }
+  }
+}

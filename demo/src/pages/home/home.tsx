@@ -3,7 +3,7 @@ import {
   FormControlInput,
   FormControlCheckbox,
   FormControlSelect,
-  FormControlVerifyCode,
+  FormControlOtpInput,
   FormControlTextarea,
   FormControlSwitch,
 } from 'react-just-ui';
@@ -163,7 +163,7 @@ export const Home: FC = () => {
           />
         </div>
         <div>
-          <FormControlVerifyCode
+          <FormControlOtpInput
             id="verify-code-input"
             label="enter_six_digit_code"
             upper
