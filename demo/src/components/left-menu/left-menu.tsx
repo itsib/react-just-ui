@@ -73,6 +73,14 @@ export const LeftMenu: FC<ILeftMenu> = () => {
           <Trans i18nKey="checkbox"/>
         </span>
       </NavLink>
+      <NavLink to="/radio" className="nav-link">
+        <div className="nav-icon">
+          <i className="icon icon-radio"/>
+        </div>
+        <span className="label">
+          <Trans i18nKey="radio"/>
+        </span>
+      </NavLink>
       <NavLink to="/tooltip" className="nav-link">
         <div className="nav-icon">
           <i className="icon icon-tooltip"/>

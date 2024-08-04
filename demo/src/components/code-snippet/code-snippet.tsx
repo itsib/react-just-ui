@@ -1,7 +1,9 @@
 import { FC, PropsWithChildren, useEffect, useRef, useState } from 'react';
 import hljs from 'highlight.js/lib/common';
 import type { HLJSApi } from 'highlight.js';
-import 'highlight.js/styles/base16/brewer.css';
+// import 'highlight.js/styles/base16/bespin.css';
+// import 'highlight.js/styles/github.css';
+// import 'highlight.js/styles/github-dark.css';
 import './code-snippet.css'
 
 export interface ICodeSnippet {

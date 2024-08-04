@@ -97,8 +97,8 @@ export const Tooltip: FC = () => {
         </div>
       </fieldset>
 
-      <fieldset className="example">
-        <legend><Trans i18nKey="example"/></legend>
+      <fieldset className="source">
+        <legend><Trans i18nKey="source"/></legend>
 
         <CodeSnippet>{`
 <div aria-label="Tooltip Text" data-position="top" data-width="md">

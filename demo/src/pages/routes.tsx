@@ -9,6 +9,7 @@ import { OptInput } from './opt-input/opt-input.tsx';
 import { Switch } from './switch/switch.tsx';
 import { Checkbox } from './checkbox/checkbox.tsx';
 import { Tooltip } from './tooltip/tooltip.tsx';
+import { Radio } from './radio/radio.tsx';
 
 const ErrorBoundary: FC = () => {
   const error = useRouteError();
@@ -55,6 +56,10 @@ export const ROUTES = createRouter(
         {
           path: 'checkbox',
           Component: Checkbox
+        },
+        {
+          path: 'radio',
+          Component: Radio
         },
         {
           path: 'tooltip',
