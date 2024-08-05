@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Trans } from 'react-i18next';
-import { FormControlCheckbox, FormControlOtpInput } from 'react-just-ui';
+import { JuiCheckbox, JuiOtpInput } from 'react-just-ui';
 
 export const OptInput: FC = () => {
   const [disabled, setDisabled] = useState(false);
@@ -22,7 +22,7 @@ export const OptInput: FC = () => {
         <legend><Trans i18nKey="preview"/></legend>
 
         <div className="actions">
-          <FormControlCheckbox
+          <JuiCheckbox
             id="demo-disabled"
             label="disable_demo_control"
             value={disabled as any}
@@ -31,7 +31,7 @@ export const OptInput: FC = () => {
         </div>
 
         <div className="demo">
-          <FormControlOtpInput
+          <JuiOtpInput
             id="first-name-control"
             label="otp_code"
             hint="otp_code_hint"

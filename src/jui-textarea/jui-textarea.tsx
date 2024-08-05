@@ -1,10 +1,10 @@
 import { ForwardedRef, forwardRef, useEffect } from 'react';
 import { BaseProps } from '../types';
-import { ControlError } from '../common/control-error.tsx';
-import { ControlLabel } from '../common/control-label.tsx';
-import './form-control-textarea.css';
+import { JuiError } from '../jui-error/jui-error.tsx';
+import { JuiLabel } from '../jui-label/jui-label.tsx';
+import './jui-textarea.css';
 
-export interface IFormControlTextarea extends BaseProps<HTMLTextAreaElement> {
+export interface IJuiTextarea extends BaseProps<HTMLTextAreaElement> {
   elastic?: boolean;
   placeholder?: string;
   limit?: number;
@@ -13,8 +13,8 @@ export interface IFormControlTextarea extends BaseProps<HTMLTextAreaElement> {
   minWidth?: number;
 }
 
-export const FormControlTextarea = forwardRef(function FormControlTextarea(
-  props: IFormControlTextarea,
+export const JuiTextarea = forwardRef(function JuiTextarea(
+  props: IJuiTextarea,
   ref: ForwardedRef<HTMLTextAreaElement>,
 ) {
   const { id, className, placeholder, elastic = true, label, hint, minHeight, minWidth, maxHeight, limit = 5000, error, ..._props } = props;
@@ -76,11 +76,11 @@ export const FormControlTextarea = forwardRef(function FormControlTextarea(
 
   return (
     <div className={`jui jui-textarea ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
-      <ControlLabel id={id} label={label} hint={hint} />
+      <JuiLabel id={id} label={label} hint={hint} />
 
       <textarea placeholder={placeholder} className="control" id={id} ref={ref} style={{ minHeight, maxHeight, minWidth }} {..._props} />
 
-      <ControlError error={!_props.disabled ? error : undefined} />
+      <JuiError error={!_props.disabled ? error : undefined} />
     </div>
   );
 });

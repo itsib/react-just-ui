@@ -1,0 +1,23 @@
+.jui-error {
+  height: calc(var(--jui-error-font-size) + 4px);
+  margin-top: 4px;
+  padding-left: 4px;
+  font-size: var(--jui-error-font-size);
+  line-height: calc(var(--jui-error-font-size) + 2px);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: rgb(var(--jui-error-color));
+  overflow: hidden;
+
+  div {
+    transform: translateY(-100%);
+    transition: .15s ease-in-out;
+  }
+
+  &.active {
+
+    div {
+      transform: translateY(0);
+    }
+  }
+}

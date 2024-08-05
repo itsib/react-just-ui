@@ -1,22 +1,22 @@
 import React, { forwardRef } from 'react';
 import { BaseProps } from '../types';
-import { ControlLabel } from '../common/control-label.tsx';
-import { ControlError } from '../common/control-error.tsx';
-import './form-control-radio.css';
+import { JuiLabel } from '../jui-label/jui-label.tsx';
+import { JuiError } from '../jui-error/jui-error.tsx';
+import './jui-radio.css';
 
-export interface IFormControlRadio extends BaseProps<HTMLInputElement> {
+export interface IJuiRadio extends BaseProps<HTMLInputElement> {
   rowReverse?: boolean;
 }
 
-export const FormControlRadio = forwardRef(function FormControlCheckbox(
-  _props: IFormControlRadio,
+export const JuiRadio = forwardRef(function JuiCheckbox(
+  _props: IJuiRadio,
   _ref: React.ForwardedRef<HTMLInputElement>
 ) {
   const { id, label, hint, className, rowReverse, error, ...props } = _props;
 
   return (
     <div className={`jui jui-radio ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}>
-      <ControlLabel id={id} label={label} hint={hint} />
+      <JuiLabel id={id} label={label} hint={hint} />
 
       <div className="control-radio">
         <input
@@ -32,7 +32,7 @@ export const FormControlRadio = forwardRef(function FormControlCheckbox(
         </svg>
       </div>
 
-      <ControlError error={!_props.disabled || error === false ? error : undefined}/>
+      <JuiError error={!_props.disabled || error === false ? error : undefined}/>
     </div>
   );
 });

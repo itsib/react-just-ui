@@ -1,18 +1,19 @@
 import React, { FC, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import './jui-label.css';
 
-export interface IControlLabel {
+export interface IJuiLabel {
   id: string;
   label?: string | React.JSX.Element;
   hint?: string;
 }
 
-export const ControlLabel: FC<IControlLabel> = ({ id, label, hint }) => {
+export const JuiLabel: FC<IJuiLabel> = ({ id, label, hint }) => {
   const { t } = useTranslation();
   const ref = useRef<HTMLLabelElement | null>(null);
 
   return !label ? null : (
-    <label htmlFor={id} className="jui-label" ref={ref}>
+    <label htmlFor={id} className="jui jui-label" ref={ref}>
       <span className="text">{typeof label === 'string' ? t(label) : label}</span>
 
       {hint ? (

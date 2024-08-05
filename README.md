@@ -37,7 +37,7 @@ Or if you use post css with the postcss-import plugin:
 All the props are passed to the input inside the component, and the internal input is tipped out through the ref. So any component can be used as a regular form element.
 
 ```typescript jsx
-<FormControlInput
+<JuiInput
     id="text-input"
     label="first_name"
     hint="first_name_hint"

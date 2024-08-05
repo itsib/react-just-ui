@@ -2,24 +2,67 @@
 import { resolve } from 'node:path';
 import react from '@vitejs/plugin-react-swc';
 import { defineConfig, UserConfig, ConfigEnv } from 'vite';
-import dts from 'vite-plugin-dts'
+import autoprefixer from 'autoprefixer'
+import postcssNesting from 'postcss-nesting'
 import { peerDependencies } from './package.json';
+import dts from 'vite-plugin-dts'
 
-export default defineConfig(async ({ mode, command }: ConfigEnv): Promise<UserConfig>  => {
-  console.log(mode, command);
+function types() {
+  const dtsInstance = dts({ rollupTypes: true }) as any;
+
+  return {
+    ...dtsInstance,
+    configResolved(config: UserConfig, env: ConfigEnv) {
+      return dtsInstance.configResolved(
+        {
+          ...config,
+          build: {
+            ...config.build,
+            lib: {
+              ...config.build!.lib,
+              entry: {
+                index: (config.build!.lib as any)!.entry.index,
+              }
+            },
+          },
+        },
+        env,
+      );
+    },
+  }
+}
+
+
+export default defineConfig(async ({ mode }: ConfigEnv): Promise<UserConfig>  => {
   return {
     appType: 'custom',
+    resolve: {
+      alias: {
+        '@': resolve(__dirname, 'src'),
+      },
+    },
+    css: {
+      postcss: {
+        plugins: [
+          autoprefixer(),
+          postcssNesting(),
+        ],
+      },
+    },
+    assetsInclude: '',
     build: {
       target: 'esnext',
       minify: mode === 'production',
-      // sourcemap: true,
-      cssTarget: mode === 'production' ? undefined : resolve(__dirname, 'src/styles.css'),
+      cssTarget: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14'],
       cssMinify: 'esbuild',
-      cssCodeSplit: false,
+      cssCodeSplit: true,
       emptyOutDir: true,
       lib: {
-        entry: resolve(__dirname, 'src/index.ts'),
-        fileName: 'index',
+        entry: {
+          index: resolve(__dirname, 'src/index.ts'),
+          'css/default': resolve(__dirname, 'src/theme/default.css'),
+        },
+        name: 'index',
         formats: ['es', 'cjs'],
       },
       rollupOptions: {
@@ -28,8 +71,8 @@ export default defineConfig(async ({ mode, command }: ConfigEnv): Promise<UserCo
       outDir: resolve(__dirname, 'dist'),
     },
     plugins: [
-      dts({ rollupTypes: true }),
       react(),
+      types(),
     ],
   }
 });

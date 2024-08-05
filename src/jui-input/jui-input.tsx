@@ -1,21 +1,21 @@
 import React, { ForwardedRef, forwardRef, useEffect } from 'react';
 import { BaseProps } from '../types';
-import { ControlError } from '../common/control-error.tsx';
-import { ControlLabel } from '../common/control-label.tsx';
+import { JuiError } from '../jui-error/jui-error.tsx';
+import { JuiLabel } from '../jui-label/jui-label.tsx';
 import { useTranslation } from 'react-i18next';
-import './form-control-input.css';
+import './jui-input.css';
 
-export type IFormControlInputType = 'text' | 'password' | 'email' | 'search' | 'tel' | 'url' | 'number';
+export type IJuiInputType = 'text' | 'password' | 'email' | 'search' | 'tel' | 'url' | 'number';
 
-export interface IFormControlInput extends BaseProps<HTMLInputElement> {
-  type?: IFormControlInputType;
+export interface IJuiInput extends BaseProps<HTMLInputElement> {
+  type?: IJuiInputType;
   prefix?: string | React.JSX.Element;
   suffix?: string | React.JSX.Element;
   placeholder?: string;
 }
 
-export const FormControlInput = forwardRef(function FormControlInput(
-  props: IFormControlInput,
+export const JuiInput = forwardRef(function JuiInput(
+  props: IJuiInput,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
   const { id, className, label, hint, type: _type, prefix, suffix, error, ..._props } = props;
@@ -47,15 +47,15 @@ export const FormControlInput = forwardRef(function FormControlInput(
 
   return (
     <div className={`jui jui-input ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
-      <ControlLabel id={id} label={label} hint={hint} />
+      <JuiLabel id={id} label={label} hint={hint} />
 
       <div className="control">
-        {prefix ? <div className="fix prefix">{typeof prefix === 'string' ? t(prefix) : prefix}</div> : null}
+        {prefix ? <div className="substitute prefix">{typeof prefix === 'string' ? t(prefix) : prefix}</div> : null}
         <input id={id} type={type} ref={ref} {..._props} />
-        {suffix ? <div className="fix suffix">{typeof suffix === 'string' ? t(suffix) : suffix}</div> : null}
+        {suffix ? <div className="substitute suffix">{typeof suffix === 'string' ? t(suffix) : suffix}</div> : null}
       </div>
 
-      <ControlError error={!_props.disabled ? error : undefined} />
+      <JuiError error={!_props.disabled ? error : undefined} />
     </div>
   );
 });

@@ -1,15 +1,15 @@
 import React, { forwardRef } from 'react';
 import { BaseProps } from '../types';
-import { ControlLabel } from '../common/control-label.tsx';
-import { ControlError } from '../common/control-error.tsx';
-import './form-control-switch.css';
+import { JuiLabel } from '../jui-label/jui-label.tsx';
+import { JuiError } from '../jui-error/jui-error.tsx';
+import './jui-switch.css';
 
-export interface IFormControlSwitch extends BaseProps<HTMLInputElement> {
+export interface IJuiSwitch extends BaseProps<HTMLInputElement> {
   rowReverse?: boolean;
 }
 
-export const FormControlSwitch = forwardRef(function FormControlSwitch(
-  _props: IFormControlSwitch,
+export const JuiSwitch = forwardRef(function JuiSwitch(
+  _props: IJuiSwitch,
   _ref: React.ForwardedRef<HTMLInputElement>
 ) {
   const {
@@ -26,7 +26,7 @@ export const FormControlSwitch = forwardRef(function FormControlSwitch(
     <div
       className={`jui jui-switch ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}
     >
-      <ControlLabel id={id} label={label} hint={hint} />
+      <JuiLabel id={id} label={label} hint={hint} />
 
       <div className="control-switch">
         <input
@@ -41,7 +41,7 @@ export const FormControlSwitch = forwardRef(function FormControlSwitch(
         </div>
       </div>
 
-      <ControlError error={!_props.disabled ? error : undefined}/>
+      <JuiError error={!_props.disabled ? error : undefined}/>
     </div>
   );
 });

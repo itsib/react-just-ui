@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Trans } from 'react-i18next';
-import { FormControlTextarea, FormControlCheckbox } from 'react-just-ui';
+import { JuiTextarea, JuiCheckbox } from 'react-just-ui';
 
 export const Textarea: FC = () => {
   const [disabled, setDisabled] = useState(false);
@@ -22,7 +22,7 @@ export const Textarea: FC = () => {
         <legend><Trans i18nKey="preview"/></legend>
 
         <div className="actions">
-          <FormControlCheckbox
+          <JuiCheckbox
             id="demo-disabled"
             label="disable_demo_control"
             value={disabled as any}
@@ -31,7 +31,7 @@ export const Textarea: FC = () => {
         </div>
 
         <div className="demo">
-          <FormControlTextarea
+          <JuiTextarea
             id="first-name-control"
             label="first_name"
             hint="first_name_hint"

@@ -2,7 +2,7 @@
 
   .control {
 
-    .fix {
+    .substitute {
       --jui-inner-border-radius: calc(var(--jui-border-radius) - 1px);
       padding: 0 14px;
       display: flex;
@@ -11,7 +11,7 @@
       cursor: default;
       user-select: none;
       transition: box-shadow .15s ease-in-out, border-color .15s ease-in-out;
-      box-shadow: 0 0 0 0 transparent;
+      box-shadow: none;
 
       &.prefix {
         color: var(--jui-prefix-color);
@@ -27,21 +27,11 @@
     }
   }
 
-  &.focus-manual {
-
-    .control {
-
-      input {
-        caret-color: transparent;
-      }
-    }
-  }
-
   &:focus-within {
 
     .control {
 
-      .fix {
+      .substitute {
         border-color: rgb(var(--jui-border-focus-color));
         box-shadow: 0 0 2px 0 rgb(var(--jui-border-focus-color)), 0 0 2px -1px inset rgb(var(--jui-border-focus-color));
       }
@@ -52,9 +42,9 @@
 
     .control {
 
-      .fix {
+      .substitute {
         border-color: rgb(var(--jui-error-color));
-        box-shadow: 0 0 0 0 transparent;
+        box-shadow: none;
       }
     }
   }
@@ -63,7 +53,7 @@
 
     .control {
 
-      .fix {
+      .substitute {
         border-color: rgb(var(--jui-border-color));
       }
     }

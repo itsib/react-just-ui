@@ -6,6 +6,7 @@
     min-height: var(--jui-height);
     padding: var(--jui-padding-x) var(--jui-padding-x);
     font-size: var(--jui-font-size);
+    color: rgb(var(--jui-fg-color));
     line-height: 1;
     outline: none;
 

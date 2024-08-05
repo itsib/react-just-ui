@@ -44,10 +44,10 @@
 
       .center {
         fill: rgb(var(--jui-checkbox-color));
-        opacity: 0;
+        opacity: 1;
         transform: scale(0,0);
         transform-origin: 12px 12px;
-        transition: all .2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+        transition: all .4s cubic-bezier(.45,1.8,.5,.75);
       }
     }
 

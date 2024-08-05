@@ -1,0 +1,127 @@
+:root {
+  --jui-checkbox-in-duration: .4s;
+  --jui-checkbox-out-duration: .2s;
+}
+
+.jui.jui-checkbox {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .jui-label {
+    margin-bottom: 0;
+    user-select: none;
+  }
+
+  .control-checkbox {
+    width: var(--jui-checkbox-size);
+    height: var(--jui-checkbox-size);
+    margin: 5px 10px;
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+    flex-grow: 0;
+
+    input[type="checkbox"] {
+      margin: 0;
+      width: var(--jui-checkbox-size);
+      height: var(--jui-checkbox-size);
+      position: absolute;
+      opacity: 0;
+      z-index: 2;
+      cursor: pointer;
+
+      + .checkbox {
+        width: var(--jui-checkbox-size);
+        height: var(--jui-checkbox-size);
+        border: 2px solid rgb(var(--jui-checkbox-color));
+        border-radius: 4px;
+        position: absolute;
+        z-index: 1;
+
+        .tick {
+          fill: none;
+          stroke: rgb(var(--jui-checkbox-color));
+          stroke-dasharray: 24;
+          stroke-dashoffset: 0;
+          transform-origin: 8px 8px;
+          transition-duration: var(--jui-checkbox-out-duration);
+          transition-timing-function:  ease-in;
+          transition-property: opacity, transform;
+          transform: scale(0,0);
+          opacity: 0;
+        }
+      }
+    }
+
+    input[type="checkbox"]:checked {
+
+      + .checkbox {
+
+        .tick {
+          opacity: 1;
+          transform: scale(1,1);
+          transition-duration: 0s;
+          animation-name: checkbox-checked;
+          animation-fill-mode: forwards;
+          animation-duration: var(--jui-checkbox-in-duration);
+          animation-timing-function: cubic-bezier(.4,.0,.23,1);
+        }
+      }
+    }
+
+    input[type="checkbox"]:disabled {
+
+      + .checkbox {
+        border-color: rgb(var(--jui-border-color));
+
+        .tick {
+          stroke: rgb(var(--jui-border-color));
+        }
+      }
+    }
+  }
+
+  .jui-error {
+    width: 100%;
+  }
+
+  &.row {
+
+    .jui-label {
+      order: 2;
+    }
+
+    .control-checkbox {
+      order: 1;
+    }
+
+    .jui-error {
+      order: 3;
+    }
+  }
+
+  &.row-reverse {
+
+    .jui-label {
+      order: 1;
+    }
+
+    .control-checkbox {
+      order: 2;
+    }
+
+    .jui-error {
+      order: 3;
+    }
+  }
+}
+
+@keyframes checkbox-checked {
+  from {
+    stroke-dashoffset: 24;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}

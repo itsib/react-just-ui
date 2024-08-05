@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Trans } from 'react-i18next';
-import { FormControlRadio, FormControlCheckbox } from 'react-just-ui';
+import { JuiRadio, JuiCheckbox } from 'react-just-ui';
 import './radio.css'
 
 export const Radio: FC = () => {
@@ -22,7 +22,7 @@ export const Radio: FC = () => {
         <legend><Trans i18nKey="preview"/></legend>
 
         <div className="actions">
-          <FormControlCheckbox
+          <JuiCheckbox
             id="demo-disabled"
             label="disable_demo_control"
             value={disabled as any}
@@ -31,7 +31,7 @@ export const Radio: FC = () => {
         </div>
 
         <div className="demo">
-          <FormControlRadio
+          <JuiRadio
             id="demo-radio-a"
             label="Off with your head"
             error={false}
@@ -39,7 +39,7 @@ export const Radio: FC = () => {
             {...register('radio', { disabled: disabled })}
           />
 
-          <FormControlRadio
+          <JuiRadio
             id="demo-radio-b"
             label="Dance ’til you’re dead"
             error={false}
@@ -47,7 +47,7 @@ export const Radio: FC = () => {
             {...register('radio', { disabled: disabled })}
           />
 
-          <FormControlRadio
+          <JuiRadio
             id="demo-radio-c"
             label="Heads will roll"
             error={false}
@@ -55,11 +55,11 @@ export const Radio: FC = () => {
             {...register('radio', { disabled: disabled })}
           />
 
-          <FormControlRadio
-            id="demo-radio-c"
+          <JuiRadio
+            id="demo-radio-d"
             label="On the floor"
             error={false}
-            value="c"
+            value="d"
             {...register('radio', { disabled: disabled })}
           />
 

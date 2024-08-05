@@ -1,4 +1,4 @@
-.jui.jui-verify-code {
+.jui.jui-otp-input {
 
   .control-group {
 
@@ -19,6 +19,7 @@
         width: auto;
         aspect-ratio: 4/5;
         text-align: center;
+        color: rgb(var(--jui-fg-color));
         background-color: rgb(var(--jui-bg-color));
         box-shadow: 0 0 0 0 transparent;
         border: var(--jui-border-width) solid rgb(var(--jui-border-color));

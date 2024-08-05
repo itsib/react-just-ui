@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { Trans } from 'react-i18next';
 import { useForm } from 'react-hook-form';
-import { FormControlCheckbox, FormControlSwitch } from 'react-just-ui';
+import { JuiCheckbox, JuiSwitch } from 'react-just-ui';
 
 export const Switch: FC = () => {
   const [disabled, setDisabled] = useState(false);
@@ -21,7 +21,7 @@ export const Switch: FC = () => {
         <legend><Trans i18nKey="preview"/></legend>
 
         <div className="actions">
-          <FormControlCheckbox
+          <JuiCheckbox
             id="demo-disabled"
             label="disable_demo_control"
             value={disabled as any}
@@ -30,7 +30,7 @@ export const Switch: FC = () => {
         </div>
 
         <div className="demo">
-          <FormControlSwitch
+          <JuiSwitch
             id="switch"
             label="airplane_mode"
             error={errors?.enabled}

@@ -1,10 +1,10 @@
 import { ForwardedRef, forwardRef, useEffect, useMemo, useRef } from 'react';
 import { BaseProps } from '../types';
-import { ControlLabel } from '../common/control-label.tsx';
-import { ControlError } from '../common/control-error.tsx';
-import './form-control-otp-input.css';
+import { JuiLabel } from '../jui-label/jui-label.tsx';
+import { JuiError } from '../jui-error/jui-error.tsx';
+import './jui-otp-input.css';
 
-export interface IFormControlOtpInput extends BaseProps<HTMLInputElement> {
+export interface IJuiOtpInput extends BaseProps<HTMLInputElement> {
   /**
    * Code layout present. Example «ddd-ddd» six digit code.
    *    «-» - separator
@@ -21,8 +21,8 @@ export interface IFormControlOtpInput extends BaseProps<HTMLInputElement> {
   upper?: boolean;
 }
 
-export const FormControlOtpInput = forwardRef(function FormControlVerifyCode(
-  props: IFormControlOtpInput,
+export const JuiOtpInput = forwardRef(function FormControlVerifyCode(
+  props: IJuiOtpInput,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
   const { id, className, label, hint, error, layout = 'ddd-ddd', upper = false, ..._props} = props;
@@ -163,8 +163,8 @@ export const FormControlOtpInput = forwardRef(function FormControlVerifyCode(
   }, [id, upper, elements]);
 
   return (
-    <div className={`jui jui-verify-code ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
-      <ControlLabel id={id} label={label} hint={hint} />
+    <div className={`jui jui-otp-input ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
+      <JuiLabel id={id} label={label} hint={hint} />
 
       <div className="control-group">
         <input id={id} type="hidden" aria-invalid={error ? 'true' : 'false'} ref={ref} {..._props} />
@@ -197,7 +197,7 @@ export const FormControlOtpInput = forwardRef(function FormControlVerifyCode(
         </div>
       </div>
 
-      <ControlError error={!_props.disabled ? error : undefined}/>
+      <JuiError error={!_props.disabled ? error : undefined}/>
     </div>
   );
 });

@@ -1,7 +1,63 @@
-@import "variables.css";
+.jui {
+  font-size: var(--jui-font-size);
+  box-sizing: border-box;
 
-@import "tooltip/tooltip.css";
-@import "styles/common.css";
+  * {
+    box-sizing: border-box;
 
+    &:before, &:after {
+      box-sizing: border-box;
+    }
+  }
 
+  .control {
+    height: var(--jui-height);
+    background-color: rgb(var(--jui-bg-color));
+    box-shadow: none;
+    border: var(--jui-border-width) solid rgb(var(--jui-border-color));
+    border-radius: var(--jui-border-radius);
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    align-items: stretch;
+    justify-content: space-between;
+    transition: box-shadow .15s ease-in-out, border-color .15s ease-in-out, background-color .15s ease-in-out;
 
+    input, select {
+      width: 100%;
+      height: calc(var(--jui-height) - (var(--jui-border-width) * 2));
+      padding: var(--jui-padding-y) var(--jui-padding-x);
+      color: rgb(var(--jui-fg-color));
+      border: none;
+      outline: none;
+      font-size: inherit;
+      background-color: transparent;
+    }
+  }
+
+  &:focus-within, &.focus {
+
+    .control {
+      border: var(--jui-border-width) solid rgb(var(--jui-border-focus-color));
+      box-shadow: var(--jui-box-shadow-focus);
+    }
+  }
+
+  &.error {
+
+    .control {
+      border: var(--jui-border-width) solid rgb(var(--jui-error-color));
+      box-shadow: 0 0 0 0 transparent;
+    }
+  }
+
+  &.disabled {
+
+    .control {
+      box-shadow: none;
+      border: var(--jui-border-width) solid rgb(var(--jui-border-color));
+      background-color: rgb(var(--jui-bg-disabled-color));
+      opacity: .8;
+    }
+  }
+}

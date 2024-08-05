@@ -1,0 +1,15 @@
+.jui.jui-label {
+  margin-bottom: 4px;
+
+  .text {
+    color: rgb(var(--jui-label-color));
+    font-size: var(--jui-label-font-size);
+  }
+
+  .question {
+    width: var(--jui-label-font-size);
+    height: var(--jui-label-font-size);
+    color: rgb(var(--jui-label-color));
+    margin-left: 0.5rem;
+  }
+}

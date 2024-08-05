@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { Trans } from 'react-i18next';
 import { useForm } from 'react-hook-form';
-import { FormControlCheckbox, FormControlInput } from 'react-just-ui';
+import { JuiCheckbox, JuiInput } from 'react-just-ui';
 
 export const Input: FC = () => {
   const [disabled, setDisabled] = useState(false);
@@ -22,7 +22,7 @@ export const Input: FC = () => {
         <legend><Trans i18nKey="preview"/></legend>
 
         <div className="actions">
-          <FormControlCheckbox
+          <JuiCheckbox
             id="demo-disabled"
             label="disable_demo_control"
             value={disabled as any}
@@ -31,7 +31,7 @@ export const Input: FC = () => {
         </div>
 
         <div className="demo">
-          <FormControlInput
+          <JuiInput
             id="first-name-control"
             label="first_name"
             hint="first_name_hint"
@@ -39,7 +39,7 @@ export const Input: FC = () => {
             {...register('name', { required: 'required', disabled: disabled })}
           />
 
-          <FormControlInput
+          <JuiInput
             id="email-control"
             label="email"
             type="email"

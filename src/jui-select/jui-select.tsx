@@ -1,22 +1,22 @@
 import React, { CSSProperties, ForwardedRef, forwardRef, useEffect, useMemo, useRef, useState } from 'react';
 import { BaseProps } from '../types';
-import { ControlError } from '../common/control-error.tsx';
-import { ControlLabel } from '../common/control-label.tsx';
+import { JuiError } from '../jui-error/jui-error.tsx';
+import { JuiLabel } from '../jui-label/jui-label.tsx';
 import { createPortal } from 'react-dom';
-import './form-control-select.css';
+import './jui-select.css';
 
-export interface IFormControlOption {
+export interface IJuiSelectOption {
   icon?: string | React.JSX.Element;
   label?: string;
   value: string;
 }
 
-export interface IFormControlSelect extends BaseProps<HTMLInputElement> {
-  options: IFormControlOption[];
+export interface IJuiSelect extends BaseProps<HTMLInputElement> {
+  options: IJuiSelectOption[];
 }
 
-export const FormControlSelect = forwardRef(function FormControlSelect(
-  props: IFormControlSelect,
+export const JuiSelect = forwardRef(function JuiSelect(
+  props: IJuiSelect,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
   const { id, className, label, hint, error, options, ..._props } = props;
@@ -61,7 +61,7 @@ export const FormControlSelect = forwardRef(function FormControlSelect(
 
   return (
     <div className={`jui jui-select ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
-      <ControlLabel id={id} label={label} hint={hint} />
+      <JuiLabel id={id} label={label} hint={hint} />
 
       <div className="control" ref={controlRef} onClick={onClick}>
         <input id={id} readOnly className="hidden-select" ref={ref} {..._props} />
@@ -81,9 +81,9 @@ export const FormControlSelect = forwardRef(function FormControlSelect(
         </svg>
       </div>
 
-      <ControlError error={!_props.disabled ? error : undefined}/>
+      <JuiError error={!_props.disabled ? error : undefined}/>
 
-      <FormControlDropdown
+      <JuiSelectDropdown
         id={id}
         activeIndex={activeIndex}
         options={options}
@@ -99,17 +99,17 @@ export const FormControlSelect = forwardRef(function FormControlSelect(
   );
 });
 
-export interface IFormControlDropdown {
+export interface IJuiSelectDropdown {
   id: string;
   open?: boolean;
   rect: DOMRect | null;
-  options: IFormControlOption[];
+  options: IJuiSelectOption[];
   activeIndex: number;
   onChange?: (value: string) => void;
   onDismiss?: () => void;
 }
 
-function FormControlDropdown(props: IFormControlDropdown) {
+export function JuiSelectDropdown(props: IJuiSelectDropdown) {
   const { id, open, rect, options, activeIndex, onChange, onDismiss } = props;
   const [process, setProcess] = useState(false);
   const [dropdownClass, setDropdownClass] = useState<string>('animation-from');
@@ -186,7 +186,7 @@ function FormControlDropdown(props: IFormControlDropdown) {
   }, [points?.scrollY, open]);
 
   return (process || open) && rect && points ? createPortal(
-    <div className="jui jui-dropdown jui-scroll">
+    <div className="jui jui-select-dropdown">
       <div className="jui-overlay" aria-label="dropdown overlay" onClick={onClickOverlay}/>
 
       <div
@@ -202,14 +202,20 @@ function FormControlDropdown(props: IFormControlDropdown) {
         } as CSSProperties}
         ref={optionsRef}
       >
-        {options.map((option, i) => (<Option key={option.value} id={id} active={i === activeIndex} icon={option.icon} label={option.label} value={option.value} onClick={onClickItemBtn} />))}
+        {options.map((option, i) => (<JuiSelectOption key={option.value} id={id} active={i === activeIndex} icon={option.icon} label={option.label} value={option.value} onClick={onClickItemBtn} />))}
       </div>
     </div>,
     document.body,
   ) : null;
 }
 
-function Option(props: IFormControlOption & { id: string; active: boolean; onClick: (value: string) => void }) {
+export interface IJuiSelectOptionProps extends IJuiSelectOption {
+  id: string;
+  active: boolean;
+  onClick: (value: string) => void;
+}
+
+export function JuiSelectOption(props: IJuiSelectOptionProps) {
   const { id, active, label, icon, value, onClick } = props;
 
   return (

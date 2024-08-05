@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Trans } from 'react-i18next';
-import { FormControlSelect, FormControlCheckbox } from 'react-just-ui';
+import { JuiSelect, JuiCheckbox } from 'react-just-ui';
 
 const SELECT_OPTIONS = [
   {
@@ -103,7 +103,7 @@ export const Select: FC = () => {
         <legend><Trans i18nKey="preview"/></legend>
 
         <div className="actions">
-          <FormControlCheckbox
+          <JuiCheckbox
             id="demo-disabled"
             label="disable_demo_control"
             value={disabled as any}
@@ -112,7 +112,7 @@ export const Select: FC = () => {
         </div>
 
         <div className="demo">
-          <FormControlSelect
+          <JuiSelect
             id="select"
             label="choose_option"
             options={SELECT_OPTIONS}
