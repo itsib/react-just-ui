@@ -6,7 +6,7 @@ import './radio.css'
 
 export const Radio: FC = () => {
   const [disabled, setDisabled] = useState(false);
-  const { register, reset, formState: { errors } } = useForm<{ radio: string }>({
+  const { register, reset } = useForm<{ radio: string }>({
     defaultValues: {
       radio: 'a',
     },
