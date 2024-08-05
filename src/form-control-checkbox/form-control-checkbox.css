@@ -49,6 +49,7 @@
 
     input[type="checkbox"]:checked + .checkbox .tick {
       animation: checkbox-tick .3s 0s forwards;
+      animation-timing-function: cubic-bezier(.4,.0,.23,1);
     }
 
     input[type="checkbox"]:disabled + .checkbox {

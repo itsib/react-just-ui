@@ -1,4 +1,4 @@
-.jui.jui-checkbox {
+.jui.jui-radio {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -8,32 +8,33 @@
     user-select: none;
   }
 
-  .control-checkbox {
-    width: var(--jui-checkbox-size);
-    height: var(--jui-checkbox-size);
+  .control-radio {
+    width: var(--jui-radio-size);
+    height: var(--jui-radio-size);
     margin: 5px 10px;
     position: relative;
     cursor: pointer;
     flex-shrink: 0;
     flex-grow: 0;
 
-    input[type="checkbox"] {
+    input[type="radio"] {
+      inset: 0;
       margin: 0;
-      width: var(--jui-checkbox-size);
-      height: var(--jui-checkbox-size);
+      width: var(--jui-radio-size);
+      height: var(--jui-radio-size);
       position: absolute;
       opacity: 0;
       z-index: 2;
       cursor: pointer;
     }
 
-    .checkbox {
-      width: var(--jui-checkbox-size);
-      height: var(--jui-checkbox-size);
+    .radio {
+      width: var(--jui-radio-size);
+      height: var(--jui-radio-size);
       position: absolute;
       z-index: 1;
 
-      .tick, .rect {
+      .outline, .center {
         fill: none;
         stroke: rgb(var(--jui-checkbox-color));
         stroke-linecap: round;
@@ -41,23 +42,28 @@
         stroke-width: 2px;
       }
 
-      .tick {
-        stroke-dasharray: 24;
-        stroke-dashoffset: 24;
+      .center {
+        fill: rgb(var(--jui-checkbox-color));
+        opacity: 0;
+        transform: scale(0,0);
+        transform-origin: 12px 12px;
+        transition: all .2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
       }
     }
 
-    input[type="checkbox"]:checked + .checkbox .tick {
-      animation: checkbox-tick .3s 0s forwards;
+    input[type="radio"]:checked + .radio .center {
+      opacity: 1;
+      transform: scale(1,1);
     }
 
-    input[type="checkbox"]:disabled + .checkbox {
+    input[type="radio"]:disabled + .radio {
 
-      .tick, .rect {
-        stroke: rgb(var(--jui-border-color));
+      .outline {
+        stroke: rgb(var(--jui-bg-disabled-color));
       }
-      .rect {
-        fill: rgb(var(--jui-bg-disabled-color));
+
+      .center {
+        display: none;
       }
     }
   }
@@ -72,7 +78,7 @@
       order: 2;
     }
 
-    .control-checkbox {
+    .control-radio {
       order: 1;
     }
 
@@ -87,21 +93,12 @@
       order: 1;
     }
 
-    .control-checkbox {
+    .control-radio {
       order: 2;
     }
 
     .jui-error {
       order: 3;
     }
-  }
-}
-
-@keyframes checkbox-tick {
-  from {
-    stroke-dashoffset: 24;
-  }
-  to {
-    stroke-dashoffset: 0;
   }
 }

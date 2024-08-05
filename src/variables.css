@@ -47,6 +47,7 @@ body {
   /* SIZES PADDINGS ETC */
   --jui-height: 40px;
   --jui-checkbox-size: 18px;
+  --jui-radio-size: 18px;
   --jui-switch-width: 46px;
   --jui-padding-x: 0.75rem;
   --jui-padding-y: 0.25rem;
