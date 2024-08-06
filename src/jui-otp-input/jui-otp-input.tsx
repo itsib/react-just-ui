@@ -44,6 +44,7 @@ export const JuiOtpInput = forwardRef(function FormControlVerifyCode(
       slave[i] = document.getElementById(`${id}-${i}`) as HTMLInputElement;
     }
 
+    let value = main.value;
     let blurFireTimer: any;
 
     const emitCodeToMain = (code: string) => {
@@ -64,7 +65,7 @@ export const JuiOtpInput = forwardRef(function FormControlVerifyCode(
 
     const insertAll = (code: string) => {
       let output = '';
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < count; i++) {
         const symbol = code.charAt(i);
         if (!symbol) {
           return;
@@ -79,7 +80,7 @@ export const JuiOtpInput = forwardRef(function FormControlVerifyCode(
 
     const onInput = () => {
       let output = '';
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < count; i++) {
         if (upper) {
           slave[i].value = slave[i].value?.toUpperCase();
         }
@@ -157,6 +158,18 @@ export const JuiOtpInput = forwardRef(function FormControlVerifyCode(
       })(slave[i]);
     }
 
+    Object.defineProperty(main, 'value', {
+      get(): any {
+        return value;
+      },
+      set(_value: string) {
+        for (let i = 0; i < slave.length; i++) {
+          slave[i].value = _value.charAt(i);
+        }
+        value = _value;
+      }
+    });
+
     return () => {
       off.forEach(el => el());
     };
@@ -197,7 +210,7 @@ export const JuiOtpInput = forwardRef(function FormControlVerifyCode(
         </div>
       </div>
 
-      <JuiError error={!_props.disabled ? error : undefined}/>
+      <JuiError error={error}/>
     </div>
   );
 });

@@ -80,7 +80,7 @@ export const JuiTextarea = forwardRef(function JuiTextarea(
 
       <textarea placeholder={placeholder} className="control" id={id} ref={ref} style={{ minHeight, maxHeight, minWidth }} {..._props} />
 
-      <JuiError error={!_props.disabled ? error : undefined} />
+      <JuiError error={error}/>
     </div>
   );
 });

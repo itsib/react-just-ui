@@ -1,6 +1,5 @@
 .jui-error {
-  height: calc(var(--jui-error-font-size) + 4px);
-  margin-top: 4px;
+  height: var(--jui-error-height);
   padding-left: 4px;
   font-size: var(--jui-error-font-size);
   line-height: calc(var(--jui-error-font-size) + 2px);
@@ -8,6 +7,7 @@
   text-overflow: ellipsis;
   color: rgb(var(--jui-error-color));
   overflow: hidden;
+  user-select: none;
 
   div {
     transform: translateY(-100%);

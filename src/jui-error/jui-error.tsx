@@ -24,9 +24,9 @@ export const JuiError: FC<IControlError> = ({ error }) => {
     }
   }, [message]);
 
-  return error === false ? null : (
+  return (
     <div className={`jui jui-error ${message ? 'active' : ''}`} role="alert">
       <div>{message || messageRef.current}</div>
     </div>
-  );
+  )
 };

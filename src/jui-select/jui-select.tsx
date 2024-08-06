@@ -53,9 +53,21 @@ export const JuiSelect = forwardRef(function JuiSelect(
     _props.onChange?.(event as never);
   }
 
-  // Init value state
+  // Init value state and watch to value change
   useEffect(() => {
     const input = document.getElementById(id) as HTMLInputElement;
+    let value = input.value;
+
+    Object.defineProperty(input, 'value', {
+      get(): any {
+        return value;
+      },
+      set(_value: any) {
+        setValue(_value);
+        value = _value;
+      }
+    });
+
     setValue(input.value);
   }, [id]);
 
@@ -81,7 +93,7 @@ export const JuiSelect = forwardRef(function JuiSelect(
         </svg>
       </div>
 
-      <JuiError error={!_props.disabled ? error : undefined}/>
+      <JuiError error={error}/>
 
       <JuiSelectDropdown
         id={id}

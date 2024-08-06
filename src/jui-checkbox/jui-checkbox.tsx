@@ -15,9 +15,7 @@ export const JuiCheckbox = forwardRef(function JuiCheckbox(
   const { id, label, hint, className, rowReverse, error, ...props } = _props;
 
   return (
-    <div
-      className={`jui jui-checkbox ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}
-    >
+    <div className={`jui jui-checkbox ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}>
       <JuiLabel id={id} label={label} hint={hint} />
 
       <div className="control-checkbox">
@@ -33,7 +31,7 @@ export const JuiCheckbox = forwardRef(function JuiCheckbox(
         </svg>
       </div>
 
-      <JuiError error={!_props.disabled ? error : undefined}/>
+      <JuiError error={error}/>
     </div>
   );
 });

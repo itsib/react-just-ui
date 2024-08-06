@@ -41,7 +41,7 @@ export const JuiSwitch = forwardRef(function JuiSwitch(
         </div>
       </div>
 
-      <JuiError error={!_props.disabled ? error : undefined}/>
+      <JuiError error={error}/>
     </div>
   );
 });

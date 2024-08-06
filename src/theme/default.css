@@ -9,7 +9,7 @@
   --jui-bg-disabled-color: 220 220 220;
   --jui-bg-hover-color: 230 230 230;
   --jui-bg-switch-color: 228 228 231;
-  --jui-border-color: 228 228 231;
+  --jui-border-color: 208 208 211;
   --jui-border-focus-color: 38 38 38;
   --jui-shadow-color: 209 209 209;
   --jui-checkbox-color: 0 0 0;
@@ -56,6 +56,7 @@ body {
   --jui-font-size: 1rem;
   --jui-label-font-size: 0.875rem;
   --jui-error-font-size: 0.75rem;
+  --jui-error-height: calc(0.75rem + 4px);
   --jui-hint-font-size: 0.7rem;
   --jui-overlay-z-index: 200;
   --jui-dropdown-z-index: 210;

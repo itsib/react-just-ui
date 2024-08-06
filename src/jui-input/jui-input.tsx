@@ -55,7 +55,7 @@ export const JuiInput = forwardRef(function JuiInput(
         {suffix ? <div className="substitute suffix">{typeof suffix === 'string' ? t(suffix) : suffix}</div> : null}
       </div>
 
-      <JuiError error={!_props.disabled ? error : undefined} />
+      <JuiError error={error}/>
     </div>
   );
 });

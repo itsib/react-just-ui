@@ -19,11 +19,19 @@
       align-items: center;
       justify-content: start;
 
-      .icon {
+      > .icon {
+        width: 20px;
+        height: auto;
+        min-width: 20px;
+        max-width: 20px;
+        aspect-ratio: 1/1;
         margin-right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
-      .label {
+      > .label {
         margin-right: auto;
       }
     }
@@ -76,12 +84,21 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      user-select: none;
 
-      .icon {
+      > .icon {
+        width: 20px;
+        height: auto;
+        min-width: 20px;
+        max-width: 20px;
+        aspect-ratio: 1/1;
         margin-right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
-      .label {
+      > .label {
         margin-right: auto;
       }
 
@@ -114,6 +131,7 @@
     inset: 0;
     position: fixed;
     z-index: var(--jui-overlay-z-index);
+    user-select: none;
   }
 }
 
