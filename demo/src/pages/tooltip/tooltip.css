@@ -1,6 +1,17 @@
 .tooltip-page {
   margin-bottom: 200px;
 
+  .options {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
   .preview {
 
     .actions {
@@ -40,7 +51,7 @@
     }
 
     .demo {
-      height: 280px;
+      height: 180px;
       width: 100%;
       max-width: unset;
       display: flex;

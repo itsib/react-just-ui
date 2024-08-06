@@ -37,5 +37,6 @@
   "tooltip_page_content": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
   "source": "Source",
   "radio": "Radio",
-  "radio_page_content": "A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time."
+  "radio_page_content": "A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.",
+  "custom": "Custom"
 }

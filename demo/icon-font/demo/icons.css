@@ -1,10 +1,10 @@
 @font-face {
     font-family: "IconFont";
-    src: url("/fonts/icon-font/IconFont.eot?b662b30ccee9ebb508456c6ff587db60#iefix") format("embedded-opentype"),
-url("/fonts/icon-font/IconFont.woff2?b662b30ccee9ebb508456c6ff587db60") format("woff2"),
-url("/fonts/icon-font/IconFont.woff?b662b30ccee9ebb508456c6ff587db60") format("woff"),
-url("/fonts/icon-font/IconFont.ttf?b662b30ccee9ebb508456c6ff587db60") format("truetype"),
-url("/fonts/icon-font/IconFont.svg?b662b30ccee9ebb508456c6ff587db60#IconFont") format("svg");
+    src: url("/fonts/icon-font/IconFont.eot?3271b19c36e7a0bae51dd382b7eb1fca#iefix") format("embedded-opentype"),
+url("/fonts/icon-font/IconFont.woff2?3271b19c36e7a0bae51dd382b7eb1fca") format("woff2"),
+url("/fonts/icon-font/IconFont.woff?3271b19c36e7a0bae51dd382b7eb1fca") format("woff"),
+url("/fonts/icon-font/IconFont.ttf?3271b19c36e7a0bae51dd382b7eb1fca") format("truetype"),
+url("/fonts/icon-font/IconFont.svg?3271b19c36e7a0bae51dd382b7eb1fca#IconFont") format("svg");
 }
 
 .icon {
@@ -44,8 +44,14 @@ url("/fonts/icon-font/IconFont.svg?b662b30ccee9ebb508456c6ff587db60#IconFont") f
 .icon-home:before {
   content: "\f108";
 }
-.icon-checkbox:before {
+.icon-helicopter:before {
   content: "\f109";
+}
+.icon-checkbox:before {
+  content: "\f10a";
+}
+.icon-car:before {
+  content: "\f10b";
 }
 
 .icon-spinner {

@@ -5,10 +5,9 @@ import { JuiCheckbox, JuiOtpInput } from 'react-just-ui';
 
 export const OptInput: FC = () => {
   const [disabled, setDisabled] = useState(false);
-  const { register, reset, formState: { errors } } = useForm<{ name: string, email: string }>({
+  const { register, reset, formState: { errors } } = useForm<{ otpCode: string }>({
     defaultValues: {
-      name: '',
-      email: '',
+      otpCode: '',
     },
     mode: 'onChange',
   });
@@ -35,12 +34,12 @@ export const OptInput: FC = () => {
             id="first-name-control"
             label="otp_code"
             hint="otp_code_hint"
-            error={errors?.name}
-            {...register('name', { required: 'required', disabled: disabled })}
+            error={errors?.otpCode}
+            {...register('otpCode', { required: 'required', disabled: disabled })}
           />
 
           <div style={{ marginTop: '20px' }}>
-            <button className="btn btn-primary" type="button" onClick={() => reset()}>
+            <button className="btn btn-primary" type="button" onClick={() => reset({ otpCode: '' })}>
               <Trans i18nKey="reset"/>
             </button>
           </div>
