@@ -1,0 +1,30 @@
+.jui-scroll {
+  --jui-dropdown-scrol-width: 4px;
+
+  ::-webkit-scrollbar {
+    width: var(--jui-dropdown-scrol-width);
+    height: var(--jui-dropdown-scrol-width);
+    transition: all .15s ease-in-out;
+  }
+
+  ::-webkit-scrollbar-track {
+    padding: 4px 0;
+
+    position: relative;
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-button {
+    height: 8px;
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: var(--jui-dropdown-scrol-width);
+    background-color: rgb(var(--jui-bg-hover-rgb) / 0.6);
+  }
+
+  ::-webkit-scrollbar-corner {
+    display: none;
+  }
+}

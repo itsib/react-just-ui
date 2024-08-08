@@ -70,6 +70,8 @@ const SELECT2_OPTIONS = [
 
 export const Select: FC = () => {
   const [disabled, setDisabled] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const { register, reset, formState: { errors } } = useForm<{ select: string; select2: string }>({
     defaultValues: {
       select: '1',
@@ -93,6 +95,13 @@ export const Select: FC = () => {
             value={disabled as any}
             onChange={event => setDisabled((event.target as any).checked)}
           />
+
+          <JuiCheckbox
+            id="demo-loading"
+            label="loading_demo_control"
+            value={loading as any}
+            onChange={event => setLoading((event.target as any).checked)}
+          />
         </div>
 
         <div className="demo">
@@ -100,6 +109,7 @@ export const Select: FC = () => {
             id="select-2"
             label="choose_option"
             options={SELECT2_OPTIONS}
+            loading={loading}
             error={errors?.select2}
             {...register('select2', { required: 'required', disabled: disabled })}
           />
@@ -109,6 +119,7 @@ export const Select: FC = () => {
             id="select"
             label="choose_option"
             options={SELECT_OPTIONS}
+            loading={loading}
             error={errors?.select}
             {...register('select', { required: 'required', disabled: disabled })}
           />

@@ -1,0 +1,12 @@
+.jui-loading {
+  display: inline-block;
+  height: var(--jui-loading-size);
+  width: var(--jui-loading-size);
+  background-color: currentColor;
+  -webkit-mask-image: var(--jui-loading-svg);
+  mask-image: var(--jui-loading-svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}

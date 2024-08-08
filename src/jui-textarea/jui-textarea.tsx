@@ -3,21 +3,24 @@ import { BaseProps } from '../types';
 import { JuiError } from '../jui-error/jui-error.tsx';
 import { JuiLabel } from '../jui-label/jui-label.tsx';
 import './jui-textarea.css';
+import { cn } from '../utils';
 
 export interface IJuiTextarea extends BaseProps<HTMLTextAreaElement> {
   elastic?: boolean;
   placeholder?: string;
+  loading?: boolean;
   limit?: number;
   minHeight?: number;
   maxHeight?: number;
   minWidth?: number;
+  maxWidth?: number;
 }
 
 export const JuiTextarea = forwardRef(function JuiTextarea(
   props: IJuiTextarea,
   ref: ForwardedRef<HTMLTextAreaElement>,
 ) {
-  const { id, className, placeholder, elastic = true, label, hint, minHeight, minWidth, maxHeight, limit = 5000, error, ..._props } = props;
+  const { id, className, placeholder, elastic = true, label, hint, minHeight, minWidth, maxWidth, maxHeight, limit = 5000, loading, error, ..._props } = props;
 
   useEffect(() => {
     if (!elastic) {
@@ -75,10 +78,15 @@ export const JuiTextarea = forwardRef(function JuiTextarea(
   }, [id, elastic, limit]);
 
   return (
-    <div className={`jui jui-textarea ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
+    <div className={cn(['jui', 'jui-textarea'], { disabled: !!_props.disabled, error: !!error, loading: !!loading }, className)}>
       <JuiLabel id={id} label={label} hint={hint} />
 
-      <textarea placeholder={placeholder} className="control" id={id} ref={ref} style={{ minHeight, maxHeight, minWidth }} {..._props} />
+      <div className="control jui-scroll">
+        <div className="loader-backdrop"><span className="jui-loading"/></div>
+        <textarea className="" placeholder={placeholder} id={id} ref={ref}
+                  style={{ minHeight, maxHeight, minWidth, maxWidth }} {..._props} />
+      </div>
+
 
       <JuiError error={error}/>
     </div>

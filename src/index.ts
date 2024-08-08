@@ -1,5 +1,7 @@
 import './styles.css';
 import './jui-tooltip/jui-tooltip.css';
+import './jui-scroll/jui-scroll.css';
+import './jui-loading/jui-loading.css';
 export * from './types';
 export * from './validators';
 export * from './utils';

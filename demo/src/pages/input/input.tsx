@@ -5,6 +5,7 @@ import { JuiCheckbox, JuiInput, email } from 'react-just-ui';
 
 export const Input: FC = () => {
   const [disabled, setDisabled] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { register, reset, formState: { errors } } = useForm<{ name: string, email: string }>({
     defaultValues: {
       name: '',
@@ -28,6 +29,13 @@ export const Input: FC = () => {
             value={disabled as any}
             onChange={event => setDisabled((event.target as any).checked)}
           />
+
+          <JuiCheckbox
+            id="demo-loading"
+            label="loading_demo_control"
+            value={loading as any}
+            onChange={event => setLoading((event.target as any).checked)}
+          />
         </div>
 
         <div className="demo">
@@ -35,6 +43,7 @@ export const Input: FC = () => {
             id="first-name-control"
             label="first_name"
             hint="first_name_hint"
+            loading={loading}
             error={errors?.name}
             {...register('name', { required: 'required', disabled: disabled })}
           />
@@ -43,6 +52,7 @@ export const Input: FC = () => {
             id="email-control"
             label="email"
             type="email"
+            loading={loading}
             error={errors?.email}
             {...register('email', {
               required: 'required',

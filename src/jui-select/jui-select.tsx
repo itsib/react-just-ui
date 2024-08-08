@@ -1,5 +1,6 @@
 import React, { CSSProperties, ForwardedRef, forwardRef, useEffect, useMemo, useRef, useState } from 'react';
 import { BaseProps } from '../types';
+import { cn } from '../utils';
 import { JuiError } from '../jui-error/jui-error.tsx';
 import { JuiLabel } from '../jui-label/jui-label.tsx';
 import { createPortal } from 'react-dom';
@@ -13,13 +14,14 @@ export interface IJuiSelectOption {
 
 export interface IJuiSelect extends BaseProps<HTMLInputElement> {
   options: IJuiSelectOption[];
+  loading?: boolean;
 }
 
 export const JuiSelect = forwardRef(function JuiSelect(
   props: IJuiSelect,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
-  const { id, className, label, hint, error, options, ..._props } = props;
+  const { id, className, label, hint, error, options, loading, ..._props } = props;
   const controlRef = useRef<HTMLDivElement>(null);
 
   const [value, setValue] = useState<string>();
@@ -72,16 +74,17 @@ export const JuiSelect = forwardRef(function JuiSelect(
   }, [id]);
 
   return (
-    <div className={`jui jui-select ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
+    <div className={cn(['jui', 'jui-select'], { disabled: !!_props.disabled, error: !!error, loading: !!loading }, className)}>
       <JuiLabel id={id} label={label} hint={hint} />
 
       <div className="control" ref={controlRef} onClick={onClick}>
+        <div className="loader-backdrop"><span className="jui-loading"/></div>
         <input id={id} readOnly className="hidden-select" ref={ref} {..._props} />
 
         <div className="fake-input">
           {activeIcon ? (
             <div className="icon">
-              {typeof activeIcon === 'string' ? <i className={activeIcon} /> : <>{activeIcon}</>}
+              {typeof activeIcon === 'string' ? <i className={activeIcon}/> : <>{activeIcon}</>}
             </div>
           ) : null}
           <div className="label">{activeLabel}</div>
@@ -198,7 +201,7 @@ export function JuiSelectDropdown(props: IJuiSelectDropdown) {
   }, [points?.scrollY, open]);
 
   return (process || open) && rect && points ? createPortal(
-    <div className="jui jui-select-dropdown">
+    <div className="jui jui-select-dropdown jui-scroll">
       <div className="jui-overlay" aria-label="dropdown overlay" onClick={onClickOverlay}/>
 
       <div

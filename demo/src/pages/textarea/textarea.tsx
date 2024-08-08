@@ -5,6 +5,8 @@ import { JuiTextarea, JuiCheckbox } from 'react-just-ui';
 
 export const Textarea: FC = () => {
   const [disabled, setDisabled] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const { register, reset, formState: { errors } } = useForm<{ name: string, email: string }>({
     defaultValues: {
       name: '',
@@ -28,6 +30,13 @@ export const Textarea: FC = () => {
             value={disabled as any}
             onChange={event => setDisabled((event.target as any).checked)}
           />
+
+          <JuiCheckbox
+            id="demo-loading"
+            label="loading_demo_control"
+            value={loading as any}
+            onChange={event => setLoading((event.target as any).checked)}
+          />
         </div>
 
         <div className="demo">
@@ -35,7 +44,10 @@ export const Textarea: FC = () => {
             id="first-name-control"
             label="first_name"
             hint="first_name_hint"
+            loading={loading}
             minHeight={100}
+            maxHeight={280}
+            minWidth={300}
             placeholder="Enter a description that make people excited about your token..."
             error={errors?.name}
             {...register('name', { required: 'required', disabled: disabled })}

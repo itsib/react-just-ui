@@ -38,5 +38,6 @@
   "source": "Source",
   "radio": "Radio",
   "radio_page_content": "A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.",
-  "custom": "Custom"
+  "custom": "Custom",
+  "loading_demo_control": "Enable loading state"
 }

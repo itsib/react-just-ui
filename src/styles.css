@@ -10,7 +10,7 @@
     }
   }
 
-  ::placeholder {
+  ::placeholder, ::-moz-placeholder, :-ms-input-placeholder, ::-webkit-input-placeholder {
     color: var(--jui-placeholder-color);
     font-weight: 400;
     opacity: .6;
@@ -29,7 +29,7 @@
     justify-content: space-between;
     transition: box-shadow .15s ease-in-out, border-color .15s ease-in-out, background-color .15s ease-in-out;
 
-    input, select {
+    input, select, textarea {
       width: 100%;
       height: calc(var(--jui-height) - (var(--jui-border-width) * 2));
       padding: var(--jui-padding-y) var(--jui-padding-x);
@@ -38,6 +38,17 @@
       outline: none;
       font-size: inherit;
       background-color: transparent;
+    }
+
+    .loader-backdrop {
+      inset: 0;
+      background-color: rgb(var(--jui-bg-rgb));
+      color: rgb(var(--jui-fg-rgb) / .6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      z-index: 10;
     }
   }
 
@@ -64,6 +75,21 @@
       border: var(--jui-border-width) solid rgb(var(--jui-border-rgb));
       background-color: rgb(var(--jui-bg-disabled-rgb));
       opacity: .8;
+    }
+  }
+
+  &.loading {
+    pointer-events: none;
+
+    .control {
+      box-shadow: none;
+      border: var(--jui-border-width) solid rgb(var(--jui-border-rgb));
+      background-color: rgb(var(--jui-bg-rgb));
+      opacity: 1;
+
+      .loader-backdrop {
+        display: flex;
+      }
     }
   }
 }

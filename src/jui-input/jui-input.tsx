@@ -1,5 +1,6 @@
 import React, { ForwardedRef, forwardRef, useEffect } from 'react';
 import { BaseProps } from '../types';
+import { cn } from '../utils';
 import { JuiError } from '../jui-error/jui-error.tsx';
 import { JuiLabel } from '../jui-label/jui-label.tsx';
 import { useTranslation } from 'react-i18next';
@@ -47,10 +48,11 @@ export const JuiInput = forwardRef(function JuiInput(
   }, [_type, id]);
 
   return (
-    <div className={`jui jui-input ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
+    <div className={cn(['jui', 'jui-input'], { disabled: !!_props.disabled, error: !!error, loading: !!loading }, className)}>
       <JuiLabel id={id} label={label} hint={hint} />
 
       <div className="control">
+        <div className="loader-backdrop"><span className="jui-loading" /></div>
         {prefix ? typeof prefix === 'string' ? <div className="prefix">{t(prefix)}</div> : prefix : null}
         <input id={id} type={type} ref={ref} {..._props} />
         {suffix ? typeof suffix === 'string' ? <div className="suffix">{t(suffix)}</div> : suffix : null}

@@ -1,19 +1,28 @@
 
-export function classNames(obj: string | Record<string, boolean> | string[], ...classNames: (string | null | undefined)[]): string {
+export function classNames(...objs: (string | Record<string, boolean> | string[] | null | undefined)[]): string {
   let output = '';
-  if (typeof obj === 'string') {
-    output += ` ${obj}`
-  } else if (Array.isArray(obj)) {
-    output += ` ${obj.filter(Boolean).join(' ')}`;
-  } else if (typeof obj === 'object') {
-    const classes = Object.keys(obj);
 
-    output += ` ${classes.filter(cssClass => obj[cssClass]).join(' ')}`;
+  for (let i = 0; i < objs.length; i++) {
+    if (!objs[i]) continue;
+
+    const obj = objs[i];
+    if (typeof obj === 'string') {
+      output += ` ${obj}`
+    } else if (Array.isArray(obj)) {
+      for (let j = 0; j < obj.length; j++) {
+        if (obj[j]) {
+          output += ` ${obj[j]}`;
+        }
+      }
+    } else if (typeof obj === 'object') {
+      for (const cssClass in obj as any) {
+        if ((obj as any)[cssClass]) {
+          output += ` ${cssClass}`;
+        }
+      }
+    }
   }
-
-  output += ` ${classNames.filter(Boolean).join(' ')}`;
-
-  return output.trim();
+  return output;
 }
 
 export const cn = classNames;

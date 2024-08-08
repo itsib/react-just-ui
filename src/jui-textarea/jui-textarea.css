@@ -1,14 +1,19 @@
 .jui.jui-textarea {
 
   .control {
-    width: 100%;
-    max-width: 100%;
+    height: fit-content;
+    width: fit-content;
     min-height: var(--jui-height);
-    padding: var(--jui-padding-x) var(--jui-padding-x);
-    font-size: var(--jui-font-size);
-    color: rgb(var(--jui-fg-rgb));
-    line-height: 1;
-    outline: none;
+    max-width: 100%;
 
+    textarea {
+      width: 100%;
+      max-width: 100%;
+      min-height: var(--jui-height);
+      padding: var(--jui-padding-x) var(--jui-padding-x);
+      font-size: var(--jui-font-size);
+      color: rgb(var(--jui-fg-rgb));
+      line-height: 1;
+    }
   }
 }
