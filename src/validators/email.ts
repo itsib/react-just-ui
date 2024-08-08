@@ -1,5 +1,17 @@
-import { ValidatorFn } from '../types/validator-fn.ts';
+import { ValidationFn } from '../types';
 
-export const validateEmail: ValidatorFn = (email: string) {
-  return
+/**
+ * Email should contain "@" and "."
+ * @param error
+ */
+export function email(error: any): ValidationFn {
+  return (value: string) => {
+    if (!value) return true;
+
+    const segments = value.split('@');
+    if (segments.length === 2 && segments[1].split('.').length >= 2) {
+      return true;
+    }
+    return error
+  }
 }

@@ -1,48 +1,51 @@
 :root {
   /* BASE THEME COLORS */
-  --jui-black-color: 0 0 0;
-  --jui-white-color: 255 255 255;
-  --jui-accent-color: 0 115 229;
-  --jui-error-color: 220 38 38;
-  --jui-bg-color: 255 255 255;
-  --jui-fg-color: 0 0 0;
-  --jui-bg-disabled-color: 220 220 220;
-  --jui-bg-hover-color: 230 230 230;
-  --jui-bg-switch-color: 228 228 231;
-  --jui-border-color: 208 208 211;
-  --jui-border-focus-color: 38 38 38;
-  --jui-shadow-color: 209 209 209;
-  --jui-checkbox-color: 0 0 0;
-  --jui-tooltip-color: 255 255 255;
+  --jui-black-rgb: 0 0 0;
+  --jui-white-rgb: 255 255 255;
+  --jui-accent-rgb: 0 115 229;
+  --jui-error-rgb: 220 38 38;
+  --jui-bg-rgb: 255 255 255;
+  --jui-fg-rgb: 0 0 0;
+  --jui-bg-disabled-rgb: 220 220 220;
+  --jui-bg-hover-rgb: 230 230 230;
+  --jui-bg-switch-rgb: 228 228 231;
+  --jui-border-rgb: 208 208 211;
+  --jui-border-focus-rgb: 38 38 38;
+  --jui-shadow-rgb: 209 209 209;
+  --jui-checkbox-rgb: 0 0 0;
+  --jui-tooltip-rgb: 255 255 255;
 }
 
 body.dark {
   /* BASE THEME COLORS */
-  --jui-black-color: 0 0 0;
-  --jui-white-color: 255 255 255;
-  --jui-accent-color: 0 115 229;
-  --jui-error-color: 240 28 28;
-  --jui-bg-color: 29 29 29;
-  --jui-fg-color: 255 255 255;
-  --jui-bg-disabled-color: 48 48 48;
-  --jui-bg-hover-color: 68 68 68;
-  --jui-bg-switch-color: 65 65 65;
-  --jui-border-color: 78 78 78;
-  --jui-border-focus-color: 212 212 212;
-  --jui-shadow-color: 209 209 209;
-  --jui-checkbox-color: 255 255 255;
-  --jui-tooltip-color: 0 0 0;
+  --jui-black-rgb: 0 0 0;
+  --jui-white-rgb: 255 255 255;
+  --jui-accent-rgb: 0 115 229;
+  --jui-error-rgb: 240 28 28;
+  --jui-bg-rgb: 29 29 29;
+  --jui-fg-rgb: 255 255 255;
+  --jui-bg-disabled-rgb: 48 48 48;
+  --jui-bg-hover-rgb: 68 68 68;
+  --jui-bg-switch-rgb: 65 65 65;
+  --jui-border-rgb: 78 78 78;
+  --jui-border-focus-rgb: 212 212 212;
+  --jui-shadow-rgb: 209 209 209;
+  --jui-checkbox-rgb: 255 255 255;
+  --jui-tooltip-rgb: 0 0 0;
 }
 
 body {
   /* ADDITIONAL COLORS */
-  --jui-label-color: color-mix(in srgb, rgb(var(--jui-fg-color)) 80%, rgb(var(--jui-bg-color)) 20%);
+  --jui-label-color: color-mix(in srgb, rgb(var(--jui-fg-rgb)) 80%, rgb(var(--jui-bg-rgb)) 20%);
+  --jui-placeholder-color: color-mix(in srgb, rgb(var(--jui-fg-rgb)) 60%, rgb(var(--jui-bg-rgb)) 40%);
   --jui-prefix-color: rgb(var(--jui-label-color));
-  --jui-sufix-color: rgb(var(--jui-label-color));
-  --jui-checkbox-tick-color: rgb(var(--jui-checkbox-color));
-  --jui-tooltip-border-color: color-mix(in srgb, rgb(var(--jui-tooltip-color)) 80%, rgb(var(--jui-fg-color)) 20%);
-  --jui-box-shadow-focus: 0 0 0 1px rgb(var(--jui-black-color)), 0 0 3px 0 rgb(var(--jui-border-focus-color));
-  --jui-box-shadow: 0 0 12px -1px rgb(var(--jui-black-color) / 0.2), 0 0 1px 1px rgb(var(--jui-shadow-color) / 0.2);
+  --jui-prefix-border-width: 1px;
+  --jui-suffix-color: rgb(var(--jui-label-color));
+  --jui-suffix-border-width: 1px;
+  --jui-checkbox-tick-color: rgb(var(--jui-checkbox-rgb));
+  --jui-tooltip-border-color: color-mix(in srgb, rgb(var(--jui-tooltip-rgb)) 80%, rgb(var(--jui-fg-rgb)) 20%);
+  --jui-box-shadow-focus: 0 0 0 1px rgb(var(--jui-black-rgb)), 0 0 3px 0 rgb(var(--jui-border-focus-rgb));
+  --jui-box-shadow: 0 0 12px -1px rgb(var(--jui-black-rgb) / 0.2), 0 0 1px 1px rgb(var(--jui-shadow-rgb) / 0.2);
 
   /* SIZES PADDINGS ETC */
   --jui-height: 40px;

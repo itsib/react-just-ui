@@ -5,7 +5,7 @@
   line-height: calc(var(--jui-error-font-size) + 2px);
   white-space: nowrap;
   text-overflow: ellipsis;
-  color: rgb(var(--jui-error-color));
+  color: rgb(var(--jui-error-rgb));
   overflow: hidden;
   user-select: none;
 

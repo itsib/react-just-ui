@@ -22,7 +22,7 @@
   --jui-tooltip-duration: .12s;
 
   /*Options*/
-  --jui-tooltip-shadow-fade: rgb(var(--jui-black-color) / .95);
+  --jui-tooltip-shadow-fade: rgb(var(--jui-black-rgb) / .95);
   --jui-tooltip-arrow-size: 7px;
   --jui-tooltip-margin: calc(var(--jui-tooltip-arrow-size) * 2);
   --jui-tooltip-y-position: calc(100% - (var(--jui-tooltip-arrow-size) / 2));
@@ -59,7 +59,7 @@
       padding: var(--jui-tooltip-padding-y) var(--jui-tooltip-padding-x);
 
       content: attr(aria-label);
-      color: rgb(var(--jui-fg-color));
+      color: rgb(var(--jui-fg-rgb));
       text-wrap: balance;
       white-space: pre-wrap;
       font-family: var(--jui-tooltip-font-family), sans-serif;
@@ -70,7 +70,7 @@
       font-style: normal;
       font-weight: var(--jui-tooltip-font-weight);
 
-      background-color: rgb(var(--jui-tooltip-color));
+      background-color: rgb(var(--jui-tooltip-rgb));
       border-radius: var(--jui-tooltip-border-radius);
       border: var(--jui-tooltip-border-width) solid var(--jui-tooltip-border-color);
       box-shadow: 0 0 5px 0 rgba(0, 0, 0, .25);

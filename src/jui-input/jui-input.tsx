@@ -50,9 +50,9 @@ export const JuiInput = forwardRef(function JuiInput(
       <JuiLabel id={id} label={label} hint={hint} />
 
       <div className="control">
-        {prefix ? <div className="substitute prefix">{typeof prefix === 'string' ? t(prefix) : prefix}</div> : null}
+        {prefix ? typeof prefix === 'string' ? <div className="prefix">{t(prefix)}</div> : prefix : null}
         <input id={id} type={type} ref={ref} {..._props} />
-        {suffix ? <div className="substitute suffix">{typeof suffix === 'string' ? t(suffix) : suffix}</div> : null}
+        {suffix ? typeof suffix === 'string' ? <div className="suffix">{t(suffix)}</div> : suffix : null}
       </div>
 
       <JuiError error={error}/>

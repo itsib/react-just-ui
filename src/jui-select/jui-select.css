@@ -52,11 +52,11 @@
     width: var(--jui-dropdown-width);
     height: var(--jui-dropdown-height);
     padding: var(--jui-dropdown-padding);
-    color: rgb(var(--jui-fg-color));
+    color: rgb(var(--jui-fg-rgb));
     overflow-y: auto;
     scroll-padding-top: var(--jui-dropdown-padding);
     scroll-snap-type: y mandatory;
-    background-color: rgb(var(--jui-bg-color));
+    background-color: rgb(var(--jui-bg-rgb));
     box-shadow: var(--jui-box-shadow);
     box-sizing: border-box;
     border-radius: var(--jui-border-radius);
@@ -80,7 +80,7 @@
       border: 1px solid transparent;
       outline: none;
       border-radius: calc(var(--jui-border-radius) - 1px);
-      background-color: rgb(var(--jui-bg-color));
+      background-color: rgb(var(--jui-bg-rgb));
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -109,11 +109,11 @@
       }
 
       &.active {
-        background-color: rgb(var(--jui-bg-hover-color) / 0.6)
+        background-color: rgb(var(--jui-bg-hover-rgb) / 0.6)
       }
 
       &:hover {
-        background-color: rgb(var(--jui-bg-hover-color));
+        background-color: rgb(var(--jui-bg-hover-rgb));
       }
     }
 
@@ -159,7 +159,7 @@
 
   ::-webkit-scrollbar-thumb {
     border-radius: var(--jui-dropdown-scrol-width);
-    background-color: rgb(var(--jui-bg-hover-color) / 0.6);
+    background-color: rgb(var(--jui-bg-hover-rgb) / 0.6);
   }
 
   ::-webkit-scrollbar-corner {

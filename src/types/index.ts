@@ -1,3 +1,4 @@
-export * from './primitives.ts';
-export * from './base-props.ts';
-export * from './validation-error.ts';
+export * from './primitives';
+export * from './base-props';
+export * from './validation-error';
+export * from './validation-fn';

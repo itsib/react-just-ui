@@ -2,9 +2,9 @@
 
   .control {
 
-    .substitute {
+    .prefix, .suffix {
       --jui-inner-border-radius: calc(var(--jui-border-radius) - 1px);
-      padding: 0 14px;
+      padding: 0 0.75em;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -12,18 +12,18 @@
       user-select: none;
       transition: box-shadow .15s ease-in-out, border-color .15s ease-in-out;
       box-shadow: none;
+    }
 
-      &.prefix {
-        color: var(--jui-prefix-color);
-        border-radius: var(--jui-inner-border-radius) 0 0 var(--jui-inner-border-radius);
-        border-right: var(--jui-border-width) solid rgb(var(--jui-border-color));
-      }
+    > .prefix {
+      color: var(--jui-prefix-color);
+      border-radius: var(--jui-inner-border-radius) 0 0 var(--jui-inner-border-radius);
+      border-right: var(--jui-prefix-border-width) solid rgb(var(--jui-border-rgb));
+    }
 
-      &.suffix {
-        color: var(--jui-sufix-color);
-        border-radius: 0 var(--jui-inner-border-radius) var(--jui-inner-border-radius) 0;
-        border-left: var(--jui-border-width) solid rgb(var(--jui-border-color));
-      }
+    > .suffix {
+      color: var(--jui-suffix-color);
+      border-radius: 0 var(--jui-inner-border-radius) var(--jui-inner-border-radius) 0;
+      border-left: var(--jui-suffix-border-width) solid rgb(var(--jui-border-rgb));
     }
   }
 
@@ -31,9 +31,9 @@
 
     .control {
 
-      .substitute {
-        border-color: rgb(var(--jui-border-focus-color));
-        box-shadow: 0 0 2px 0 rgb(var(--jui-border-focus-color)), 0 0 2px -1px inset rgb(var(--jui-border-focus-color));
+      > .prefix, > .suffix {
+        border-color: rgb(var(--jui-border-focus-rgb));
+        box-shadow: 0 0 2px 0 rgb(var(--jui-border-focus-rgb)), 0 0 2px -1px inset rgb(var(--jui-border-focus-rgb));
       }
     }
   }
@@ -42,8 +42,8 @@
 
     .control {
 
-      .substitute {
-        border-color: rgb(var(--jui-error-color));
+      > .prefix, > .suffix {
+        border-color: rgb(var(--jui-error-rgb));
         box-shadow: none;
       }
     }
@@ -53,8 +53,8 @@
 
     .control {
 
-      .substitute {
-        border-color: rgb(var(--jui-border-color));
+      > .prefix, > .suffix {
+        border-color: rgb(var(--jui-border-rgb));
       }
     }
   }

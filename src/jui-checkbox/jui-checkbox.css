@@ -34,14 +34,14 @@
       + .checkbox {
         width: var(--jui-checkbox-size);
         height: var(--jui-checkbox-size);
-        border: 2px solid rgb(var(--jui-checkbox-color));
+        border: 2px solid rgb(var(--jui-checkbox-rgb));
         border-radius: 4px;
         position: absolute;
         z-index: 1;
 
         .tick {
           fill: none;
-          stroke: rgb(var(--jui-checkbox-color));
+          stroke: rgb(var(--jui-checkbox-rgb));
           stroke-dasharray: 24;
           stroke-dashoffset: 0;
           transform-origin: 8px 8px;
@@ -73,10 +73,10 @@
     input[type="checkbox"]:disabled {
 
       + .checkbox {
-        border-color: rgb(var(--jui-border-color));
+        border-color: rgb(var(--jui-border-rgb));
 
         .tick {
-          stroke: rgb(var(--jui-border-color));
+          stroke: rgb(var(--jui-border-rgb));
         }
       }
     }
