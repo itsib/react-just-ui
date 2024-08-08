@@ -36,6 +36,7 @@ export const Textarea: FC = () => {
             label="first_name"
             hint="first_name_hint"
             minHeight={100}
+            placeholder="Enter a description that make people excited about your token..."
             error={errors?.name}
             {...register('name', { required: 'required', disabled: disabled })}
           />

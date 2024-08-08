@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { Trans } from 'react-i18next';
 import { useForm } from 'react-hook-form';
-import { JuiCheckbox, JuiInput } from 'react-just-ui';
+import { JuiCheckbox, JuiInput, email } from 'react-just-ui';
 
 export const Input: FC = () => {
   const [disabled, setDisabled] = useState(false);
@@ -10,7 +10,7 @@ export const Input: FC = () => {
       name: '',
       email: '',
     },
-    mode: 'onChange',
+    mode: 'onBlur',
   });
 
   return (
@@ -46,20 +46,17 @@ export const Input: FC = () => {
             error={errors?.email}
             {...register('email', {
               required: 'required',
-              validate: (value: string) => {
-                const segments = value.split('@');
-                if (segments.length === 2 && segments[1].split('.').length >= 2) {
-                  return true;
-                }
-                return 'invalid_email'
-              },
+              validate: email('invalid_email'),
               disabled: disabled,
             })}
+            placeholder="Email"
             prefix={
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                <path fill="currentColor"
-                      d="M12 21.95h5v-2h-5c-4.34 0-8-3.66-8-8s3.66-8 8-8s8 3.66 8 8v1.43c0 .79-.71 1.57-1.5 1.57s-1.5-.78-1.5-1.57v-1.43c0-2.76-2.24-5-5-5s-5 2.24-5 5s2.24 5 5 5c1.38 0 2.64-.56 3.54-1.47c.65.89 1.77 1.47 2.96 1.47c1.97 0 3.5-1.6 3.5-3.57v-1.43c0-5.52-4.48-10-10-10s-10 4.48-10 10s4.48 10 10 10m0-7c-1.66 0-3-1.34-3-3s1.34-3 3-3s3 1.34 3 3s-1.34 3-3 3"></path>
-              </svg>
+              <div className="prefix">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                  <path fill="currentColor"
+                        d="M12 21.95h5v-2h-5c-4.34 0-8-3.66-8-8s3.66-8 8-8s8 3.66 8 8v1.43c0 .79-.71 1.57-1.5 1.57s-1.5-.78-1.5-1.57v-1.43c0-2.76-2.24-5-5-5s-5 2.24-5 5s2.24 5 5 5c1.38 0 2.64-.56 3.54-1.47c.65.89 1.77 1.47 2.96 1.47c1.97 0 3.5-1.6 3.5-3.57v-1.43c0-5.52-4.48-10-10-10s-10 4.48-10 10s4.48 10 10 10m0-7c-1.66 0-3-1.34-3-3s1.34-3 3-3s3 1.34 3 3s-1.34 3-3 3"></path>
+                </svg>
+              </div>
             }
           />
 
