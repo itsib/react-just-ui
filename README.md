@@ -12,7 +12,7 @@ A set of html form elements for react, with support for react-hook-form.
 - Code size 12.03 kB (4.26 kB compressed)
 - Style size 14.41 kB (2.69 kB compressed)
 
-<img src="demo/public/screenshot.pngpng">
+<img src="demo/public/screenshot.png">
 
 ## Installation
 
@@ -20,16 +20,10 @@ A set of html form elements for react, with support for react-hook-form.
 npm install react-just-ui
 ```
 
-If necessary, connect the stylesheet in your index.tsx root file:
-
+Add imports in index.tsx
 ```typescript jsx
-import 'react-just-ui/css'
-```
-
-Or if you use post css with the postcss-import plugin:
-
-```css
-@import url("react-just-ui/css");
+import 'react-just-ui/theme-default';
+import 'react-just-ui/styles';
 ```
 
 ## Usage

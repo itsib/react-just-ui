@@ -1,19 +1,31 @@
 .jui.jui-textarea {
 
-  .control {
-    height: fit-content;
-    width: fit-content;
-    min-height: var(--jui-height);
-    max-width: 100%;
+  ::placeholder {
+    color: var(--jui-placeholder-color);
+    font-weight: 400;
+    opacity: .6;
+  }
 
-    textarea {
-      width: 100%;
-      max-width: 100%;
-      min-height: var(--jui-height);
-      padding: var(--jui-padding-x) var(--jui-padding-x);
-      font-size: var(--jui-font-size);
-      color: rgb(var(--jui-fg-rgb));
-      line-height: 1;
-    }
+  .loader-backdrop {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(var(--jui-bg-rgb));
+    color: rgb(var(--jui-fg-rgb) / .6);
+    border: var(--jui-border-width) solid rgb(var(--jui-border-rgb));
+    border-radius: var(--jui-border-radius);
+    z-index: 10;
+  }
+
+  .control {
+    width: 100%;
+    max-width: 100%;
+    min-height: var(--jui-height);
+    padding: var(--jui-padding-x) var(--jui-padding-x);
+    font-size: var(--jui-font-size);
+    color: rgb(var(--jui-fg-rgb));
+    line-height: 1;
+    outline: none;
   }
 }

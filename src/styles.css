@@ -10,7 +10,7 @@
     }
   }
 
-  ::placeholder, ::-moz-placeholder, :-ms-input-placeholder, ::-webkit-input-placeholder {
+  ::placeholder {
     color: var(--jui-placeholder-color);
     font-weight: 400;
     opacity: .6;
@@ -29,7 +29,7 @@
     justify-content: space-between;
     transition: box-shadow .15s ease-in-out, border-color .15s ease-in-out, background-color .15s ease-in-out;
 
-    input, select, textarea {
+    input, select {
       width: 100%;
       height: calc(var(--jui-height) - (var(--jui-border-width) * 2));
       padding: var(--jui-padding-y) var(--jui-padding-x);

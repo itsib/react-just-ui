@@ -22,6 +22,7 @@ export const JuiTextarea = forwardRef(function JuiTextarea(
 ) {
   const { id, className, placeholder, elastic = true, label, hint, minHeight, minWidth, maxWidth, maxHeight, limit = 5000, loading, error, ..._props } = props;
 
+  // Elastic textarea
   useEffect(() => {
     if (!elastic) {
       return;
@@ -77,16 +78,36 @@ export const JuiTextarea = forwardRef(function JuiTextarea(
 
   }, [id, elastic, limit]);
 
+  // Loading indicator
+  useEffect(() => {
+    if (!loading) {
+      return;
+    }
+    const textarea = document.getElementById(id) as HTMLTextAreaElement;
+
+    const loader = document.createElement('div');
+    loader.classList.add('loader-backdrop');
+    loader.innerHTML = '<span class="jui-loading"/>';
+    loader.style.width = `${textarea.offsetWidth}px`;
+    loader.style.height = `${textarea.offsetHeight}px`;
+    textarea.parentElement!.insertBefore(loader, textarea);
+
+
+    return () => {
+      loader.remove();
+    }
+  }, [loading, id]);
+
   return (
-    <div className={cn(['jui', 'jui-textarea'], { disabled: !!_props.disabled, error: !!error, loading: !!loading }, className)}>
-      <JuiLabel id={id} label={label} hint={hint} />
+    <div className={cn(['jui', 'jui-textarea'], {
+      disabled: !!_props.disabled,
+      error: !!error,
+      loading: !!loading
+    }, className)}>
+      <JuiLabel id={id} label={label} hint={hint}/>
 
-      <div className="control jui-scroll">
-        <div className="loader-backdrop"><span className="jui-loading"/></div>
-        <textarea className="" placeholder={placeholder} id={id} ref={ref}
-                  style={{ minHeight, maxHeight, minWidth, maxWidth }} {..._props} />
-      </div>
-
+      <textarea className="control jui-scroll" placeholder={placeholder} id={id} ref={ref}
+                style={{ minHeight, maxHeight, minWidth, maxWidth }} {..._props} />
 
       <JuiError error={error}/>
     </div>
