@@ -11,6 +11,7 @@ export interface IJuiInput extends BaseProps<HTMLInputElement> {
   type?: IJuiInputType;
   prefix?: string | React.JSX.Element;
   suffix?: string | React.JSX.Element;
+  loading?: boolean;
   placeholder?: string;
 }
 
@@ -18,7 +19,7 @@ export const JuiInput = forwardRef(function JuiInput(
   props: IJuiInput,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
-  const { id, className, label, hint, type: _type, prefix, suffix, error, ..._props } = props;
+  const { id, className, label, hint, type: _type, prefix, suffix, loading, error, ..._props } = props;
   const { t } = useTranslation();
   const type = _type === 'number' ? 'text' : _type;
 

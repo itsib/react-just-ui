@@ -2,6 +2,7 @@ import './styles.css';
 import './jui-tooltip/jui-tooltip.css';
 export * from './types';
 export * from './validators';
+export * from './utils';
 export * from './jui-error/jui-error.tsx';
 export * from './jui-label/jui-label.tsx';
 
