@@ -120,3 +120,19 @@ button {
   border-radius: 6px;
   font-size: 1rem;
 }
+
+.btn-copy {
+  padding: 4px;
+  margin: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  outline: none;
+  font-size: 20px;
+  color: rgb(var(--text-primary));
+  opacity: .8;
+  transition: opacity .2s ease-in-out;
+
+  &:hover {
+    opacity: 1;
+  }
+}

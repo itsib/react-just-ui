@@ -12,9 +12,9 @@ module.exports = {
     html: './icon-font/tmpl/html.hbs',
   },
   pathOptions: {
-    html: './icon-font/demo/index.html',
-    css: './icon-font/demo/icons.css',
-    json: './icon-font/demo/icons.json',
+    html: './public/demo/index.html',
+    css: './public/demo/icons.css',
+    json: './public/demo/icons.json',
     scss: './public/fonts/icon-font/icon-font.css',
   },
   fontHeight: 512,

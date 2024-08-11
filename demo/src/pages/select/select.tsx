@@ -2,30 +2,26 @@ import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Trans } from 'react-i18next';
 import { JuiSelect, JuiCheckbox } from 'react-just-ui';
-import FlagRuSvg from '../../assets/svg/flag-ru.svg';
-import FlagNoSvg from '../../assets/svg/flag-no.svg';
-import FlagUsSvg from '../../assets/svg/flag-us.svg';
-import FlagJpSvg from '../../assets/svg/flag-jp.svg';
 
 const SELECT_OPTIONS = [
   {
     value: '1',
-    icon: <img src={FlagRuSvg} alt="svg" style={{display: 'block'}} />,
+    icon: <img src="images/flag-ru.svg" alt="svg" style={{display: 'block'}} />,
     label: 'Option 1',
   },
   {
     value: '2',
-    icon: <img src={FlagNoSvg} alt="svg" style={{ display: 'block' }}/>,
+    icon: <img src="/images/flag-no.svg" alt="svg" style={{ display: 'block' }}/>,
     label: 'Option 2',
   },
   {
     value: '3',
-    icon: <img src={FlagUsSvg} alt="svg" style={{ display: 'block' }}/>,
+    icon: <img src="/images/flag-us.svg" alt="svg" style={{ display: 'block' }}/>,
     label: 'Option 3',
   },
   {
     value: '4',
-    icon: <img src={FlagJpSvg} alt="svg" style={{ display: 'block' }}/>,
+    icon: <img src="/images/flag-jp.svg" alt="svg" style={{ display: 'block' }}/>,
     label: 'Option 4',
   },
   {

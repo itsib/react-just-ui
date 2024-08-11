@@ -33,7 +33,7 @@ export const JuiTextarea = forwardRef(function JuiTextarea(
 
     const styleMap = textarea.computedStyleMap();
 
-    element.style.left = `-99999999px`;
+    element.style.left = `-999999px`;
     element.style.position = `absolute`;
     element.style.width = `${textarea.offsetWidth}px`;
     element.style.minWidth = `${textarea.offsetWidth}px`;

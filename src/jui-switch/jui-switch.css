@@ -38,7 +38,7 @@
       inset: 0;
       display: block;
       position: absolute;
-      background-color: rgb(var(--jui-bg-switch-rgb));
+      background-color: rgb(var(--jui-switch-bg-rgb));
       transition: background-color .1s linear;
       border-radius: 99999999px;
 

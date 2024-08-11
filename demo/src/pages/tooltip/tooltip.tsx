@@ -1,8 +1,8 @@
-import { CSSProperties, FC } from 'react';
+import { CSSProperties, FC, useMemo } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import { CodeSnippet } from '../../components/code-snippet/code-snippet.tsx';
+import { CodeExample } from '../../components/code-example/code-example.tsx';
 import { useForm, useWatch } from 'react-hook-form';
-import { JuiRadio, JuiTextarea } from 'react-just-ui';
+import { JuiRadio, JuiTextarea, JuiCheckbox } from 'react-just-ui';
 import './tooltip.css';
 
 interface FormFields {
@@ -10,6 +10,7 @@ interface FormFields {
   width: string;
   text: string;
   custom: string;
+  active: boolean;
 }
 
 const FISH: any = {
@@ -21,18 +22,37 @@ const FISH: any = {
 export const Tooltip: FC = () => {
   const { t } = useTranslation();
 
-  const { register, watch, control } = useForm<FormFields>({
+  const { register, control } = useForm<FormFields>({
     defaultValues: {
       position: 'top',
       width: 'md',
       text: 'short',
       custom: '',
+      active: false,
     }
   })
 
-  const [text, custom] = useWatch({ control, name: ['text', 'custom'] });
+  const [text, custom, active, width, position] = useWatch({ control, name: ['text', 'custom', 'active', 'width', 'position'] });
 
   const tooltip = text === 'custom' ? custom : FISH[text];
+
+  const source = useMemo(() => {
+    let source = '<div\n';
+
+    if (active) {
+      source += `    className="active" \n`;
+    }
+    source += `    aria-label="${tooltip ?? ''}" \n`;
+    source += `    data-position="${position}" \n`;
+    source += `    data-width="${width}" \n`;
+    source += `>\n`;
+    source += `  <svg width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">\n`;
+    source += `    <path fill="currentColor" d="M 8,0 ... -1.6,0 2.9,2.9 0 0 1 2.9,-2.9"/>\n`;
+    source += `  </svg>\n`;
+    source += `</div>\n`;
+
+    return source;
+  }, [tooltip, active, width, position]);
 
   return (
     <div className="tooltip-page">
@@ -71,6 +91,13 @@ export const Tooltip: FC = () => {
               value="right"
               error={false}
               {...register('position', {})}
+            />
+
+            <JuiCheckbox
+              id="active-class"
+              label={t('add_active_class')}
+              error={false}
+              {...register('active')}
             />
           </div>
 
@@ -145,7 +172,7 @@ export const Tooltip: FC = () => {
             <JuiTextarea
               id="custom-field"
               error={false}
-              {...register('custom', { disabled: text !== 'custom' })}
+              {...register('custom', { disabled: text !== 'custom', deps: ['text'] })}
             />
           </div>
         </div>
@@ -153,11 +180,12 @@ export const Tooltip: FC = () => {
         <div className="demo">
           <div>Hover me</div>
           <div
+            className={active ? 'active' : ''}
             aria-label={tooltip}
-            data-position={watch('position')}
-            data-width={watch('width')}
+            data-position={position}
+            data-width={width}
           >
-            <svg width="24" height="24" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <svg style={{ display: 'block' }} width="24" height="24" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
               <path fill="currentColor"
                     d="M 7.9999999,0 C 12.418399,0 16,3.5816013 16,7.9999997 16,12.418398 12.418399,16.000001 7.9999999,16.000001 3.5816015,16.000001 0,12.418398 0,7.9999997 0,3.5816013 3.5816015,0 7.9999999,0 m 0,1.6000009 a 6.3999999,6.3999999 0 1 0 0,12.7999971 6.3999999,6.3999999 0 0 0 0,-12.7999971 m 0,9.5999981 a 0.8000015,0.8000015 0 1 1 0,1.600003 0.8000015,0.8000015 0 0 1 0,-1.600003 m 0,-7.5999981 a 2.8999998,2.8999998 0 0 1 1.0783979,5.5919999 0.64000001,0.64000001 0 0 0 -0.2439851,0.160768 c -0.035136,0.04 -0.040811,0.091178 -0.04,0.144 l 0.00554,0.1031893 A 0.80000001,0.80000001 0 0 1 7.2055504,9.693526 l -0.00554,-0.093568 v -0.2 c 0,-0.9223978 0.744,-1.476002 1.2832021,-1.6928021 a 1.3008,1.3008 0 1 0 -1.7832,-1.2072 0.80000108,0.80000108 0 1 1 -1.6000021,0 2.8999998,2.8999998 0 0 1 2.8999832,-2.8999828"/>
             </svg>
@@ -165,17 +193,7 @@ export const Tooltip: FC = () => {
         </div>
       </fieldset>
 
-      <fieldset className="source">
-        <legend><Trans i18nKey="source"/></legend>
-
-        <CodeSnippet>{`
-<div aria-label="Tooltip Text" data-position="top" data-width="md">
-  <svg width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-    <path fill="currentColor" d="M 8,0 ... -1.6,0 2.9,2.9 0 0 1 2.9,-2.9"/>
-  </svg>
-</div>
-          `.trim()}</CodeSnippet>
-      </fieldset>
+      <CodeExample source={source} />
     </div>
   );
 };
