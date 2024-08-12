@@ -25,7 +25,7 @@ export const ErrorMessage: FC<IErrorMessage> = ({ error }) => {
   }, [message]);
 
   return (
-    <div className={`jui jui-error-message ${message ? 'active' : ''}`} role="alert">
+    <div className={`jui jui-error-message ${error ? 'active' : ''}`} role="alert">
       <div>{message || messageRef.current}</div>
     </div>
   )

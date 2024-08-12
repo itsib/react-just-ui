@@ -38,7 +38,7 @@ export const CodeExample: FC<ICodeSnippet> = ({ source }) => {
 
   return (
     <fieldset className="code-example jui-scroll">
-      <legend>{t('source')}</legend>
+      <legend>{t('example')}</legend>
       <button
         className="btn btn-copy"
         aria-label={t('copy_source')}

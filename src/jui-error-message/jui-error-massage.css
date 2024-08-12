@@ -1,23 +1,26 @@
 .jui-error-message {
   height: var(--jui-error-height);
   padding-left: 4px;
+  padding-top: var(--jui-error-margin);
   font-size: var(--jui-error-font-size);
-  line-height: calc(var(--jui-error-font-size) + 2px);
+  line-height: 1.2;
   white-space: nowrap;
   text-overflow: ellipsis;
   color: rgb(var(--jui-error-rgb));
   overflow: hidden;
-  user-select: none;
+  pointer-events: none;
 
   div {
-    transform: translateY(-100%);
+    top: calc((var(--jui-error-height) + 2px) * -1);
+    transform: translateY(0);
     transition: .15s ease-in-out;
+    position: relative;
   }
 
   &.active {
 
     div {
-      transform: translateY(0);
+      transform: translateY(calc(100% + var(--jui-error-margin) + 2px));;
     }
   }
 }

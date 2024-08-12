@@ -22,7 +22,7 @@ export const OptInputPage: FC = () => {
 
         <div className="actions">
           <Checkbox
-            id="demo-disabled"
+            id="otp-demo-disabled"
             label="disable_demo_control"
             value={disabled as any}
             onChange={event => setDisabled((event.target as any).checked)}
@@ -31,11 +31,14 @@ export const OptInputPage: FC = () => {
 
         <div className="demo">
           <OtpInput
-            id="first-name-control"
+            id="otp-code-control"
             label="otp_code"
             hint="otp_code_hint"
             error={errors?.otpCode}
-            {...register('otpCode', { required: 'required', disabled: disabled })}
+            {...register('otpCode', {
+              required: 'required',
+              disabled: disabled,
+            })}
           />
 
           <div style={{ marginTop: '20px' }}>

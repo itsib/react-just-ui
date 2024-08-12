@@ -3,6 +3,7 @@
   "first_name": "First Name",
   "last_name": "Last Name",
   "first_name_hint": "Please enter your first name in to field below",
+  "last_name_hint": "Please enter your last name in to field below",
   "accept_terms_checkbox": "Accept <a1>Terms of Service</a1> and <a2>Privacy Policy</a2>",
   "choose_option": "Choose Option",
   "enter_six_digit_code": "Enter six digit code",
@@ -42,5 +43,6 @@
   "loading_demo_control": "Enable loading state",
   "add_active_class": "Add active class",
   "copy_source": "Copy Source",
-  "copied": "✔ Copied"
+  "copied": "✔ Copied",
+  "example": "Example"
 }

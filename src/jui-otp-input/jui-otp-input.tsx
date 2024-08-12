@@ -126,6 +126,13 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
 
     const onFocus = (event: FocusEvent) => {
       clearTimeout(blurFireTimer);
+      const currentIndex = +(event.target as any).dataset.index;
+      const shouldIndex = value.length;
+      if (shouldIndex < currentIndex) {
+        focusNext(shouldIndex);
+        return;
+      }
+
       const self = event.target as HTMLInputElement;
       self.setSelectionRange(0, 1, 'forward');
     };
@@ -210,7 +217,7 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
         </div>
       </div>
 
-      <ErrorMessage error={error}/>
+      <ErrorMessage error={error} />
     </div>
   );
 });

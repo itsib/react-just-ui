@@ -1,10 +1,10 @@
 .jui.jui-label {
-  margin-bottom: 4px;
+  margin-bottom: var(--jui-label-margin);
+  color: rgb(var(--jui-label-rgb));
   user-select: none;
   display: block;
 
   .text {
-    color: rgb(var(--jui-label-color));
     font-size: var(--jui-label-font-size);
   }
 

@@ -77,12 +77,16 @@
       background-color: rgb(var(--jui-bg-disabled-rgb));
       opacity: .8;
     }
+
+    .jui-error-message div {
+      transform: translateY(0);
+    }
   }
 
   &.loading {
-    pointer-events: none;
 
     .control {
+      pointer-events: none;
       box-shadow: none;
       border: var(--jui-border-width) solid rgb(var(--jui-border-rgb));
       background-color: rgb(var(--jui-bg-rgb));
@@ -91,6 +95,10 @@
       .loader-backdrop {
         display: flex;
       }
+    }
+
+    .jui-error-message div {
+      transform: translateY(0);
     }
   }
 }
