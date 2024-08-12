@@ -1,4 +1,4 @@
-name: Publish Package to npm registry
+name: publish npm
 
 on:
   push:
@@ -14,17 +14,19 @@ jobs:
         with:
           fetch-depth: 0
       - name: Setup .npmrc file
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: "20"
           registry-url: "https://registry.npmjs.org"
-      - name: Install latest NPM
+      - name: Install npm@latest
         run: npm install -g npm@latest
       - name: Install dependencies
         run: npm ci
       - name: Build
         run: npm run build
-      - name: Publish the packages
-        uses: JS-DevTools/npm-publish@v3
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
+      - name: Publish
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
