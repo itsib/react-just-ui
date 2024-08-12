@@ -1,6 +1,7 @@
 .jui.jui-label {
   margin-bottom: 4px;
   user-select: none;
+  display: block;
 
   .text {
     color: rgb(var(--jui-label-color));
