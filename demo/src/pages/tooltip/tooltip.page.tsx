@@ -2,8 +2,8 @@ import { CSSProperties, FC, useMemo } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { CodeExample } from '../../components/code-example/code-example.tsx';
 import { useForm, useWatch } from 'react-hook-form';
-import { JuiRadio, JuiTextarea, JuiCheckbox } from 'react-just-ui';
-import './tooltip.css';
+import { RadioButton, Textarea, Checkbox } from 'react-just-ui';
+import './tooltip.page.css';
 
 interface FormFields {
   position: string;
@@ -19,7 +19,7 @@ const FISH: any = {
   long: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sapien urna, conubia accumsan lacinia nulla sollicitudin parturient vulputate montes, torquent ridiculus netus penatibus nullam facilisis morbi faucibus',
 }
 
-export const Tooltip: FC = () => {
+export const TooltipPage: FC = () => {
   const { t } = useTranslation();
 
   const { register, control } = useForm<FormFields>({
@@ -64,28 +64,28 @@ export const Tooltip: FC = () => {
 
         <div className="options" style={{ '--jui-error-height': 'auto' } as CSSProperties}>
           <div className="actions">
-            <JuiRadio
+            <RadioButton
               id="position-top"
               label={t('position_value', { value: 'top' })}
               value="top"
               error={false}
               {...register('position', {})}
             />
-            <JuiRadio
+            <RadioButton
               id="position-bottom"
               label={t('position_value', { value: 'bottom' })}
               value="bottom"
               error={false}
               {...register('position', {})}
             />
-            <JuiRadio
+            <RadioButton
               id="position-left"
               label={t('position_value', { value: 'left' })}
               value="left"
               error={false}
               {...register('position', {})}
             />
-            <JuiRadio
+            <RadioButton
               id="position-right"
               label={t('position_value', { value: 'right' })}
               value="right"
@@ -93,7 +93,7 @@ export const Tooltip: FC = () => {
               {...register('position', {})}
             />
 
-            <JuiCheckbox
+            <Checkbox
               id="active-class"
               label={t('add_active_class')}
               error={false}
@@ -102,35 +102,35 @@ export const Tooltip: FC = () => {
           </div>
 
           <div className="actions">
-            <JuiRadio
+            <RadioButton
               id="width-xs"
               label={t('width_value', { value: 'xs' })}
               value="xs"
               error={false}
               {...register('width', {})}
             />
-            <JuiRadio
+            <RadioButton
               id="width-sm"
               label={t('width_value', { value: 'sm' })}
               value="sm"
               error={false}
               {...register('width', {})}
             />
-            <JuiRadio
+            <RadioButton
               id="width-md"
               label={t('width_value', { value: 'md' })}
               value="md"
               error={false}
               {...register('width', {})}
             />
-            <JuiRadio
+            <RadioButton
               id="width-lg"
               label={t('width_value', { value: 'lg' })}
               value="lg"
               error={false}
               {...register('width', {})}
             />
-            <JuiRadio
+            <RadioButton
               id="width-xl"
               label={t('width_value', { value: 'xl' })}
               value="xl"
@@ -140,28 +140,28 @@ export const Tooltip: FC = () => {
           </div>
 
           <div className="actions">
-            <JuiRadio
+            <RadioButton
               id="text-short"
               label={t('text_value', { value: 'short' })}
               value="short"
               error={false}
               {...register('text', {})}
             />
-            <JuiRadio
+            <RadioButton
               id="text-middle"
               label={t('text_value', { value: 'middle' })}
               value="middle"
               error={false}
               {...register('text', {})}
             />
-            <JuiRadio
+            <RadioButton
               id="text-long"
               label={t('text_value', { value: 'long' })}
               value="long"
               error={false}
               {...register('text', {})}
             />
-            <JuiRadio
+            <RadioButton
               id="text-custom"
               label={t('custom')}
               value="custom"
@@ -169,7 +169,7 @@ export const Tooltip: FC = () => {
               {...register('text', {})}
             />
 
-            <JuiTextarea
+            <Textarea
               id="custom-field"
               error={false}
               {...register('custom', { disabled: text !== 'custom', deps: ['text'] })}

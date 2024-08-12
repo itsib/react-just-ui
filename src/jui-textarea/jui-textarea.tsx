@@ -1,11 +1,11 @@
 import { ForwardedRef, forwardRef, useEffect } from 'react';
 import { BaseProps } from '../types';
-import { JuiError } from '../jui-error/jui-error.tsx';
-import { JuiLabel } from '../jui-label/jui-label.tsx';
+import { ErrorMessage } from '../jui-error-message/jui-error-message.tsx';
+import { Label } from '../jui-label/jui-label.tsx';
 import './jui-textarea.css';
 import { cn } from '../utils';
 
-export interface IJuiTextarea extends BaseProps<HTMLTextAreaElement> {
+export interface TextareaProps extends BaseProps<HTMLTextAreaElement> {
   elastic?: boolean;
   placeholder?: string;
   loading?: boolean;
@@ -16,8 +16,8 @@ export interface IJuiTextarea extends BaseProps<HTMLTextAreaElement> {
   maxWidth?: number;
 }
 
-export const JuiTextarea = forwardRef(function JuiTextarea(
-  props: IJuiTextarea,
+export const Textarea = forwardRef(function Textarea(
+  props: TextareaProps,
   ref: ForwardedRef<HTMLTextAreaElement>,
 ) {
   const { id, className, placeholder, elastic = true, label, hint, minHeight, minWidth, maxWidth, maxHeight, limit = 5000, loading, error, ..._props } = props;
@@ -104,12 +104,12 @@ export const JuiTextarea = forwardRef(function JuiTextarea(
       error: !!error,
       loading: !!loading
     }, className)}>
-      <JuiLabel id={id} label={label} hint={hint}/>
+      <Label id={id} label={label} hint={hint}/>
 
       <textarea className="control jui-scroll" placeholder={placeholder} id={id} ref={ref}
                 style={{ minHeight, maxHeight, minWidth, maxWidth }} {..._props} />
 
-      <JuiError error={error}/>
+      <ErrorMessage error={error}/>
     </div>
   );
 });

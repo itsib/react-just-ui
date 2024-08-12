@@ -1,22 +1,22 @@
 import React, { forwardRef } from 'react';
 import { BaseProps } from '../types';
-import { JuiLabel } from '../jui-label/jui-label.tsx';
-import { JuiError } from '../jui-error/jui-error.tsx';
+import { Label } from '../jui-label/jui-label';
+import { ErrorMessage } from '../jui-error-message/jui-error-message';
 import './jui-checkbox.css';
 
-export interface IJuiCheckbox extends BaseProps<HTMLInputElement> {
+export interface CheckboxProps extends BaseProps<HTMLInputElement> {
   rowReverse?: boolean;
 }
 
-export const JuiCheckbox = forwardRef(function JuiCheckbox(
-  _props: IJuiCheckbox,
+export const Checkbox = forwardRef(function Checkbox(
+  _props: CheckboxProps,
   _ref: React.ForwardedRef<HTMLInputElement>
 ) {
   const { id, label, hint, className, rowReverse, error, ...props } = _props;
 
   return (
     <div className={`jui jui-checkbox ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}>
-      <JuiLabel id={id} label={label} hint={hint} />
+      <Label id={id} label={label} hint={hint} />
 
       <div className="control-checkbox">
         <input
@@ -31,7 +31,7 @@ export const JuiCheckbox = forwardRef(function JuiCheckbox(
         </svg>
       </div>
 
-      <JuiError error={error}/>
+      <ErrorMessage error={error}/>
     </div>
   );
 });

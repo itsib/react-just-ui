@@ -47,6 +47,11 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^15.0.0"
   },
+  "peerDependenciesMeta": {
+    "react-i18next": {
+      "optional": true
+    }
+  },
   "devDependencies": {
     "@types/node": "^20.14.12",
     "@types/react": "^18.3.0",

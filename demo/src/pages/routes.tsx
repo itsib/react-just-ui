@@ -1,15 +1,15 @@
 import { FC } from 'react';
 import { createBrowserRouter as createRouter, isRouteErrorResponse, Navigate, useRouteError } from 'react-router-dom';
-import { Home } from './home/home.tsx';
+import { HomePage } from './home/home.page.tsx';
 import { Layout } from './layout.tsx';
-import { Input } from './input/input.tsx';
-import { Select } from './select/select.tsx';
-import { Textarea } from './textarea/textarea.tsx';
-import { OptInput } from './opt-input/opt-input.tsx';
-import { Switch } from './switch/switch.tsx';
-import { Checkbox } from './checkbox/checkbox.tsx';
-import { Tooltip } from './tooltip/tooltip.tsx';
-import { Radio } from './radio/radio.tsx';
+import { InputPage } from './input/input.page.tsx';
+import { SelectPage } from './select/select.page.tsx';
+import { TextareaPage } from './textarea/textarea.page.tsx';
+import { OptInputPage } from './opt-input/opt-input.page.tsx';
+import { SwitchPage } from './switch/switch.page.tsx';
+import { CheckboxPage } from './checkbox/checkbox.page.tsx';
+import { TooltipPage } from './tooltip/tooltip.page.tsx';
+import { RadioPage } from './radio/radio.page.tsx';
 
 const ErrorBoundary: FC = () => {
   const error = useRouteError();
@@ -31,39 +31,39 @@ export const ROUTES = createRouter(
       children: [
         {
           index: true,
-          Component: Home
+          Component: HomePage
         },
         {
           path: 'input',
-          Component: Input
+          Component: InputPage
         },
         {
           path: 'otp-input',
-          Component: OptInput
+          Component: OptInputPage
         },
         {
           path: 'select',
-          Component: Select
+          Component: SelectPage
         },
         {
           path: 'textarea',
-          Component: Textarea
+          Component: TextareaPage
         },
         {
           path: 'switch',
-          Component: Switch
+          Component: SwitchPage
         },
         {
           path: 'checkbox',
-          Component: Checkbox
+          Component: CheckboxPage
         },
         {
           path: 'radio',
-          Component: Radio
+          Component: RadioPage
         },
         {
           path: 'tooltip',
-          Component: Tooltip
+          Component: TooltipPage
         },
       ]
     },

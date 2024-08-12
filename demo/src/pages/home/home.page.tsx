@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import './home.css';
+import './home.page.css';
 
-export const Home: FC = () => {
+export const HomePage: FC = () => {
 
   return (
     <div className="home">

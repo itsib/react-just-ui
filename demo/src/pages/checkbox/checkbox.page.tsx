@@ -1,9 +1,9 @@
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Trans } from 'react-i18next';
-import { JuiCheckbox } from 'react-just-ui';
+import { Checkbox } from 'react-just-ui';
 
-export const Checkbox: FC = () => {
+export const CheckboxPage: FC = () => {
   const [disabled, setDisabled] = useState(false);
   const { register, reset, formState: { errors } } = useForm<{ enabled: boolean }>({
     defaultValues: {
@@ -21,7 +21,7 @@ export const Checkbox: FC = () => {
         <legend><Trans i18nKey="preview"/></legend>
 
         <div className="actions">
-          <JuiCheckbox
+          <Checkbox
             id="demo-disabled"
             label="disable_demo_control"
             value={disabled as any}
@@ -30,7 +30,7 @@ export const Checkbox: FC = () => {
         </div>
 
         <div className="demo">
-          <JuiCheckbox
+          <Checkbox
             id="switch"
             label="airplane_mode"
             error={errors?.enabled}

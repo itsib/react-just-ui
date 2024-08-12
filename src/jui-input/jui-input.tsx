@@ -1,23 +1,23 @@
 import React, { ForwardedRef, forwardRef, useEffect } from 'react';
 import { BaseProps } from '../types';
 import { cn } from '../utils';
-import { JuiError } from '../jui-error/jui-error.tsx';
-import { JuiLabel } from '../jui-label/jui-label.tsx';
-import { useTranslation } from 'react-i18next';
+import { ErrorMessage } from '../jui-error-message/jui-error-message.tsx';
+import { Label } from '../jui-label/jui-label.tsx';
+import { useTranslation } from '../_inner/react-i18next.resolved.ts';
 import './jui-input.css';
 
-export type IJuiInputType = 'text' | 'password' | 'email' | 'search' | 'tel' | 'url' | 'number';
+export type InputType = 'text' | 'password' | 'email' | 'search' | 'tel' | 'url' | 'number';
 
-export interface IJuiInput extends BaseProps<HTMLInputElement> {
-  type?: IJuiInputType;
+export interface InputProps extends BaseProps<HTMLInputElement> {
+  type?: InputType;
   prefix?: string | React.JSX.Element;
   suffix?: string | React.JSX.Element;
   loading?: boolean;
   placeholder?: string;
 }
 
-export const JuiInput = forwardRef(function JuiInput(
-  props: IJuiInput,
+export const Input = forwardRef(function Input(
+  props: InputProps,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
   const { id, className, label, hint, type: _type, prefix, suffix, loading, error, ..._props } = props;
@@ -49,7 +49,7 @@ export const JuiInput = forwardRef(function JuiInput(
 
   return (
     <div className={cn(['jui', 'jui-input'], { disabled: !!_props.disabled, error: !!error, loading: !!loading }, className)}>
-      <JuiLabel id={id} label={label} hint={hint} />
+      <Label id={id} label={label} hint={hint} />
 
       <div className="control">
         <div className="loader-backdrop"><span className="jui-loading" /></div>
@@ -58,7 +58,7 @@ export const JuiInput = forwardRef(function JuiInput(
         {suffix ? typeof suffix === 'string' ? <div className="suffix">{t(suffix)}</div> : suffix : null}
       </div>
 
-      <JuiError error={error}/>
+      <ErrorMessage error={error}/>
     </div>
   );
 });

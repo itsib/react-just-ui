@@ -1,13 +1,13 @@
 import { FC, useEffect, useMemo, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../_inner/react-i18next.resolved.ts';
 import { ValidationError } from '../types';
-import './jui-error.css';
+import './jui-error-massage.css';
 
-export interface IControlError {
+export interface IErrorMessage {
   error?: ValidationError | false;
 }
 
-export const JuiError: FC<IControlError> = ({ error }) => {
+export const ErrorMessage: FC<IErrorMessage> = ({ error }) => {
   const { t } = useTranslation();
   const messageRef = useRef<string | undefined>();
 
@@ -25,7 +25,7 @@ export const JuiError: FC<IControlError> = ({ error }) => {
   }, [message]);
 
   return (
-    <div className={`jui jui-error ${message ? 'active' : ''}`} role="alert">
+    <div className={`jui jui-error-message ${message ? 'active' : ''}`} role="alert">
       <div>{message || messageRef.current}</div>
     </div>
   )

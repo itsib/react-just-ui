@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Trans } from 'react-i18next';
-import { JuiSelect, JuiCheckbox } from 'react-just-ui';
+import { Select, Checkbox } from 'react-just-ui';
 
 const SELECT_OPTIONS = [
   {
@@ -64,7 +64,7 @@ const SELECT2_OPTIONS = [
   },
 ];
 
-export const Select: FC = () => {
+export const SelectPage: FC = () => {
   const [disabled, setDisabled] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -85,14 +85,14 @@ export const Select: FC = () => {
         <legend><Trans i18nKey="preview"/></legend>
 
         <div className="actions">
-          <JuiCheckbox
+          <Checkbox
             id="demo-disabled"
             label="disable_demo_control"
             value={disabled as any}
             onChange={event => setDisabled((event.target as any).checked)}
           />
 
-          <JuiCheckbox
+          <Checkbox
             id="demo-loading"
             label="loading_demo_control"
             value={loading as any}
@@ -101,7 +101,7 @@ export const Select: FC = () => {
         </div>
 
         <div className="demo">
-          <JuiSelect
+          <Select
             id="select-2"
             label="choose_option"
             options={SELECT2_OPTIONS}
@@ -111,7 +111,7 @@ export const Select: FC = () => {
           />
 
 
-          <JuiSelect
+          <Select
             id="select"
             label="choose_option"
             options={SELECT_OPTIONS}

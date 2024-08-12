@@ -1,10 +1,10 @@
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Trans } from 'react-i18next';
-import { JuiRadio, JuiCheckbox } from 'react-just-ui';
-import './radio.css'
+import { RadioButton, Checkbox } from 'react-just-ui';
+import './radio.page.css'
 
-export const Radio: FC = () => {
+export const RadioPage: FC = () => {
   const [disabled, setDisabled] = useState(false);
   const { register, reset } = useForm<{ radio: string }>({
     defaultValues: {
@@ -14,7 +14,7 @@ export const Radio: FC = () => {
   });
 
   return (
-    <div className="select">
+    <div className="radio-page">
       <h1><Trans i18nKey="radio"/></h1>
       <p><Trans i18nKey="radio_page_content"/></p>
 
@@ -22,7 +22,7 @@ export const Radio: FC = () => {
         <legend><Trans i18nKey="preview"/></legend>
 
         <div className="actions">
-          <JuiCheckbox
+          <Checkbox
             id="demo-disabled"
             label="disable_demo_control"
             value={disabled as any}
@@ -31,7 +31,7 @@ export const Radio: FC = () => {
         </div>
 
         <div className="demo">
-          <JuiRadio
+          <RadioButton
             id="demo-radio-a"
             label="Off with your head"
             error={false}
@@ -39,7 +39,7 @@ export const Radio: FC = () => {
             {...register('radio', { disabled: disabled })}
           />
 
-          <JuiRadio
+          <RadioButton
             id="demo-radio-b"
             label="Dance ’til you’re dead"
             error={false}
@@ -47,7 +47,7 @@ export const Radio: FC = () => {
             {...register('radio', { disabled: disabled })}
           />
 
-          <JuiRadio
+          <RadioButton
             id="demo-radio-c"
             label="Heads will roll"
             error={false}
@@ -55,7 +55,7 @@ export const Radio: FC = () => {
             {...register('radio', { disabled: disabled })}
           />
 
-          <JuiRadio
+          <RadioButton
             id="demo-radio-d"
             label="On the floor"
             error={false}

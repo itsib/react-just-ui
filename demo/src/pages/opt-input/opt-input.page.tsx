@@ -1,27 +1,27 @@
 import { FC, useState } from 'react';
-import { Trans } from 'react-i18next';
 import { useForm } from 'react-hook-form';
-import { JuiCheckbox, JuiSwitch } from 'react-just-ui';
+import { Trans } from 'react-i18next';
+import { Checkbox, OtpInput } from 'react-just-ui';
 
-export const Switch: FC = () => {
+export const OptInputPage: FC = () => {
   const [disabled, setDisabled] = useState(false);
-  const { register, reset, formState: { errors } } = useForm<{ enabled: boolean }>({
+  const { register, reset, formState: { errors } } = useForm<{ otpCode: string }>({
     defaultValues: {
-      enabled: false,
+      otpCode: '',
     },
     mode: 'onChange',
   });
 
   return (
-    <div className="">
-      <h1><Trans i18nKey="switch"/></h1>
-      <p><Trans i18nKey="switch_page_content"/></p>
+    <div className="otp-input">
+      <h1><Trans i18nKey="otp_input" /></h1>
+      <p><Trans i18nKey="otp_input_page_content" /></p>
 
       <fieldset className="preview">
         <legend><Trans i18nKey="preview"/></legend>
 
         <div className="actions">
-          <JuiCheckbox
+          <Checkbox
             id="demo-disabled"
             label="disable_demo_control"
             value={disabled as any}
@@ -30,15 +30,16 @@ export const Switch: FC = () => {
         </div>
 
         <div className="demo">
-          <JuiSwitch
-            id="switch"
-            label="airplane_mode"
-            error={errors?.enabled}
-            {...register('enabled', { disabled: disabled })}
+          <OtpInput
+            id="first-name-control"
+            label="otp_code"
+            hint="otp_code_hint"
+            error={errors?.otpCode}
+            {...register('otpCode', { required: 'required', disabled: disabled })}
           />
 
           <div style={{ marginTop: '20px' }}>
-            <button className="btn btn-primary" type="button" onClick={() => reset()}>
+            <button className="btn btn-primary" type="button" onClick={() => reset({ otpCode: '' })}>
               <Trans i18nKey="reset"/>
             </button>
           </div>

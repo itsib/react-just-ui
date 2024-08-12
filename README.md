@@ -31,7 +31,7 @@ import 'react-just-ui/styles';
 All the props are passed to the input inside the component, and the internal input is tipped out through the ref. So any component can be used as a regular form element.
 
 ```typescript jsx
-<JuiInput
+<Input
     id="text-input"
     label="first_name"
     hint="first_name_hint"

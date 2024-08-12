@@ -1,15 +1,15 @@
 import React, { forwardRef } from 'react';
 import { BaseProps } from '../types';
-import { JuiLabel } from '../jui-label/jui-label.tsx';
-import { JuiError } from '../jui-error/jui-error.tsx';
+import { Label } from '../jui-label/jui-label.tsx';
+import { ErrorMessage } from '../jui-error-message/jui-error-message.tsx';
 import './jui-switch.css';
 
-export interface IJuiSwitch extends BaseProps<HTMLInputElement> {
+export interface SwitchProps extends BaseProps<HTMLInputElement> {
   rowReverse?: boolean;
 }
 
-export const JuiSwitch = forwardRef(function JuiSwitch(
-  _props: IJuiSwitch,
+export const Switch = forwardRef(function Switch(
+  _props: SwitchProps,
   _ref: React.ForwardedRef<HTMLInputElement>
 ) {
   const {
@@ -26,7 +26,7 @@ export const JuiSwitch = forwardRef(function JuiSwitch(
     <div
       className={`jui jui-switch ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}
     >
-      <JuiLabel id={id} label={label} hint={hint} />
+      <Label id={id} label={label} hint={hint} />
 
       <div className="control-switch">
         <input
@@ -41,7 +41,7 @@ export const JuiSwitch = forwardRef(function JuiSwitch(
         </div>
       </div>
 
-      <JuiError error={error}/>
+      <ErrorMessage error={error}/>
     </div>
   );
 });

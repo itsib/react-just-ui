@@ -1,20 +1,22 @@
 import React, { FC, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../_inner/react-i18next.resolved.ts';
 import './jui-label.css';
 
-export interface IJuiLabel {
+export interface LabelProps {
   id: string;
   label?: string | React.JSX.Element;
+  required?: boolean;
   hint?: string;
 }
 
-export const JuiLabel: FC<IJuiLabel> = ({ id, label, hint }) => {
+export const Label: FC<LabelProps> = ({ id, label, required, hint }) => {
   const { t } = useTranslation();
   const ref = useRef<HTMLLabelElement | null>(null);
 
   return !label ? null : (
     <label htmlFor={id} className="jui jui-label" ref={ref}>
       <span className="text">{typeof label === 'string' ? t(label) : label}</span>
+      {required ? <span className="required-marker">*</span> : null}
 
       {hint ? (
         <span className="question" aria-label={t(hint)} data-position="top" data-width="md">

@@ -72,7 +72,7 @@
     }
   }
 
-  .jui-error {
+  .jui-error-message {
     width: 100%;
   }
 
@@ -86,7 +86,7 @@
       order: 1;
     }
 
-    .jui-error {
+    .jui-error-message {
       order: 3;
     }
   }
@@ -101,7 +101,7 @@
       order: 2;
     }
 
-    .jui-error {
+    .jui-error-message {
       order: 3;
     }
   }

@@ -16,10 +16,12 @@ function getFrame() {
 
 function build() {
   return new Promise((resolve, reject) => {
-    exec('npm run build', (err, stdout) => {
+    exec('npm run build', (err, stdout, stderr) => {
       if (err) {
         const frames = stdout.split('\n\n').filter(Boolean);
-        return reject(frames[frames.length - 1]);
+        const message = `${stderr}\n${frames[frames.length - 1]}`
+
+        return reject(message);
       }
       resolve();
     });
@@ -59,7 +61,7 @@ function buildProcess() {
 
     if (error) {
       clear();
-      process.stdout.write(`\x1b[0;91m✘ Build error, wait changes.\x1b[0m\n\x1b[0;31m${error}\x1b[0m\n`);
+      process.stdout.write(`\x1b[0;91m✘ Build error, wait changes.\x1b[0m\n${error}\n`);
     } else {
       clear();
       process.stdout.write('\x1b[0;92m✔ Build success, waiting changes.\x1b[0m');

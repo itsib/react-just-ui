@@ -32,7 +32,6 @@ function types() {
   }
 }
 
-
 export default defineConfig(async ({ mode }: ConfigEnv): Promise<UserConfig>  => {
   return {
     appType: 'custom',

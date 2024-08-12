@@ -7,6 +7,11 @@
     font-size: var(--jui-label-font-size);
   }
 
+  .required-marker {
+    color: rgb(var(--jui-error-rgb));
+    font-size: var(--jui-label-font-size);
+  }
+
   .question {
     width: var(--jui-label-font-size);
     height: var(--jui-label-font-size);

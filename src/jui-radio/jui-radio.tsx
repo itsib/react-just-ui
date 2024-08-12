@@ -1,10 +1,10 @@
 import React, { forwardRef } from 'react';
 import { BaseProps } from '../types';
-import { JuiLabel } from '../jui-label/jui-label.tsx';
-import { JuiError } from '../jui-error/jui-error.tsx';
+import { Label } from '../jui-label/jui-label.tsx';
+import { ErrorMessage } from '../jui-error-message/jui-error-message.tsx';
 import './jui-radio.css';
 
-export interface IJuiRadio extends Omit<BaseProps<HTMLInputElement>, 'value'> {
+export interface RadioButtonProps extends Omit<BaseProps<HTMLInputElement>, 'value'> {
   /**
    * If true, then label and checkbox are swapped
    */
@@ -15,15 +15,15 @@ export interface IJuiRadio extends Omit<BaseProps<HTMLInputElement>, 'value'> {
   value?: string | number;
 }
 
-export const JuiRadio = forwardRef(function JuiCheckbox(
-  _props: IJuiRadio,
+export const RadioButton = forwardRef(function Checkbox(
+  _props: RadioButtonProps,
   _ref: React.ForwardedRef<HTMLInputElement>
 ) {
   const { id, label, hint, className, rowReverse, error, ...props } = _props;
 
   return (
     <div className={`jui jui-radio ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}>
-      <JuiLabel id={id} label={label} hint={hint} />
+      <Label id={id} label={label} hint={hint} />
 
       <div className="control-radio">
         <input id={id} type="radio" role="radio" ref={_ref} {...props} />
@@ -36,7 +36,7 @@ export const JuiRadio = forwardRef(function JuiCheckbox(
         </svg>
       </div>
 
-      <JuiError error={error}/>
+      <ErrorMessage error={error}/>
     </div>
   );
 });
