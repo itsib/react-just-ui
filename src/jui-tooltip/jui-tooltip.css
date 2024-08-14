@@ -48,7 +48,7 @@
       width: max-content;
       max-width: var(--jui-tt-width);
       padding: var(--jui-tt-padding-y) var(--jui-tt-padding-x);
-      color: rgb(var(--jui-fg-rgb));
+      color: rgb(var(--jui-text-rgb));
       text-wrap: balance;
       white-space: pre-wrap;
       font-size: var(--jui-tt-font-size);

@@ -5,7 +5,8 @@
   --jui-accent-rgb: 0 115 229;
   --jui-error-rgb: 220 38 38;
   --jui-bg-rgb: 255 255 255;
-  --jui-fg-rgb: 0 0 0;
+  --jui-text-rgb: 0 0 0;
+  --jui-label-rgb: 25 25 25;
   --jui-shadow-rgb: 209 209 209;
   --jui-border-rgb: 208 208 211;
   --jui-border-focus-rgb: 38 38 38;
@@ -15,7 +16,6 @@
   --jui-tt-border-rgb: 204 204 204;
   --jui-switch-bg-rgb: 228 228 231;
   --jui-checkbox-rgb: 0 0 0;
-  --jui-label-rgb: 25 25 25;
 }
 
 body.dark {
@@ -24,7 +24,8 @@ body.dark {
   --jui-white-rgb: 255 255 255;
   --jui-accent-rgb: 0 115 229;
   --jui-error-rgb: 240 28 28;
-  --jui-fg-rgb: 255 255 255;
+  --jui-text-rgb: 255 255 255;
+  --jui-label-rgb: 225 225 225;
   --jui-bg-rgb: 29 29 29;
   --jui-shadow-rgb: 209 209 209;
   --jui-border-rgb: 78 78 78;
@@ -35,16 +36,15 @@ body.dark {
   --jui-tt-border-rgb: 51 51 51;
   --jui-switch-bg-rgb: 65 65 65;
   --jui-checkbox-rgb: 255 255 255;
-  --jui-label-rgb: 225 225 225;
 }
 
 body {
   /* ADDITIONAL COLORS */
-  --jui-label-color: color-mix(in srgb, rgb(var(--jui-fg-rgb)) 80%, rgb(var(--jui-bg-rgb)) 20%);
-  --jui-placeholder-color: color-mix(in srgb, rgb(var(--jui-fg-rgb)) 60%, rgb(var(--jui-bg-rgb)) 40%);
-  --jui-prefix-color: var(--jui-label-rgb);
+  --jui-divider-rgb: var(--jui-label-rgb);
+  --jui-placeholder-rgb: var(--jui-label-rgb);
+  --jui-prefix-rgb: var(--jui-label-rgb);
   --jui-prefix-border-width: 1px;
-  --jui-suffix-color: var(--jui-label-color);
+  --jui-suffix-rgb: var(--jui-label-rgb);
   --jui-suffix-border-width: 1px;
   --jui-checkbox-tick-color: rgb(var(--jui-checkbox-rgb));
   --jui-box-shadow-focus: 0 0 0 1px rgb(var(--jui-black-rgb)), 0 0 3px 0 rgb(var(--jui-border-focus-rgb));

@@ -16,13 +16,13 @@
     }
 
     > .prefix {
-      color: rgb(var(--jui-prefix-color));
+      color: rgb(var(--jui-prefix-rgb));
       border-radius: var(--jui-inner-border-radius) 0 0 var(--jui-inner-border-radius);
       border-right: var(--jui-prefix-border-width) solid rgb(var(--jui-border-rgb));
     }
 
     > .suffix {
-      color: rgb(var(--jui-suffix-color));
+      color: rgb(var(--jui-suffix-rgb));
       border-radius: 0 var(--jui-inner-border-radius) var(--jui-inner-border-radius) 0;
       border-left: var(--jui-suffix-border-width) solid rgb(var(--jui-border-rgb));
     }
@@ -56,12 +56,12 @@
     .control {
 
       > .prefix {
-        color: rgb(var(--jui-prefix-color) / .6);
+        color: rgb(var(--jui-prefix-rgb) / .6);
         border-color: rgb(var(--jui-border-rgb));
       }
 
       > .suffix {
-        color: rgb(var(--jui-prefix-color) / .6);
+        color: rgb(var(--jui-suffix-rgb) / .6);
         border-color: rgb(var(--jui-border-rgb));
       }
     }

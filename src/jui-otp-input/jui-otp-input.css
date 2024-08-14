@@ -8,10 +8,24 @@
       gap: 0.5rem;
 
       .divider {
-        height: 1px;
-        width: 0.6rem;
         margin: 0 3px;
-        background-color: rgb(var(--jui-fg-rgb));
+        background-color: rgb(var(--jui-divider-rgb));
+
+        &.d-dash {
+          height: 1px;
+          width: 0.6rem;
+        }
+
+        &.d-dot {
+          width: 0.4em;
+          height: 0.4em;
+          border-radius: 50%;
+        }
+
+        &.d-rect {
+          width: 0.3em;
+          height: 0.3em;
+        }
       }
 
       input {
@@ -20,7 +34,7 @@
         aspect-ratio: 4/5;
         text-align: center;
         font-size: var(--jui-font-size);
-        color: rgb(var(--jui-fg-rgb));
+        color: rgb(var(--jui-text-rgb));
         background-color: rgb(var(--jui-bg-rgb));
         box-shadow: none;
         border: var(--jui-border-width) solid rgb(var(--jui-border-rgb));

@@ -11,7 +11,7 @@
   }
 
   ::placeholder {
-    color: var(--jui-placeholder-color);
+    color: rgb(var(--jui-placeholder-rgb) / .7);
     font-weight: 400;
     opacity: .6;
   }
@@ -34,7 +34,7 @@
       width: 100%;
       height: calc(var(--jui-height) - (var(--jui-border-width) * 2));
       padding: var(--jui-padding-y) var(--jui-padding-x);
-      color: rgb(var(--jui-fg-rgb));
+      color: rgb(var(--jui-text-rgb));
       border: none;
       outline: none;
       font-size: inherit;
@@ -44,7 +44,7 @@
     .loader-backdrop {
       inset: 0;
       background-color: rgb(var(--jui-bg-rgb));
-      color: rgb(var(--jui-fg-rgb) / .6);
+      color: rgb(var(--jui-text-rgb) / .6);
       display: none;
       align-items: center;
       justify-content: center;

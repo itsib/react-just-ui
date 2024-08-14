@@ -32,6 +32,7 @@ export const OptInputPage: FC = () => {
         <div className="demo">
           <OtpInput
             id="otp-code-control"
+            layout="ddd.ddd"
             label="otp_code"
             hint="otp_code_hint"
             error={errors?.otpCode}

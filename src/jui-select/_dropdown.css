@@ -6,7 +6,7 @@
     width: var(--jui-dropdown-width);
     height: var(--jui-dropdown-height);
     padding: var(--jui-dropdown-padding);
-    color: rgb(var(--jui-fg-rgb));
+    color: rgb(var(--jui-text-rgb));
     overflow-y: auto;
     scroll-padding-top: var(--jui-dropdown-padding);
     scroll-snap-type: y mandatory;

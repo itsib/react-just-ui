@@ -7,7 +7,9 @@ import './jui-otp-input.css';
 export interface OtpInputProps extends BaseProps<HTMLInputElement> {
   /**
    * Code layout present. Example «ddd-ddd» six digit code.
-   *    «-» - separator
+   *    «-» - divider dash
+   *    «.» - divider dot
+   *    «,» - divider rect
    *    «d» - digit
    *    «w» - letter [a-z]
    *    «s» - digit or letter
@@ -31,7 +33,7 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
   callbacksRef.current = { onChange: _props.onChange, onBlur: _props.onBlur };
 
   const elements = useMemo(() => {
-    return (layout || 'ddd-ddd').split('').filter(code => ['-', 'd', 'w', 's'].includes(code));
+    return (layout || 'ddd-ddd').split('').filter(code => ['-', '.', ',', 'd', 'w', 's'].includes(code));
   }, [layout]);
 
   // Handle user input and resolve 6-letters code
@@ -195,7 +197,11 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
               indexRef.current = 0;
             }
             if (filter === '-') {
-              return <span key={i} className="divider"/>;
+              return <span key={i} className="divider d-dash"/>;
+            } else if (filter === '.') {
+              return <span key={i} className="divider d-dot"/>;
+            }  else if (filter === ',') {
+              return <span key={i} className="divider d-rect"/>;
             }
             const index =  indexRef.current;
             indexRef.current += 1;
