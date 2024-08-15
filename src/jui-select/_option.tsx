@@ -1,5 +1,11 @@
-import { SelectOption } from '../types';
+import React from 'react';
 import './_option.css';
+
+export interface SelectOption {
+  icon?: string | React.JSX.Element;
+  label?: string;
+  value: string;
+}
 
 export interface OptionProps extends SelectOption {
   id: string;

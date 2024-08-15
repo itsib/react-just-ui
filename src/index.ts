@@ -1,11 +1,21 @@
+// Copyright (c) Example Company. All rights reserved. Licensed under the MIT license.
+
+/**
+ * A library for frequently used widgets and form elements and interfaces.
+ *
+ * @remarks
+ * The `react-just-ui` defines the {@link Input} react function component,
+ * which are used to build widgets.
+ *
+ * @packageDocumentation
+ */
+
 import './styles.css';
 import './jui-tooltip/jui-tooltip.css';
 import './jui-scroll/jui-scroll.css';
 import './jui-loading/jui-loading.css';
 
 export * from './types';
-export * from './validators';
-export * from './utils';
 export * from './jui-error-message/jui-error-message';
 export * from './jui-label/jui-label';
 

@@ -47,6 +47,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "removeComments": false,
     "noImplicitReturns": true,
 
     /* Typings */

@@ -1,12 +1,13 @@
 import React, { ForwardedRef, forwardRef, useEffect, useMemo, useRef, useState } from 'react';
-import { BaseProps, SelectOption } from '../types';
+import { BaseControlProps } from '../types';
 import { cn } from '../utils';
 import { ErrorMessage } from '../jui-error-message/jui-error-message.tsx';
 import { Label } from '../jui-label/jui-label.tsx';
 import { SelectDropdown } from './_dropdown.tsx';
+import type { SelectOption } from './_option.tsx';
 import './jui-select.css';
 
-export interface SelectProps extends BaseProps<HTMLInputElement> {
+export interface SelectProps extends BaseControlProps<HTMLInputElement> {
   options: SelectOption[];
   loading?: boolean;
 }

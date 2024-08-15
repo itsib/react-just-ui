@@ -1,6 +1,5 @@
 import { FC, useEffect, useMemo, useRef } from 'react';
-import { useTranslation } from '../_inner/react-i18next.resolved.ts';
-import { ValidationError } from '../types';
+import { ValidationError } from '../validators/types.ts';
 import './jui-error-massage.css';
 
 export interface IErrorMessage {
@@ -8,15 +7,14 @@ export interface IErrorMessage {
 }
 
 export const ErrorMessage: FC<IErrorMessage> = ({ error }) => {
-  const { t } = useTranslation();
   const messageRef = useRef<string | undefined>();
 
   const message = useMemo(() => {
     if (!error || !error.message) {
       return null;
     }
-    return t(error.message);
-  }, [error, t]);
+    return error.message;
+  }, [error]);
 
   useEffect(() => {
     if (message) {

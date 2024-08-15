@@ -1,1 +1,0 @@
-export type Primitives = string | number | bigint | boolean | symbol;

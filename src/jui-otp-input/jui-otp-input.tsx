@@ -1,10 +1,10 @@
 import { ForwardedRef, forwardRef, useEffect, useMemo, useRef } from 'react';
-import { BaseProps } from '../types';
+import { BaseControlProps } from '../types';
 import { Label } from '../jui-label/jui-label.tsx';
 import { ErrorMessage } from '../jui-error-message/jui-error-message.tsx';
 import './jui-otp-input.css';
 
-export interface OtpInputProps extends BaseProps<HTMLInputElement> {
+export interface OtpInputProps extends BaseControlProps<HTMLInputElement> {
   /**
    * Code layout present. Example «ddd-ddd» six digit code.
    *    «-» - divider dash

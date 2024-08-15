@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { Trans } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { Checkbox, email, Input } from 'react-just-ui';
 import { CodeExample } from '../../components/code-example/code-example.tsx';
@@ -38,6 +38,7 @@ export const InputPage: FC = () => {
 `.trim();
 
 export const InputPage: FC = () => {
+  const { t } = useTranslation();
   const [disabled, setDisabled] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -61,14 +62,14 @@ export const InputPage: FC = () => {
         <div className="actions">
           <Checkbox
             id="demo-disabled"
-            label="disable_demo_control"
+            label={t('disable_demo_control')}
             value={disabled as any}
             onChange={event => setDisabled((event.target as any).checked)}
           />
 
           <Checkbox
             id="demo-loading"
-            label="loading_demo_control"
+            label={t('loading_demo_control')}
             value={loading as any}
             onChange={event => setLoading((event.target as any).checked)}
           />
@@ -77,39 +78,39 @@ export const InputPage: FC = () => {
         <div className="demo">
           <Input
             id="first-name-control"
-            label="first_name"
-            hint="first_name_hint"
+            label={t('first_name')}
+            hint={t('first_name_hint')}
             placeholder="Homer"
             loading={loading}
             error={errors?.firstName}
             {...register('firstName', {
-              required: 'required',
+              required: t('required'),
               disabled: disabled,
             })}
           />
 
           <Input
             id="last-name-control"
-            label="last_name"
-            hint="last_name_hint"
+            label={t('last_name')}
+            hint={t('last_name_hint')}
             placeholder="Simpson"
             loading={loading}
             error={errors?.lastName}
             {...register('lastName', {
-              required: 'required',
+              required: t('required'),
               disabled: disabled,
             })}
           />
 
           <Input
             id="email-control"
-            label="email"
+            label={t('email')}
             type="email"
             loading={loading}
             error={errors?.email}
             {...register('email', {
-              required: 'required',
-              validate: email('invalid_email'),
+              required: t('required'),
+              validate: email(t('invalid_email')),
               disabled: disabled,
             })}
             placeholder="Email"

@@ -1,6 +1,6 @@
 {
   "name": "react-just-ui",
-  "description": "Frequently used stylized interface elements, form elements.",
+  "description": "A library for frequently used widgets and form elements and interfaces.",
   "version": "0.2.8",
   "author": "Sergey <itsib.su@gmail.com>",
   "repository": {
@@ -32,27 +32,45 @@
         "default": "./dist/index.cjs"
       }
     },
+    "./validators": {
+      "import": {
+        "types": "./dist/validators.d.ts",
+        "default": "./dist/validators.js"
+      },
+      "require": {
+        "types": "./dist/validators.d.ts",
+        "default": "./dist/validators.cjs"
+      }
+    },
+    "./utils": {
+      "import": {
+        "types": "./dist/utils.d.ts",
+        "default": "./dist/utils.js"
+      },
+      "require": {
+        "types": "./dist/utils.d.ts",
+        "default": "./dist/utils.cjs"
+      }
+    },
     "./styles": "./dist/index.css",
     "./theme-default": "./dist/css/default.css"
   },
   "scripts": {
     "start": "node scripts/start.cjs",
-    "build": "vite build",
+    "build": "npm run build:lib && npm run build:types && npm run build:doc",
+    "build:lib": "vite build",
+    "build:types": "tsc --emitDeclarationOnly --noEmit false --declaration true",
+    "build:doc": "node scripts/extractor.cjs",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preversion": "npm run lint",
     "postversion": "git push && git push --tags"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-i18next": "^15.0.0"
-  },
-  "peerDependenciesMeta": {
-    "react-i18next": {
-      "optional": true
-    }
+    "react": "^16.8.0 || ^17 || ^18 || ^19",
+    "react-dom": "^16.8.0 || ^17 || ^18 || ^19"
   },
   "devDependencies": {
+    "@microsoft/api-extractor": "^7.47.6",
     "@types/node": "^20.14.12",
     "@types/react": "^18.3.0",
     "@types/react-dom": "^18.3.0",
@@ -69,7 +87,6 @@
     "typescript": "5.4.2",
     "vite": "^5.3.5",
     "vite-dts": "^1.0.4",
-    "vite-plugin-dts": "^4.0.0-beta.2",
     "vitest": "^2.0.4"
   }
 }

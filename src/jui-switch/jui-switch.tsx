@@ -1,10 +1,10 @@
 import React, { forwardRef } from 'react';
-import { BaseProps } from '../types';
+import { BaseControlProps } from '../types';
 import { Label } from '../jui-label/jui-label.tsx';
 import { ErrorMessage } from '../jui-error-message/jui-error-message.tsx';
 import './jui-switch.css';
 
-export interface SwitchProps extends BaseProps<HTMLInputElement> {
+export interface SwitchProps extends BaseControlProps<HTMLInputElement> {
   rowReverse?: boolean;
 }
 

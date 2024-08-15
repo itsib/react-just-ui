@@ -1,11 +1,11 @@
 import { ForwardedRef, forwardRef, useEffect } from 'react';
-import { BaseProps } from '../types';
+import { BaseControlProps } from '../types';
 import { ErrorMessage } from '../jui-error-message/jui-error-message.tsx';
 import { Label } from '../jui-label/jui-label.tsx';
 import './jui-textarea.css';
 import { cn } from '../utils';
 
-export interface TextareaProps extends BaseProps<HTMLTextAreaElement> {
+export interface TextareaProps extends BaseControlProps<HTMLTextAreaElement> {
   elastic?: boolean;
   placeholder?: string;
   loading?: boolean;

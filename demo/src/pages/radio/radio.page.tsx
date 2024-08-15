@@ -1,10 +1,12 @@
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Trans } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { RadioButton, Checkbox } from 'react-just-ui';
 import './radio.page.css'
 
 export const RadioPage: FC = () => {
+  const { t } = useTranslation();
+
   const [disabled, setDisabled] = useState(false);
   const { register, reset } = useForm<{ radio: string }>({
     defaultValues: {
@@ -24,7 +26,7 @@ export const RadioPage: FC = () => {
         <div className="actions">
           <Checkbox
             id="demo-disabled"
-            label="disable_demo_control"
+            label={t('disable_demo_control')}
             value={disabled as any}
             onChange={event => setDisabled((event.target as any).checked)}
           />
@@ -33,7 +35,7 @@ export const RadioPage: FC = () => {
         <div className="demo">
           <RadioButton
             id="demo-radio-a"
-            label="Off with your head"
+            label={t('radio_label_0')}
             error={false}
             value="a"
             {...register('radio', { disabled: disabled })}
@@ -41,7 +43,7 @@ export const RadioPage: FC = () => {
 
           <RadioButton
             id="demo-radio-b"
-            label="Dance ’til you’re dead"
+            label={t('radio_label_1')}
             error={false}
             value="b"
             {...register('radio', { disabled: disabled })}
@@ -49,7 +51,7 @@ export const RadioPage: FC = () => {
 
           <RadioButton
             id="demo-radio-c"
-            label="Heads will roll"
+            label={t('radio_label_2')}
             error={false}
             value="c"
             {...register('radio', { disabled: disabled })}
@@ -57,7 +59,7 @@ export const RadioPage: FC = () => {
 
           <RadioButton
             id="demo-radio-d"
-            label="On the floor"
+            label={t('radio_label_3')}
             error={false}
             value="d"
             {...register('radio', { disabled: disabled })}

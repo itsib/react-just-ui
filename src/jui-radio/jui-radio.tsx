@@ -1,10 +1,10 @@
 import React, { forwardRef } from 'react';
-import { BaseProps } from '../types';
+import { BaseControlProps } from '../types';
 import { Label } from '../jui-label/jui-label.tsx';
 import { ErrorMessage } from '../jui-error-message/jui-error-message.tsx';
 import './jui-radio.css';
 
-export interface RadioButtonProps extends Omit<BaseProps<HTMLInputElement>, 'value'> {
+export interface RadioButtonProps extends Omit<BaseControlProps<HTMLInputElement>, 'value'> {
   /**
    * If true, then label and checkbox are swapped
    */

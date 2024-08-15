@@ -1,9 +1,10 @@
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Trans } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { Checkbox } from 'react-just-ui';
 
 export const CheckboxPage: FC = () => {
+  const { t } = useTranslation();
   const [disabled, setDisabled] = useState(false);
   const { register, reset, formState: { errors } } = useForm<{ enabled: boolean }>({
     defaultValues: {
@@ -23,7 +24,7 @@ export const CheckboxPage: FC = () => {
         <div className="actions">
           <Checkbox
             id="demo-disabled"
-            label="disable_demo_control"
+            label={t('disable_demo_control')}
             value={disabled as any}
             onChange={event => setDisabled((event.target as any).checked)}
           />
@@ -32,7 +33,7 @@ export const CheckboxPage: FC = () => {
         <div className="demo">
           <Checkbox
             id="switch"
-            label="airplane_mode"
+            label={t('airplane_mode')}
             error={errors?.enabled}
             {...register('enabled', { disabled: disabled })}
           />

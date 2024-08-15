@@ -1,14 +1,13 @@
 import React, { ForwardedRef, forwardRef, useEffect } from 'react';
-import { BaseProps } from '../types';
+import { BaseControlProps } from '../types';
 import { cn } from '../utils';
 import { ErrorMessage } from '../jui-error-message/jui-error-message.tsx';
 import { Label } from '../jui-label/jui-label.tsx';
-import { useTranslation } from '../_inner/react-i18next.resolved.ts';
 import './jui-input.css';
 
 export type InputType = 'text' | 'password' | 'email' | 'search' | 'tel' | 'url' | 'number';
 
-export interface InputProps extends BaseProps<HTMLInputElement> {
+export interface InputProps extends BaseControlProps<HTMLInputElement> {
   type?: InputType;
   prefix?: string | React.JSX.Element;
   suffix?: string | React.JSX.Element;
@@ -21,7 +20,6 @@ export const Input = forwardRef(function Input(
   ref: ForwardedRef<HTMLInputElement>,
 ) {
   const { id, className, label, hint, type: _type, prefix, suffix, loading, error, ..._props } = props;
-  const { t } = useTranslation();
   const type = _type === 'number' ? 'text' : _type;
 
   useEffect(() => {
@@ -53,9 +51,9 @@ export const Input = forwardRef(function Input(
 
       <div className="control">
         <div className="loader-backdrop"><span className="jui-loading" /></div>
-        {prefix ? typeof prefix === 'string' ? <div className="prefix">{t(prefix)}</div> : prefix : null}
+        {prefix ? typeof prefix === 'string' ? <div className="prefix">{prefix}</div> : prefix : null}
         <input id={id} type={type} ref={ref} {..._props} />
-        {suffix ? typeof suffix === 'string' ? <div className="suffix">{t(suffix)}</div> : suffix : null}
+        {suffix ? typeof suffix === 'string' ? <div className="suffix">{suffix}</div> : suffix : null}
       </div>
 
       <ErrorMessage error={error}/>

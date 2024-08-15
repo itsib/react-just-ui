@@ -5,32 +5,7 @@ import { defineConfig, UserConfig, ConfigEnv } from 'vite';
 import autoprefixer from 'autoprefixer'
 import postcssNesting from 'postcss-nesting'
 import { peerDependencies } from './package.json';
-import dts from 'vite-plugin-dts'
 
-function types() {
-  const dtsInstance = dts({ rollupTypes: true }) as any;
-
-  return {
-    ...dtsInstance,
-    configResolved(config: UserConfig, env: ConfigEnv) {
-      return dtsInstance.configResolved(
-        {
-          ...config,
-          build: {
-            ...config.build,
-            lib: {
-              ...config.build!.lib,
-              entry: {
-                index: (config.build!.lib as any)!.entry.index,
-              }
-            },
-          },
-        },
-        env,
-      );
-    },
-  }
-}
 
 export default defineConfig(async ({ mode }: ConfigEnv): Promise<UserConfig>  => {
   return {
@@ -59,6 +34,8 @@ export default defineConfig(async ({ mode }: ConfigEnv): Promise<UserConfig>  =>
       lib: {
         entry: {
           index: resolve(__dirname, 'src/index.ts'),
+          validators: resolve(__dirname, 'src/validators/index.ts'),
+          utils: resolve(__dirname, 'src/utils/index.ts'),
           'css/default': resolve(__dirname, 'src/theme/default.css'),
         },
         name: 'index',
@@ -69,9 +46,6 @@ export default defineConfig(async ({ mode }: ConfigEnv): Promise<UserConfig>  =>
       },
       outDir: resolve(__dirname, 'dist'),
     },
-    plugins: [
-      react(),
-      types(),
-    ],
+    plugins: [react()],
   }
 });

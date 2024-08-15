@@ -1,9 +1,11 @@
 import { FC, useState } from 'react';
-import { Trans } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { Checkbox, Switch } from 'react-just-ui';
 
 export const SwitchPage: FC = () => {
+  const { t } = useTranslation();
+
   const [disabled, setDisabled] = useState(false);
   const { register, reset, formState: { errors } } = useForm<{ enabled: boolean }>({
     defaultValues: {
@@ -23,7 +25,7 @@ export const SwitchPage: FC = () => {
         <div className="actions">
           <Checkbox
             id="demo-disabled"
-            label="disable_demo_control"
+            label={t('disable_demo_control')}
             value={disabled as any}
             onChange={event => setDisabled((event.target as any).checked)}
           />
@@ -32,7 +34,7 @@ export const SwitchPage: FC = () => {
         <div className="demo">
           <Switch
             id="switch"
-            label="airplane_mode"
+            label={t('airplane_mode')}
             error={errors?.enabled}
             {...register('enabled', { disabled: disabled })}
           />

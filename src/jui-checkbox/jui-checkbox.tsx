@@ -1,10 +1,10 @@
 import React, { forwardRef } from 'react';
-import { BaseProps } from '../types';
+import { BaseControlProps } from '../types';
 import { Label } from '../jui-label/jui-label';
 import { ErrorMessage } from '../jui-error-message/jui-error-message';
 import './jui-checkbox.css';
 
-export interface CheckboxProps extends BaseProps<HTMLInputElement> {
+export interface CheckboxProps extends BaseControlProps<HTMLInputElement> {
   rowReverse?: boolean;
 }
 

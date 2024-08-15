@@ -1,9 +1,11 @@
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Trans } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { Checkbox, OtpInput } from 'react-just-ui';
 
 export const OptInputPage: FC = () => {
+  const { t } = useTranslation();
+
   const [disabled, setDisabled] = useState(false);
   const { register, reset, formState: { errors } } = useForm<{ otpCode: string }>({
     defaultValues: {
@@ -23,7 +25,7 @@ export const OptInputPage: FC = () => {
         <div className="actions">
           <Checkbox
             id="otp-demo-disabled"
-            label="disable_demo_control"
+            label={t('disable_demo_control')}
             value={disabled as any}
             onChange={event => setDisabled((event.target as any).checked)}
           />
@@ -33,11 +35,11 @@ export const OptInputPage: FC = () => {
           <OtpInput
             id="otp-code-control"
             layout="ddd.ddd"
-            label="otp_code"
-            hint="otp_code_hint"
+            label={t('otp_code')}
+            hint={t('otp_code_hint')}
             error={errors?.otpCode}
             {...register('otpCode', {
-              required: 'required',
+              required: t('required'),
               disabled: disabled,
             })}
           />

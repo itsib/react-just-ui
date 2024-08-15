@@ -1,5 +1,5 @@
-import { SelectOption } from '../types';
-import React, { CSSProperties, useEffect, useMemo, useRef, useState } from 'react';
+import type { SelectOption } from './_option.tsx';
+import React, { type CSSProperties, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Option } from './_option.tsx';
 import './_dropdown.css';

@@ -1,4 +1,10 @@
-
+/**
+ * Implementation of the cn function
+ *
+ * @param objs - Class Names
+ *
+ * @internal
+ */
 export function classNames(...objs: (string | Record<string, boolean> | string[] | null | undefined)[]): string {
   let output = '';
 
@@ -25,4 +31,30 @@ export function classNames(...objs: (string | Record<string, boolean> | string[]
   return output;
 }
 
+/**
+ * A function for managing class names in React.
+ *
+ * @param objs - The list of classes can be a string,
+ * an array of strings and an object where
+ * the keys are class names and the value is to enable or
+ * disable this name in the list of classes.
+ *
+ * @example
+ * ```tsx
+ * <div
+ *   classNames={
+ *     cn(
+ *       'string-class',
+ *       ['array-classes'],
+ *       {
+ *         'enabled-classname': true,
+ *         'disabled-classname': false,
+ *       }
+ *     )
+ *   }
+ * />
+ * ```
+ *
+ * @public
+ */
 export const cn = classNames;
