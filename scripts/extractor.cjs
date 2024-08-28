@@ -36,6 +36,10 @@ function extractApi(config) {
     configObject: {
       ...configFile,
       mainEntryPointFilePath: input,
+      apiReport: {
+        ...configFile.apiReport,
+        reportFileName: `${fileBaseName}`
+      },
       dtsRollup: {
         ...configFile.dtsRollup,
         untrimmedFilePath: outputDtsFile,

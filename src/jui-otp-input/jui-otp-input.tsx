@@ -38,10 +38,10 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
 
   // Handle user input and resolve 6-letters code
   useEffect(() => {
-    const count = elements.filter(el => ['d', 's', 'w'].includes(el)).length;
-    const off = new Array<() => void>(count);
-    const main = document.getElementById(id) as HTMLInputElement;
-    const slave = new Array<HTMLInputElement>(count);
+    const count = elements.filter(el => ['d', 's', 'w'].includes(el)).length; // The number of characters in the code
+    const off = new Array<() => void>(count);   // Callbacks for remove event listeners for each input
+    const main = document.getElementById(id) as HTMLInputElement;  // The main input field where the entire code is written
+    const slave = new Array<HTMLInputElement>(count); // Text fields for each character of the code
     for (let i = 0; i < count; i++) {
       slave[i] = document.getElementById(`${id}-${i}`) as HTMLInputElement;
     }
@@ -82,12 +82,14 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
 
     const onInput = () => {
       let output = '';
+
       for (let i = 0; i < count; i++) {
         if (upper) {
           slave[i].value = slave[i].value?.toUpperCase();
         }
         output += slave[i].value;
       }
+
       emitCodeToMain(output);
     };
 
@@ -101,32 +103,39 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
       const self = event.target as HTMLInputElement;
       const index = self.dataset.index ? parseInt(self.dataset.index, 10) : 0;
       const filter = self.dataset.filter;
-      const data = event.data;
+      const data = event.data?.trim();
 
-      // Handle one char code input
-      if (event.inputType === 'insertText' && data) {
-        if ((filter === 'd' && !/^[0-9]$/.test(data)) || (filter === 'w' && !/^[a-zA-Z]$/.test(data))) {
-          event.preventDefault();
-        } else {
-          setTimeout(() => focusNext(index + 1), 1);
+      switch (event.inputType) {
+        case 'insertText': {
+          if (!data || data.length !== 1 || (filter === 'd' && !/^[0-9]$/.test(data)) || (filter === 'w' && !/^[a-zA-Z]$/.test(data))) {
+            return event.preventDefault();
+          } else {
+            setTimeout(() => focusNext(index + 1), 1);
+            return;
+          }
         }
+        case 'deleteContentBackward': {
+          setTimeout(() => focusNext(index - 1), 1);
+          return;
+        }
+        case 'insertFromPaste': {
+          if (data && data.length === count || index === 0) {
+            setTimeout(() => insertAll(data!), 1);
+          }
+          event.preventDefault();
+          return;
+        }
+        case 'historyUndo':
+        case 'historyRedo':
+          event.preventDefault();
+          break;
       }
-      // Handle backspace
-      else if (event.inputType === 'deleteContentBackward') {
-        setTimeout(() => focusNext(index - 1), 1);
-      }
-      // Handle paste code (validate and insert to fields)
-      else if (event.inputType === 'insertFromPaste' && data) {
-        setTimeout(() => insertAll(data), 1);
-      }
-      // Handle undo/redo
-      else if (event.inputType === 'historyUndo' || event.inputType === 'historyRedo') {
-        event.preventDefault();
-      }
-
     };
 
     const onFocus = (event: FocusEvent) => {
+      if (event.relatedTarget) {
+        return;
+      }
       clearTimeout(blurFireTimer);
       const currentIndex = +(event.target as any).dataset.index;
       const shouldIndex = value.length;

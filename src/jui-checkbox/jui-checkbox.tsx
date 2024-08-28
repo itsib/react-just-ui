@@ -8,6 +8,17 @@ export interface CheckboxProps extends BaseControlProps<HTMLInputElement> {
   rowReverse?: boolean;
 }
 
+/**
+ * Checkbox
+ *
+ * @remarks
+ * A wrapper for an input element of the checkbox type as boxes that are
+ * checked (ticked) when activated, like you might see in an official
+ * government paper form. The exact appearance depends upon the operating
+ * system configuration under which the browser is running.
+ *
+ * @public
+ */
 export const Checkbox = forwardRef(function Checkbox(
   _props: CheckboxProps,
   _ref: React.ForwardedRef<HTMLInputElement>
