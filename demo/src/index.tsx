@@ -2,8 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom';
 import { ROUTES } from './pages/routes.tsx';
-import 'react-just-ui/theme-default';
-import 'react-just-ui/styles';
+import 'react-just-ui/themes/default.css';
+import 'react-just-ui/styles.css';
 import './i18n';
 import './index.css'
 

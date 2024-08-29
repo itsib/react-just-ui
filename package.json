@@ -12,81 +12,96 @@
     "access": "public"
   },
   "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "sideEffects": [
     "**/*.css"
   ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.cjs"
-      }
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./select": {
+      "types": "./dist/components/select/index.d.ts",
+      "default": "./dist/components/select/index.js"
+    },
+    "./checkbox": {
+      "types": "./dist/components/checkbox/index.d.ts",
+      "default": "./dist/components/checkbox/index.js"
+    },
+    "./input": {
+      "types": "./dist/components/input/index.d.ts",
+      "default": "./dist/components/input/index.js"
+    },
+    "./otp-input": {
+      "types": "./dist/components/otp-input/index.d.ts",
+      "default": "./dist/components/otp-input/index.js"
+    },
+    "./radio": {
+      "types": "./dist/components/radio/index.d.ts",
+      "default": "./dist/components/radio/index.js"
+    },
+    "./switch": {
+      "types": "./dist/components/switch/index.d.ts",
+      "default": "./dist/components/switch/index.js"
+    },
+    "./textarea": {
+      "types": "./dist/components/textarea/index.d.ts",
+      "default": "./dist/components/textarea/index.js"
     },
     "./validators": {
-      "import": {
-        "types": "./dist/validators.d.ts",
-        "default": "./dist/validators.js"
-      },
-      "require": {
-        "types": "./dist/validators.d.ts",
-        "default": "./dist/validators.cjs"
-      }
+      "types": "./dist/validators/index.d.ts",
+      "default": "./dist/validators/index.js"
     },
     "./utils": {
-      "import": {
-        "types": "./dist/utils.d.ts",
-        "default": "./dist/utils.js"
-      },
-      "require": {
-        "types": "./dist/utils.d.ts",
-        "default": "./dist/utils.cjs"
-      }
+      "types": "./dist/utils/index.d.ts",
+      "default": "./dist/utils/index.js"
     },
-    "./styles": "./dist/index.css",
-    "./theme-default": "./dist/css/default.css"
+    "./styles.css": "./dist/css/styles.css",
+    "./themes/*.css": "./dist/themes/*.css",
+    "./package.json": "./package.json"
   },
   "scripts": {
     "start": "node scripts/start.cjs",
-    "build": "npm run build:lib && npm run build:types && npm run build:doc",
-    "build:lib": "vite build",
-    "build:types": "tsc --emitDeclarationOnly --noEmit false --declaration true",
-    "build:doc": "node scripts/extractor.cjs",
+    "build": "npm run build:lib && npm run build:doc",
+    "build:lib": "tsc && vite build --mode production",
+    "build:doc": "api-extractor run --local --verbose",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preversion": "npm run lint",
     "postversion": "git push && git push --tags"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17 || ^18 || ^19",
-    "react-dom": "^16.8.0 || ^17 || ^18 || ^19"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.47.6",
     "@types/node": "^20.14.12",
+    "@types/postcss-import": "^14.0.3",
     "@types/react": "^18.3.0",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.17.0",
     "@typescript-eslint/parser": "^7.17.0",
-    "@vitejs/plugin-react": "^4.3.0",
     "@vitejs/plugin-react-swc": "^3.7.0",
     "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
+    "glob": "^11.0.0",
     "postcss": "^8.4.40",
+    "postcss-import": "^16.1.0",
     "postcss-nesting": "^12.1.5",
     "typescript": "5.4.2",
-    "vite": "^5.3.5",
-    "vite-dts": "^1.0.4",
-    "vitest": "^2.0.4"
+    "vite": "^5.4.2",
+    "vite-plugin-dts": "^4.0.3",
+    "vite-plugin-lib-inject-css": "^2.1.1",
+    "vitest": "^2.0.5"
+  },
+  "overrides": {
+    "glob": "^11.0.0"
   }
 }

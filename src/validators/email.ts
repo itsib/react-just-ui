@@ -1,4 +1,4 @@
-import { ValidationFn } from './types';
+import type { ValidationFn } from '@types';
 
 /**
  * Email validator function.

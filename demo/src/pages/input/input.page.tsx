@@ -1,8 +1,7 @@
 import { FC, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
-import { Checkbox, Input } from 'react-just-ui';
-import { email } from 'react-just-ui/validators';
+import { Checkbox, Input, email } from 'react-just-ui';
 import { CodeExample } from '../../components/code-example/code-example.tsx';
 
 const SOURCE = `

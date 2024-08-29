@@ -1,0 +1,25 @@
+.jui.jui-label {
+  margin-bottom: var(--jui-label-margin);
+  color: rgb(var(--jui-label-rgb));
+  user-select: none;
+  display: block;
+
+  .jui-text {
+    font-size: var(--jui-label-font-size);
+  }
+
+  .jui-required {
+    color: rgb(var(--jui-error-rgb));
+    font-size: var(--jui-label-font-size);
+  }
+
+  .jui-question {
+    width: var(--jui-label-font-size);
+    height: var(--jui-label-font-size);
+    color: rgb(var(--jui-label-rgb));
+    margin-left: 0.5rem;
+  }
+}
+
+
+

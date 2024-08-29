@@ -1,7 +1,8 @@
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Trans, useTranslation } from 'react-i18next';
-import { Select, Checkbox } from 'react-just-ui';
+import { Checkbox } from 'react-just-ui/checkbox';
+import { Select } from 'react-just-ui/select';
 
 const SELECT_OPTIONS = [
   {

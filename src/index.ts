@@ -1,4 +1,4 @@
-// Copyright (c) Example Company. All rights reserved. Licensed under the MIT license.
+// Copyright (c). All rights reserved. Licensed under the MIT license.
 
 /**
  * A library for frequently used widgets and form elements and interfaces.
@@ -10,19 +10,20 @@
  * @packageDocumentation
  */
 
-import './styles.css';
-import './jui-tooltip/jui-tooltip.css';
-import './jui-scroll/jui-scroll.css';
-import './jui-loading/jui-loading.css';
+import './themes/default.css';
+import './css/styles.css';
 
 export * from './types';
-export * from './jui-error-message/jui-error-message';
-export * from './jui-label/jui-label';
+export * from './utils';
+export * from './validators';
 
-export * from './jui-input/jui-input';
-export * from './jui-select/jui-select';
-export * from './jui-textarea/jui-textarea';
-export * from './jui-checkbox/jui-checkbox';
-export * from './jui-radio/jui-radio';
-export * from './jui-switch/jui-switch';
-export * from './jui-otp-input/jui-otp-input';
+export * from '@components/error-message';
+export * from '@components/label';
+export * from '@components/checkbox';
+export * from '@components/input';
+export * from '@components/select';
+export * from '@components/textarea';
+export * from '@components/radio';
+export * from '@components/switch';
+export * from '@components/otp-input';
+
