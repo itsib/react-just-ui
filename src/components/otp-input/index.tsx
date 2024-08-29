@@ -4,6 +4,11 @@ import { Label } from '@components/label';
 import { ErrorMessage } from '@components/error-message';
 import './styles.css';
 
+/**
+ * One-time password input properties
+ *
+ * @public
+ */
 export interface OtpInputProps extends BaseControlProps<HTMLInputElement> {
   /**
    * Code layout present. Example «ddd-ddd» six digit code.
@@ -14,15 +19,25 @@ export interface OtpInputProps extends BaseControlProps<HTMLInputElement> {
    *    «w» - letter [a-z]
    *    «s» - digit or letter
    *
-   * @default 'ddd-ddd'
+   * @defaultValue 'ddd-ddd'
+   * @public
    */
   layout?: string;
   /**
    * Rewrite code to upper case
+   * @public
    */
   upper?: boolean;
 }
 
+/**
+ * One-time password input
+ *
+ * @remarks
+ * This is the most complete OTP input on the web.
+ *
+ * @public
+ */
 export const OtpInput = forwardRef(function FormControlVerifyCode(
   props: OtpInputProps,
   ref: ForwardedRef<HTMLInputElement>,
@@ -81,13 +96,16 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
     const insertAll = (code: string) => {
       let output = '';
       for (let i = 0; i < count; i++) {
-        const symbol = code.charAt(i);
+        let symbol = code.charAt(i);
         if (!symbol) {
           return;
         }
+        if (upper) {
+          symbol = symbol.toUpperCase();
+        }
         slave[i].focus();
-        slave[i].value = symbol;
         slave[i].setSelectionRange(1, 1);
+        slave[i].value = symbol;
         output += symbol;
       }
       emitCodeToMain(output);
