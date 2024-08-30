@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { CSSProperties, FC, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { Checkbox } from 'react-just-ui/checkbox';
 import { Image } from 'react-just-ui/image';
@@ -93,9 +93,15 @@ export const ImagePage: FC = () => {
 
         <div className="demo">
           <br/>
-          <div>
-            <Image src={IMAGES_URLS[imageSrc]} fallback={fallback} size={100} active={active} loading={loading}
-                   disabled={disabled}/>
+          <div style={{ '--jui-image-border-width': '2px' } as CSSProperties}>
+            <Image
+              src={IMAGES_URLS[imageSrc]}
+              fallback={fallback}
+              size={100}
+              active={active}
+              loading={loading}
+              disabled={disabled}
+            />
           </div>
         </div>
       </fieldset>
