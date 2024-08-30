@@ -5,11 +5,12 @@ import { Layout } from './layout.tsx';
 import { InputPage } from './input/input.page.tsx';
 import { SelectPage } from './select/select.page.tsx';
 import { TextareaPage } from './textarea/textarea.page.tsx';
-import { OptInputPage } from './opt-input/opt-input.page.tsx';
+import { OtpInputPage } from './otp-input/otp-input.page.tsx';
 import { SwitchPage } from './switch/switch.page.tsx';
 import { CheckboxPage } from './checkbox/checkbox.page.tsx';
 import { TooltipPage } from './tooltip/tooltip.page.tsx';
 import { RadioPage } from './radio/radio.page.tsx';
+import { ImagePage } from "./image/image.page.tsx";
 
 const ErrorBoundary: FC = () => {
   const error = useRouteError();
@@ -34,12 +35,16 @@ export const ROUTES = createRouter(
           Component: HomePage
         },
         {
+          path: 'image',
+          Component: ImagePage
+        },
+        {
           path: 'input',
           Component: InputPage
         },
         {
           path: 'otp-input',
-          Component: OptInputPage
+          Component: OtpInputPage
         },
         {
           path: 'select',

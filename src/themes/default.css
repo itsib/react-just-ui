@@ -12,6 +12,7 @@
   --jui-border-focus-rgb: 38 38 38;
   --jui-bg-disabled-rgb: 220 220 220;
   --jui-bg-hover-rgb: 230 230 230;
+  --jui-bg-image-rgb: 220 220 220;
   --jui-tt-bg-rgb: 255 255 255;
   --jui-tt-border-rgb: 204 204 204;
   --jui-switch-bg-rgb: 228 228 231;
@@ -49,6 +50,8 @@ body {
   --jui-checkbox-tick-color: rgb(var(--jui-checkbox-rgb));
   --jui-box-shadow-focus: 0 0 0 1px rgb(var(--jui-black-rgb)), 0 0 3px 0 rgb(var(--jui-border-focus-rgb));
   --jui-box-shadow: 0 0 12px -1px rgb(var(--jui-black-rgb) / 0.2), 0 0 1px 1px rgb(var(--jui-shadow-rgb) / 0.2);
+  --jui-image-bg-rgb: var(--jui-bg-disabled-rgb);
+  --jui-image-border-rgb: var(--jui-accent-rgb);
 
   /* SIZES PADDINGS ETC */
   --jui-height: 40px;
@@ -66,8 +69,11 @@ body {
   --jui-error-font-size: 0.75rem;
   --jui-tt-font-size: 12px;
   --jui-error-height: calc(0.75rem + 4px);
+  --jui-image-border-widh: 0;
+
+  /* SVG */
   --jui-loading-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='4' cy='12' r='0' fill='%23000'%3E%3Canimate fill='freeze' attributeName='r' begin='0;a.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='0;3'/%3E%3Canimate fill='freeze' attributeName='cx' begin='b.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='4;12'/%3E%3Canimate fill='freeze' attributeName='cx' begin='c.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='12;20'/%3E%3Canimate id='e' fill='freeze' attributeName='r' begin='d.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='3;0'/%3E%3Canimate id='a' fill='freeze' attributeName='cx' begin='e.end' dur='0.001s' values='20;4'/%3E%3C/circle%3E%3Ccircle cx='4' cy='12' r='3' fill='%23000'%3E%3Canimate fill='freeze' attributeName='cx' begin='0;a.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='4;12'/%3E%3Canimate fill='freeze' attributeName='cx' begin='b.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='12;20'/%3E%3Canimate id='f' fill='freeze' attributeName='r' begin='c.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='3;0'/%3E%3Canimate id='d' fill='freeze' attributeName='cx' begin='f.end' dur='0.001s' values='20;4'/%3E%3Canimate fill='freeze' attributeName='r' begin='d.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='0;3'/%3E%3C/circle%3E%3Ccircle cx='12' cy='12' r='3' fill='%23000'%3E%3Canimate fill='freeze' attributeName='cx' begin='0;a.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='12;20'/%3E%3Canimate id='g' fill='freeze' attributeName='r' begin='b.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='3;0'/%3E%3Canimate id='c' fill='freeze' attributeName='cx' begin='g.end' dur='0.001s' values='20;4'/%3E%3Canimate fill='freeze' attributeName='r' begin='c.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='0;3'/%3E%3Canimate fill='freeze' attributeName='cx' begin='d.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='4;12'/%3E%3C/circle%3E%3Ccircle cx='20' cy='12' r='3' fill='%23000'%3E%3Canimate id='h' fill='freeze' attributeName='r' begin='0;a.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='3;0'/%3E%3Canimate id='b' fill='freeze' attributeName='cx' begin='h.end' dur='0.001s' values='20;4'/%3E%3Canimate fill='freeze' attributeName='r' begin='b.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='0;3'/%3E%3Canimate fill='freeze' attributeName='cx' begin='c.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='4;12'/%3E%3Canimate fill='freeze' attributeName='cx' begin='d.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='12;20'/%3E%3C/circle%3E%3C/svg%3E");
-  --jui-loading-size: 40px;
+  --jui-image-falback-svg: url('data:image/svg+xml,%3Csvg version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath fill="%23000" d="m257 86c-8.56 0-17.1 2.14-24.8 6.4-0.132 0.0684-0.262 0.139-0.392 0.211l-104 61.3c-15.9 8.75-25.9 25.5-25.9 43.6v113c-4e-5 0.0201-4e-5 0.0402 0 0.0603 0.0606 18.1 10 34.9 25.9 43.6l-0.845-0.483 104 66c0.276 0.18 0.558 0.351 0.845 0.513 15.1 8.3 33.5 8.3 48.6 0 0.287-0.162 0.569-0.333 0.845-0.513l104-66-0.815 0.483c15.9-8.75 25.9-25.5 25.9-43.6v-112c0.106-17-8.99-32.4-23.2-41.6-0.395-0.666-0.84-1.3-1.33-1.9l-104-61.5c-0.13-0.0722-0.26-0.143-0.392-0.211-7.72-4.26-15.9-7.12-24.4-7.12zm-9.93 33.5h0.0309c6.18-3.4 13.6-3.4 19.8 0l103 61c0.0585 0.132 0.119 0.262 0.181 0.392 5.98 3.4 9.61 9.69 9.57 16.6-1.6e-4 0.0403-1.6e-4 0.0807 0 0.121v82.9l-20-20c-0.0697-0.071-0.14-0.141-0.211-0.211-9.46-9.1-21.5-14.7-33.9-14.7s-24.4 5.57-33.9 14.7c-0.071 0.0696-0.141 0.14-0.211 0.211l-4.53 4.53-35.4-35.4c-0.0696-0.071-0.14-0.141-0.211-0.211-9.46-9.1-21.5-14.7-33.9-14.7s-24.4 5.57-33.9 14.7c-0.071 0.0697-0.141 0.14-0.211 0.211l-50.9 50.9v-83c0-6.86 3.71-13.1 9.9-16.5 0.132-0.0784 0.263-0.159 0.392-0.241zm55.8 59.3c-8.56 0-15.5 6.94-15.5 15.5s6.94 15.5 15.5 15.5h0.151c8.56 0 15.5-6.94 15.5-15.5s-6.94-15.5-15.5-15.5zm-85 66.9c3.56 0 7.58 1.34 12.5 6.04l77.1 77.1c6.05 6.04 15.8 6.04 21.9 0 6.04-6.05 6.04-15.8 0-21.9l-20-20 4.32-4.32c4.88-4.7 8.9-6.04 12.5-6.04s7.58 1.34 12.5 6.04l36.3 36.3c-1.68 2.62-1.73 6.17-4.62 7.76-0.277 0.153-0.548 0.314-0.815 0.483l-104 65.5c-5.85 3.17-12.9 3.17-18.7 0l-104-65.5c-0.276-0.18-0.558-0.351-0.845-0.513-2.83-1.55-2.91-5.12-4.59-7.73l67.3-67.3c4.88-4.7 8.9-6.04 12.5-6.04z"/%3E%3C/svg%3E%0A');
 
   /* Z-INDEX */
   --jui-overlay-z-index: 200;

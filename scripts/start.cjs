@@ -16,7 +16,7 @@ function getFrame() {
 
 function build() {
   return new Promise((resolve, reject) => {
-    exec('npm run build', (err, stdout, stderr) => {
+    exec('npm run build:lib', (err, stdout, stderr) => {
       if (err) {
         const frames = stdout.split('\n\n').filter(Boolean);
         const message = `${stderr}\n${frames[frames.length - 1]}`

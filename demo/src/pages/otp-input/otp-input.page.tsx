@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Trans, useTranslation } from 'react-i18next';
 import { Checkbox, OtpInput } from 'react-just-ui';
 
-export const OptInputPage: FC = () => {
+export const OtpInputPage: FC = () => {
   const { t } = useTranslation();
 
   const [disabled, setDisabled] = useState(false);

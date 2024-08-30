@@ -53,6 +53,10 @@
       "types": "./dist/components/textarea/index.d.ts",
       "default": "./dist/components/textarea/index.js"
     },
+    "./image": {
+      "types": "./dist/components/image/index.d.ts",
+      "default": "./dist/components/image/index.js"
+    },
     "./validators": {
       "types": "./dist/validators/index.d.ts",
       "default": "./dist/validators/index.js"

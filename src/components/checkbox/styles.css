@@ -60,7 +60,7 @@
           opacity: 1;
           transform: scale(1,1);
           transition-duration: 0s;
-          animation-name: checkbox-checked;
+          animation-name: jui-checkbox-checked;
           animation-fill-mode: forwards;
           animation-duration: var(--jui-checkbox-in-duration);
           animation-timing-function: cubic-bezier(.4,.0,.23,1);
@@ -115,11 +115,3 @@
   }
 }
 
-@keyframes checkbox-checked {
-  from {
-    stroke-dashoffset: 24;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}

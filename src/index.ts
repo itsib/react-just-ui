@@ -26,4 +26,5 @@ export * from '@components/textarea';
 export * from '@components/radio';
 export * from '@components/switch';
 export * from '@components/otp-input';
+export * from '@components/image';
 

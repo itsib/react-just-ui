@@ -1,10 +1,10 @@
 @font-face {
     font-family: "IconFont";
-    src: url("/fonts/icon-font/IconFont.eot?bfe8b42aaf55b967d1903d7bb6a61498#iefix") format("embedded-opentype"),
-url("/fonts/icon-font/IconFont.woff2?bfe8b42aaf55b967d1903d7bb6a61498") format("woff2"),
-url("/fonts/icon-font/IconFont.woff?bfe8b42aaf55b967d1903d7bb6a61498") format("woff"),
-url("/fonts/icon-font/IconFont.ttf?bfe8b42aaf55b967d1903d7bb6a61498") format("truetype"),
-url("/fonts/icon-font/IconFont.svg?bfe8b42aaf55b967d1903d7bb6a61498#IconFont") format("svg");
+    src: url("/fonts/icon-font/IconFont.eot?7e0870890d053dcaa1b6add14e807f39#iefix") format("embedded-opentype"),
+url("/fonts/icon-font/IconFont.woff2?7e0870890d053dcaa1b6add14e807f39") format("woff2"),
+url("/fonts/icon-font/IconFont.woff?7e0870890d053dcaa1b6add14e807f39") format("woff"),
+url("/fonts/icon-font/IconFont.ttf?7e0870890d053dcaa1b6add14e807f39") format("truetype"),
+url("/fonts/icon-font/IconFont.svg?7e0870890d053dcaa1b6add14e807f39#IconFont") format("svg");
 }
 
 .icon {
@@ -41,23 +41,26 @@ url("/fonts/icon-font/IconFont.svg?bfe8b42aaf55b967d1903d7bb6a61498#IconFont") f
 .icon-input:before {
   content: "\f107";
 }
-.icon-home:before {
+.icon-image:before {
   content: "\f108";
 }
-.icon-helicopter:before {
+.icon-home:before {
   content: "\f109";
 }
-.icon-email:before {
+.icon-helicopter:before {
   content: "\f10a";
 }
-.icon-copy:before {
+.icon-email:before {
   content: "\f10b";
 }
-.icon-checkbox:before {
+.icon-copy:before {
   content: "\f10c";
 }
-.icon-car:before {
+.icon-checkbox:before {
   content: "\f10d";
+}
+.icon-car:before {
+  content: "\f10e";
 }
 
 .icon-spinner {

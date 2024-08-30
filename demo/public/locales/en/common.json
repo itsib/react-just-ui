@@ -48,5 +48,14 @@
   "textarea_page_content": "A multi-line text input control (text area). Additionally, elastic mode is supported.",
   "tooltip": "Tooltip",
   "tooltip_page_content": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  "width_value": "Width «{{value}}»"
+  "width_value": "Width «{{value}}»",
+  "image": "Image",
+  "image_page_content": "The image component supports a fallback image and a preloader for the displayed image.",
+  "image_enable_active_attribute": "Set the «active» property state",
+  "image_enable_loading_attribute": "Set the «loading» property state",
+  "image_enable_disabled_attribute": "Activate «disable» state",
+  "image_page_src_url_0": "Local image",
+  "image_page_src_url_1": "Large (500kb) image",
+  "image_page_src_url_2": "No image load with fallback url",
+  "image_page_src_url_3": "No image load with default fallback placeholder"
 }

@@ -25,6 +25,14 @@ export const LeftMenu: FC<ILeftMenu> = () => {
         <Trans i18nKey="components"/>
       </h4>
 
+      <NavLink to="/image" className="nav-link">
+        <div className="nav-icon">
+          <i className="icon icon-image" />
+        </div>
+        <span className="label">
+          <Trans i18nKey="image"/>
+        </span>
+      </NavLink>
       <NavLink to="/input" className="nav-link">
         <div className="nav-icon">
           <i className="icon icon-input" />
