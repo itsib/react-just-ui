@@ -93,7 +93,7 @@ export const ImagePage: FC = () => {
 
         <div className="demo">
           <br/>
-          <div style={{ '--jui-image-border-width': '2px' } as CSSProperties}>
+          <div style={{ '--jui-image-border-width': '4px' } as CSSProperties}>
             <Image
               src={IMAGES_URLS[imageSrc]}
               fallback={fallback}
