@@ -1,7 +1,7 @@
 {
   "name": "react-just-ui",
   "description": "A library for frequently used widgets and form elements and interfaces.",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "author": "Sergey <itsib.su@gmail.com>",
   "repository": {
     "type": "git",
