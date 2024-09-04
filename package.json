@@ -71,7 +71,7 @@
   },
   "scripts": {
     "start": "node scripts/start.cjs",
-    "build": "npm run build:lib && npm run build:doc",
+    "build": "npm run build:lib",
     "build:lib": "vite build --mode production && tsc --emitDeclarationOnly --noEmit false",
     "build:doc": "api-extractor run --local --verbose",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
