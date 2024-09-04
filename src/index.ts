@@ -1,11 +1,10 @@
-// Copyright (c). All rights reserved. Licensed under the MIT license.
-
 /**
- * A library for frequently used widgets and form elements and interfaces.
+ * UI components library for react.
  *
  * @remarks
- * The `react-just-ui` defines the {@link Input} react function component,
- * which are used to build widgets.
+ * When developing library elements, preference was given
+ * to the speed and small size of each component
+ * (the average size is 0.3-5Kb along with css files).
  *
  * @packageDocumentation
  */

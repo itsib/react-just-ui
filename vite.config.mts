@@ -1,6 +1,7 @@
 /// <reference types="vite/client" />
 import { extname, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { readFile } from 'node:fs/promises';
 import react from '@vitejs/plugin-react-swc';
 import { ConfigEnv, defineConfig, UserConfig } from 'vite';
 import autoprefixer from 'autoprefixer';
@@ -11,6 +12,9 @@ import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import { glob } from 'glob';
 
 export default defineConfig(async ({mode}: ConfigEnv): Promise<UserConfig> => {
+  const packageJson = JSON.parse(await readFile(resolve(__dirname, 'package.json'), 'utf8'));
+  console.log(`\x1b[0;36mauthor\x1b[0m \x1b[4;32m${packageJson.author}\x1b[0m\n`);
+
   return {
     appType: 'custom',
     resolve: {
@@ -39,6 +43,7 @@ export default defineConfig(async ({mode}: ConfigEnv): Promise<UserConfig> => {
       cssMinify: 'esbuild',
       cssCodeSplit: true,
       emptyOutDir: true,
+
       lib: {
         formats: ['es'],
         entry: {
@@ -68,9 +73,9 @@ export default defineConfig(async ({mode}: ConfigEnv): Promise<UserConfig> => {
       outDir: resolve(__dirname, 'dist'),
     },
     plugins: [
+      dts({ include: ['src'] }),
       react(),
       libInjectCss(),
-      dts({include: ['src']}),
     ],
   }
 });

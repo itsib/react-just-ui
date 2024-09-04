@@ -1,6 +1,6 @@
 {
   "name": "react-just-ui",
-  "description": "A library for frequently used widgets and form elements and interfaces.",
+  "description": "UI components library for react.",
   "version": "0.3.3",
   "author": "Sergey <itsib.su@gmail.com>",
   "repository": {
@@ -72,7 +72,7 @@
   "scripts": {
     "start": "node scripts/start.cjs",
     "build": "npm run build:lib && npm run build:doc",
-    "build:lib": "tsc && vite build --mode production",
+    "build:lib": "vite build --mode production && tsc --emitDeclarationOnly --noEmit false",
     "build:doc": "api-extractor run --local --verbose",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preversion": "npm run lint",

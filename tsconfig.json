@@ -10,12 +10,14 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
+    "declaration": true,
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "removeComments": false,
 
     /* Linting */
     "strict": true,

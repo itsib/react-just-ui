@@ -53,10 +53,15 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
 
   // Handle user input and resolve 6-letters code
   useEffect(() => {
+    if (!id) {
+      throw new Error('ATTR_ID');
+    }
     const count = elements.filter(el => ['d', 's', 'w'].includes(el)).length; // The number of characters in the code
     const off = new Array<() => void>(count);   // Callbacks for remove event listeners for each input
     const main = document.getElementById(id) as HTMLInputElement;  // The main input field where the entire code is written
     const slave = new Array<HTMLInputElement>(count); // Text fields for each character of the code
+    if (!main) return;
+
     for (let i = 0; i < count; i++) {
       slave[i] = document.getElementById(`${id}-${i}`) as HTMLInputElement;
     }

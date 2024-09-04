@@ -1,6 +1,6 @@
 # react-just-ui
 
-A set of html form elements for react, with support for react-hook-form.
+UI components library for react.
 
 ## Features
 
