@@ -8,70 +8,32 @@
     "url": "git+https://github.com/itsib/react-just-ui.git"
   },
   "license": "ISC",
-  "publishConfig": {
-    "access": "public"
-  },
+  "private": false,
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.mjs",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "umd:main": "dist/index.umd.js",
+  "unpkg": "dist/index.umd.js",
+  "jsdelivr": "dist/index.umd.js",
+  "jsnext:main": "dist/index.esm.mjs",
   "sideEffects": [
     "**/*.css"
   ],
+  "files": [
+    "dist"
+  ],
   "exports": {
+    "./package.json": "./package.json",
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    },
-    "./select": {
-      "types": "./dist/components/select/index.d.ts",
-      "default": "./dist/components/select/index.js"
-    },
-    "./checkbox": {
-      "types": "./dist/components/checkbox/index.d.ts",
-      "default": "./dist/components/checkbox/index.js"
-    },
-    "./input": {
-      "types": "./dist/components/input/index.d.ts",
-      "default": "./dist/components/input/index.js"
-    },
-    "./otp-input": {
-      "types": "./dist/components/otp-input/index.d.ts",
-      "default": "./dist/components/otp-input/index.js"
-    },
-    "./radio": {
-      "types": "./dist/components/radio/index.d.ts",
-      "default": "./dist/components/radio/index.js"
-    },
-    "./switch": {
-      "types": "./dist/components/switch/index.d.ts",
-      "default": "./dist/components/switch/index.js"
-    },
-    "./textarea": {
-      "types": "./dist/components/textarea/index.d.ts",
-      "default": "./dist/components/textarea/index.js"
-    },
-    "./image": {
-      "types": "./dist/components/image/index.d.ts",
-      "default": "./dist/components/image/index.js"
-    },
-    "./validators": {
-      "types": "./dist/validators/index.d.ts",
-      "default": "./dist/validators/index.js"
-    },
-    "./utils": {
-      "types": "./dist/utils/index.d.ts",
-      "default": "./dist/utils/index.js"
-    },
-    "./styles.css": "./dist/css/styles.css",
-    "./themes/*.css": "./dist/themes/*.css",
-    "./package.json": "./package.json"
+      "import": "./dist/index.esm.mjs",
+      "require": "./dist/index.cjs.js"
+    }
   },
   "scripts": {
-    "start": "node scripts/start.cjs",
-    "build": "npm run build:lib",
+    "start": "vite-node --config scripts/vite.config.mts scripts/start.mts",
+    "build": "rollup",
     "build:lib": "vite build --mode production && tsc --emitDeclarationOnly --noEmit false",
     "build:doc": "api-extractor run --local --verbose",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
@@ -83,7 +45,14 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-typescript": "^7.24.7",
     "@microsoft/api-extractor": "^7.47.6",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
     "@types/node": "^20.14.12",
     "@types/postcss-import": "^14.0.3",
     "@types/react": "^18.3.0",
@@ -96,11 +65,18 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
     "glob": "^11.0.0",
-    "postcss": "^8.4.40",
+    "postcss": "^8.4.45",
     "postcss-import": "^16.1.0",
     "postcss-nesting": "^12.1.5",
-    "typescript": "5.4.2",
-    "vite": "^5.4.2",
+    "rollup": "^4.21.2",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.7.0",
+    "tsx": "^4.19.0",
+    "typescript": "5.5.4",
+    "vite": "^5.4.3",
     "vite-plugin-dts": "^4.0.3",
     "vite-plugin-lib-inject-css": "^2.1.1",
     "vitest": "^2.0.5"

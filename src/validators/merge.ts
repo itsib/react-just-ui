@@ -1,4 +1,4 @@
-import type { ValidationFn } from '@types';
+import type { ValidationFn } from '../types';
 
 /**
  * Allows you to use several validator functions.

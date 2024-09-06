@@ -1,6 +1,6 @@
 import type { AllHTMLAttributes, FC, ReactNode, CSSProperties } from 'react';
 import { useState, useReducer, useEffect } from 'react';
-import { cn } from '@utils/class-names.ts';
+import { cn } from '../../utils';
 import './styles.css';
 
 const BAD_URLS = new Set<string>();

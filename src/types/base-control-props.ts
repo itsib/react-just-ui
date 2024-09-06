@@ -1,44 +1,5 @@
 import type { ReactNode, AllHTMLAttributes } from 'react';
-
-/**
- * Config for select option item
- *
- * @remarks
- * The interface defines the basic configuration for a select list item.
- *
- * @public
- */
-export interface SelectOption {
-  icon?: string | ReactNode;
-  label?: string;
-  value: string;
-}
-
-/**
- * Validation Error Interface
- *
- * @remarks
- * Each element of the form accepts an object
- * that implements this interface
- *
- * @public
- */
-export interface ValidationError {
-  message?: string;
-}
-
-/**
- * Interface of the validator function.
- *
- * @remarks
- * Passed in the validate field,
- * see the {@link https://react-hook-form.com/docs/useform/register | register} function
- *
- * @public
- */
-export interface ValidationFn {
-  (value: any, formValues: Record<string, any>): boolean | string | Promise<boolean | string>;
-}
+import { ValidationError } from './validation-error';
 
 /**
  * The basic properties of all form controls.

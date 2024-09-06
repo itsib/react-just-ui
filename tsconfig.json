@@ -8,9 +8,7 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-
-    /* Bundler mode */
-    "declaration": true,
+    "declaration": false,
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
@@ -18,21 +16,16 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "removeComments": false,
-
-    /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-
+    "importHelpers": true,
     "paths": {
-      "@types": ["./src/types.ts"],
-      "@components/*": ["./src/components/*"],
       "@validators/*": ["./src/validators/*"],
-      "@utils/*": ["./src/utils/*"],
+      "@utils/*": ["./src/utils/*"]
     }
   },
-  "include": ["src/**/*"],
-  "exclude": ["scripts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src"],
+  "exclude": ["scripts"]
 }

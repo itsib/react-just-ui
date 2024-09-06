@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef } from 'react';
-import type { ValidationError } from '@types';
+import { ValidationError } from '../../types';
 import './styles.css';
 
 export interface IErrorMessage {

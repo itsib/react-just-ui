@@ -1,4 +1,4 @@
-import type { ValidationFn } from '@types';
+import type { ValidationFn } from '../types';
 
 /**
  * URL validator function.

@@ -1,12 +1,12 @@
-const fs = require('fs');
-const path = require('path');
-const { exec } = require('child_process');
+import fs from 'node:fs';
+import path from 'node:path';
+import { exec } from 'child_process';
 
 const SRC_DIR = path.resolve(process.cwd(), 'src');
 
 const FRAMES = ['⢰', '⣠', '⣄', '⡆', '⠇', '⠋', '⠙', '⠸'];
 let current = 0;
-function getFrame() {
+function getFrame(): string {
   current = current + 1;
   if (current > (FRAMES.length - 1)) {
     current = 0;
@@ -14,8 +14,8 @@ function getFrame() {
   return FRAMES[current]
 }
 
-function build() {
-  return new Promise((resolve, reject) => {
+function build(): Promise<void> {
+  return new Promise<void>(async (resolve, reject) => {
     exec('npm run build:lib', (err, stdout, stderr) => {
       if (err) {
         const frames = stdout.split('\n\n').filter(Boolean);
@@ -28,8 +28,8 @@ function build() {
   })
 }
 
-function debounce(callback, delay) {
-  let _innerValue;
+function debounce<T>(callback: (value: T) => void, delay: number) {
+  let _innerValue: T;
   let _skip = false;
 
   const _fn = () => {
@@ -37,7 +37,7 @@ function debounce(callback, delay) {
     _skip = false;
   };
 
-  return (v) => {
+  return (v: T) => {
     _innerValue = v;
     if (!_skip) {
       _skip = true;
@@ -56,7 +56,7 @@ function buildProcess() {
     process.stdout.write(`\x1b[0;96m${getFrame()}\x1b[0m \x1b[0;93mBuilding...\x1b[0m`);
   }, 100);
 
-  return error => {
+  return (error?: Error | void) => {
     clearInterval(interval);
 
     if (error) {
@@ -69,7 +69,7 @@ function buildProcess() {
   }
 }
 
-async function start() {
+async function run() {
   const onSuccess = buildProcess();
   await build().then(onSuccess).catch(onSuccess);
 
@@ -81,4 +81,4 @@ async function start() {
   fs.watch(SRC_DIR, { recursive: true }, async () => run(1));
 }
 
-start().catch(console.error);
+run().catch(console.error);

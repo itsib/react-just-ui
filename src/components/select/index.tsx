@@ -8,10 +8,10 @@ import React, {
   useState,
   type CSSProperties
 } from 'react';
-import type { BaseControlProps, SelectOption } from '@types';
-import { cn } from '@utils/class-names';
-import { ErrorMessage } from '@components/error-message';
-import { Label } from '@components/label';
+import type { BaseControlProps, SelectOption } from '../../types';
+import { cn } from '../../utils';
+import { ErrorMessage } from '../error-message';
+import { Label } from '../label';
 import { createPortal } from "react-dom";
 import './styles.css';
 

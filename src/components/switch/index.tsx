@@ -1,7 +1,7 @@
 import { forwardRef, ForwardedRef } from 'react';
-import type { BaseControlProps } from '@types';
-import { Label } from '@components/label';
-import { ErrorMessage } from '@components/error-message';
+import type { BaseControlProps } from '../../types';
+import { Label } from '../label';
+import { ErrorMessage } from '../error-message';
 import './styles.css';
 
 export interface SwitchProps extends BaseControlProps<HTMLInputElement> {
