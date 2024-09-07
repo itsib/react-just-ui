@@ -1,8 +1,8 @@
 import { forwardRef, ForwardedRef } from 'react';
-import type { BaseControlProps } from '../../types';
-import { Label } from '../label';
-import { ErrorMessage } from '../error-message';
-import './styles.css';
+import type { BaseControlProps } from './types';
+import { Label } from './label';
+import { ErrorMessage } from './error-message';
+import './radio.css';
 
 export interface RadioButtonProps extends Omit<BaseControlProps<HTMLInputElement>, 'value'> {
   /**

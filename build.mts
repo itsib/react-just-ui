@@ -1,7 +1,7 @@
 import { rollup, RollupOptions, InputOption } from 'rollup';
 import { resolve, dirname, extname, relative } from 'node:path';
 import { exec } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { readFile, rm } from 'node:fs/promises';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import commonjs from '@rollup/plugin-commonjs';
@@ -13,13 +13,12 @@ import ts from 'typescript';
 import * as glob from 'glob';
 import terser from '@rollup/plugin-terser';
 import { fileURLToPath } from 'node:url';
-
 // @ts-ignore
-import { log, loading } from './logger';
+import { log, loading } from './scripts/logger.ts';
 
-const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)));
 
-const PKG = JSON.parse(readFileSync(resolve(ROOT, 'package.json'), 'utf8'));
+
 
 interface CreateConfigOpts {
   input: InputOption;
@@ -29,7 +28,7 @@ interface CreateConfigOpts {
   env?: 'production';
 }
 
-function createRollupConfig(opts: CreateConfigOpts): RollupOptions {
+function createRollupConfig(pkg: Record<string, any>, opts: CreateConfigOpts): RollupOptions {
   const format = opts.format === 'es' ? 'esm' : opts.format;
   // Should uglify output code
   const minify = format !== 'esm' && opts.minify != null ? opts.minify : false;
@@ -39,7 +38,7 @@ function createRollupConfig(opts: CreateConfigOpts): RollupOptions {
     external: [
       'react/jsx-runtime',
       'react/jsx-dev-runtime',
-      ...Object.keys(PKG.peerDependencies),
+      ...Object.keys(pkg.peerDependencies),
     ],
     plugins: [
       ...(opts.postcss ? [
@@ -58,9 +57,10 @@ function createRollupConfig(opts: CreateConfigOpts): RollupOptions {
       ] : []),
       nodeResolve(),
       typescript({
-        tsconfig: 'tsconfig.build.json',
+        tsconfig: 'tsconfig.json',
         typescript: ts,
         noEmit: true,
+        noForceEmit: false,
       }),
       commonjs(),
       ...(minify ? [
@@ -79,27 +79,85 @@ function createRollupConfig(opts: CreateConfigOpts): RollupOptions {
   };
 }
 
+async function cleanDist() {
+  log('  Clean dist...', 'gray', false, 2).render();
+
+  try {
+    await rm(resolve(ROOT, 'dist'), { force: true, recursive: true });
+
+    log(`✔ ${log(`Success`, 'gray', false, 2)}`, 'green', true, 2).render();
+  } catch (e) {
+    log(`✗ ${log(`Error`, 'red', false, 2)}`, 'red', true, 2).render();
+
+    console.error(e);
+    process.exit(1);
+  }
+}
+
 async function generateTypes() {
-  return new Promise<void>(async (resolve, reject) => {
-    const stop = loading(log('Generate types declaration...', 'gray', true, 2));
+  log('  Generate types declaration...', 'gray', false, 2).render();
+
+  await new Promise<void>(resolve => {
 
     exec('tsc --project tsconfig.declare.json', (err, stdout, stderr) => {
       if (err) {
         const frames = stdout.split('\n\n').filter(Boolean);
         const message = `${stderr}\n${frames[frames.length - 1]}`;
 
-        stop();
-        return reject(message);
-      }
-      stop(log('✔ ', 'green', true, 2) + log('Files with .d.ts generated.', 'gray', false, 2));
-      resolve();
+        log(`✗ ${log(`Error`, 'red', false, 2)}`, 'red', true, 2).render();
 
+        console.error(message);
+      }
+      resolve();
     });
   });
+
+  log(`✔ ${log(`Success`, 'gray', false, 2)}`, 'green', true, 2).render();
 }
 
-async function buildCJS() {
+async function buildESM(pkg: Record<string, any>) {
+  log('  Building ESM modules...', 'gray', false, 2).render();
+
+  const entries = glob.sync('src/!(*.d).{tsx,ts}', { cwd: ROOT })
+    .map(file => {
+      const src = resolve(ROOT, file);
+      const dist = file.replace(/^src\//, '').replace(new RegExp(`${extname(file)}$`), '');
+
+      return [dist, src];
+    })
+    .concat([
+      ['validators/index', resolve(ROOT, 'src/validators/index.ts')],
+      ['utils/index', resolve(ROOT, 'src/utils/index.ts')],
+    ]);
+
+  const config = createRollupConfig(pkg, {
+    input: Object.fromEntries(entries),
+    format: 'esm',
+    minify: false,
+    postcss: true,
+    env: 'production',
+  });
+
+  const bundles = await rollup(config);
+
+  const result = await bundles.write({
+    name: 'ReactJustUI',
+    format: 'esm',
+    dir: resolve(ROOT, 'dist'),
+    entryFileNames: '[name].esm.mjs',
+    assetFileNames: '[name]',
+    preserveModules: false,
+  });
+
+  log(`✔ ${log(`Success`, 'gray', false, 2)}`, 'green', true, 2).render();
+
+  console.log(result);
+}
+
+async function buildCJS(pkg: Record<string, any>) {
   const stop = loading(log('Building ESM modules...', 'gray', true, 2));
+
+
 
   const input = Object.fromEntries(
     glob.sync('src/**/!(*.d).{ts,tsx,css}', { cwd: ROOT })
@@ -111,18 +169,16 @@ async function buildCJS() {
 
         let dist = relative('src', fileWithoutExt);
         if (dist.startsWith('components')) {
-          dist = dist.replace(/^components\//, '');
-          dist += dist.endsWith('index') ? '.cjs' : ''
-
+          dist = dist.replace(/^components\//, '').replace(/\/index$/, '')
         }
 
         return [ dist, src ];
       }),
   );
 
-  const config = createRollupConfig({
+  const config = createRollupConfig(pkg, {
     input,
-    format: 'cjs',
+    format: 'esm',
     minify: true,
     postcss: true,
     env: 'production',
@@ -132,10 +188,9 @@ async function buildCJS() {
 
   const result = await bundles.write({
     name: 'ReactJustUI',
-    format: 'cjs',
+    format: 'esm',
     dir: resolve(ROOT, 'dist'),
-    assetFileNames: '[name][extname]',
-    entryFileNames: '[name].js',
+    entryFileNames: '[name].esm.mjs',
     preserveModules: false,
   });
 
@@ -146,11 +201,15 @@ async function buildCJS() {
 }
 
 async function run() {
-  log(`Building package ${log(PKG.name, 'green', false, 4)}.`, 'yellow', false, 0).render();
+  const pkg = JSON.parse(await readFile(resolve(ROOT, 'package.json'), 'utf8'));
+
+  log(`Building package ${log(pkg.name, 'green', false, 4)}.`, 'yellow', false, 0).render();
+
+  await cleanDist();
 
   await generateTypes();
 
-  await buildCJS();
+  await buildESM(pkg);
 }
 
 run()

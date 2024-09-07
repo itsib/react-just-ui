@@ -8,12 +8,12 @@ import React, {
   useState,
   type CSSProperties
 } from 'react';
-import type { BaseControlProps, SelectOption } from '../../types';
-import { cn } from '../../utils';
-import { ErrorMessage } from '../error-message';
-import { Label } from '../label';
-import { createPortal } from "react-dom";
-import './styles.css';
+import { createPortal } from 'react-dom';
+import type { BaseControlProps, SelectOption } from './types';
+import { cn } from './utils';
+import { ErrorMessage } from './error-message';
+import { Label } from './label';
+import './select.css';
 
 export interface SelectProps extends BaseControlProps<HTMLInputElement> {
   options: SelectOption[];

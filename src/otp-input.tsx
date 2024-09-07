@@ -1,8 +1,8 @@
 import { ForwardedRef, forwardRef, useEffect, useMemo, useRef } from 'react';
-import type { BaseControlProps } from '../../types';
-import { Label } from '../label';
-import { ErrorMessage } from '../error-message';
-import './styles.css';
+import type { BaseControlProps } from './types';
+import { Label } from './label';
+import { ErrorMessage } from './error-message';
+import './otp-input.css';
 
 /**
  * One-time password input properties

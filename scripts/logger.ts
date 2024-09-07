@@ -51,12 +51,9 @@ function getFrame(): string {
   return FRAMES[current]
 }
 
-function clear() {
-  process.stdout.write('\x1Bc');
-}
-
-
-
+// function clear() {
+//   process.stdout.write('\x1Bc');
+// }
 
 export function loading(title: string) {
   let timer: any;

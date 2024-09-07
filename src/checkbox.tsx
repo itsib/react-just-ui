@@ -1,8 +1,8 @@
 import { forwardRef, ForwardedRef } from 'react';
-import { Label } from '../label';
-import { ErrorMessage } from '../error-message';
-import type { BaseControlProps } from '../../types';
-import './styles.css';
+import { Label } from './label';
+import { ErrorMessage } from './error-message';
+import type { BaseControlProps } from './types';
+import './checkbox.css';
 
 export interface CheckboxProps extends BaseControlProps<HTMLInputElement> {
   rowReverse?: boolean;

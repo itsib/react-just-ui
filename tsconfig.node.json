@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDir": ".",
     "composite": true,
     "skipLibCheck": true,
     "module": "ESNext",
@@ -7,5 +8,9 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true
   },
-  "include": ["vite.config.ts"],
+  "include": [
+    "vite.config.ts",
+    "build.mts",
+    "scripts"
+  ],
 }

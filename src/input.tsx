@@ -1,9 +1,9 @@
 import { type ForwardedRef, forwardRef, useEffect, type ReactNode } from 'react';
-import type { BaseControlProps } from '../../types';
-import { cn } from '../../utils';
-import { ErrorMessage } from '../error-message';
-import { Label } from '../label';
-import './styles.css';
+import type { BaseControlProps } from './types';
+import { cn } from './utils';
+import { ErrorMessage } from './error-message';
+import { Label } from './label';
+import './input.css';
 
 export type InputType = 'text' | 'password' | 'email' | 'search' | 'tel' | 'url' | 'number';
 

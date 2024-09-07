@@ -13,14 +13,14 @@ export * from './types';
 export * from './utils';
 export * from './validators';
 
-export * from './components/error-message';
-export * from './components/label';
-export * from './components/checkbox';
-export * from './components/input';
-export * from './components/select';
-export * from './components/textarea';
-export * from './components/radio';
-export * from './components/switch';
-export * from './components/otp-input';
-export * from './components/image';
+export * from './error-message';
+export * from './label';
+export * from './checkbox';
+export * from './input';
+export * from './select';
+export * from './textarea';
+export * from './radio';
+export * from './switch';
+export * from './otp-input';
+export * from './image';
 

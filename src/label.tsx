@@ -1,5 +1,5 @@
 import { type FC, useRef, type ReactNode } from 'react';
-import './styles.css';
+import './label.css';
 
 export interface LabelProps {
   id: string;

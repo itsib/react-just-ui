@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react';
-import { ValidationError } from '../../types';
-import './styles.css';
+import { ValidationError } from './types';
+import './error-message.css';
 
 export interface IErrorMessage {
   error?: ValidationError | false;

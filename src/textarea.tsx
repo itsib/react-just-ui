@@ -1,9 +1,9 @@
 import { ForwardedRef, forwardRef, useEffect } from 'react';
-import type { BaseControlProps } from '../../types';
-import { ErrorMessage } from '../error-message';
-import { Label } from '../label';
-import { cn } from '../../utils';
-import './styles.css';
+import type { BaseControlProps } from './types';
+import { ErrorMessage } from './error-message';
+import { Label } from './label';
+import { cn } from './utils';
+import './textarea.css';
 
 export interface TextareaProps extends BaseControlProps<HTMLTextAreaElement> {
   elastic?: boolean;

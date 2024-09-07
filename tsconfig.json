@@ -10,7 +10,6 @@
     "skipLibCheck": true,
     "declaration": false,
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
@@ -20,11 +19,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "importHelpers": true,
-    "paths": {
-      "@validators/*": ["./src/validators/*"],
-      "@utils/*": ["./src/utils/*"]
-    }
+    "importHelpers": true
   },
   "include": ["src"],
   "exclude": ["scripts"]
