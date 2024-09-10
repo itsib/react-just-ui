@@ -9,6 +9,7 @@ import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import * as glob from 'glob';
 import pkg from './package.json';
 import packageJsonGen from './plugins/vite-plugin-package-json';
+import { analyzer } from 'vite-bundle-analyzer'
 
 const entries = Object.fromEntries(
   glob.sync('src/!(*.d).{tsx,ts}', { cwd: __dirname })
@@ -20,8 +21,7 @@ const entries = Object.fromEntries(
     .concat([
       ['validators/index', path.resolve(__dirname, 'src/validators/index.ts')],
       ['utils/index', path.resolve(__dirname, 'src/utils/index.ts')],
-      ['styles', path.resolve(__dirname, 'src/css/styles.css')],
-      ['themes/default', path.resolve(__dirname, 'src/themes/default.css')],
+      ['theme/minimal', path.resolve(__dirname, 'src/css/minimal.css')],
     ])
 );
 
@@ -71,6 +71,11 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       react(),
       libInjectCss(),
       packageJsonGen(),
+      analyzer({
+        reportTitle: 'ReactJustUI',
+        analyzerMode: 'json',
+        fileName: '../demo/public/stat',
+      }),
     ],
   }
 });

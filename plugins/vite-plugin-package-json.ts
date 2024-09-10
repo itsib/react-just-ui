@@ -10,13 +10,14 @@ export default function packageJsonGen(): Plugin {
   }
 
   function addFormats(obj: Record<string, any>, entry: string) {
-    obj['types'] = `${entry}.d.ts`;
+    obj['types'] = `./${entry}.d.ts`;
     if (config.formats.includes('es')) {
-      obj['import'] = `${entry}.js`;
+      obj['import'] = `./${entry}.js`;
     }
     if (config.formats.includes('cjs')) {
-      obj['require'] = `${entry}.cjs`;
+      obj['require'] = `./${entry}.cjs`;
     }
+    obj['default'] = `./${entry}.js`;
     return obj;
   }
 
@@ -43,6 +44,7 @@ export default function packageJsonGen(): Plugin {
       pkg.exports = {
         './package.json': './package.json',
         '.': addFormats({}, 'index'),
+        './theme/*.css': './theme/*.css',
       };
 
       const names = Object.keys(config.entries).filter(i => !['index', 'styles'].includes(i) && !i.startsWith('themes'));

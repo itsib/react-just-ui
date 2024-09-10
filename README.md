@@ -21,8 +21,7 @@ npm install react-just-ui
 Add imports in index.tsx
 
 ```typescript jsx
-import 'react-just-ui/themes/default.css';
-import 'react-just-ui/styles.css';
+import 'react-just-ui/theme/minimal.css';
 ```
 
 ## Usage
