@@ -12,8 +12,6 @@ UI components library for react.
 - Code size 12.03 kB (4.26 kB compressed)
 - Style size 14.41 kB (2.69 kB compressed)
 
-<img src="demo/public/screenshot.png">
-
 ## Installation
 
 ```shell

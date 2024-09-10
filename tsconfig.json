@@ -1,14 +1,15 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "rootDir": "./src",
     "outDir": "./dist",
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
     "skipLibCheck": true,
-    "declaration": false,
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -18,8 +19,7 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "importHelpers": true
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["src"],
   "exclude": ["scripts"]
