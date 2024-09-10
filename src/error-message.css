@@ -1,8 +1,8 @@
 .jui.jui-error-message {
-  height: var(--jui-error-height);
+  height: $control-error-height;
   padding-left: 4px;
-  padding-top: var(--jui-error-margin);
-  font-size: var(--jui-error-font-size);
+  padding-top: $control-margin-bottom;
+  font-size: $control-error-size;
   line-height: 1.2;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -11,7 +11,7 @@
   pointer-events: none;
 
   div {
-    top: calc((var(--jui-error-height) + 2px) * -1);
+    top: calc(($control-error-height + 2px)  * -1);
     transform: translateY(0);
     transition: .15s ease-in-out;
     position: relative;
@@ -20,7 +20,7 @@
   &.active {
 
     div {
-      transform: translateY(calc(100% + var(--jui-error-margin) + 2px));;
+      transform: translateY(calc(100% + $control-margin-bottom + 2px));;
     }
   }
 }

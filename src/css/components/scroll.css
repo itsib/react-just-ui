@@ -1,15 +1,13 @@
 .jui-scroll {
-  --jui-dropdown-scrol-width: 4px;
 
   ::-webkit-scrollbar {
-    width: var(--jui-dropdown-scrol-width);
-    height: var(--jui-dropdown-scrol-width);
+    width: $scroll-width;
+    height: $scroll-width;
     transition: all .15s ease-in-out;
   }
 
   ::-webkit-scrollbar-track {
-    padding: 4px 0;
-
+    padding: $scroll-padding-y $scroll-padding-x;
     position: relative;
     background-color: transparent;
   }
@@ -20,7 +18,7 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    border-radius: var(--jui-dropdown-scrol-width);
+    border-radius: $scroll-width;
     background-color: rgb(var(--jui-bg-hover-rgb) / 0.6);
   }
 

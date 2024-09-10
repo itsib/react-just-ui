@@ -1,9 +1,8 @@
 :root {
-  /* BASE THEME COLORS */
-  --jui-black-rgb: 0 0 0;
-  --jui-white-rgb: 255 255 255;
-  --jui-accent-rgb: 0 115 229;
-  --jui-error-rgb: 220 38 38;
+  --jui-black-rgb: $color-black;
+  --jui-white-rgb: $color-white;
+  --jui-accent-rgb: $color-accent-light;
+  --jui-error-rgb: $color-error-light;
   --jui-bg-rgb: 255 255 255;
   --jui-text-rgb: 0 0 0;
   --jui-label-rgb: 25 25 25;
@@ -20,11 +19,10 @@
 }
 
 body.dark {
-  /* BASE THEME COLORS */
-  --jui-black-rgb: 0 0 0;
-  --jui-white-rgb: 255 255 255;
-  --jui-accent-rgb: 0 115 229;
-  --jui-error-rgb: 240 28 28;
+  --jui-black-rgb: $color-black;
+  --jui-white-rgb: $color-white;
+  --jui-accent-rgb: $color-accent-dark;
+  --jui-error-rgb: $color-error-light;
   --jui-text-rgb: 255 255 255;
   --jui-label-rgb: 225 225 225;
   --jui-bg-rgb: 29 29 29;
@@ -44,9 +42,7 @@ body {
   --jui-divider-rgb: var(--jui-label-rgb);
   --jui-placeholder-rgb: var(--jui-label-rgb);
   --jui-prefix-rgb: var(--jui-label-rgb);
-  --jui-prefix-border-width: 1px;
   --jui-suffix-rgb: var(--jui-label-rgb);
-  --jui-suffix-border-width: 1px;
   --jui-checkbox-tick-color: rgb(var(--jui-checkbox-rgb));
   --jui-box-shadow-focus: 0 0 0 1px rgb(var(--jui-black-rgb)), 0 0 3px 0 rgb(var(--jui-border-focus-rgb));
   --jui-box-shadow: 0 0 12px -1px rgb(var(--jui-black-rgb) / 0.2), 0 0 1px 1px rgb(var(--jui-shadow-rgb) / 0.2);
@@ -54,21 +50,7 @@ body {
   --jui-image-border-rgb: var(--jui-accent-rgb);
 
   /* SIZES PADDINGS ETC */
-  --jui-height: 40px;
-  --jui-checkbox-size: 20px;
-  --jui-radio-size: 18px;
-  --jui-switch-width: 46px;
-  --jui-label-margin: 4px;
-  --jui-error-margin: 2px;
-  --jui-padding-x: 0.75rem;
-  --jui-padding-y: 0.25rem;
-  --jui-border-radius: 6px;
-  --jui-border-width: 1px;
-  --jui-font-size: 1rem;
-  --jui-label-font-size: 0.875rem;
-  --jui-error-font-size: 0.75rem;
   --jui-tt-font-size: 12px;
-  --jui-error-height: calc(0.75rem + 4px);
   --jui-image-border-width: 0;
 
   /* SVG */

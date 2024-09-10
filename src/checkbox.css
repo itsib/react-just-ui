@@ -1,7 +1,4 @@
 .jui.jui-checkbox {
-  --jui-checkbox-in-duration: .4s;
-  --jui-checkbox-out-duration: .2s;
-
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -12,8 +9,8 @@
   }
 
   .control-checkbox {
-    width: var(--jui-checkbox-size);
-    height: var(--jui-checkbox-size);
+    width: $checkbox-size;
+    height: $checkbox-size;
     margin: 5px 10px;
     position: relative;
     cursor: pointer;
@@ -22,16 +19,16 @@
 
     input[type="checkbox"] {
       margin: 0;
-      width: var(--jui-checkbox-size);
-      height: var(--jui-checkbox-size);
+      width: $checkbox-size;
+      height: $checkbox-size;
       position: absolute;
       opacity: 0;
       z-index: 2;
       cursor: pointer;
 
       + .checkbox {
-        width: var(--jui-checkbox-size);
-        height: var(--jui-checkbox-size);
+        width: $checkbox-size;
+        height: $checkbox-size;
         border: 2px solid rgb(var(--jui-checkbox-rgb));
         border-radius: 4px;
         position: absolute;
@@ -43,7 +40,7 @@
           stroke-dasharray: 24;
           stroke-dashoffset: 0;
           transform-origin: 8px 8px;
-          transition-duration: var(--jui-checkbox-out-duration);
+          transition-duration: $checkbox-animation-out;
           transition-timing-function:  ease-in;
           transition-property: opacity, transform;
           transform: scale(0,0);
@@ -62,8 +59,8 @@
           transition-duration: 0s;
           animation-name: jui-checkbox-checked;
           animation-fill-mode: forwards;
-          animation-duration: var(--jui-checkbox-in-duration);
-          animation-timing-function: cubic-bezier(.4,.0,.23,1);
+          animation-duration: $checkbox-animation-in;
+          animation-timing-function: $checkbox-animation-ease;
         }
       }
     }

@@ -11,11 +11,11 @@
   .control-switch {
     --jui-switch-aspect-ratio: 1.85;
     --jui-switch-padding: 3px;
-    --jui-switch-height: calc(var(--jui-switch-width) / var(--jui-switch-aspect-ratio));
+    --jui-switch-height: calc($switch-width / var(--jui-switch-aspect-ratio));
     --jui-switch-thumb-size: calc(var(--jui-switch-height) - (var(--jui-switch-padding) * 2));
 
     height: var(--jui-switch-height);
-    width: var(--jui-switch-width);
+    width: $switch-width;
     aspect-ratio: var(--jui-switch-aspect-ratio);
     cursor: pointer;
     user-select: none;
@@ -62,7 +62,7 @@
       background-color: rgb(var(--jui-accent-rgb));
 
       .thumb {
-        left: calc(var(--jui-switch-width) - var(--jui-switch-thumb-size) - var(--jui-switch-padding));
+        left: calc($switch-width - var(--jui-switch-thumb-size) - var(--jui-switch-padding));
       }
     }
 

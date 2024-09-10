@@ -14,8 +14,8 @@ function getFrame(): string {
   return FRAMES[current]
 }
 
-function build(): Promise<void> {
-  return new Promise<void>(async (resolve, reject) => {
+function build(): Promise<string> {
+  return new Promise<string>(async (resolve, reject) => {
     exec('npm run build:lib', (err, stdout, stderr) => {
       if (err) {
         const frames = stdout.split('\n\n').filter(Boolean);
@@ -23,7 +23,7 @@ function build(): Promise<void> {
 
         return reject(message);
       }
-      resolve();
+      resolve(stderr);
     });
   })
 }
@@ -56,10 +56,43 @@ function buildProcess() {
     process.stdout.write(`\x1b[0;96m${getFrame()}\x1b[0m \x1b[0;93mBuilding...\x1b[0m`);
   }, 100);
 
-  return (error?: Error | void) => {
+  return (error?: Error | string) => {
     clearInterval(interval);
 
-    if (error) {
+    if (typeof error === 'string' && !!error.trim()) {
+      const lines = error.split('\n').map(line => {
+        if (line.includes('[WARNING]')) {
+          return line.replace(/^(.+\[WARNING])/, '\x1b[0;93m$1\x1b[0m \x1b[0;33m') + '\x1b[0m';
+        } else if (/^(\[[\w:]+])/.test(line)) {
+          return line.replace(/^(\[[\w:]+])/, '\x1b[0;93m$1\x1b[0m \x1b[0;33m') + '\x1b[0m';
+        } else if (line.includes('warning')) {
+          return `\x1b[0;33m${line}\x1b[0m`;
+        } else {
+          const output: string[] = [];
+          const numbersFound = /^(?:\s+)?\d*\s+[│|╵|]/.exec(line);
+          if (numbersFound) {
+            const numbers = line.slice(0, numbersFound[0].length + numbersFound.index);
+            output.push(`\x1b[2;37m${numbers}\x1b[0m`);
+            line = line.slice(numbersFound[0].length + numbersFound.index);
+          }
+
+          const underlineFound = /\^+/.exec(line);
+          if (underlineFound) {
+            const underline = line.slice(0, underlineFound[0].length + underlineFound.index);
+            line = line.slice(underlineFound[0].length + underlineFound.index);
+
+            output.push(`\x1b[0;31m${underline}\x1b[0m${line}`);
+          } else {
+            output.push(`\x1b[0;37m${line}\x1b[0m`);
+          }
+
+          return output.join('');
+        }
+
+      })
+      clear();
+      process.stdout.write(lines.join('\n') + '\n\n\x1b[0;93m⚠ Build with warnings\x1b[0m');
+    } else if (error) {
       clear();
       process.stdout.write(`\x1b[0;91m✘ Build error, wait changes.\x1b[0m\n${error}\n`);
     } else {
@@ -70,12 +103,12 @@ function buildProcess() {
 }
 
 async function run() {
-  const onSuccess = buildProcess();
-  await build().then(onSuccess).catch(onSuccess);
+  const onFinish = buildProcess();
+  await build().then(onFinish).catch(onFinish);
 
   const run = debounce(() => {
-    const onSuccess = buildProcess();
-    build().then(onSuccess).catch(onSuccess);
+    const onFinish = buildProcess();
+    build().then(onFinish).catch(onFinish);
   }, 100);
 
   fs.watch(SRC_DIR, { recursive: true }, async () => run(1));

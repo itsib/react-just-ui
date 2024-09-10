@@ -5,11 +5,13 @@ import { defineConfig, UserConfig } from 'vite';
 import autoprefixer from 'autoprefixer';
 import postcssNesting from 'postcss-nesting';
 import postcssImport from 'postcss-import';
+import postcssVariables from 'postcss-advanced-variables';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import * as glob from 'glob';
 import pkg from './package.json';
 import packageJsonGen from './plugins/vite-plugin-package-json';
 import { analyzer } from 'vite-bundle-analyzer'
+import { resolveVariable } from './utils/theme-utils';
 
 const entries = Object.fromEntries(
   glob.sync('src/!(*.d).{tsx,ts}', { cwd: __dirname })
@@ -41,6 +43,10 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       modules: {},
       postcss: {
         plugins: [
+          postcssVariables({
+            variables: resolveVariable,
+            unresolved: 'warn',
+          }),
           postcssImport(),
           autoprefixer(),
           postcssNesting(),

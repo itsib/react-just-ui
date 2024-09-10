@@ -97,21 +97,21 @@
   {
     "filename": "select.js",
     "label": "select.js",
-    "parsedSize": 9644,
-    "mapSize": 16369,
-    "statSize": 11533,
-    "gzipSize": 2339,
+    "parsedSize": 9648,
+    "mapSize": 16375,
+    "statSize": 11537,
+    "gzipSize": 2341,
     "source": [
       {
-        "gzipSize": 2339,
-        "parsedSize": 9644,
+        "gzipSize": 2341,
+        "parsedSize": 9648,
         "label": "home/sergey/projects/src/select.tsx",
         "filename": "home/sergey/projects/src/select.tsx"
       }
     ],
     "stats": [
       {
-        "statSize": 11533,
+        "statSize": 11537,
         "label": "src/select.tsx",
         "filename": "src/select.tsx"
       }
@@ -314,21 +314,21 @@
   {
     "filename": "error-message.js",
     "label": "error-message.js",
-    "parsedSize": 642,
-    "mapSize": 1472,
-    "statSize": 935,
-    "gzipSize": 333,
+    "parsedSize": 865,
+    "mapSize": 1863,
+    "statSize": 1110,
+    "gzipSize": 421,
     "source": [
       {
-        "gzipSize": 333,
-        "parsedSize": 642,
+        "gzipSize": 421,
+        "parsedSize": 865,
         "label": "home/sergey/projects/src/error-message.tsx",
         "filename": "home/sergey/projects/src/error-message.tsx"
       }
     ],
     "stats": [
       {
-        "statSize": 935,
+        "statSize": 1110,
         "label": "src/error-message.tsx",
         "filename": "src/error-message.tsx"
       }
@@ -555,21 +555,21 @@
   {
     "filename": "select.cjs",
     "label": "select.cjs",
-    "parsedSize": 6924,
-    "mapSize": 15315,
-    "statSize": 11533,
-    "gzipSize": 2020,
+    "parsedSize": 6928,
+    "mapSize": 15321,
+    "statSize": 11537,
+    "gzipSize": 2022,
     "source": [
       {
-        "gzipSize": 2020,
-        "parsedSize": 6924,
+        "gzipSize": 2022,
+        "parsedSize": 6928,
         "label": "home/sergey/projects/src/select.tsx",
         "filename": "home/sergey/projects/src/select.tsx"
       }
     ],
     "stats": [
       {
-        "statSize": 11533,
+        "statSize": 11537,
         "label": "src/select.tsx",
         "filename": "src/select.tsx"
       }
@@ -772,21 +772,21 @@
   {
     "filename": "error-message.cjs",
     "label": "error-message.cjs",
-    "parsedSize": 554,
-    "mapSize": 1435,
-    "statSize": 935,
-    "gzipSize": 322,
+    "parsedSize": 698,
+    "mapSize": 1796,
+    "statSize": 1110,
+    "gzipSize": 384,
     "source": [
       {
-        "gzipSize": 322,
-        "parsedSize": 554,
+        "gzipSize": 384,
+        "parsedSize": 698,
         "label": "home/sergey/projects/src/error-message.tsx",
         "filename": "home/sergey/projects/src/error-message.tsx"
       }
     ],
     "stats": [
       {
-        "statSize": 935,
+        "statSize": 1110,
         "label": "src/error-message.tsx",
         "filename": "src/error-message.tsx"
       }

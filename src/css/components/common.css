@@ -1,5 +1,5 @@
 .jui {
-  font-size: var(--jui-font-size);
+  font-size: $control-font-size;
   box-sizing: border-box;
 
   * {
@@ -9,96 +9,13 @@
       box-sizing: border-box;
     }
   }
+}
+
+.jui {
 
   ::placeholder {
     color: rgb(var(--jui-placeholder-rgb) / .7);
     font-weight: 400;
     opacity: .6;
-  }
-
-  .control {
-    height: var(--jui-height);
-    background-color: rgb(var(--jui-bg-rgb));
-    font-size: var(--jui-font-size);
-    box-shadow: none;
-    border: var(--jui-border-width) solid rgb(var(--jui-border-rgb));
-    border-radius: var(--jui-border-radius);
-    overflow: hidden;
-    display: flex;
-    position: relative;
-    align-items: stretch;
-    justify-content: space-between;
-    transition: box-shadow .15s ease-in-out, border-color .15s ease-in-out, background-color .15s ease-in-out;
-
-    input, select {
-      width: 100%;
-      height: calc(var(--jui-height) - (var(--jui-border-width) * 2));
-      padding: var(--jui-padding-y) var(--jui-padding-x);
-      color: rgb(var(--jui-text-rgb));
-      border: none;
-      outline: none;
-      font-size: inherit;
-      background-color: transparent;
-    }
-
-    .loader-backdrop {
-      inset: 0;
-      background-color: rgb(var(--jui-bg-rgb));
-      color: rgb(var(--jui-text-rgb) / .6);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      position: absolute;
-      z-index: 10;
-    }
-  }
-
-  &:focus-within, &.focus {
-
-    .control {
-      border: var(--jui-border-width) solid rgb(var(--jui-border-focus-rgb));
-      box-shadow: var(--jui-box-shadow-focus);
-    }
-  }
-
-  &.error {
-
-    .control {
-      border: var(--jui-border-width) solid rgb(var(--jui-error-rgb));
-      box-shadow: 0 0 0 0 transparent;
-    }
-  }
-
-  &.disabled {
-
-    .control {
-      box-shadow: none;
-      border: var(--jui-border-width) solid rgb(var(--jui-border-rgb));
-      background-color: rgb(var(--jui-bg-disabled-rgb));
-      opacity: .8;
-    }
-
-    .jui-error-message div {
-      transform: translateY(0);
-    }
-  }
-
-  &.loading {
-
-    .control {
-      pointer-events: none;
-      box-shadow: none;
-      border: var(--jui-border-width) solid rgb(var(--jui-border-rgb));
-      background-color: rgb(var(--jui-bg-rgb));
-      opacity: 1;
-
-      .loader-backdrop {
-        display: flex;
-      }
-    }
-
-    .jui-error-message div {
-      transform: translateY(0);
-    }
   }
 }

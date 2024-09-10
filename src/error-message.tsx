@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { ValidationError } from './types';
 import './error-message.css';
 
@@ -7,24 +7,32 @@ export interface IErrorMessage {
 }
 
 export const ErrorMessage = ({ error }: IErrorMessage) => {
-  const messageRef = useRef<string | undefined>();
-
-  const message = useMemo(() => {
-    if (!error || !error.message) {
-      return null;
-    }
-    return error.message;
-  }, [error]);
+  const ref = useRef<HTMLDivElement | null>(null);
+  const message = error && error.message || null;
 
   useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    const div = element.firstChild as HTMLDivElement;
+
     if (message) {
-      messageRef.current = message;
+      div.innerHTML = message;
+      element.classList.add('active');
+    } else {
+      const timer = setTimeout(() => (div.innerHTML = ''), 200);
+      element.classList.remove('active');
+
+      return () => {
+        div.innerHTML = '';
+        clearTimeout(timer);
+      };
     }
   }, [message]);
 
   return (
-    <div className={`jui jui-error-message ${error ? 'active' : ''}`} role="alert">
-      <div>{message || messageRef.current}</div>
+    <div className="jui jui-error-message" role="alert" ref={ref}>
+      <div />
     </div>
   )
 };

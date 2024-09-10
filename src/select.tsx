@@ -241,7 +241,7 @@ export function Option(props: OptionProps) {
     <button
       id={active ? `${id}-active` : undefined}
       type="button"
-      className={`jui-option ${active ? 'active' : ''}`}
+      className={`jui jui-option ${active ? 'active' : ''}`}
       value={value}
       onClick={() => onClick(value)}
     >

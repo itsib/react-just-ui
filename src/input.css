@@ -1,9 +1,11 @@
 .jui.jui-input {
 
   .control {
+    height: $control-height;
 
     .prefix, .suffix {
-      --jui-inner-border-radius: calc(var(--jui-border-radius) - 1px);
+      font-size: $font-md;
+      --jui-inner-border-radius: calc($control-border-radius - 1px);
       padding: 0 0.75em;
       display: flex;
       align-items: center;
@@ -17,14 +19,14 @@
 
     > .prefix {
       color: rgb(var(--jui-prefix-rgb));
-      border-radius: var(--jui-inner-border-radius) 0 0 var(--jui-inner-border-radius);
-      border-right: var(--jui-prefix-border-width) solid rgb(var(--jui-border-rgb));
+      border-radius: calc($control-border-radius - 1px) 0 0 calc($control-border-radius - 1px);
+      border-right: $control-border-width solid rgb(var(--jui-border-rgb));
     }
 
     > .suffix {
       color: rgb(var(--jui-suffix-rgb));
-      border-radius: 0 var(--jui-inner-border-radius) var(--jui-inner-border-radius) 0;
-      border-left: var(--jui-suffix-border-width) solid rgb(var(--jui-border-rgb));
+      border-radius: 0 calc($control-border-radius - 1px) calc($control-border-radius - 1px) 0;
+      border-left: $control-border-width solid rgb(var(--jui-border-rgb));
     }
   }
 

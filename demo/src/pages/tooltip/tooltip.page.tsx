@@ -62,7 +62,7 @@ export const TooltipPage: FC = () => {
       <fieldset className="preview">
         <legend><Trans i18nKey="preview"/></legend>
 
-        <div className="options" style={{ '--jui-error-height': 'auto' } as CSSProperties}>
+        <div className="options">
           <div className="actions">
             <RadioButton
               id="position-top"

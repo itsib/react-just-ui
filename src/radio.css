@@ -9,8 +9,8 @@
   }
 
   .control-radio {
-    width: var(--jui-radio-size);
-    height: var(--jui-radio-size);
+    width: $radio-size;
+    height: $radio-size;
     margin: 5px 10px;
     position: relative;
     cursor: pointer;
@@ -20,8 +20,8 @@
     input[type="radio"] {
       inset: 0;
       margin: 0;
-      width: var(--jui-radio-size);
-      height: var(--jui-radio-size);
+      width: $radio-size;
+      height: $radio-size;
       position: absolute;
       opacity: 0;
       z-index: 2;
@@ -29,8 +29,8 @@
     }
 
     .radio {
-      width: var(--jui-radio-size);
-      height: var(--jui-radio-size);
+      width: $radio-size;
+      height: $radio-size;
       position: absolute;
       user-select: none;
       z-index: 1;
