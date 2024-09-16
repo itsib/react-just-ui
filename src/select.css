@@ -47,11 +47,6 @@
 .jui.jui-select-dropdown {
   /*noinspection ALL*/
   .jui-dropdown-options {
-    top: var(--jui-dropdown-top);
-    left: var(--jui-dropdown-left);
-    width: var(--jui-dropdown-width);
-    height: var(--jui-dropdown-height);
-    padding: var(--jui-dropdown-padding);
     color: rgb(var(--jui-text-rgb));
     overflow-y: auto;
     scroll-padding-top: var(--jui-dropdown-padding);
@@ -87,7 +82,7 @@
 .jui.jui-option {
   width: 100%;
   /*noinspection CssUnresolvedCustomProperty*/
-  height: var(--jui-dropdown-item-height);
+  height: 38px;
   padding: 4px 12px;
   font-size: $control-font-size;
   font-weight: normal;

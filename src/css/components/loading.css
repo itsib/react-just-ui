@@ -1,14 +1,10 @@
-:root {
-  --jui-loading-size: 40px;
-}
-
 .jui-loading {
   color: var(--jui-accent-rgb);
   display: inline-block;
-  height: var(--jui-loading-size);
-  width: var(--jui-loading-size);
+  height: $loading-size;
+  width: $loading-size;
   background-color: currentColor;
-  mask-image: var(--jui-loading-svg);
+  mask-image: $loading-svg;
   mask-repeat: no-repeat;
   mask-size: 100% 100%;
 }

@@ -97,21 +97,21 @@
   {
     "filename": "select.js",
     "label": "select.js",
-    "parsedSize": 9648,
-    "mapSize": 16375,
-    "statSize": 11537,
-    "gzipSize": 2341,
+    "parsedSize": 9500,
+    "mapSize": 16184,
+    "statSize": 11384,
+    "gzipSize": 2322,
     "source": [
       {
-        "gzipSize": 2341,
-        "parsedSize": 9648,
+        "gzipSize": 2322,
+        "parsedSize": 9500,
         "label": "home/sergey/projects/src/select.tsx",
         "filename": "home/sergey/projects/src/select.tsx"
       }
     ],
     "stats": [
       {
-        "statSize": 11537,
+        "statSize": 11384,
         "label": "src/select.tsx",
         "filename": "src/select.tsx"
       }
@@ -255,7 +255,7 @@
     "filename": "checkbox.js",
     "label": "checkbox.js",
     "parsedSize": 2009,
-    "mapSize": 3139,
+    "mapSize": 3177,
     "statSize": 2285,
     "gzipSize": 632,
     "source": [
@@ -555,21 +555,21 @@
   {
     "filename": "select.cjs",
     "label": "select.cjs",
-    "parsedSize": 6928,
-    "mapSize": 15321,
-    "statSize": 11537,
-    "gzipSize": 2022,
+    "parsedSize": 6794,
+    "mapSize": 15130,
+    "statSize": 11384,
+    "gzipSize": 2004,
     "source": [
       {
-        "gzipSize": 2022,
-        "parsedSize": 6928,
+        "gzipSize": 2004,
+        "parsedSize": 6794,
         "label": "home/sergey/projects/src/select.tsx",
         "filename": "home/sergey/projects/src/select.tsx"
       }
     ],
     "stats": [
       {
-        "statSize": 11537,
+        "statSize": 11384,
         "label": "src/select.tsx",
         "filename": "src/select.tsx"
       }
@@ -713,12 +713,12 @@
     "filename": "checkbox.cjs",
     "label": "checkbox.cjs",
     "parsedSize": 1489,
-    "mapSize": 2896,
+    "mapSize": 2934,
     "statSize": 2285,
-    "gzipSize": 541,
+    "gzipSize": 542,
     "source": [
       {
-        "gzipSize": 541,
+        "gzipSize": 542,
         "parsedSize": 1489,
         "label": "home/sergey/projects/src/checkbox.tsx",
         "filename": "home/sergey/projects/src/checkbox.tsx"

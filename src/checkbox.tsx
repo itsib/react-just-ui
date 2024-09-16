@@ -4,10 +4,6 @@ import { ErrorMessage } from './error-message';
 import type { BaseControlProps } from './types';
 import './checkbox.css';
 
-export interface CheckboxProps extends BaseControlProps<HTMLInputElement> {
-  rowReverse?: boolean;
-}
-
 /**
  * Checkbox
  *
@@ -18,6 +14,23 @@ export interface CheckboxProps extends BaseControlProps<HTMLInputElement> {
  * system configuration under which the browser is running.
  *
  * @public
+ */
+export interface CheckboxProps extends BaseControlProps<HTMLInputElement> {
+  /**
+   * Row Reverse
+   *
+   * @remarks
+   * Swap the checkbox and label
+   *
+   * @public
+   */
+  rowReverse?: boolean;
+}
+
+
+/**
+ * Checkbox
+ * @beta
  */
 export const Checkbox = forwardRef(function Checkbox(
   _props: CheckboxProps,

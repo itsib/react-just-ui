@@ -13,7 +13,7 @@
   },
   "docModel": {
     "enabled": true,
-    "apiJsonFilePath": "<projectFolder>/demo/public/json/index.api.json",
+    "apiJsonFilePath": "<projectFolder>/temp/index.api.json",
     "projectFolderUrl": "https://github.com/itsib/react-just-ui"
   },
   "dtsRollup": {

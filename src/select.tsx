@@ -212,12 +212,11 @@ export function SelectDropdown(props: SelectDropdownProps) {
         className={`jui-dropdown-options ${dropdownClass}`}
         aria-label="dropdown"
         style={{
-          '--jui-dropdown-top': `${points.top}px`,
-          '--jui-dropdown-left': `${points.left}px`,
-          '--jui-dropdown-width': `${points.width}px`,
-          '--jui-dropdown-height': `${points.height}px`,
-          '--jui-dropdown-item-height': `${points.itemHeight}px`,
-          '--jui-dropdown-padding': `${points.padding}px`,
+          top: `${points.top}px`,
+          left: `${points.left}px`,
+          width: `${points.width}px`,
+          height: `${points.height}px`,
+          padding: `${points.padding}px`,
         } as CSSProperties}
         ref={optionsRef}
       >

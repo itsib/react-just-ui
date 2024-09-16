@@ -13,10 +13,10 @@
   "scripts": {
     "clean": "rm -rf ./dist",
     "start": "node --import=tsx ./scripts/start.ts",
-    "build": "npm run clean && npm run build:types && npm run build:lib",
+    "build": "npm run clean && npm run build:types && npm run build:doc && npm run build:lib",
     "build:types": "tsc --emitDeclarationOnly --noEmit false --declaration true",
-    "build:lib": "vite build --mode production",
-    "build:doc": "api-extractor run --local --verbose",
+    "build:lib": "NODE_ENV='production' vite build --mode production",
+    "build:doc": "api-extractor run --local --verbose && node --import=tsx ./scripts/parse-doc.ts",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preversion": "npm run lint",
     "postversion": "git push && git push --tags"
@@ -27,11 +27,12 @@
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.47.6",
+    "@microsoft/api-extractor-model": "^7.29.7",
     "@types/color-diff": "^1.2.5",
     "@types/node": "^20.14.12",
     "@types/postcss-advanced-variables": "^3.0.0",
     "@types/postcss-import": "^14.0.3",
-    "@types/react": "^18.3.0",
+    "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.17.0",
     "@typescript-eslint/parser": "^7.17.0",

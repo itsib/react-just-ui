@@ -37,7 +37,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       },
     },
     define: {
-      'process.env.NODE_ENV': 'production',
+      'process.env.NODE_ENV': mode,
     },
     css: {
       modules: {},
@@ -69,7 +69,11 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
           ...Object.keys(pkg.peerDependencies)
         ],
         output: {
-          globals: { react: 'React' },
+          globals: {
+            'react': 'react',
+            'react-dom': 'ReactDOM',
+            'react/jsx-runtime': 'react/jsx-runtime',
+          },
         },
       },
     },
@@ -80,7 +84,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       analyzer({
         reportTitle: 'ReactJustUI',
         analyzerMode: 'json',
-        fileName: '../demo/public/stat',
+        fileName: '../demo/public/json/report',
       }),
     ],
   }
