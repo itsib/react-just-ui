@@ -4,20 +4,15 @@ import { Label } from './label';
 import { ErrorMessage } from './error-message';
 import './otp-input.css';
 
-/**
- * One-time password input properties
- *
- * @public
- */
 export interface OtpInputProps extends BaseControlProps<HTMLInputElement> {
   /**
-   * Code layout present. Example «ddd-ddd» six digit code.
-   *    «-» - divider dash
-   *    «.» - divider dot
-   *    «,» - divider rect
-   *    «d» - digit
-   *    «w» - letter [a-z]
-   *    «s» - digit or letter
+   * Code layout present. Example «ddd-ddd» six digit code. <br/>
+   * «-» - divider dash <br/>
+   * «.» - divider dot <br/>
+   * «,» - divider rect <br/>
+   * «d» - digit <br/>
+   * «w» - letter [a-z] <br/>
+   * «s» - digit or letter <br/>
    *
    * @defaultValue 'ddd-ddd'
    * @public
@@ -31,12 +26,7 @@ export interface OtpInputProps extends BaseControlProps<HTMLInputElement> {
 }
 
 /**
- * One-time password input
- *
- * @remarks
- * This is the most complete OTP input on the web.
- *
- * @public
+ * One-time password input. This is the most complete OTP input on the web.
  */
 export const OtpInput = forwardRef(function FormControlVerifyCode(
   props: OtpInputProps,

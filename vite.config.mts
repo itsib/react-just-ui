@@ -11,7 +11,7 @@ import * as glob from 'glob';
 import pkg from './package.json';
 import packageJsonGen from './plugins/vite-plugin-package-json';
 import { analyzer } from 'vite-bundle-analyzer'
-import { resolveVariable } from './utils/theme-utils';
+import { ThemeConfig } from './theme.config';
 
 const entries = Object.fromEntries(
   glob.sync('src/!(*.d).{tsx,ts}', { cwd: __dirname })
@@ -37,14 +37,32 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       },
     },
     define: {
-      'process.env.NODE_ENV': mode,
+      'process.env.NODE_ENV': JSON.stringify(mode),
     },
     css: {
       modules: {},
       postcss: {
         plugins: [
           postcssVariables({
-            variables: resolveVariable,
+            variables(name: string) {
+              const fields = name.split('-');
+              let value: any = ThemeConfig.minimal;
+
+              for (const field of fields) {
+                if (field && value && field in value) {
+                  value = value[field];
+                } else {
+                  break;
+                }
+              }
+              if (typeof value === 'object' || value == null) {
+                return 'none';
+              } else if (typeof value === 'number') {
+                return `${value}px`;
+              } else {
+                return value;
+              }
+            },
             unresolved: 'warn',
           }),
           postcssImport(),
@@ -84,7 +102,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       analyzer({
         reportTitle: 'ReactJustUI',
         analyzerMode: 'json',
-        fileName: '../demo/public/json/report',
+        fileName: '../.storybook/public/report/report',
       }),
     ],
   }

@@ -1,0 +1,918 @@
+[
+  {
+    "filename": "index.js",
+    "label": "index.js",
+    "parsedSize": 0,
+    "mapSize": 101,
+    "statSize": 350,
+    "gzipSize": 0,
+    "source": [],
+    "stats": [
+      {
+        "statSize": 350,
+        "label": "src/index.ts",
+        "filename": "src/index.ts"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "utils/index.js",
+      "validators/index.js",
+      "error-message.js",
+      "label.js",
+      "checkbox.js",
+      "input.js",
+      "select.js",
+      "textarea.js",
+      "radio.js",
+      "switch.js",
+      "otp-input.js",
+      "image.js"
+    ]
+  },
+  {
+    "filename": "textarea.js",
+    "label": "textarea.js",
+    "parsedSize": 2776,
+    "mapSize": 7297,
+    "statSize": 3773,
+    "gzipSize": 1104,
+    "source": [
+      {
+        "gzipSize": 1104,
+        "parsedSize": 2776,
+        "label": "home/sergey/projects/src/textarea.tsx",
+        "filename": "home/sergey/projects/src/textarea.tsx"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 3773,
+        "label": "src/textarea.tsx",
+        "filename": "src/textarea.tsx"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "react/jsx-runtime",
+      "react",
+      "error-message.js",
+      "label.js",
+      "utils/index.js"
+    ]
+  },
+  {
+    "filename": "switch.js",
+    "label": "switch.js",
+    "parsedSize": 859,
+    "mapSize": 2055,
+    "statSize": 1098,
+    "gzipSize": 355,
+    "source": [
+      {
+        "gzipSize": 355,
+        "parsedSize": 859,
+        "label": "home/sergey/projects/src/switch.tsx",
+        "filename": "home/sergey/projects/src/switch.tsx"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 1098,
+        "label": "src/switch.tsx",
+        "filename": "src/switch.tsx"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "react/jsx-runtime",
+      "react",
+      "label.js",
+      "error-message.js"
+    ]
+  },
+  {
+    "filename": "select.js",
+    "label": "select.js",
+    "parsedSize": 5451,
+    "mapSize": 14134,
+    "statSize": 7188,
+    "gzipSize": 1959,
+    "source": [
+      {
+        "gzipSize": 1959,
+        "parsedSize": 5451,
+        "label": "home/sergey/projects/src/select.tsx",
+        "filename": "home/sergey/projects/src/select.tsx"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 7188,
+        "label": "src/select.tsx",
+        "filename": "src/select.tsx"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "react/jsx-runtime",
+      "react",
+      "react-dom",
+      "utils/index.js",
+      "error-message.js",
+      "label.js"
+    ]
+  },
+  {
+    "filename": "radio.js",
+    "label": "radio.js",
+    "parsedSize": 1035,
+    "mapSize": 2498,
+    "statSize": 1277,
+    "gzipSize": 456,
+    "source": [
+      {
+        "gzipSize": 456,
+        "parsedSize": 1035,
+        "label": "home/sergey/projects/src/radio.tsx",
+        "filename": "home/sergey/projects/src/radio.tsx"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 1277,
+        "label": "src/radio.tsx",
+        "filename": "src/radio.tsx"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "react/jsx-runtime",
+      "react",
+      "label.js",
+      "error-message.js"
+    ]
+  },
+  {
+    "filename": "otp-input.js",
+    "label": "otp-input.js",
+    "parsedSize": 5172,
+    "mapSize": 14323,
+    "statSize": 7116,
+    "gzipSize": 1747,
+    "source": [
+      {
+        "gzipSize": 1747,
+        "parsedSize": 5172,
+        "label": "home/sergey/projects/src/otp-input.tsx",
+        "filename": "home/sergey/projects/src/otp-input.tsx"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 7116,
+        "label": "src/otp-input.tsx",
+        "filename": "src/otp-input.tsx"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "react/jsx-runtime",
+      "react",
+      "label.js",
+      "error-message.js"
+    ]
+  },
+  {
+    "filename": "input.js",
+    "label": "input.js",
+    "parsedSize": 1351,
+    "mapSize": 3725,
+    "statSize": 1833,
+    "gzipSize": 618,
+    "source": [
+      {
+        "gzipSize": 618,
+        "parsedSize": 1351,
+        "label": "home/sergey/projects/src/input.tsx",
+        "filename": "home/sergey/projects/src/input.tsx"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 1833,
+        "label": "src/input.tsx",
+        "filename": "src/input.tsx"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "react/jsx-runtime",
+      "react",
+      "utils/index.js",
+      "error-message.js",
+      "label.js"
+    ]
+  },
+  {
+    "filename": "image.js",
+    "label": "image.js",
+    "parsedSize": 1305,
+    "mapSize": 5255,
+    "statSize": 1904,
+    "gzipSize": 533,
+    "source": [
+      {
+        "gzipSize": 533,
+        "parsedSize": 1305,
+        "label": "home/sergey/projects/src/image.tsx",
+        "filename": "home/sergey/projects/src/image.tsx"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 1904,
+        "label": "src/image.tsx",
+        "filename": "src/image.tsx"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "react/jsx-runtime",
+      "react",
+      "utils/index.js"
+    ]
+  },
+  {
+    "filename": "checkbox.js",
+    "label": "checkbox.js",
+    "parsedSize": 962,
+    "mapSize": 2587,
+    "statSize": 1185,
+    "gzipSize": 478,
+    "source": [
+      {
+        "gzipSize": 478,
+        "parsedSize": 962,
+        "label": "home/sergey/projects/src/checkbox.tsx",
+        "filename": "home/sergey/projects/src/checkbox.tsx"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 1185,
+        "label": "src/checkbox.tsx",
+        "filename": "src/checkbox.tsx"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "react/jsx-runtime",
+      "react",
+      "label.js",
+      "error-message.js"
+    ]
+  },
+  {
+    "filename": "label.js",
+    "label": "label.js",
+    "parsedSize": 1174,
+    "mapSize": 2099,
+    "statSize": 1293,
+    "gzipSize": 580,
+    "source": [
+      {
+        "gzipSize": 580,
+        "parsedSize": 1174,
+        "label": "home/sergey/projects/src/label.tsx",
+        "filename": "home/sergey/projects/src/label.tsx"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 1293,
+        "label": "src/label.tsx",
+        "filename": "src/label.tsx"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "react/jsx-runtime",
+      "react"
+    ]
+  },
+  {
+    "filename": "error-message.js",
+    "label": "error-message.js",
+    "parsedSize": 581,
+    "mapSize": 1712,
+    "statSize": 811,
+    "gzipSize": 331,
+    "source": [
+      {
+        "gzipSize": 331,
+        "parsedSize": 581,
+        "label": "home/sergey/projects/src/error-message.tsx",
+        "filename": "home/sergey/projects/src/error-message.tsx"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 811,
+        "label": "src/error-message.tsx",
+        "filename": "src/error-message.tsx"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "react/jsx-runtime",
+      "react"
+    ]
+  },
+  {
+    "filename": "validators/index.js",
+    "label": "validators/index.js",
+    "parsedSize": 746,
+    "mapSize": 6662,
+    "statSize": 1363,
+    "gzipSize": 549,
+    "source": [
+      {
+        "gzipSize": 549,
+        "parsedSize": 746,
+        "label": "home/sergey/src/validators",
+        "groups": [
+          {
+            "gzipSize": 134,
+            "parsedSize": 159,
+            "label": "email.ts",
+            "filename": "home/sergey/src/validators/email.ts"
+          },
+          {
+            "gzipSize": 87,
+            "parsedSize": 69,
+            "label": "url.ts",
+            "filename": "home/sergey/src/validators/url.ts"
+          },
+          {
+            "gzipSize": 198,
+            "parsedSize": 352,
+            "label": "address.ts",
+            "filename": "home/sergey/src/validators/address.ts"
+          },
+          {
+            "gzipSize": 130,
+            "parsedSize": 166,
+            "label": "merge.ts",
+            "filename": "home/sergey/src/validators/merge.ts"
+          }
+        ],
+        "filename": "home/sergey/src/validators"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 1363,
+        "label": "src/validators",
+        "groups": [
+          {
+            "statSize": 242,
+            "label": "email.ts",
+            "filename": "src/validators/email.ts"
+          },
+          {
+            "statSize": 134,
+            "label": "url.ts",
+            "filename": "src/validators/url.ts"
+          },
+          {
+            "statSize": 623,
+            "label": "address.ts",
+            "filename": "src/validators/address.ts"
+          },
+          {
+            "statSize": 264,
+            "label": "merge.ts",
+            "filename": "src/validators/merge.ts"
+          },
+          {
+            "statSize": 100,
+            "label": "index.ts",
+            "filename": "src/validators/index.ts"
+          }
+        ],
+        "filename": "src/validators"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": []
+  },
+  {
+    "filename": "utils/index.js",
+    "label": "utils/index.js",
+    "parsedSize": 397,
+    "mapSize": 1981,
+    "statSize": 621,
+    "gzipSize": 228,
+    "source": [
+      {
+        "gzipSize": 228,
+        "parsedSize": 397,
+        "label": "home/sergey/src/utils/class-names.ts",
+        "filename": "home/sergey/src/utils/class-names.ts"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 621,
+        "label": "src/utils",
+        "groups": [
+          {
+            "statSize": 590,
+            "label": "class-names.ts",
+            "filename": "src/utils/class-names.ts"
+          },
+          {
+            "statSize": 31,
+            "label": "index.ts",
+            "filename": "src/utils/index.ts"
+          }
+        ],
+        "filename": "src/utils"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": []
+  },
+  {
+    "filename": "index.cjs",
+    "label": "index.cjs",
+    "parsedSize": 0,
+    "mapSize": 90,
+    "statSize": 350,
+    "gzipSize": 0,
+    "source": [],
+    "stats": [
+      {
+        "statSize": 350,
+        "label": "src/index.ts",
+        "filename": "src/index.ts"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "utils/index.cjs",
+      "validators/index.cjs",
+      "error-message.cjs",
+      "label.cjs",
+      "checkbox.cjs",
+      "input.cjs",
+      "select.cjs",
+      "textarea.cjs",
+      "radio.cjs",
+      "switch.cjs",
+      "otp-input.cjs",
+      "image.cjs"
+    ]
+  },
+  {
+    "filename": "textarea.cjs",
+    "label": "textarea.cjs",
+    "parsedSize": 2270,
+    "mapSize": 7162,
+    "statSize": 3773,
+    "gzipSize": 1007,
+    "source": [
+      {
+        "gzipSize": 1007,
+        "parsedSize": 2270,
+        "label": "home/sergey/projects/src/textarea.tsx",
+        "filename": "home/sergey/projects/src/textarea.tsx"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 3773,
+        "label": "src/textarea.tsx",
+        "filename": "src/textarea.tsx"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "react/jsx-runtime",
+      "react",
+      "error-message.cjs",
+      "label.cjs",
+      "utils/index.cjs"
+    ]
+  },
+  {
+    "filename": "switch.cjs",
+    "label": "switch.cjs",
+    "parsedSize": 499,
+    "mapSize": 1905,
+    "statSize": 1098,
+    "gzipSize": 289,
+    "source": [
+      {
+        "gzipSize": 289,
+        "parsedSize": 499,
+        "label": "home/sergey/projects/src/switch.tsx",
+        "filename": "home/sergey/projects/src/switch.tsx"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 1098,
+        "label": "src/switch.tsx",
+        "filename": "src/switch.tsx"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "react/jsx-runtime",
+      "react",
+      "label.cjs",
+      "error-message.cjs"
+    ]
+  },
+  {
+    "filename": "select.cjs",
+    "label": "select.cjs",
+    "parsedSize": 3897,
+    "mapSize": 13654,
+    "statSize": 7188,
+    "gzipSize": 1753,
+    "source": [
+      {
+        "gzipSize": 1753,
+        "parsedSize": 3897,
+        "label": "home/sergey/projects/src/select.tsx",
+        "filename": "home/sergey/projects/src/select.tsx"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 7188,
+        "label": "src/select.tsx",
+        "filename": "src/select.tsx"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "react/jsx-runtime",
+      "react",
+      "react-dom",
+      "utils/index.cjs",
+      "error-message.cjs",
+      "label.cjs"
+    ]
+  },
+  {
+    "filename": "radio.cjs",
+    "label": "radio.cjs",
+    "parsedSize": 716,
+    "mapSize": 2395,
+    "statSize": 1277,
+    "gzipSize": 413,
+    "source": [
+      {
+        "gzipSize": 413,
+        "parsedSize": 716,
+        "label": "home/sergey/projects/src/radio.tsx",
+        "filename": "home/sergey/projects/src/radio.tsx"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 1277,
+        "label": "src/radio.tsx",
+        "filename": "src/radio.tsx"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "react/jsx-runtime",
+      "react",
+      "label.cjs",
+      "error-message.cjs"
+    ]
+  },
+  {
+    "filename": "otp-input.cjs",
+    "label": "otp-input.cjs",
+    "parsedSize": 3553,
+    "mapSize": 13876,
+    "statSize": 7116,
+    "gzipSize": 1550,
+    "source": [
+      {
+        "gzipSize": 1550,
+        "parsedSize": 3553,
+        "label": "home/sergey/projects/src/otp-input.tsx",
+        "filename": "home/sergey/projects/src/otp-input.tsx"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 7116,
+        "label": "src/otp-input.tsx",
+        "filename": "src/otp-input.tsx"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "react/jsx-runtime",
+      "react",
+      "label.cjs",
+      "error-message.cjs"
+    ]
+  },
+  {
+    "filename": "input.cjs",
+    "label": "input.cjs",
+    "parsedSize": 1023,
+    "mapSize": 3673,
+    "statSize": 1833,
+    "gzipSize": 564,
+    "source": [
+      {
+        "gzipSize": 564,
+        "parsedSize": 1023,
+        "label": "home/sergey/projects/src/input.tsx",
+        "filename": "home/sergey/projects/src/input.tsx"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 1833,
+        "label": "src/input.tsx",
+        "filename": "src/input.tsx"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "react/jsx-runtime",
+      "react",
+      "utils/index.cjs",
+      "error-message.cjs",
+      "label.cjs"
+    ]
+  },
+  {
+    "filename": "image.cjs",
+    "label": "image.cjs",
+    "parsedSize": 865,
+    "mapSize": 5105,
+    "statSize": 1904,
+    "gzipSize": 465,
+    "source": [
+      {
+        "gzipSize": 465,
+        "parsedSize": 865,
+        "label": "home/sergey/projects/src/image.tsx",
+        "filename": "home/sergey/projects/src/image.tsx"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 1904,
+        "label": "src/image.tsx",
+        "filename": "src/image.tsx"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "react/jsx-runtime",
+      "react",
+      "utils/index.cjs"
+    ]
+  },
+  {
+    "filename": "checkbox.cjs",
+    "label": "checkbox.cjs",
+    "parsedSize": 699,
+    "mapSize": 2495,
+    "statSize": 1185,
+    "gzipSize": 424,
+    "source": [
+      {
+        "gzipSize": 424,
+        "parsedSize": 699,
+        "label": "home/sergey/projects/src/checkbox.tsx",
+        "filename": "home/sergey/projects/src/checkbox.tsx"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 1185,
+        "label": "src/checkbox.tsx",
+        "filename": "src/checkbox.tsx"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "react/jsx-runtime",
+      "react",
+      "label.cjs",
+      "error-message.cjs"
+    ]
+  },
+  {
+    "filename": "label.cjs",
+    "label": "label.cjs",
+    "parsedSize": 1015,
+    "mapSize": 2066,
+    "statSize": 1293,
+    "gzipSize": 544,
+    "source": [
+      {
+        "gzipSize": 544,
+        "parsedSize": 1015,
+        "label": "home/sergey/projects/src/label.tsx",
+        "filename": "home/sergey/projects/src/label.tsx"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 1293,
+        "label": "src/label.tsx",
+        "filename": "src/label.tsx"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "react/jsx-runtime",
+      "react"
+    ]
+  },
+  {
+    "filename": "error-message.cjs",
+    "label": "error-message.cjs",
+    "parsedSize": 458,
+    "mapSize": 1681,
+    "statSize": 811,
+    "gzipSize": 302,
+    "source": [
+      {
+        "gzipSize": 302,
+        "parsedSize": 458,
+        "label": "home/sergey/projects/src/error-message.tsx",
+        "filename": "home/sergey/projects/src/error-message.tsx"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 811,
+        "label": "src/error-message.tsx",
+        "filename": "src/error-message.tsx"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": [
+      "react/jsx-runtime",
+      "react"
+    ]
+  },
+  {
+    "filename": "validators/index.cjs",
+    "label": "validators/index.cjs",
+    "parsedSize": 660,
+    "mapSize": 6623,
+    "statSize": 1363,
+    "gzipSize": 521,
+    "source": [
+      {
+        "gzipSize": 521,
+        "parsedSize": 660,
+        "label": "home/sergey/src/validators",
+        "groups": [
+          {
+            "gzipSize": 112,
+            "parsedSize": 114,
+            "label": "email.ts",
+            "filename": "home/sergey/src/validators/email.ts"
+          },
+          {
+            "gzipSize": 70,
+            "parsedSize": 50,
+            "label": "url.ts",
+            "filename": "home/sergey/src/validators/url.ts"
+          },
+          {
+            "gzipSize": 182,
+            "parsedSize": 284,
+            "label": "address.ts",
+            "filename": "home/sergey/src/validators/address.ts"
+          },
+          {
+            "gzipSize": 157,
+            "parsedSize": 212,
+            "label": "merge.ts",
+            "filename": "home/sergey/src/validators/merge.ts"
+          }
+        ],
+        "filename": "home/sergey/src/validators"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 1363,
+        "label": "src/validators",
+        "groups": [
+          {
+            "statSize": 242,
+            "label": "email.ts",
+            "filename": "src/validators/email.ts"
+          },
+          {
+            "statSize": 134,
+            "label": "url.ts",
+            "filename": "src/validators/url.ts"
+          },
+          {
+            "statSize": 623,
+            "label": "address.ts",
+            "filename": "src/validators/address.ts"
+          },
+          {
+            "statSize": 264,
+            "label": "merge.ts",
+            "filename": "src/validators/merge.ts"
+          },
+          {
+            "statSize": 100,
+            "label": "index.ts",
+            "filename": "src/validators/index.ts"
+          }
+        ],
+        "filename": "src/validators"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": []
+  },
+  {
+    "filename": "utils/index.cjs",
+    "label": "utils/index.cjs",
+    "parsedSize": 309,
+    "mapSize": 1951,
+    "statSize": 621,
+    "gzipSize": 218,
+    "source": [
+      {
+        "gzipSize": 218,
+        "parsedSize": 309,
+        "label": "home/sergey/src/utils/class-names.ts",
+        "filename": "home/sergey/src/utils/class-names.ts"
+      }
+    ],
+    "stats": [
+      {
+        "statSize": 621,
+        "label": "src/utils",
+        "groups": [
+          {
+            "statSize": 590,
+            "label": "class-names.ts",
+            "filename": "src/utils/class-names.ts"
+          },
+          {
+            "statSize": 31,
+            "label": "index.ts",
+            "filename": "src/utils/index.ts"
+          }
+        ],
+        "filename": "src/utils"
+      }
+    ],
+    "isAsset": true,
+    "isEntry": true,
+    "imports": []
+  }
+]

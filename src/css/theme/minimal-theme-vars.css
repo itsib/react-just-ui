@@ -18,23 +18,29 @@
   --jui-checkbox-rgb: 0 0 0;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --jui-black-rgb: $color-black;
+    --jui-white-rgb: $color-white;
+    --jui-accent-rgb: $color-accent-dark;
+    --jui-error-rgb: $color-error-light;
+    --jui-text-rgb: 255 255 255;
+    --jui-label-rgb: 225 225 225;
+    --jui-bg-rgb: 29 29 29;
+    --jui-shadow-rgb: 209 209 209;
+    --jui-border-rgb: 78 78 78;
+    --jui-border-focus-rgb: 212 212 212;
+    --jui-bg-disabled-rgb: 48 48 48;
+    --jui-bg-hover-rgb: 68 68 68;
+    --jui-tt-bg-rgb: 0 0 0;
+    --jui-tt-border-rgb: 51 51 51;
+    --jui-switch-bg-rgb: 65 65 65;
+    --jui-checkbox-rgb: 255 255 255;
+  }
+}
+
 body.dark {
-  --jui-black-rgb: $color-black;
-  --jui-white-rgb: $color-white;
-  --jui-accent-rgb: $color-accent-dark;
-  --jui-error-rgb: $color-error-light;
-  --jui-text-rgb: 255 255 255;
-  --jui-label-rgb: 225 225 225;
-  --jui-bg-rgb: 29 29 29;
-  --jui-shadow-rgb: 209 209 209;
-  --jui-border-rgb: 78 78 78;
-  --jui-border-focus-rgb: 212 212 212;
-  --jui-bg-disabled-rgb: 48 48 48;
-  --jui-bg-hover-rgb: 68 68 68;
-  --jui-tt-bg-rgb: 0 0 0;
-  --jui-tt-border-rgb: 51 51 51;
-  --jui-switch-bg-rgb: 65 65 65;
-  --jui-checkbox-rgb: 255 255 255;
+
 }
 
 body {

@@ -1,0 +1,132 @@
+@font-face {
+    font-family: "CodeMono";
+    font-style: normal;
+    font-weight: 700;
+    font-stretch: 98%;
+    font-display: swap;
+    src: url("/fonts/code-mono/CodeMono-Bold.eot?06757483602144785#iefix") format("embedded-opentype"),
+         url("/fonts/code-mono/CodeMono-Bold.woff2?06757483602144785") format("woff2"),
+         url("/fonts/code-mono/CodeMono-Bold.woff?06757483602144785") format("woff"),
+         url("/fonts/code-mono/CodeMono-Bold.ttf?06757483602144785") format("truetype"),
+         url("/fonts/code-mono/CodeMono-Bold.svg?06757483602144785#CodeMono") format("svg");
+}
+@font-face {
+    font-family: "CodeMono";
+    font-style: italic;
+    font-weight: 700;
+    font-stretch: 98%;
+    font-display: swap;
+    src: url("/fonts/code-mono/CodeMono-BoldItalic.eot?06757483602144785#iefix") format("embedded-opentype"),
+         url("/fonts/code-mono/CodeMono-BoldItalic.woff2?06757483602144785") format("woff2"),
+         url("/fonts/code-mono/CodeMono-BoldItalic.woff?06757483602144785") format("woff"),
+         url("/fonts/code-mono/CodeMono-BoldItalic.ttf?06757483602144785") format("truetype"),
+         url("/fonts/code-mono/CodeMono-BoldItalic.svg?06757483602144785#CodeMono") format("svg");
+}
+@font-face {
+    font-family: "CodeMono";
+    font-style: normal;
+    font-weight: 800;
+    font-stretch: 98%;
+    font-display: swap;
+    src: url("/fonts/code-mono/CodeMono-ExtraBold.eot?06757483602144785#iefix") format("embedded-opentype"),
+         url("/fonts/code-mono/CodeMono-ExtraBold.woff2?06757483602144785") format("woff2"),
+         url("/fonts/code-mono/CodeMono-ExtraBold.woff?06757483602144785") format("woff"),
+         url("/fonts/code-mono/CodeMono-ExtraBold.ttf?06757483602144785") format("truetype"),
+         url("/fonts/code-mono/CodeMono-ExtraBold.svg?06757483602144785#CodeMono") format("svg");
+}
+@font-face {
+    font-family: "CodeMono";
+    font-style: italic;
+    font-weight: 800;
+    font-stretch: 98%;
+    font-display: swap;
+    src: url("/fonts/code-mono/CodeMono-ExtraBoldItalic.eot?06757483602144785#iefix") format("embedded-opentype"),
+         url("/fonts/code-mono/CodeMono-ExtraBoldItalic.woff2?06757483602144785") format("woff2"),
+         url("/fonts/code-mono/CodeMono-ExtraBoldItalic.woff?06757483602144785") format("woff"),
+         url("/fonts/code-mono/CodeMono-ExtraBoldItalic.ttf?06757483602144785") format("truetype"),
+         url("/fonts/code-mono/CodeMono-ExtraBoldItalic.svg?06757483602144785#CodeMono") format("svg");
+}
+@font-face {
+    font-family: "CodeMono";
+    font-style: normal;
+    font-weight: 200;
+    font-stretch: 98%;
+    font-display: swap;
+    src: url("/fonts/code-mono/CodeMono-ExtraLight.eot?06757483602144785#iefix") format("embedded-opentype"),
+         url("/fonts/code-mono/CodeMono-ExtraLight.woff2?06757483602144785") format("woff2"),
+         url("/fonts/code-mono/CodeMono-ExtraLight.woff?06757483602144785") format("woff"),
+         url("/fonts/code-mono/CodeMono-ExtraLight.ttf?06757483602144785") format("truetype"),
+         url("/fonts/code-mono/CodeMono-ExtraLight.svg?06757483602144785#CodeMono") format("svg");
+}
+@font-face {
+    font-family: "CodeMono";
+    font-style: italic;
+    font-weight: 200;
+    font-stretch: 98%;
+    font-display: swap;
+    src: url("/fonts/code-mono/CodeMono-ExtraLightItalic.eot?06757483602144785#iefix") format("embedded-opentype"),
+         url("/fonts/code-mono/CodeMono-ExtraLightItalic.woff2?06757483602144785") format("woff2"),
+         url("/fonts/code-mono/CodeMono-ExtraLightItalic.woff?06757483602144785") format("woff"),
+         url("/fonts/code-mono/CodeMono-ExtraLightItalic.ttf?06757483602144785") format("truetype"),
+         url("/fonts/code-mono/CodeMono-ExtraLightItalic.svg?06757483602144785#CodeMono") format("svg");
+}
+@font-face {
+    font-family: "CodeMono";
+    font-style: italic;
+    font-weight: 400;
+    font-stretch: 98%;
+    font-display: swap;
+    src: url("/fonts/code-mono/CodeMono-Italic.eot?06757483602144785#iefix") format("embedded-opentype"),
+         url("/fonts/code-mono/CodeMono-Italic.woff2?06757483602144785") format("woff2"),
+         url("/fonts/code-mono/CodeMono-Italic.woff?06757483602144785") format("woff"),
+         url("/fonts/code-mono/CodeMono-Italic.ttf?06757483602144785") format("truetype"),
+         url("/fonts/code-mono/CodeMono-Italic.svg?06757483602144785#CodeMono") format("svg");
+}
+@font-face {
+    font-family: "CodeMono";
+    font-style: normal;
+    font-weight: 300;
+    font-stretch: 98%;
+    font-display: swap;
+    src: url("/fonts/code-mono/CodeMono-Light.eot?06757483602144785#iefix") format("embedded-opentype"),
+         url("/fonts/code-mono/CodeMono-Light.woff2?06757483602144785") format("woff2"),
+         url("/fonts/code-mono/CodeMono-Light.woff?06757483602144785") format("woff"),
+         url("/fonts/code-mono/CodeMono-Light.ttf?06757483602144785") format("truetype"),
+         url("/fonts/code-mono/CodeMono-Light.svg?06757483602144785#CodeMono") format("svg");
+}
+@font-face {
+    font-family: "CodeMono";
+    font-style: italic;
+    font-weight: 300;
+    font-stretch: 98%;
+    font-display: swap;
+    src: url("/fonts/code-mono/CodeMono-LightItalic.eot?06757483602144785#iefix") format("embedded-opentype"),
+         url("/fonts/code-mono/CodeMono-LightItalic.woff2?06757483602144785") format("woff2"),
+         url("/fonts/code-mono/CodeMono-LightItalic.woff?06757483602144785") format("woff"),
+         url("/fonts/code-mono/CodeMono-LightItalic.ttf?06757483602144785") format("truetype"),
+         url("/fonts/code-mono/CodeMono-LightItalic.svg?06757483602144785#CodeMono") format("svg");
+}
+@font-face {
+    font-family: "CodeMono";
+    font-style: normal;
+    font-weight: 500;
+    font-stretch: 98%;
+    font-display: swap;
+    src: url("/fonts/code-mono/CodeMono-Medium.eot?06757483602144785#iefix") format("embedded-opentype"),
+         url("/fonts/code-mono/CodeMono-Medium.woff2?06757483602144785") format("woff2"),
+         url("/fonts/code-mono/CodeMono-Medium.woff?06757483602144785") format("woff"),
+         url("/fonts/code-mono/CodeMono-Medium.ttf?06757483602144785") format("truetype"),
+         url("/fonts/code-mono/CodeMono-Medium.svg?06757483602144785#CodeMono") format("svg");
+}
+@font-face {
+    font-family: "CodeMono";
+    font-style: italic;
+    font-weight: 500;
+    font-stretch: 98%;
+    font-display: swap;
+    src: url("/fonts/code-mono/CodeMono-MediumItalic.eot?06757483602144785#iefix") format("embedded-opentype"),
+         url("/fonts/code-mono/CodeMono-MediumItalic.woff2?06757483602144785") format("woff2"),
+         url("/fonts/code-mono/CodeMono-MediumItalic.woff?06757483602144785") format("woff"),
+         url("/fonts/code-mono/CodeMono-MediumItalic.ttf?06757483602144785") format("truetype"),
+         url("/fonts/code-mono/CodeMono-MediumItalic.svg?06757483602144785#CodeMono") format("svg");
+}

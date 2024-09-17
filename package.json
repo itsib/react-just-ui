@@ -12,22 +12,31 @@
   "type": "module",
   "scripts": {
     "clean": "rm -rf ./dist",
-    "start": "node --import=tsx ./scripts/start.ts",
-    "build": "npm run clean && npm run build:types && npm run build:doc && npm run build:lib",
+    "build": "npm run clean && npm run build:types && npm run build:lib",
     "build:types": "tsc --emitDeclarationOnly --noEmit false --declaration true",
     "build:lib": "NODE_ENV='production' vite build --mode production",
-    "build:doc": "api-extractor run --local --verbose && node --import=tsx ./scripts/parse-doc.ts",
+    "build:storybook": "storybook build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preversion": "npm run lint",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "storybook": "storybook dev -p 6006"
   },
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.47.6",
-    "@microsoft/api-extractor-model": "^7.29.7",
+    "@chromatic-com/storybook": "^2.0.2",
+    "@storybook/addon-essentials": "^8.3.1",
+    "@storybook/addon-interactions": "^8.3.1",
+    "@storybook/addon-links": "^8.3.1",
+    "@storybook/addon-onboarding": "^8.3.1",
+    "@storybook/blocks": "^8.3.1",
+    "@storybook/manager-api": "^8.3.1",
+    "@storybook/react": "^8.3.1",
+    "@storybook/react-vite": "^8.3.1",
+    "@storybook/test": "^8.3.1",
+    "@storybook/theming": "^8.3.1",
     "@types/color-diff": "^1.2.5",
     "@types/node": "^20.14.12",
     "@types/postcss-advanced-variables": "^3.0.0",
@@ -41,11 +50,13 @@
     "color-diff": "^1.4.0",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-storybook": "^0.8.0",
     "postcss": "^8.4.45",
     "postcss-advanced-variables": "^4.0.0",
     "postcss-import": "^16.1.0",
     "postcss-nesting": "^12.1.5",
     "postcss-variable-compress": "^3.0.0",
+    "storybook": "^8.3.1",
     "tsx": "^4.19.0",
     "typescript": "^5.5.4",
     "vite": "^5.4.3",
@@ -54,6 +65,9 @@
     "vitest": "^2.0.5"
   },
   "overrides": {
-    "glob": "^11.0.0"
+    "glob": "^11.0.0",
+    "jsonfile": {
+      ".": ""
+    }
   }
 }

@@ -1,8 +1,0 @@
-.home {
-
-  .container {
-    width: 680px;
-    max-width: calc(100vw - 20px);
-    margin: 40px auto 0;
-  }
-}

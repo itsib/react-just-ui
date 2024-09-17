@@ -1,40 +1,30 @@
-import { forwardRef, ForwardedRef } from 'react';
+import React from 'react';
 import { Label } from './label';
 import { ErrorMessage } from './error-message';
 import type { BaseControlProps } from './types';
 import './checkbox.css';
 
+export interface CheckboxProps extends Omit<BaseControlProps<HTMLInputElement>, 'value'> {
+  /**
+   * Swap the checkbox and label
+   */
+  rowReverse?: boolean;
+  /**
+   * You can use the checked attribute to
+   * control the state of the checkbox.
+   */
+  checked?: boolean,
+}
+
 /**
- * Checkbox
- *
- * @remarks
  * A wrapper for an input element of the checkbox type as boxes that are
  * checked (ticked) when activated, like you might see in an official
  * government paper form. The exact appearance depends upon the operating
  * system configuration under which the browser is running.
- *
- * @public
  */
-export interface CheckboxProps extends BaseControlProps<HTMLInputElement> {
-  /**
-   * Row Reverse
-   *
-   * @remarks
-   * Swap the checkbox and label
-   *
-   * @public
-   */
-  rowReverse?: boolean;
-}
-
-
-/**
- * Checkbox
- * @beta
- */
-export const Checkbox = forwardRef(function Checkbox(
+export const Checkbox = React.forwardRef(function Checkbox(
   _props: CheckboxProps,
-  _ref: ForwardedRef<HTMLInputElement>
+  _ref: React.ForwardedRef<HTMLInputElement>
 ) {
   const { id, label, hint, className, rowReverse, error, ...props } = _props;
 

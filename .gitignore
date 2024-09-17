@@ -25,4 +25,6 @@ temp
 *.sln
 *.sw?
 
+storybook-static/
 demo/public/json
+*storybook.log

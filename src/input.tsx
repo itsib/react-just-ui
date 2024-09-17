@@ -8,13 +8,47 @@ import './input.css';
 export type InputType = 'text' | 'password' | 'email' | 'search' | 'tel' | 'url' | 'number';
 
 export interface InputProps extends BaseControlProps<HTMLInputElement> {
+  /**
+   * Determines which data the user will enter.
+   * This affects which keyboard will be active when
+   * filling in, on mobile devices. It also affects
+   * which normalizer water will be used. For example,
+   * if type="number", then it will be possible
+   * to enter only numbers.
+   */
   type?: InputType;
-  prefix?: string | ReactNode;
-  suffix?: string | ReactNode;
+  /**
+   * The prefix can be used as a sign of the
+   * payment currency to be entered,
+   * for example, for the amount input
+   * fields. It will be inserted before
+   * the input field.
+   */
+  prefix?: ReactNode;
+  /**
+   * The same as the prefix but will be
+   * inserted at the end of the input field
+   */
+  suffix?: ReactNode;
+  /**
+   * Show the loading indicator.
+   * Blocks the input field.
+   */
   loading?: boolean;
+  /**
+   * The text that will be displayed in
+   * the input field while nothing has been
+   * entered there yet.
+   */
   placeholder?: string;
 }
 
+/**
+ * The form element is for single-line text input.
+ * It has exactly the same interface as the standard
+ * HTMLInputElement, with additional display functions,
+ * see bellow.
+ */
 export const Input = forwardRef(function Input(
   props: InputProps,
   ref: ForwardedRef<HTMLInputElement>,
