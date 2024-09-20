@@ -97,21 +97,21 @@
   {
     "filename": "select.js",
     "label": "select.js",
-    "parsedSize": 5451,
-    "mapSize": 14134,
-    "statSize": 7188,
-    "gzipSize": 1959,
+    "parsedSize": 5518,
+    "mapSize": 14494,
+    "statSize": 7316,
+    "gzipSize": 1979,
     "source": [
       {
-        "gzipSize": 1959,
-        "parsedSize": 5451,
+        "gzipSize": 1979,
+        "parsedSize": 5518,
         "label": "home/sergey/projects/src/select.tsx",
         "filename": "home/sergey/projects/src/select.tsx"
       }
     ],
     "stats": [
       {
-        "statSize": 7188,
+        "statSize": 7316,
         "label": "src/select.tsx",
         "filename": "src/select.tsx"
       }
@@ -131,7 +131,7 @@
     "filename": "radio.js",
     "label": "radio.js",
     "parsedSize": 1035,
-    "mapSize": 2498,
+    "mapSize": 3288,
     "statSize": 1277,
     "gzipSize": 456,
     "source": [
@@ -555,21 +555,21 @@
   {
     "filename": "select.cjs",
     "label": "select.cjs",
-    "parsedSize": 3897,
-    "mapSize": 13654,
-    "statSize": 7188,
-    "gzipSize": 1753,
+    "parsedSize": 4001,
+    "mapSize": 14070,
+    "statSize": 7316,
+    "gzipSize": 1785,
     "source": [
       {
-        "gzipSize": 1753,
-        "parsedSize": 3897,
+        "gzipSize": 1785,
+        "parsedSize": 4001,
         "label": "home/sergey/projects/src/select.tsx",
         "filename": "home/sergey/projects/src/select.tsx"
       }
     ],
     "stats": [
       {
-        "statSize": 7188,
+        "statSize": 7316,
         "label": "src/select.tsx",
         "filename": "src/select.tsx"
       }
@@ -589,7 +589,7 @@
     "filename": "radio.cjs",
     "label": "radio.cjs",
     "parsedSize": 716,
-    "mapSize": 2395,
+    "mapSize": 3185,
     "statSize": 1277,
     "gzipSize": 413,
     "source": [

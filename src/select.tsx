@@ -87,15 +87,18 @@ export const Select = forwardRef(function Select(
         <div className="fake-input">
           {activeIcon ? (
             <div className="icon">
-              {typeof activeIcon === 'string' ? <i className={activeIcon}/> : <>{activeIcon}</>}
+              {typeof activeIcon === 'string' ? (
+                <>{URL.canParse(activeIcon) || activeIcon.startsWith('/') ? <img src={activeIcon} alt={value}/> : <i className={activeIcon}/>}</>
+              ) : (
+                <>{activeIcon}</>
+              )}
             </div>
           ) : null}
           <div className="label">{activeLabel}</div>
         </div>
 
         <svg className="drop" height="16px" viewBox="0 0 16 16" width="16px" xmlns="http://www.w3.org/2000/svg">
-          <path d="M14,5l-6,6l-6,-6" stroke="currentColor" fill="transparent" strokeLinecap="round"
-                strokeLinejoin="round"/>
+          <path d="M14,5l-6,6l-6,-6" fill="#0000" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       </div>
 
@@ -246,7 +249,11 @@ export function Option(props: OptionProps) {
     >
       {icon ? (
         <div className="icon">
-          {typeof icon === 'string' ? <i className={icon} /> : <>{icon}</>}
+          {typeof icon === 'string' ? (
+            <>{URL.canParse(icon) || icon.startsWith('/') ? <img src={icon} alt={value}/> : <i className={icon}/>}</>
+          ) : (
+            <>{icon}</>
+          )}
         </div>
       ) : null}
       <div className="label">{label}</div>

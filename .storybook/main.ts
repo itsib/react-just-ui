@@ -1,16 +1,17 @@
-import type { StorybookConfig } from "@storybook/react-vite";
+import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-  stories: ["./stories/**/*.mdx", "./stories/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: ['./stories/**/*.mdx', './stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
-    "@storybook/addon-onboarding",
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@chromatic-com/storybook",
-    "@storybook/addon-interactions",
+    '@storybook/addon-onboarding',
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@chromatic-com/storybook',
+    '@storybook/addon-interactions',
+    '@storybook/addon-controls',
   ],
   framework: {
-    name: "@storybook/react-vite",
+    name: '@storybook/react-vite',
     options: {
       builder: {
         viteConfigPath: './.storybook/vite.config.mts',
@@ -19,7 +20,7 @@ const config: StorybookConfig = {
   },
   staticDirs: ['./public'],
   docs: {
-    defaultName: 'Documentation'
+    defaultName: 'Overview',
   },
   typescript: {
     reactDocgen: 'react-docgen-typescript',
@@ -31,7 +32,7 @@ const config: StorybookConfig = {
           return true;
         }
         if (prop.name === 'ref') {
-          prop.type = { name: 'React.Ref<HTMLInputElement> | null' }
+          prop.type = {name: 'React.Ref<HTMLInputElement> | null'};
           return true;
         }
         return prop.parent ? !/node_modules\/(?!@mui)/.test(prop.parent.fileName) : true;

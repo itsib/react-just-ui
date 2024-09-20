@@ -23,16 +23,15 @@
       width: $radio-size;
       height: $radio-size;
       position: absolute;
+      appearance: none;
       opacity: 0;
       z-index: 2;
-      cursor: pointer;
     }
 
     .radio {
       width: $radio-size;
       height: $radio-size;
       position: absolute;
-      user-select: none;
       z-index: 1;
 
       .outline, .center {

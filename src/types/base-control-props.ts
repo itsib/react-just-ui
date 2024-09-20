@@ -34,7 +34,7 @@ export type BaseControlProps<Element extends HTMLElement> = {
    */
   error?: ValidationError | false;
   /**
-   * Disable this control.
+   * Whether the control is disabled
    */
   disabled?: boolean;
   /**

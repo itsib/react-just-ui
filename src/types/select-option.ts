@@ -9,7 +9,16 @@ import type { ReactNode } from 'react';
  * @public
  */
 export interface SelectOption {
-  icon?: string | ReactNode;
+  /**
+   * Option icon image
+   */
+  icon?: ReactNode;
+  /**
+   * Option text label. If empty value property will be used.
+   */
   label?: string;
+  /**
+   * Value for this option
+   */
   value: string;
 }

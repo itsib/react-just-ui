@@ -1,11 +1,11 @@
 import type { Preview } from '@storybook/react';
-import { Controls, Description, Primary, Stories, Subtitle, Title } from '@storybook/blocks';
+import { Controls, Description, Primary, Subtitle, Title } from '@storybook/blocks';
 import '../src/css/minimal.css';
 import './styles.css';
 import { themeDark } from './theme';
 
 const preview: Preview = {
-  tags: ['autodocs', 'autodocs'],
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     controls: {
@@ -34,7 +34,6 @@ const preview: Preview = {
           <Description />
           <Primary />
           <Controls />
-          <Stories />
         </>
       ),
     },

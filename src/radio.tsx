@@ -10,11 +10,29 @@ export interface RadioButtonProps extends Omit<BaseControlProps<HTMLInputElement
    */
   rowReverse?: boolean;
   /**
-   *
+   * Whether this radio button is checked.
    */
-  value?: string | number;
+  checked?: boolean;
+  /**
+   * Value for the radio group. Should equal the value of the selected radio button
+   * if there is a corresponding radio button with a matching value. If there is
+   * not such a corresponding radio button, this value persists to be applied in
+   * case a new radio button is added with a matching value.
+   */
+  value?: string;
 }
 
+/**
+ * A radio button or option button is a graphical
+ * control element that allows the user to choose
+ * only one of a predefined set of mutually
+ * exclusive options.
+ *
+ * RadioButton uses an internal \<input type="radio"\> to provide an
+ * accessible experience. This internal radio button
+ * receives focus and is automatically
+ * labelled by the text content of the radio button element.
+ */
 export const RadioButton = forwardRef(function Checkbox(
   _props: RadioButtonProps,
   _ref: ForwardedRef<HTMLInputElement>
