@@ -23,7 +23,6 @@ const meta = {
         component: description,
       }
     },
-    layout: 'centered',
     controls: {
       sort: 'alpha',
     }

@@ -2,7 +2,7 @@ import { Plugin } from 'vite';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-export default function packageJsonGen(): Plugin {
+export default function generatePkg(): Plugin {
   const config = {
     entries: {} as Record<string, string>,
     formats: [] as string[],
@@ -22,7 +22,7 @@ export default function packageJsonGen(): Plugin {
   }
 
   return {
-    name: 'package-json-gen',
+    name: 'vite:generate-pkg',
     apply: 'build',
     enforce: 'post',
     config({ build }) {
@@ -59,8 +59,6 @@ export default function packageJsonGen(): Plugin {
       }
 
       await fs.writeFile(path.resolve(config.outDir, 'package.json'), JSON.stringify(pkg, null, '  '), 'utf8');
-
-      await fs.cp('README.md', path.resolve(config.outDir, 'README.md'));
     }
   }
 }

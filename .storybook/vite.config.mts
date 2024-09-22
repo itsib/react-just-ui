@@ -11,7 +11,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
     server: {
       open: false,
     },
-    publicDir: './storybook/public',
+    // publicDir: './storybook/public',
     css: {
       modules: {},
       postcss: {

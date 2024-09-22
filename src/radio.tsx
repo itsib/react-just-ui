@@ -4,7 +4,7 @@ import { Label } from './label';
 import { ErrorMessage } from './error-message';
 import './radio.css';
 
-export interface RadioButtonProps extends Omit<BaseControlProps<HTMLInputElement>, 'value'> {
+export interface RadioProps extends Omit<BaseControlProps<HTMLInputElement>, 'value'> {
   /**
    * If true, then label and checkbox are swapped
    */
@@ -28,13 +28,13 @@ export interface RadioButtonProps extends Omit<BaseControlProps<HTMLInputElement
  * only one of a predefined set of mutually
  * exclusive options.
  *
- * RadioButton uses an internal \<input type="radio"\> to provide an
+ * Radio uses an internal \<input type="radio"\> to provide an
  * accessible experience. This internal radio button
  * receives focus and is automatically
  * labelled by the text content of the radio button element.
  */
-export const RadioButton = forwardRef(function Checkbox(
-  _props: RadioButtonProps,
+export const Radio = forwardRef(function Checkbox(
+  _props: RadioProps,
   _ref: ForwardedRef<HTMLInputElement>
 ) {
   const { id, label, hint, className, rowReverse, error, ...props } = _props;

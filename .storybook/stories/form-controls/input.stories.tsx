@@ -6,7 +6,6 @@ const meta = {
   title: 'Form Controls/Input',
   component: Input,
   parameters: {
-    layout: 'centered',
     controls: {
       sort: 'alpha',
     }

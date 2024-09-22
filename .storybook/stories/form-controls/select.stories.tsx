@@ -5,12 +5,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta = {
   title: 'Form Controls/Select',
   component: Select,
-  parameters: {
-    layout: 'centered',
-    controls: {
-      sort: 'alpha',
-    }
-  },
   argTypes: {
     label: {
       control: { type: 'text' },
@@ -86,7 +80,6 @@ export default meta;
 
 type Story = StoryObj<typeof Select>;
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Basic: Story = {
   args: {
     onChange: action('onChange'),

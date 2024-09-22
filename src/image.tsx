@@ -44,12 +44,11 @@ export interface ImageProps extends Omit<AllHTMLAttributes<HTMLImageElement>, 'o
 
 /**
  * Circle image. A component for displaying a circle image.
+ *
  * Features:
- * <ul>
- *  <li> Support for the preloader, which turns on when the image file is loaded.</li>
- *  <li> Fallback URL - link to the backup image if the main one failed to load.</li>
- *  <li> Active state, suitable for lists where several items can be highlighted.</li>
- * <ul>
+ * - Support for the preloader, which turns on when the image file is loaded.
+ * - Fallback URL - link to the backup image if the main one failed to load.
+ * - Active state, suitable for lists where several items can be highlighted.
  */
 export const Image: FC<ImageProps> = ({ className, src, alt, size = 32, fallback, loading = false, active = false, disabled = false, border = 0, ...props }) => {
   const [ready, setReady] = useState(false);

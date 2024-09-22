@@ -6,7 +6,6 @@ const meta = {
   title: 'Form Controls/Textarea',
   component: Textarea,
   parameters: {
-    layout: 'centered',
     controls: {
       sort: 'alpha',
     }

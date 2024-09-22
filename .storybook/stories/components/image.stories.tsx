@@ -1,19 +1,31 @@
 import { Image } from '../../../src/image';
 import type { Meta, StoryObj } from '@storybook/react';
+import { styled } from 'storybook/internal/theming';
+import { ReportPopup } from '../../components/report-badge/report-popup';
+
+const StoryWrapper = styled.div(({ theme }) => ({
+  padding: '4rem 20px',
+  minHeight: '200px',
+  boxSizing: 'border-box',
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center'
+}));
 
 const meta = {
   title: 'Components/Image',
   component: Image,
   parameters: {
-    layout: 'centered',
+    reportId: 'image',
     controls: {
       sort: 'alpha',
-    }
+    },
   },
   argTypes: {
     src: {
       type: 'string',
-      control: { type: 'select' },
+      control: {type: 'select'},
       options: [
         '/images/avatar-1.png',
         '/images/fail-url.png',
@@ -46,13 +58,13 @@ const meta = {
     },
     loading: {
       type: 'boolean',
-      control: { type: 'boolean' },
+      control: {type: 'boolean'},
     },
     active: {
-      control: { type: 'boolean' },
+      control: {type: 'boolean'},
     },
     disabled: {
-      control: { type: 'boolean' },
+      control: {type: 'boolean'},
     },
   },
   args: {
@@ -71,13 +83,14 @@ export default meta;
 
 type Story = StoryObj<typeof Image>;
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Basic: Story = {
   args: {},
   render: function Render(args) {
 
     return (
-      <Image {...args} />
+      <div>
+        <Image {...args} />
+      </div>
     );
-  }
+  },
 };

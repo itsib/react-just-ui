@@ -9,8 +9,9 @@ import postcssVariables from 'postcss-advanced-variables';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import * as glob from 'glob';
 import pkg from './package.json';
-import packageJsonGen from './plugins/vite-plugin-package-json';
-import { analyzer } from 'vite-bundle-analyzer'
+import packagePkg from './plugins/vite-generate-pkg';
+import bundleReport from './plugins/vite-bundle-report';
+import copy from 'vite-plugin-cp';
 import { ThemeConfig } from './theme.config';
 
 const entries = Object.fromEntries(
@@ -98,11 +99,12 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
     plugins: [
       react(),
       libInjectCss(),
-      packageJsonGen(),
-      analyzer({
-        reportTitle: 'ReactJustUI',
-        analyzerMode: 'json',
-        fileName: '../.storybook/public/report/report',
+      packagePkg(),
+      bundleReport({ enableGzip: true, outputPath: '.storybook/public/report/',  }),
+      copy({
+        targets: [
+          { src: 'README.md', dest: 'dist/' },
+        ],
       }),
     ],
   }
