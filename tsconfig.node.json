@@ -6,11 +6,11 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "allowJs": true
   },
   "include": [
     "vite.config.ts",
-    "build.mts",
     "scripts",
     "plugins"
   ],

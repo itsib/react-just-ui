@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { promisify } from 'util';
 import { gzip as _gzip } from 'node:zlib';
+import { formatSize } from './utils';
 const gzip = promisify(_gzip);
 
 export interface ReportConfig {
@@ -28,8 +29,6 @@ export default function bundleReport(config?: ReportConfig): Plugin {
   } else {
     outputPath = distPath;
   }
-
-  const formatSize = (size: number) => `${(size / 1000).toFixed(2)} kB`;
 
   return {
     name: 'vite:bundle-report',

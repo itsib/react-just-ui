@@ -8,13 +8,15 @@ export const decorator: DecoratorFunction<ReactRenderer> = (
   Story: PartialStoryFn<ReactRenderer>,
   context: StoryContext<ReactRenderer>,
 ): ReactRenderer['storyResult'] => {
+  const reports = context.loaded.reports;
+  const componentId = context.componentId;
+
   const report = useMemo(() => {
-    const ids = context.componentId.split('-');
-    const reports = context.loaded.reports;
+    const ids = componentId.split('-');
     const key = ids.find(id => id in reports.modules);
 
     return key && reports.modules[key] as ModuleReport | undefined;
-  }, [context]);
+  }, [reports, componentId]);
 
   return (
     <div className="report-badge-decorator">
@@ -22,7 +24,7 @@ export const decorator: DecoratorFunction<ReactRenderer> = (
 
       {report ? (
         <div className="report-wrap">
-          <ReportPopup title={context.title} report={report} />
+          <ReportPopup title={context.title} report={report} total={reports.total} />
         </div>
       ) : null}
     </div>

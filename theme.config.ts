@@ -1,11 +1,10 @@
+import postcssVariables from 'postcss-advanced-variables';
+import postcssImport from 'postcss-import';
+import autoprefixer from 'autoprefixer';
+import postcssNesting from 'postcss-nesting';
+
 export const ThemeConfig = {
   minimal: {
-    color: {
-      black: '0 0 0',
-      white: '255 255 255',
-      accent: { light: '0 115 229', dark: '0 115 229' },
-      error: { light: '220 38 38', dark: '240 28 28' }
-    },
     font: {
       md: '1rem',
       sm: '0.875rem',
@@ -46,4 +45,34 @@ export const ThemeConfig = {
     image: {
     },
   },
+};
+
+export const postcss = {
+  plugins: [
+    postcssImport(),
+    postcssVariables({
+      variables(name: string) {
+        const fields = name.split('-');
+        let value: any = ThemeConfig.minimal;
+
+        for (const field of fields) {
+          if (field && value && field in value) {
+            value = value[field];
+          } else {
+            break;
+          }
+        }
+        if (typeof value === 'object' || value == null) {
+          return 'none';
+        } else if (typeof value === 'number') {
+          return `${value}px`;
+        } else {
+          return value;
+        }
+      },
+      unresolved: 'warn',
+    }),
+    autoprefixer(),
+    postcssNesting(),
+  ],
 }

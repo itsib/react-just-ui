@@ -2,33 +2,19 @@
 import path, { resolve } from 'node:path';
 import react from '@vitejs/plugin-react-swc';
 import { defineConfig, UserConfig } from 'vite';
+import { libInjectCss } from 'vite-plugin-lib-inject-css';
+import { glob } from 'glob';
+import pkg from './package.json';
+import generatePackageJson from './plugins/vite-generate-package-json';
+import bundleReport from './plugins/vite-bundle-report';
+import themes from './plugins/vite-themes';
+import copy from 'vite-plugin-cp';
 import autoprefixer from 'autoprefixer';
 import postcssNesting from 'postcss-nesting';
-import postcssImport from 'postcss-import';
-import postcssVariables from 'postcss-advanced-variables';
-import { libInjectCss } from 'vite-plugin-lib-inject-css';
-import * as glob from 'glob';
-import pkg from './package.json';
-import packagePkg from './plugins/vite-generate-pkg';
-import bundleReport from './plugins/vite-bundle-report';
-import copy from 'vite-plugin-cp';
-import { ThemeConfig } from './theme.config';
-
-const entries = Object.fromEntries(
-  glob.sync('src/!(*.d).{tsx,ts}', { cwd: __dirname })
-    .map(file => [
-      file.replace(/^src\//, '')
-        .replace(new RegExp(`${path.extname(file)}$`), ''),
-      path.resolve(__dirname, file),
-    ])
-    .concat([
-      ['validators/index', path.resolve(__dirname, 'src/validators/index.ts')],
-      ['utils/index', path.resolve(__dirname, 'src/utils/index.ts')],
-      ['theme/minimal', path.resolve(__dirname, 'src/css/minimal.css')],
-    ])
-);
 
 export default defineConfig(async ({ mode }): Promise<UserConfig> => {
+  const entries = await getEntries();
+
   return {
     mode,
     appType: 'custom',
@@ -41,36 +27,12 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       'process.env.NODE_ENV': JSON.stringify(mode),
     },
     css: {
-      modules: {},
       postcss: {
         plugins: [
-          postcssVariables({
-            variables(name: string) {
-              const fields = name.split('-');
-              let value: any = ThemeConfig.minimal;
-
-              for (const field of fields) {
-                if (field && value && field in value) {
-                  value = value[field];
-                } else {
-                  break;
-                }
-              }
-              if (typeof value === 'object' || value == null) {
-                return 'none';
-              } else if (typeof value === 'number') {
-                return `${value}px`;
-              } else {
-                return value;
-              }
-            },
-            unresolved: 'warn',
-          }),
-          postcssImport(),
           autoprefixer(),
           postcssNesting(),
         ],
-      },
+      }
     },
     build: {
       minify: true,
@@ -98,8 +60,13 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
     },
     plugins: [
       react(),
+      themes({
+        configs: './themes',
+        prefix: 'jj',
+        include: ['./src/css/components/*'],
+      }),
       libInjectCss(),
-      packagePkg(),
+      generatePackageJson(),
       bundleReport({ enableGzip: true, outputPath: '.storybook/public/report/',  }),
       copy({
         targets: [
@@ -109,3 +76,20 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
     ],
   }
 });
+
+async function getEntries(): Promise<Record<string, string>> {
+  const entries: Record<string, string> = {};
+
+  // Search components
+  (await glob('src/!(*.d).{tsx,ts}', { cwd: __dirname })).reduce((acc, file) => {
+    const key = file.replace(/^src\//, '').replace(new RegExp(`${path.extname(file)}$`), '');
+    acc[key] = path.resolve(__dirname, file);
+    return acc;
+  }, entries);
+
+  // Add other libs
+  entries['validators/index'] = path.resolve(__dirname, 'src/validators/index.ts');
+  entries['utils/index'] = path.resolve(__dirname, 'src/utils/index.ts');
+
+  return entries;
+}

@@ -11,7 +11,7 @@ addons.setConfig({
   enableShortcuts: true,
   showToolbar: true,
   theme: themeDark,
-  selectedPanel: undefined,
+  selectedPanel: 'Get Started',
   initialActive: 'sidebar',
   sidebar: {
     showRoots: true,

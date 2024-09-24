@@ -2,7 +2,9 @@ import { Select } from '../../../src/select';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta = {
+type Story = StoryObj<typeof Select>;
+
+export default {
   title: 'Form Controls/Select',
   component: Select,
   argTypes: {
@@ -75,10 +77,6 @@ const meta = {
   },
   tags: ['autodocs'],
 } as Meta<typeof Select>;
-
-export default meta;
-
-type Story = StoryObj<typeof Select>;
 
 export const Basic: Story = {
   args: {

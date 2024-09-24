@@ -19,16 +19,16 @@
 
     input[type="checkbox"] {
       margin: 0;
-      width: $checkbox-size;
-      height: $checkbox-size;
+      width: inherit;
+      height: inherit;
       position: absolute;
       opacity: 0;
       z-index: 2;
       cursor: pointer;
 
       + .checkbox {
-        width: $checkbox-size;
-        height: $checkbox-size;
+        width: inherit;
+        height: inherit;
         border: 2px solid rgb(var(--jui-checkbox-rgb));
         border-radius: 4px;
         position: absolute;

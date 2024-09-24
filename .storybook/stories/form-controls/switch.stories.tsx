@@ -3,16 +3,14 @@ import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 
-const meta = {
+type Story = StoryObj<typeof Switch>;
+
+export default {
   id: 'story-switch',
   title: 'Form Controls/Switch',
   component: Switch,
   tags: ['autodocs'],
 } satisfies Meta<typeof Switch>;
-
-export default meta;
-
-type Story = StoryObj<typeof Switch>;
 
 export const Basic: Story = {
   args: {

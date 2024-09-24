@@ -7,6 +7,7 @@ module.exports = {
   plugins: [],
   rules: {
     '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
     'no-async-promise-executor': 'off',
   },
 }

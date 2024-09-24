@@ -2,7 +2,9 @@ import { OtpInput } from '../../../src/otp-input';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta = {
+type Story = StoryObj<typeof OtpInput>;
+
+export default {
   title: 'Form Controls/OTP Input',
   component: OtpInput,
   argTypes: {
@@ -19,11 +21,6 @@ const meta = {
   },
 } satisfies Meta<typeof OtpInput>;
 
-export default meta;
-
-type Story = StoryObj<typeof OtpInput>;
-
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Basic: Story = {
   args: {
     id: 'otp-input',
