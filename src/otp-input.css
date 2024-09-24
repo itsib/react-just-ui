@@ -9,7 +9,7 @@
 
       .divider {
         margin: 0 3px;
-        background-color: rgb(var(--jui-divider-rgb));
+        background-color: rgb(var(--jj-divider-rgb));
 
         &.d-dash {
           height: 1px;
@@ -29,22 +29,22 @@
       }
 
       input {
-        height: $control-height;
+        height: $form-height;
         width: auto;
         aspect-ratio: 4/5;
         text-align: center;
-        font-size: $control-font-size;
-        color: rgb(var(--jui-text-rgb));
-        background-color: rgb(var(--jui-bg-rgb));
+        font-size: inherit;
+        color: rgb(var(--jj-text-rgb));
+        background-color: rgb(var(--jj-bg-rgb));
         box-shadow: none;
-        border: $control-border-width solid rgb(var(--jui-border-rgb));
-        border-radius: $control-border-radius;
+        border: var(--jj-form-border-width) solid rgb(var(--jj-border-rgb));
+        border-radius: var(--jj-form-border-radius);
         outline: none;
         transition: all .15s ease-in-out;
 
         &:focus {
-          border: $control-border-width solid rgb(var(--jui-border-focus-rgb));
-          box-shadow: var(--jui-box-shadow-focus);
+          border: var(--jj-form-border-width) solid rgb(var(--jj-border-focus-rgb));
+          box-shadow: var(--jj-box-shadow-focus);
         }
       }
     }
@@ -57,7 +57,7 @@
       .group {
 
         input {
-          border: $control-border-width solid rgb(var(--jui-error-rgb));
+          border: var(--jj-form-border-width) solid rgb(var(--jj-error-rgb));
           box-shadow: 0 0 0 0 transparent;
         }
       }
@@ -72,8 +72,8 @@
 
         input {
           box-shadow: 0 0 0 0 transparent;
-          border: $control-border-width solid rgb(var(--jui-border-rgb));
-          background-color: rgb(var(--jui-bg-disabled-rgb));
+          border: var(--jj-form-border-width) solid rgb(var(--jj-border-rgb));
+          background-color: rgb(var(--jj-bg-disabled-rgb));
           opacity: .8;
         }
       }

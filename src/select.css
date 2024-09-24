@@ -12,8 +12,8 @@
 
     .fake-input {
       width: 100%;
-      height: calc($control-height - ($control-border-width * 2));
-      padding: $control-padding-y $control-padding-x;
+      height: calc($form-height - (var(--jj-form-border-width) * 2));
+      padding: $form-padding-y $form-padding-x;
       user-select: none;
       display: flex;
       align-items: center;
@@ -54,19 +54,19 @@
 .jui.jui-select-dropdown {
   /*noinspection ALL*/
   .jui-dropdown-options {
-    color: rgb(var(--jui-text-rgb));
+    color: rgb(var(--jj-text-rgb));
     overflow-y: auto;
-    scroll-padding-top: var(--jui-dropdown-padding);
+    scroll-padding-top: var(--jj-dropdown-padding);
     scroll-snap-type: y mandatory;
-    background-color: rgb(var(--jui-bg-rgb));
-    box-shadow: var(--jui-box-shadow);
+    background-color: rgb(var(--jj-bg-rgb));
+    box-shadow: var(--jj-box-shadow);
     box-sizing: border-box;
-    border-radius: $control-border-radius;
+    border-radius: var(--jj-form-border-radius);
     position: absolute;
     opacity: 1;
     transform: translateY(0) scale(1);
     transition: all .15s ease-in;
-    z-index: var(--jui-dropdown-z-index);
+    z-index: var(--jj-dropdown-z-index);
 
     &.animation-from {
       opacity: 0;
@@ -81,7 +81,7 @@
   .jui-overlay {
     inset: 0;
     position: fixed;
-    z-index: var(--jui-overlay-z-index);
+    z-index: var(--jj-overlay-z-index);
     user-select: none;
   }
 }
@@ -91,15 +91,14 @@
   /*noinspection CssUnresolvedCustomProperty*/
   height: 38px;
   padding: 4px 12px;
-  font-size: $control-font-size;
   font-weight: normal;
-  color: rgb(var(--jui-text-rgb));
+  color: rgb(var(--jj-text-rgb));
   text-align: start;
   scroll-snap-align: start;
   border: none;
   outline: none;
-  border-radius: calc($control-border-radius - 1px);
-  background-color: rgb(var(--jui-bg-rgb));
+  border-radius: calc(var(--jj-form-border-radius) - 1px);
+  background-color: rgb(var(--jj-bg-rgb));
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -134,10 +133,10 @@
   }
 
   &.active {
-    background-color: rgb(var(--jui-bg-hover-rgb) / 0.6)
+    background-color: rgb(var(--jj-bg-hover-rgb) / 0.6)
   }
 
   &:hover {
-    background-color: rgb(var(--jui-bg-hover-rgb));
+    background-color: rgb(var(--jj-bg-hover-rgb));
   }
 }

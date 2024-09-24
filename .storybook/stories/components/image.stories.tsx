@@ -1,17 +1,5 @@
-import { Image } from '../../../src/image';
+import { Image } from 'react-just-ui';
 import type { Meta, StoryObj } from '@storybook/react';
-import { styled } from 'storybook/internal/theming';
-import { ReportPopup } from '../../components/report-badge/report-popup';
-
-const StoryWrapper = styled.div(({ theme }) => ({
-  padding: '4rem 20px',
-  minHeight: '200px',
-  boxSizing: 'border-box',
-  position: 'relative',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center'
-}));
 
 const meta = {
   title: 'Components/Image',
@@ -76,7 +64,6 @@ const meta = {
     active: false,
     disabled: false,
   },
-  tags: ['autodocs'],
 } satisfies Meta<typeof Image>;
 
 export default meta;
@@ -86,7 +73,6 @@ type Story = StoryObj<typeof Image>;
 export const Basic: Story = {
   args: {},
   render: function Render(args) {
-
     return (
       <div>
         <Image {...args} />

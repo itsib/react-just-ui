@@ -36,14 +36,14 @@
 
       .outline, .center {
         fill: none;
-        stroke: rgb(var(--jui-checkbox-rgb));
+        stroke: rgb(var(--jj-checkbox-rgb));
         stroke-linecap: round;
         stroke-linejoin: round;
         stroke-width: 2px;
       }
 
       .center {
-        fill: rgb(var(--jui-checkbox-rgb));
+        fill: rgb(var(--jj-checkbox-rgb));
         opacity: 1;
         transform: scale(0,0);
         transform-origin: 12px 12px;
@@ -62,7 +62,7 @@
     input[type="radio"]:disabled + .radio {
 
       .outline {
-        stroke: rgb(var(--jui-bg-disabled-rgb));
+        stroke: rgb(var(--jj-bg-disabled-rgb));
       }
 
       .center {

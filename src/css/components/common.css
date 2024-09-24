@@ -1,5 +1,5 @@
 .jui {
-  font-size: $control-font-size;
+  font-size: var(--jj-font-md);
   box-sizing: border-box;
 
   * {
@@ -14,7 +14,7 @@
 .jui {
 
   ::placeholder {
-    color: rgb(var(--jui-placeholder-rgb) / .7);
+    color: rgb(var(--jj-placeholder-rgb) / .7);
     font-weight: 400;
     opacity: .6;
   }

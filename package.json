@@ -27,17 +27,19 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^2.0.2",
-    "@storybook/addon-controls": "^8.3.1",
-    "@storybook/addon-essentials": "^8.3.1",
-    "@storybook/addon-interactions": "^8.3.1",
-    "@storybook/addon-links": "^8.3.1",
-    "@storybook/blocks": "^8.3.1",
+    "@storybook/addon-controls": "8.3.1",
+    "@storybook/addon-essentials": "8.3.1",
+    "@storybook/addon-interactions": "8.3.1",
+    "@storybook/addon-links": "8.3.1",
+    "@storybook/addon-themes": "8.3.1",
+    "@storybook/blocks": "8.3.1",
+    "@storybook/components": "8.3.1",
     "@storybook/icons": "^1.2.12",
-    "@storybook/manager-api": "^8.3.1",
-    "@storybook/react": "^8.3.1",
-    "@storybook/react-vite": "^8.3.1",
-    "@storybook/test": "^8.3.1",
-    "@storybook/theming": "^8.3.1",
+    "@storybook/manager-api": "8.3.1",
+    "@storybook/react": "8.3.1",
+    "@storybook/react-vite": "8.3.1",
+    "@storybook/test": "8.3.1",
+    "@storybook/theming": "8.3.1",
     "@types/color-diff": "^1.2.5",
     "@types/node": "^20.14.12",
     "@types/postcss-advanced-variables": "^3.0.0",
@@ -59,18 +61,28 @@
     "postcss-nesting": "^12.1.5",
     "postcss-theme-manager": "^0.0.15",
     "postcss-variable-compress": "^3.0.0",
-    "storybook": "^8.3.2",
+    "storybook": "8.3.1",
     "tsx": "^4.19.0",
     "typescript": "^5.5.4",
     "vite": "^5.4.7",
     "vite-bundle-analyzer": "^0.11.0",
     "vite-plugin-cp": "^4.0.8",
     "vite-plugin-lib-inject-css": "^2.1.1",
-    "vitest": "^2.1.1"
+    "vitest": "^2.1.1",
+    "react-just-ui": "file:./dist"
   },
   "overrides": {
     "glob": "^11.0.0",
     "rollup": "^4.22.4",
+    "storybook": "8.3.1",
+    "@storybook/components": {
+      ".": "8.3.1"
+    },
+    "@storybook/react": {
+      ".": "8.3.1",
+      "@storybook/components": "8.3.1",
+      "@storybook/preview-api": "8.3.1"
+    },
     "jsonfile": {
       ".": "^6.1.0"
     }

@@ -1,6 +1,6 @@
 import { DecoratorFunction, PartialStoryFn, StoryContext } from '@storybook/csf';
 import { ReactRenderer } from '@storybook/react';
-import { ReactNode, useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { ReportPopup } from './report-popup';
 import { ModuleReport } from './types';
 
@@ -10,6 +10,31 @@ export const decorator: DecoratorFunction<ReactRenderer> = (
 ): ReactRenderer['storyResult'] => {
   const reports = context.loaded.reports;
   const componentId = context.componentId;
+  const mode = context.viewMode;
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (mode === 'docs') return;
+    const element = ref.current;
+    if (!element) return;
+
+    const setHeight = (height: number) => {
+      height -= 16;
+      height = height < 0 ? 0 : height;
+      element.style.height = height + 'px';
+    };
+
+    const onResize = (event: UIEvent) => {
+      setHeight((event.target as Window).innerHeight)
+    }
+
+    setHeight(window.innerHeight);
+
+    window.addEventListener('resize', onResize);
+    return () => {
+      window.removeEventListener('resize', onResize);
+    }
+  }, [mode]);
 
   const report = useMemo(() => {
     const ids = componentId.split('-');
@@ -20,9 +45,11 @@ export const decorator: DecoratorFunction<ReactRenderer> = (
 
   return (
     <div className="report-badge-decorator">
-      <div className="story-wrap">{Story() as ReactNode}</div>
+      <div className="story-wrap" ref={ref}>
+        <Story />
+      </div>
 
-      {report ? (
+      {mode === 'docs' && report ? (
         <div className="report-wrap">
           <ReportPopup title={context.title} report={report} total={reports.total} />
         </div>

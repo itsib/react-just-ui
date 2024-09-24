@@ -1,12 +1,12 @@
 .jui {
 
   .control {
-    background-color: rgb(var(--jui-bg-rgb));
-    font-size: $control-font-size;
-    color: rgb(var(--jui-text-rgb));
+    background-color: rgb(var(--jj-bg-rgb));
+    font-size: var(--jj-font-md);
+    color: rgb(var(--jj-text-rgb));
     box-shadow: none;
-    border: $control-border-width solid rgb(var(--jui-border-rgb));
-    border-radius: $control-border-radius;
+    border: $form-border-width solid rgb(var(--jj-border-rgb));
+    border-radius: $form-border-radius;
     overflow: hidden;
     display: flex;
     position: relative;
@@ -16,8 +16,8 @@
 
     input, select {
       width: 100%;
-      height: calc($control-height - ($control-border-width * 2));
-      padding: $control-padding-y $control-padding-x;
+      height: calc($form-height - ($form-border-width * 2));
+      padding: $form-padding-y $form-padding-x;
       color: inherit;
       border: none;
       outline: none;
@@ -27,8 +27,8 @@
 
     .loader-backdrop {
       inset: 0;
-      background-color: rgb(var(--jui-bg-rgb));
-      color: rgb(var(--jui-text-rgb) / .6);
+      background-color: rgb(var(--jj-bg-rgb));
+      color: rgb(var(--jj-text-rgb) / .6);
       display: none;
       align-items: center;
       justify-content: center;
@@ -40,15 +40,15 @@
   &:focus-within, &.focus {
 
     .control {
-      border: $control-border-width solid rgb(var(--jui-border-focus-rgb));
-      box-shadow: var(--jui-box-shadow-focus);
+      border-color: rgb(var(--jj-border-focus-rgb));
+      box-shadow: var(--jj-box-shadow-focus);
     }
   }
 
   &.error {
 
     .control {
-      border: $control-border-width solid rgb(var(--jui-error-rgb));
+      border-color:  rgb(var(--jj-error-rgb));
       box-shadow: 0 0 0 0 transparent;
     }
   }
@@ -57,8 +57,8 @@
 
     .control {
       box-shadow: none;
-      border: $control-border-width solid rgb(var(--jui-border-rgb));
-      background-color: rgb(var(--jui-bg-disabled-rgb));
+      border-color: rgb(var(--jj-form-disabled-border-rgb));
+      background-color: rgb(var(--jj-form-disabled-bg-rgb));
       opacity: .8;
     }
 
@@ -72,8 +72,8 @@
     .control {
       pointer-events: none;
       box-shadow: none;
-      border: $control-border-width solid rgb(var(--jui-border-rgb));
-      background-color: rgb(var(--jui-bg-rgb));
+      border-color:  rgb(var(--jj-form-border-rgb));
+      background-color: rgb(var(--jj-form-bg-rgb));
       opacity: 1;
 
       .loader-backdrop {

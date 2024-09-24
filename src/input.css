@@ -1,11 +1,11 @@
 .jui.jui-input {
 
   .control {
-    height: $control-height;
+    height: $form-height;
 
     .prefix, .suffix {
-      font-size: $font-md;
-      --jui-inner-border-radius: calc($control-border-radius - 1px);
+      font-size: inherit;
+      --jj-inner-border-radius: calc(var(--jj-form-border-radius) - 1px);
       padding: 0 0.75em;
       display: flex;
       align-items: center;
@@ -18,15 +18,15 @@
     }
 
     > .prefix {
-      color: rgb(var(--jui-prefix-rgb));
-      border-radius: calc($control-border-radius - 1px) 0 0 calc($control-border-radius - 1px);
-      border-right: $control-border-width solid rgb(var(--jui-border-rgb));
+      color: rgb(var(--jj-prefix-rgb));
+      border-radius: calc(var(--jj-form-border-radius) - 1px) 0 0 calc(var(--jj-form-border-radius) - 1px);
+      border-right: var(--jj-form-border-width) solid rgb(var(--jj-border-rgb));
     }
 
     > .suffix {
-      color: rgb(var(--jui-suffix-rgb));
-      border-radius: 0 calc($control-border-radius - 1px) calc($control-border-radius - 1px) 0;
-      border-left: $control-border-width solid rgb(var(--jui-border-rgb));
+      color: rgb(var(--jj-suffix-rgb));
+      border-radius: 0 calc(var(--jj-form-border-radius) - 1px) calc(var(--jj-form-border-radius) - 1px) 0;
+      border-left: var(--jj-form-border-width) solid rgb(var(--jj-border-rgb));
     }
   }
 
@@ -35,9 +35,9 @@
     .control {
 
       > .suffix, > .prefix {
-        border-color: rgb(var(--jui-border-focus-rgb));
-        box-shadow: 0 0 2px 0 rgb(var(--jui-border-focus-rgb)),
-          0 0 2px -1px inset rgb(var(--jui-border-focus-rgb));
+        border-color: rgb(var(--jj-border-focus-rgb));
+        box-shadow: 0 0 2px 0 rgb(var(--jj-border-focus-rgb)),
+          0 0 2px -1px inset rgb(var(--jj-border-focus-rgb));
       }
     }
   }
@@ -47,7 +47,7 @@
     .control {
 
       > .prefix, > .suffix {
-        border-color: rgb(var(--jui-error-rgb));
+        border-color: rgb(var(--jj-error-rgb));
         box-shadow: none;
       }
     }
@@ -58,13 +58,13 @@
     .control {
 
       > .prefix {
-        color: rgb(var(--jui-prefix-rgb) / .6);
-        border-color: rgb(var(--jui-border-rgb));
+        color: rgb(var(--jj-prefix-rgb) / .6);
+        border-color: rgb(var(--jj-border-rgb));
       }
 
       > .suffix {
-        color: rgb(var(--jui-suffix-rgb) / .6);
-        border-color: rgb(var(--jui-border-rgb));
+        color: rgb(var(--jj-suffix-rgb) / .6);
+        border-color: rgb(var(--jj-border-rgb));
       }
     }
   }

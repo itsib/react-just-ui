@@ -1,21 +1,19 @@
 import { addons } from '@storybook/manager-api';
-import { themeDark } from './theme';
-
-
+import theme from './theme';
 
 addons.setConfig({
-  navSize: 300,
-  bottomPanelHeight: 300,
-  rightPanelWidth: 300,
-  panelPosition: 'bottom',
-  enableShortcuts: true,
-  showToolbar: true,
-  theme: themeDark,
-  selectedPanel: 'Get Started',
-  initialActive: 'sidebar',
-  sidebar: {
-    showRoots: true,
-    collapsedRoots: ['other'],
+  theme: theme,
+  // navSize: 300,
+  bottomPanelHeight: 500,
+  // rightPanelWidth: 300,
+  // panelPosition: 'bottom',
+  enableShortcuts: false,
+  // showToolbar: true,
+  // selectedPanel: 'Get Started',
+  // initialActive: 'sidebar',
+  // sidebar: {
+    // showRoots: true,
+    // collapsedRoots: ['other'],
     // renderLabel(item: any, api) {
     //   console.log(item);
     //
@@ -24,12 +22,12 @@ addons.setConfig({
     //   }
     //   return <>{item.name}</>;
     // },
-  },
-  toolbar: {
-    title: { hidden: false },
-    zoom: { hidden: false },
-    eject: { hidden: false },
-    copy: { hidden: false },
-    fullscreen: { hidden: false },
-  },
+  // },
+  // toolbar: {
+  //   title: { hidden: false },
+  //   zoom: { hidden: false },
+  //   eject: { hidden: false },
+  //   copy: { hidden: false },
+  //   fullscreen: { hidden: false },
+  // },
 });

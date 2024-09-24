@@ -19,7 +19,7 @@
 
   ::-webkit-scrollbar-thumb {
     border-radius: $scroll-width;
-    background-color: rgb(var(--jui-bg-hover-rgb) / 0.6);
+    background-color: rgb(var(--jj-bg-hover-rgb) / 0.6);
   }
 
   ::-webkit-scrollbar-corner {

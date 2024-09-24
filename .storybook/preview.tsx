@@ -1,40 +1,30 @@
 import { Preview } from '@storybook/react';
-import { Controls, Description, Primary, Subtitle, Title } from '@storybook/blocks';
+import DocumentationTemplate from './templates/documentation-template.mdx';
 import { decorator as reportDecorator, loader as reportLoader } from './components/report-badge';
-import { themeDark } from './theme';
-import '../src/css/minimal.css';
+import { decorator as themeDecorator } from './components/switch-theme';
+import theme from './theme';
+import '../dist/theme/minimal.css';
 import './styles.css';
 
 const preview: Preview = {
   tags: ['autodocs'],
-  globalTypes: {
-    theme: {
-      description: 'Global theme for components',
-      toolbar: {
-        title: 'Theme',
-        icon: 'paintbrush',
-        items: ['light', 'dark'],
-        dynamicTitle: true,
-      },
-    },
-  },
-  initialGlobals: {
-    theme: 'dark',
-  },
   decorators: [
     reportDecorator,
+    themeDecorator,
   ],
   loaders: [
     reportLoader,
   ],
   parameters: {
-    layout: 'fullscreen',
+    layout: 'none',
+    backgrounds: {
+      default: 'dark',
+    },
     controls: {
       sort: 'requiredFirst',
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/,
-        boolean: /(disabled|loading|checked|upper)$/i,
       },
     },
     options: {
@@ -43,20 +33,9 @@ const preview: Preview = {
         order: ['Basic', '*'],
       },
     },
-    backgrounds: {
-      default: 'dark',
-    },
     docs: {
-      theme: themeDark,
-      page: () => (
-        <>
-          <Title/>
-          <Subtitle/>
-          <Description/>
-          <Primary/>
-          <Controls/>
-        </>
-      ),
+      theme,
+      page: DocumentationTemplate,
     },
   },
 };

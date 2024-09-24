@@ -9,14 +9,14 @@
   }
 
   .control-switch {
-    --jui-switch-aspect-ratio: 1.85;
-    --jui-switch-padding: 3px;
-    --jui-switch-height: calc($switch-width / var(--jui-switch-aspect-ratio));
-    --jui-switch-thumb-size: calc(var(--jui-switch-height) - (var(--jui-switch-padding) * 2));
+    --jj-switch-aspect-ratio: 1.85;
+    --jj-switch-padding: 3px;
+    --jj-switch-height: calc($switch-width / var(--jj-switch-aspect-ratio));
+    --jj-switch-thumb-size: calc(var(--jj-switch-height) - (var(--jj-switch-padding) * 2));
 
-    height: var(--jui-switch-height);
+    height: var(--jj-switch-height);
     width: $switch-width;
-    aspect-ratio: var(--jui-switch-aspect-ratio);
+    aspect-ratio: var(--jj-switch-aspect-ratio);
     cursor: pointer;
     user-select: none;
     position: relative;
@@ -38,19 +38,19 @@
       inset: 0;
       display: block;
       position: absolute;
-      background-color: rgb(var(--jui-switch-bg-rgb));
+      background-color: rgb(var(--jj-switch-bg-rgb));
       transition: background-color .1s linear;
       border-radius: 99999999px;
 
       .thumb {
-        top: var(--jui-switch-padding);
-        left: var(--jui-switch-padding);
-        width: var(--jui-switch-thumb-size);
-        height: var(--jui-switch-thumb-size);
+        top: var(--jj-switch-padding);
+        left: var(--jj-switch-padding);
+        width: var(--jj-switch-thumb-size);
+        height: var(--jj-switch-thumb-size);
         aspect-ratio: 1/1;
         border-radius: 50%;
-        background-color: rgb(var(--jui-white-rgb));
-        box-shadow: 0 0 2px 1px rgb(var(--jui-black-rgb) / 0.1);
+        background-color: rgb(var(--jj-white-rgb));
+        box-shadow: 0 0 2px 1px rgb(var(--jj-black-rgb) / 0.1);
         transition: left .1s linear;
         display: block;
         position: absolute;
@@ -59,10 +59,10 @@
     }
 
     input[type="checkbox"]:checked + .switch {
-      background-color: rgb(var(--jui-accent-rgb));
+      background-color: rgb(var(--jj-accent-rgb));
 
       .thumb {
-        left: calc($switch-width - var(--jui-switch-thumb-size) - var(--jui-switch-padding));
+        left: calc($switch-width - var(--jj-switch-thumb-size) - var(--jj-switch-padding));
       }
     }
 
@@ -71,7 +71,7 @@
     }
 
     input[type="checkbox"]:disabled + .switch {
-      background-color: rgb(var(--jui-bg-disabled-rgb));
+      background-color: rgb(var(--jj-bg-disabled-rgb));
       opacity: .8;
     }
   }

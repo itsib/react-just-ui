@@ -1,12 +1,12 @@
 :root {
-  --jui-image-size: 32px;
-  --jui-image-animation: jui-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --jj-image-size: 32px;
+  --jj-image-animation: jui-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .jui.jui-image {
-  width: var(--jui-image-size);
-  min-width: var(--jui-image-size);
-  height: var(--jui-image-size);
+  width: var(--jj-image-size);
+  min-width: var(--jj-image-size);
+  height: var(--jj-image-size);
   aspect-ratio: 1;
   position: relative;
 
@@ -15,9 +15,9 @@
     height: 100%;
     border-radius: 50%;
     overflow: hidden;
-    border: var(--jui-image-border-width) solid rgb(var(--jui-image-bg-rgb));
-    background-color: rgb(var(--jui-image-bg-rgb));
-    animation: var(--jui-image-animation);
+    border: var(--jj-image-border-width) solid rgb(var(--jj-image-bg-rgb));
+    background-color: rgb(var(--jj-image-bg-rgb));
+    animation: var(--jj-image-animation);
     transition: border-color .2s ease-in-out;
 
     & > * {
@@ -32,9 +32,9 @@
     }
 
     .jui-image-placeholder {
-      color: rgb(var(--jui-image-border-rgb));
+      color: rgb(var(--jj-image-border-rgb));
       background-color: currentColor;
-      mask-image: var(--jui-image-falback-svg);
+      mask-image: var(--jj-image-falback-svg);
       mask-repeat: no-repeat;
       mask-size: 100% 100%;
     }
@@ -43,9 +43,9 @@
   .ripple {
     top: 0;
     left: 0;
-    width: var(--jui-image-size);
-    height: var(--jui-image-size);
-    border: 1px solid rgb(var(--jui-accent-rgb));
+    width: var(--jj-image-size);
+    height: var(--jj-image-size);
+    border: 1px solid rgb(var(--jj-accent-rgb));
     border-radius: 50%;
     position: absolute;
     animation: 1.5s linear 0s infinite normal none running jui-image-ripple;
@@ -56,7 +56,7 @@
 
     .image {
       animation: none;
-      border-color: rgb(var(--jui-image-border-rgb));
+      border-color: rgb(var(--jj-image-border-rgb));
 
       & > * {
         opacity: 1;
@@ -67,7 +67,7 @@
   &.active {
 
     .image {
-      border-color: rgb(var(--jui-accent-rgb) / 25%);
+      border-color: rgb(var(--jj-accent-rgb) / 25%);
     }
 
     .ripple {
@@ -78,8 +78,8 @@
   &.loading {
 
     .image {
-      animation: var(--jui-image-animation);
-      border-color: rgb(var(--jui-image-bg-rgb));
+      animation: var(--jj-image-animation);
+      border-color: rgb(var(--jj-image-bg-rgb));
 
       & > * {
         opacity: 0;

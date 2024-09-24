@@ -1,5 +1,5 @@
 .jui-loading {
-  color: var(--jui-accent-rgb);
+  color: var(--jj-accent-rgb);
   display: inline-block;
   height: $loading-size;
   width: $loading-size;

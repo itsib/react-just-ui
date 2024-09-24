@@ -20,6 +20,13 @@ export function flatten<T, R>(target: T, opts: Record<string, any> = {}): R {
   const maxDepth = opts.maxDepth;
   const transformKey = opts.transformKey || ((key: string) => key);
 
+  function formatValue(key: string, value: number | string) {
+    if (typeof value === 'number' && !key.includes('z-index')) {
+      return `${value}px`;
+    }
+    return `${value}`;
+  }
+
   function step(object: any, prev?: string, currentDepth?: number) {
     currentDepth = currentDepth || 1;
     Object.keys(object).forEach(function (key) {
@@ -40,7 +47,7 @@ export function flatten<T, R>(target: T, opts: Record<string, any> = {}): R {
         return step(value, newKey, currentDepth + 1);
       }
 
-      (output as any)[newKey] = value;
+      (output as any)[newKey] = formatValue(newKey, value);
     });
   }
 

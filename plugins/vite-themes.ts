@@ -7,6 +7,7 @@ import { flatten } from './utils';
 import { glob } from 'glob';
 import autoprefixer from 'autoprefixer';
 import postcssNesting from 'postcss-nesting';
+import advancedVariables from 'postcss-advanced-variables';
 
 export interface ThemesGeneratorConfig {
   /**
@@ -51,9 +52,6 @@ export default async function themes(config?: ThemesGeneratorConfig): Promise<Pl
   const configsDir = _configs && isAbsolute(_configs) ? _configs : join(projectRootDir, (_configs || './themes'));
   let isGenerated = false;
 
-  // Create PostCSS instance
-  const PostCSS = postcss([autoprefixer(), postcssNesting()]);
-
   // Read configs
   const configsFiles = await fs.readdir(configsDir, { encoding: 'utf8' });
   const configs: Record<string, Record<string, any>> = {};
@@ -71,7 +69,15 @@ export default async function themes(config?: ThemesGeneratorConfig): Promise<Pl
     configs[themeName] = config;
   }
 
-  async function processCss(code: string, onWarn: (msg: string) => void) {
+  async function processCss(code: string, themeName: string, onWarn: (msg: string) => void) {
+    const PostCSS = postcss([
+      autoprefixer(),
+      advancedVariables({
+        variables: configs[themeName]?.variables || {},
+        unresolved: 'warn',
+      }),
+      postcssNesting(),
+    ]);
     const postcssResult = await PostCSS.process(code, { map: false });
     postcssResult.warnings().forEach((warning) => onWarn(warning.toString()));
 
@@ -95,12 +101,9 @@ export default async function themes(config?: ThemesGeneratorConfig): Promise<Pl
         includesCss += '\n\n';
       }
 
-      includesCss = await processCss(includesCss, this.warn);
-
       for (const themeName of themeNames) {
         let css = renderVariablesCss(configs[themeName], prefix);
-        css = await processCss(css, this.warn);
-        css = css + includesCss;
+        css = await processCss(css + includesCss, themeName, this.warn);
 
         this.emitFile({
           type: 'asset',
@@ -120,31 +123,31 @@ function parseThemeConfig(themeRaw: string): Record<string, any> {
   return {
     light: flatten<Record<string, any>, Record<string, any>>(theme.light, { delimiter: '-' }),
     dark: flatten<Record<string, any>, Record<string, any>>(theme.dark, { delimiter: '-' }),
+    variables: flatten<Record<string, any>, Record<string, any>>(theme.variables || {}, { delimiter: '-' }),
+    'css-variables': flatten<Record<string, any>, Record<string, any>>(theme['css-variables'] || {}, { delimiter: '-' }),
   }
 }
 
 function renderVariablesCss(theme: Record<string, any>, prefix: string = ''): string {
-  const formatValue = (value: string): string => {
-    if (/^[0-9\s]+$/.test(value)) {
-      return value;
-    }
-    return `"${value}"`;
-  };
-  const formatName = (name: string): string => {
+  const formatName = (name: string, isColor?: boolean): string => {
     let output = prefix ? `--${prefix}-` : '--';
     output += name
       .replace('background', 'bg')
       .replace('foreground', 'fg');
+
+    output = isColor ? output + '-rgb' : output;
     return output;
   }
-  const renderScheme = (selector: string, scheme: Record<string, any>) => {
+  const renderScheme = (selector: string, scheme: Record<string, any>, isColors?: boolean) => {
     let output = `${selector} {\n`;
     const names = Object.keys(scheme);
     for (const name of names) {
-      output += `  ${formatName(name)}: ${formatValue(scheme[name])};\n`;
+      output += `  ${formatName(name, isColors)}:${scheme[name]};\n`;
     }
     return output + '}\n\n';
   };
 
-  return renderScheme('html', theme.light) + renderScheme('html.dark', theme.dark);
+  return renderScheme('html', theme.light, true)
+    + renderScheme('html.dark', theme.dark, true)
+    + renderScheme('html', theme['css-variables']);
 }

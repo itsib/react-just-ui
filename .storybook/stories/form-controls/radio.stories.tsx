@@ -35,13 +35,13 @@ export const Basic: Story = {
 
     return (
       <div style={{ minWidth: '300px', padding: '1.5rem 2rem' }}>
-        <p style={{ color: 'rgb(var(--jui-label-rgb))', marginTop: '0' }}>Pick your favorite season</p>
+        <p style={{ color: 'rgb(var(--jj-label-rgb))', marginTop: '0' }}>Pick your favorite season</p>
         <Radio {...props} id={`${id}-1`} label="Winter" value="Winter" checked={value === 'Winter'} onChange={onChange} />
         <Radio {...props} id={`${id}-2`} label="Spring" value="Spring" checked={value === 'Spring'} onChange={onChange} />
         <Radio {...props} id={`${id}-3`} label="Summer" value="Summer" checked={value === 'Summer'} onChange={onChange} />
         <Radio {...props} id={`${id}-4`} label="Autumn" value="Autumn" checked={value === 'Autumn'} onChange={onChange} />
 
-        <div style={{ color: 'rgb(var(--jui-label-rgb))', marginTop: '1rem' }}>Your favorite season is: {value}</div>
+        <div style={{ color: 'rgb(var(--jj-label-rgb))', marginTop: '1rem' }}>Your favorite season is: {value}</div>
       </div>
     );
   },

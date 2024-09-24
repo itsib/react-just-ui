@@ -77,7 +77,6 @@ export const ReportPopup: FC<ReportPopupProps> = ({ title, report, total }) => {
   );
 };
 
-
 const Row: FC<{ label: string, size: string, gzip: string }> = ({ label, size, gzip }) => {
   return (
     <>

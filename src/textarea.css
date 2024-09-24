@@ -1,7 +1,7 @@
 .jui.jui-textarea {
 
   ::placeholder {
-    color: rgb(var(--jui-placeholder-rgb) / .7);
+    color: rgb(var(--jj-placeholder-rgb) / .7);
     font-weight: 400;
     opacity: .6;
   }
@@ -11,20 +11,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(var(--jui-bg-rgb));
-    color: rgb(var(--jui-text-rgb) / .6);
-    border: $control-border-width solid rgb(var(--jui-border-rgb));
-    border-radius: $control-border-radius;
+    background-color: rgb(var(--jj-bg-rgb));
+    color: rgb(var(--jj-text-rgb) / .6);
+    border: var(--jj-form-border-width) solid rgb(var(--jj-border-rgb));
+    border-radius: var(--jj-form-border-radius);
     z-index: 10;
   }
 
   .control {
     width: 100%;
     max-width: 100%;
-    min-height: $control-height;
-    padding: $control-padding-x $control-padding-x;
-    font-size: $control-font-size;
-    color: rgb(var(--jui-text-rgb));
+    min-height: $form-height;
+    padding: $form-padding-x $form-padding-x;
+    font-size: inherit;
+    color: rgb(var(--jj-text-rgb));
     line-height: 1;
     outline: none;
   }

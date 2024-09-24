@@ -1,17 +1,17 @@
 .jui.jui-error-message {
-  height: $control-error-height;
+  height: $form-error-height;
   padding-left: 4px;
-  padding-top: $control-margin-bottom;
-  font-size: $control-error-size;
+  padding-top: $form-margin-bottom;
+  font-size: $form-error-size;
   line-height: 1.2;
   white-space: nowrap;
   text-overflow: ellipsis;
-  color: rgb(var(--jui-error-rgb));
+  color: rgb(var(--jj-error-rgb));
   overflow: hidden;
   pointer-events: none;
 
   div {
-    top: calc(($control-error-height + 2px)  * -1);
+    top: calc(($form-error-height + 2px)  * -1);
     transform: translateY(0);
     transition: .15s ease-in-out;
     position: relative;
@@ -20,7 +20,7 @@
   &.active {
 
     div {
-      transform: translateY(calc(100% + $control-margin-bottom + 2px));;
+      transform: translateY(calc(100% + $form-margin-bottom + 2px));;
     }
   }
 }
