@@ -1,25 +1,13 @@
-.jui.jui-label {
-  margin-bottom: $form-margin-top;
-  color: rgb(var(--jj-label-rgb));
-  font-size: $form-label-size;
+.jj.jj-label {
+  color: rgb(var(--jj-form-label-rgb));
+  font-size: var(--jj-font-sm);
   cursor: pointer;
   user-select: none;
   display: block;
 
-  .jui-text {
-    font-size: inherit;
-  }
-
-  .jui-required {
+  .jj-required {
     color: rgb(var(--jj-error-rgb));
     font-size: inherit;
-  }
-
-  .jui-question {
-    width: $form-label-size;
-    height: $form-label-size;
-    color: rgb(var(--jj-label-rgb));
-    margin-left: 0.5rem;
   }
 }
 

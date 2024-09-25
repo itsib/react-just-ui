@@ -1,0 +1,10 @@
+.jj.jj-subscript {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  pointer-events: none;
+
+  div {
+    color: rgb(var(--jj-form-error-border-rgb));
+  }
+}

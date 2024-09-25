@@ -1,7 +1,7 @@
 import { FC, useMemo } from 'react';
 import { ModuleReport } from './types';
 import { BoxIcon } from '@storybook/icons';
-import './styles.css';
+import './report-popup.css';
 
 const LABEL: Record<string, string> = {
   js: 'ECM',

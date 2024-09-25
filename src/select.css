@@ -1,4 +1,4 @@
-.jui.jui-select {
+.jj.jj-select {
 
   .control {
 
@@ -51,9 +51,9 @@
   }
 }
 
-.jui.jui-select-dropdown {
+.jj.jj-select-dropdown {
   /*noinspection ALL*/
-  .jui-dropdown-options {
+  .jj-dropdown-options {
     color: rgb(var(--jj-text-rgb));
     overflow-y: auto;
     scroll-padding-top: var(--jj-dropdown-padding);
@@ -78,7 +78,7 @@
     }
   }
 
-  .jui-overlay {
+  .jj-overlay {
     inset: 0;
     position: fixed;
     z-index: var(--jj-overlay-z-index);
@@ -86,7 +86,7 @@
   }
 }
 
-.jui.jui-option {
+.jj.jj-option {
   width: 100%;
   /*noinspection CssUnresolvedCustomProperty*/
   height: 38px;

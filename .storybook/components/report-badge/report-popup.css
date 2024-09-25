@@ -8,10 +8,6 @@
     align-items: center;
     justify-content: center;
   }
-
-  .report-wrap {
-
-  }
 }
 
 .report-popup-wrap {
@@ -26,8 +22,8 @@
     font-family: Roboto, sans-serif;
     font-weight: 700;
     border-top: 1px solid rgba(255, 255, 255, .1);
-    border-left: 1px solid rgba(255, 255, 255, .1);
-    border-radius: 4px 0 0 0;
+    border-right: 1px solid rgba(255, 255, 255, .1);
+    border-radius: 0 4px 0 0;
     background: #1B1C1D;
 
     &:focus {

@@ -1,4 +1,4 @@
-.jui {
+.jj {
   font-size: var(--jj-font-md);
   box-sizing: border-box;
 
@@ -11,7 +11,7 @@
   }
 }
 
-.jui {
+.jj {
 
   ::placeholder {
     color: rgb(var(--jj-placeholder-rgb) / .7);

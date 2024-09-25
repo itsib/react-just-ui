@@ -1,14 +1,12 @@
-import { Checkbox } from '../../../src/checkbox';
+import { Checkbox } from 'react-just-ui';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const meta = {
   id: 'story-checkbox',
   title: 'Form Controls/Checkbox',
   component: Checkbox,
-  parameters: {},
-  tags: ['autodocs'],
 } satisfies Meta<typeof Checkbox>;
 
 export default meta;
@@ -25,7 +23,7 @@ export const Basic: Story = {
     hint: '',
     onChange: action('onChange'),
   },
-  render: function Render(args, { loaded }) {
+  render: function Render(args) {
     const [checked, setChecked] = useState(args.checked);
 
     function onChange(event: React.ChangeEvent<HTMLInputElement>) {

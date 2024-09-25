@@ -18,6 +18,7 @@ text defines in aria-label attribute.
 const meta = {
   title: 'Components/Tooltip',
   parameters: {
+    cssOnly: true,
     docs: {
       description: {
         component: description,

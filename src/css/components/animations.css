@@ -1,4 +1,4 @@
-@keyframes jui-image-ripple {
+@keyframes jj-image-ripple {
   0% {
     transform: scale(1);
     opacity: 1;
@@ -10,7 +10,7 @@
   }
 }
 
-@keyframes jui-pulse {
+@keyframes jj-pulse {
   0%, 100% {
     opacity: 1;
   }
@@ -19,7 +19,13 @@
   }
 }
 
-@keyframes jui-checkbox-checked {
+@keyframes jj-blink {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes jj-checkbox-checked {
   from {
     stroke-dashoffset: 24;
   }

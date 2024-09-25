@@ -67,7 +67,7 @@ export const Image: FC<ImageProps> = ({ className, src, alt, size = 32, fallback
   useEffect(() => setReady(false), [src]);
 
   return (
-    <div className={cn('jui jui-image', className, state)} style={{'--jj-image-size': `${size}px`, '--jj-image-border-width': `${border}px`} as CSSProperties}>
+    <div className={cn('jj jj-image', className, state)} style={{'--jj-image-size': `${size}px`, '--jj-image-border-width': `${border}px`} as CSSProperties}>
       <div className="image">
         {src && !BAD_URLS.has(src) ? (
           <img
@@ -99,7 +99,7 @@ export const Image: FC<ImageProps> = ({ className, src, alt, size = 32, fallback
         ) : fallback && typeof fallback === 'object' ? (
           <>{fallback}</>
         ) : (
-          <div className="jui-image-placeholder"/>
+          <div className="jj-image-placeholder"/>
         )}
       </div>
 

@@ -1,5 +1,4 @@
 import postcssVariables from 'postcss-advanced-variables';
-import postcssImport from 'postcss-import';
 import autoprefixer from 'autoprefixer';
 import postcssNesting from 'postcss-nesting';
 
@@ -49,7 +48,6 @@ export const ThemeConfig = {
 
 export const postcss = {
   plugins: [
-    postcssImport(),
     postcssVariables({
       variables(name: string) {
         const fields = name.split('-');

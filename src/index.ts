@@ -12,7 +12,7 @@ export * from './types';
 export * from './utils';
 export * from './validators';
 
-export * from './error-message';
+export * from './subscript';
 export * from './label';
 export * from './checkbox';
 export * from './input';

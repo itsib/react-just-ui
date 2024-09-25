@@ -1,7 +1,7 @@
 import { forwardRef, ForwardedRef } from 'react';
 import type { BaseControlProps } from './types';
 import { Label } from './label';
-import { ErrorMessage } from './error-message';
+import { Subscript } from './subscript';
 import './radio.css';
 
 export interface RadioProps extends Omit<BaseControlProps<HTMLInputElement>, 'value'> {
@@ -40,8 +40,8 @@ export const Radio = forwardRef(function Checkbox(
   const { id, label, hint, className, rowReverse, error, ...props } = _props;
 
   return (
-    <div className={`jui jui-radio ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}>
-      <Label id={id} label={label} hint={hint} />
+    <div className={`jj jj-radio ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}>
+      <Label id={id} label={label} />
 
       <div className="control-radio">
         <input id={id} type="radio" role="radio" ref={_ref} {...props} />
@@ -54,7 +54,7 @@ export const Radio = forwardRef(function Checkbox(
         </svg>
       </div>
 
-      <ErrorMessage error={error}/>
+      <Subscript error={error} hint={hint}/>
     </div>
   );
 });

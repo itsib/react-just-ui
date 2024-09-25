@@ -1,11 +1,35 @@
-.jui {
+.jj {
+
+  &.jj-label {
+    margin-bottom: $form-margin-top;
+  }
+
+  &.jj-subscript {
+    height: calc(var(--jj-font-xs) + 4px);
+    padding-left: $form-border-radius;
+    padding-top: $form-margin-bottom;
+    font-size: var(--jj-font-xs);
+    line-height: 1.2;
+
+    div {
+      top: calc((var(--jj-font-xs) + 6px) * -1);
+      transform: translateY(0);
+      transition: .15s ease-in-out;
+      position: relative;
+    }
+
+    &.active div {
+      transform: translateY(calc(100% + $form-margin-bottom + 2px));
+    }
+  }
 
   .control {
-    background-color: rgb(var(--jj-bg-rgb));
+    height: $form-height;
+    background-color: rgb(var(--jj-form-bg-rgb));
     font-size: var(--jj-font-md);
-    color: rgb(var(--jj-text-rgb));
+    color: rgb(var(--jj-form-text-rgb));
     box-shadow: none;
-    border: $form-border-width solid rgb(var(--jj-border-rgb));
+    border: $form-border-width solid rgb(var(--jj-form-border-rgb));
     border-radius: $form-border-radius;
     overflow: hidden;
     display: flex;
@@ -25,10 +49,35 @@
       background-color: transparent;
     }
 
-    .loader-backdrop {
+    .prefix, .suffix {
+      padding: 0 0.75em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+      user-select: none;
+      box-shadow: none;
+      white-space: nowrap;
+      transition: inherit;
+      font-size: inherit;
+    }
+
+    > .prefix {
+      color: rgb(var(--jj-form-prefix-rgb));
+      border-radius: calc($form-border-radius - 1px) 0 0 calc($form-border-radius - 1px);
+      border-right: $form-border-width solid rgb(var(--jj-form-border-rgb));
+    }
+
+    > .suffix {
+      color: rgb(var(--jj-form-suffix-rgb));
+      border-radius: 0 calc($form-border-radius - 1px) calc($form-border-radius - 1px) 0;
+      border-left: $form-border-width solid rgb(var(--jj-form-border-rgb));
+    }
+
+    > .overlay {
       inset: 0;
-      background-color: rgb(var(--jj-bg-rgb));
-      color: rgb(var(--jj-text-rgb) / .6);
+      background-color: rgb(var(--jj-form-bg-rgb));
+      color: rgb(var(--jj-form-text-rgb) / .6);
       display: none;
       align-items: center;
       justify-content: center;
@@ -37,32 +86,99 @@
     }
   }
 
-  &:focus-within, &.focus {
+  .control-otp {
+    --jj-otp-root-height: $form-height;
+    height: var(--jj-otp-root-height);
+    position: relative;
 
-    .control {
-      border-color: rgb(var(--jj-border-focus-rgb));
-      box-shadow: var(--jj-box-shadow-focus);
+    > input {
+      inset: 0;
+      font-size: var(--jj-otp-root-height);
+      position: absolute;
+    }
+
+    .group {
+
+      .symbol {
+        height: inherit;
+        aspect-ratio: 0.8;
+        width: calc($form-height * 0.8);
+        text-align: center;
+        border: $form-border-width solid rgb(var(--jj-form-border-rgb));
+        border-radius: $form-border-radius;
+      }
+    }
+  }
+
+  .control-checkbox {
+    width: $checkbox-size;
+    height: $checkbox-size;
+
+    input[type="checkbox"]:checked {
+
+      + .checkbox {
+
+        .tick {
+          animation-duration: $checkbox-animation-in;
+          animation-timing-function: $checkbox-animation-ease;
+        }
+      }
+    }
+  }
+
+  &:focus-within .control,
+  &.focus .control,
+  .control-otp .group .symbol.in {
+    background-color: rgb(var(--jj-form-focus-bg-rgb));
+    border-color: rgb(var(--jj-form-focus-border-rgb));
+    box-shadow: 0 0 0 1px rgb(var(--jj-black-rgb)), 0 0 3px 0 rgb(var(--jj-form-focus-border-rgb));
+
+    .suffix, .prefix {
+      border-color: rgb(var(--jj-form-focus-border-rgb));
+      box-shadow: 0 0 2px 0 rgb(var(--jj-form-focus-border-rgb)),
+      0 0 2px -1px inset rgb(var(--jj-form-focus-border-rgb));
     }
   }
 
   &.error {
 
-    .control {
-      border-color:  rgb(var(--jj-error-rgb));
-      box-shadow: 0 0 0 0 transparent;
+    .control, .control-otp .group .symbol {
+      background-color: rgb(var(--jj-form-error-bg-rgb));
+      border-color: rgb(var(--jj-form-error-border-rgb));
+      box-shadow: none;
+
+      .suffix, .prefix {
+        border-color: rgb(var(--jj-form-error-border-rgb));
+        box-shadow: none;
+      }
     }
   }
 
   &.disabled {
 
-    .control {
-      box-shadow: none;
-      border-color: rgb(var(--jj-form-disabled-border-rgb));
+    .control, .control-otp .group .symbol {
       background-color: rgb(var(--jj-form-disabled-bg-rgb));
+      border-color: rgb(var(--jj-form-disabled-border-rgb));
+      box-shadow: none;
+      pointer-events: none;
       opacity: .8;
+
+      .suffix, .prefix {
+        color: rgb(var(--jj-prefix-rgb) / .6);
+        border-color: rgb(var(--jj-form-disabled-border-rgb));
+        box-shadow: none;
+      }
+
+      > .prefix {
+        color: rgb(var(--jj-form-prefix-rgb) / .6);
+      }
+
+      > .suffix {
+        color: rgb(var(--jj-form-suffix-rgb) / .6);
+      }
     }
 
-    .jui-error-message div {
+    .jj-subscript div {
       transform: translateY(0);
     }
   }
@@ -70,18 +186,18 @@
   &.loading {
 
     .control {
-      pointer-events: none;
-      box-shadow: none;
       border-color:  rgb(var(--jj-form-border-rgb));
       background-color: rgb(var(--jj-form-bg-rgb));
+      box-shadow: none;
+      pointer-events: none;
       opacity: 1;
 
-      .loader-backdrop {
+      .overlay {
         display: flex;
       }
     }
 
-    .jui-error-message div {
+    .jj-subscript div {
       transform: translateY(0);
     }
   }

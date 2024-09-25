@@ -1,6 +1,6 @@
 import { ForwardedRef, forwardRef, useEffect } from 'react';
 import type { BaseControlProps } from './types';
-import { ErrorMessage } from './error-message';
+import { Subscript } from './subscript';
 import { Label } from './label';
 import { cn } from './utils';
 import './textarea.css';
@@ -92,8 +92,8 @@ export const Textarea = forwardRef(function Textarea(
     const textarea = document.getElementById(id) as HTMLTextAreaElement;
 
     const loader = document.createElement('div');
-    loader.classList.add('loader-backdrop');
-    loader.innerHTML = '<span class="jui-loading"/>';
+    loader.classList.add('overlay');
+    loader.innerHTML = '<span class="jj jj-spinner"/>';
     loader.style.width = `${textarea.offsetWidth}px`;
     loader.style.height = `${textarea.offsetHeight}px`;
     textarea.parentElement!.insertBefore(loader, textarea);
@@ -101,21 +101,21 @@ export const Textarea = forwardRef(function Textarea(
 
     return () => {
       loader.remove();
-    }
+    };
   }, [loading, id]);
 
   return (
-    <div className={cn(['jui', 'jui-textarea'], {
+    <div className={cn(['jj', 'jj-textarea'], {
       disabled: !!_props.disabled,
       error: !!error,
       loading: !!loading
     }, className)}>
-      <Label id={id} label={label} hint={hint}/>
+      <Label id={id} label={label}/>
 
-      <textarea className="control jui-scroll" placeholder={placeholder} id={id} ref={ref}
+      <textarea className="control jj-scroll" placeholder={placeholder} id={id} ref={ref}
                 style={{ minHeight, maxHeight, minWidth, maxWidth }} {..._props} />
 
-      <ErrorMessage error={error}/>
+      <Subscript error={error} hint={hint} />
     </div>
   );
 });

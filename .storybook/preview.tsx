@@ -19,6 +19,10 @@ const preview: Preview = {
     layout: 'none',
     backgrounds: {
       default: 'dark',
+      values: [
+        { name: 'dark', value: '#151515' },
+        { name: 'light', value: '#F7F9F2' },
+      ],
     },
     controls: {
       sort: 'requiredFirst',

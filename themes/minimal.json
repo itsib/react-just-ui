@@ -10,19 +10,36 @@
     "shadow": "209 209 209",
     "form": {
       "label": "25 25 25",
+      "text": "$foreground",
+      "prefix": "$foreground",
+      "suffix": "$foreground",
       "border": "208 208 211",
-      "background": "255 255 255",
+      "background": "$background",
+      "error": {
+        "border": "$error",
+        "background": "$background"
+      },
       "focus": {
         "border": "38 38 38",
-        "background": "255 255 255"
+        "background": "$background"
       },
       "disabled": {
-        "border": "220 220 220",
-        "background": "220 220 220"
+        "border": "$muted",
+        "background": "$muted"
       }
     },
+    "checkbox": {
+      "border": "0 0 0",
+      "tick": "0 0 0"
+    },
     "hint": {
-      "background": "255 255 255"
+      "foreground": "0 0 0",
+      "background": "255 255 255",
+      "border": "204 204 204"
+    },
+    "image": {
+      "background": "220 220 220",
+      "border": "0 115 229"
     }
   },
   "dark": {
@@ -35,23 +52,37 @@
     "muted": "48 48 48",
     "shadow": "209 209 209",
     "form": {
-      "label": "225 225 225",
-      "normal": {
-        "border": "78 78 78",
-        "background": "255 255 255"
+      "label": "$foreground",
+      "border": "78 78 78",
+      "text": "$foreground",
+      "prefix": "$foreground",
+      "suffix": "$foreground",
+      "background": "$background",
+      "error": {
+        "border": "$error",
+        "background": "$background"
       },
       "focus": {
         "border": "212 212 212",
-        "background": "255 255 255"
+        "background": "$background"
       },
       "disabled": {
-        "border": "48 48 48",
-        "background": "48 48 48"
+        "border": "$muted",
+        "background": "$muted"
       }
     },
+    "checkbox": {
+      "border": "255 255 255",
+      "tick": "255 255 255"
+    },
     "hint": {
-      "background": "255 255 255",
-      "border": "204 204 204"
+      "foreground": "255 255 255",
+      "background": "0 0 0",
+      "border": "51 51 51"
+    },
+    "image": {
+      "background": "48 48 48",
+      "border": "0 115 229"
     }
   },
   "css-variables": {
@@ -60,6 +91,9 @@
       "md": "1rem",
       "sm": "0.875rem",
       "xs": "0.75rem"
+    },
+    "image": {
+      "border": { "width": 0, "radius": "50%" }
     }
   },
   "variables": {
@@ -73,10 +107,14 @@
       "margin": 2,
       "padding": { "x": 10, "y": 8 },
       "arrow": 6,
-      "border": { "radius": 6 },
+      "border": { "radius": 4 },
       "delay": { "show": ".4s", "hide": "0s" },
       "ease": { "duration": ".2s" },
       "z-index": "210"
+    },
+    "checkbox": {
+      "size": 20,
+      "animation": { "in": ".4s", "out": ".2s", "ease": "cubic-bezier(.4,.0,.23,1)" }
     },
     "scroll": {
       "width": 4,

@@ -1,11 +1,10 @@
-import { Image } from 'react-just-ui';
+import { Image } from 'react-just-ui/image';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
   title: 'Components/Image',
   component: Image,
   parameters: {
-    reportId: 'image',
     controls: {
       sort: 'alpha',
     },

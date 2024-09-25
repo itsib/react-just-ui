@@ -28,7 +28,7 @@
       width: max-content;
       max-width: var(--jj-hint-width);
       padding: $hint-padding-y $hint-padding-x;
-      color: rgb(var(--jj-text-rgb));
+      color: rgb(var(--jj-hint-fg-rgb));
       text-wrap: balance;
       white-space: pre-wrap;
       font-size: var(--jj-font-xs);

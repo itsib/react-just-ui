@@ -1,0 +1,22 @@
+.title-with-tags {
+
+  .tags-container {
+    top: -16px;
+    margin-left: 10px;
+    display: inline-flex;
+    position: relative;
+  }
+
+  .tag {
+    padding: 2px 10px;
+    font-size: .75rem;
+    line-height: 1rem;
+    font-weight: 500;
+    border-radius: 999px;
+
+    &.purple {
+      color: rgb(202 191 253);
+      background: rgb(74 29 150);
+    }
+  }
+}

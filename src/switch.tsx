@@ -1,7 +1,7 @@
 import { forwardRef, ForwardedRef } from 'react';
 import type { BaseControlProps } from './types';
 import { Label } from './label';
-import { ErrorMessage } from './error-message';
+import { Subscript } from './subscript';
 import './switch.css';
 
 export interface SwitchProps extends BaseControlProps<HTMLInputElement> {
@@ -24,9 +24,9 @@ export const Switch = forwardRef(function Switch(
 
   return (
     <div
-      className={`jui jui-switch ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}
+      className={`jj jj-switch ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}
     >
-      <Label id={id} label={label} hint={hint} />
+      <Label id={id} label={label} />
 
       <div className="control-switch">
         <input
@@ -41,7 +41,7 @@ export const Switch = forwardRef(function Switch(
         </div>
       </div>
 
-      <ErrorMessage error={error}/>
+      <Subscript error={error} hint={hint}/>
     </div>
   );
 });

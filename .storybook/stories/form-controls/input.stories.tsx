@@ -1,6 +1,7 @@
-import { Input } from '../../../src/input';
+import { Input } from 'react-just-ui/input';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 
 const meta = {
   title: 'Form Controls/Input',
@@ -55,9 +56,10 @@ export const Basic: Story = {
     onChange: action('onChange'),
   },
   render: function Render(args) {
+    const [text, setText] = useState('')
 
     return (
-      <Input {...args} />
+      <Input {...args} value={text} onChange={e => setText((e.target as any).value)} />
     );
   }
 };

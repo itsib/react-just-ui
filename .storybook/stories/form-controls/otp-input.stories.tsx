@@ -27,10 +27,10 @@ export const Basic: Story = {
     label: 'Enter the code from the SMS',
     onChange: action('onChange'),
   },
-  render: function Render(args) {
+  render: function Render({ label, id }) {
 
     return (
-      <OtpInput {...args} />
+      <OtpInput id={id} label={label} />
     );
   }
 };

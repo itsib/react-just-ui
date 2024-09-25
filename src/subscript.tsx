@@ -1,12 +1,13 @@
-import { useEffect, useRef } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { ValidationError } from './types';
-import './error-message.css';
+import './subscript.css';
 
-export interface IErrorMessage {
+export interface ISubscript {
   error?: ValidationError | false;
+  hint?: string;
 }
 
-export const ErrorMessage = ({ error }: IErrorMessage) => {
+export const Subscript: FC<ISubscript> = ({ error }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const message = error && error.message || null;
 
@@ -31,7 +32,7 @@ export const ErrorMessage = ({ error }: IErrorMessage) => {
   }, [message]);
 
   return (
-    <div className="jui jui-error-message" role="alert" ref={ref}>
+    <div className="jj jj-subscript" role="alert" ref={ref}>
       <div />
     </div>
   )

@@ -11,7 +11,7 @@ import React, {
 import { createPortal } from 'react-dom';
 import type { BaseControlProps, SelectOption } from './types';
 import { cn } from './utils';
-import { ErrorMessage } from './error-message';
+import { Subscript } from './subscript';
 import { Label } from './label';
 import './select.css';
 
@@ -77,11 +77,11 @@ export const Select = forwardRef(function Select(
   }, [id]);
 
   return (
-    <div className={cn(['jui', 'jui-select'], { disabled: !!_props.disabled, error: !!error, loading: !!loading }, className)}>
-      <Label id={id} label={label} hint={hint} />
+    <div className={cn(['jj', 'jj-select'], { disabled: !!_props.disabled, error: !!error, loading: !!loading }, className)}>
+      <Label id={id} label={label} />
 
       <div className="control" ref={controlRef} onClick={onClick}>
-        <div className="loader-backdrop"><span className="jui-loading"/></div>
+        <div className="overlay"><span className="jj jj-spinner"/></div>
         <input id={id} readOnly className="hidden-select" ref={ref} {..._props} />
 
         <div className="fake-input">
@@ -102,7 +102,7 @@ export const Select = forwardRef(function Select(
         </svg>
       </div>
 
-      <ErrorMessage error={error}/>
+      <Subscript error={error} hint={hint}/>
 
       <SelectDropdown
         id={id}
@@ -208,11 +208,11 @@ export function SelectDropdown(props: SelectDropdownProps) {
   }, [points?.scrollY, open]);
 
   return (process || open) && rect && points ? createPortal(
-    <div className="jui jui-select-dropdown jui-scroll">
-      <div className="jui-overlay" aria-label="dropdown overlay" onClick={onClickOverlay}/>
+    <div className="jj jj-select-dropdown jj-scroll">
+      <div className="jj-overlay" aria-label="dropdown overlay" onClick={onClickOverlay}/>
 
       <div
-        className={`jui-dropdown-options ${dropdownClass}`}
+        className={`jj-dropdown-options ${dropdownClass}`}
         aria-label="dropdown"
         style={{
           top: `${points.top}px`,
@@ -243,7 +243,7 @@ export function Option(props: OptionProps) {
     <button
       id={active ? `${id}-active` : undefined}
       type="button"
-      className={`jui jui-option ${active ? 'active' : ''}`}
+      className={`jj jj-option ${active ? 'active' : ''}`}
       value={value}
       onClick={() => onClick(value)}
     >

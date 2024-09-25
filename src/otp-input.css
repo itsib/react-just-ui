@@ -1,15 +1,62 @@
-.jui.jui-otp-input {
+.jj.jj-otp-input {
 
-  .control-group {
+  .control-otp {
+
+    > input {
+      border: 0 solid transparent !important;
+      outline: 0 solid transparent !important;
+      background: transparent !important;
+      color: transparent !important;
+      opacity: 0 !important;
+      box-shadow: none !important;
+      -webkit-text-fill-color: transparent !important;
+      line-height: 1;
+      letter-spacing: -.5em;
+      font-family: monospace;
+      font-variant-numeric: tabular-nums;
+
+      &::selection {
+        background: transparent !important;
+        color: transparent !important;
+      }
+
+      &:autofill {
+        background: transparent !important;
+        color: transparent !important;
+        border-color: transparent !important;
+        opacity: 0 !important;
+        box-shadow: none !important;
+        -webkit-text-fill-color: transparent !important;
+      }
+    }
 
     .group {
+      height: inherit;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 0.5rem;
+
+      .symbol {
+        color: rgb(var(--jj-form-text-rgb));
+        background-color: rgb(var(--jj-form-bg-rgb));
+        box-shadow: none;
+        outline: none;
+        transition: all .15s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.in:empty:after {
+          content: "|";
+          color: rgb(var(--jj-form-text-rgb));
+          animation: jj-blink 0.8s cubic-bezier(1, 0, 0, 1) infinite;
+        }
+      }
 
       .divider {
         margin: 0 3px;
-        background-color: rgb(var(--jj-divider-rgb));
+        background-color: rgb(var(--jj-form-border-rgb));
 
         &.d-dash {
           height: 1px;
@@ -25,26 +72,6 @@
         &.d-rect {
           width: 0.3em;
           height: 0.3em;
-        }
-      }
-
-      input {
-        height: $form-height;
-        width: auto;
-        aspect-ratio: 4/5;
-        text-align: center;
-        font-size: inherit;
-        color: rgb(var(--jj-text-rgb));
-        background-color: rgb(var(--jj-bg-rgb));
-        box-shadow: none;
-        border: var(--jj-form-border-width) solid rgb(var(--jj-border-rgb));
-        border-radius: var(--jj-form-border-radius);
-        outline: none;
-        transition: all .15s ease-in-out;
-
-        &:focus {
-          border: var(--jj-form-border-width) solid rgb(var(--jj-border-focus-rgb));
-          box-shadow: var(--jj-box-shadow-focus);
         }
       }
     }

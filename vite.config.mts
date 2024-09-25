@@ -1,16 +1,18 @@
 /// <reference types="vite/client" />
-import path, { resolve } from 'node:path';
+/// <reference types="vitest" />
+import { resolve, extname } from 'node:path';
 import react from '@vitejs/plugin-react-swc';
+import { glob } from 'glob';
 import { defineConfig, UserConfig } from 'vite';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
-import { glob } from 'glob';
+import copy from 'vite-plugin-cp';
+import autoprefixer from 'autoprefixer';
+import postcssNesting from 'postcss-nesting';
+import postcssImport from 'postcss-import';
 import pkg from './package.json';
 import generatePackageJson from './plugins/vite-generate-package-json';
 import bundleReport from './plugins/vite-bundle-report';
 import themes from './plugins/vite-themes';
-import copy from 'vite-plugin-cp';
-import autoprefixer from 'autoprefixer';
-import postcssNesting from 'postcss-nesting';
 
 export default defineConfig(async ({ mode }): Promise<UserConfig> => {
   const entries = await getEntries();
@@ -29,6 +31,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
     css: {
       postcss: {
         plugins: [
+          postcssImport(),
           autoprefixer(),
           postcssNesting(),
         ],
@@ -36,6 +39,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
     },
     build: {
       minify: true,
+      cssCodeSplit: true,
       lib: {
         name: 'ReactJustUI',
         entry: { ...entries },
@@ -55,6 +59,13 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
             'react-dom': 'ReactDOM',
             'react/jsx-runtime': 'react/jsx-runtime',
           },
+          manualChunks: {
+            'utils/index': [
+              resolve(__dirname, 'src/utils/index.ts'),
+              resolve(__dirname, 'src/utils/class-names.ts'),
+              resolve(__dirname, 'src/utils/string-utils.ts'),
+            ]
+          }
         },
       },
     },
@@ -74,22 +85,29 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
         ],
       }),
     ],
+    test: {
+      css: false,
+      include: ['tests/**/*.{spec,test}.{js,jsx,ts,tsx}'],
+      globals: true,
+      environment: 'node',
+      // setupFiles: 'tests/setup-tests.ts',
+      restoreMocks: true,
+    },
   }
 });
 
 async function getEntries(): Promise<Record<string, string>> {
   const entries: Record<string, string> = {};
-
   // Search components
   (await glob('src/!(*.d).{tsx,ts}', { cwd: __dirname })).reduce((acc, file) => {
-    const key = file.replace(/^src\//, '').replace(new RegExp(`${path.extname(file)}$`), '');
-    acc[key] = path.resolve(__dirname, file);
+    const key = file.replace(/^src\//, '').replace(new RegExp(`${extname(file)}$`), '');
+    acc[key] = resolve(__dirname, file);
     return acc;
   }, entries);
 
   // Add other libs
-  entries['validators/index'] = path.resolve(__dirname, 'src/validators/index.ts');
-  entries['utils/index'] = path.resolve(__dirname, 'src/utils/index.ts');
+  entries['validators/index'] = resolve(__dirname, 'src/validators/index.ts');
+  entries['utils/index'] = resolve(__dirname, 'src/utils/index.ts');
 
   return entries;
 }

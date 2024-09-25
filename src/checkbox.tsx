@@ -1,6 +1,6 @@
 import React from 'react';
 import { Label } from './label';
-import { ErrorMessage } from './error-message';
+import { Subscript } from './subscript';
 import type { BaseControlProps } from './types';
 import './checkbox.css';
 
@@ -29,8 +29,8 @@ export const Checkbox = React.forwardRef(function Checkbox(
   const { id, label, hint, className, rowReverse, error, ...props } = _props;
 
   return (
-    <div className={`jui jui-checkbox ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}>
-      <Label id={id} label={label} hint={hint} />
+    <div className={`jj jj-checkbox ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}>
+      <Label id={id} label={label} />
 
       <div className="control-checkbox">
         <input
@@ -45,7 +45,7 @@ export const Checkbox = React.forwardRef(function Checkbox(
         </svg>
       </div>
 
-      <ErrorMessage error={error}/>
+      <Subscript error={error} hint={hint} />
     </div>
   );
 });

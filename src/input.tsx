@@ -1,7 +1,7 @@
 import { type ForwardedRef, forwardRef, useEffect, type ReactNode } from 'react';
 import type { BaseControlProps } from './types';
 import { cn } from './utils';
-import { ErrorMessage } from './error-message';
+import { Subscript } from './subscript';
 import { Label } from './label';
 import './input.css';
 
@@ -80,17 +80,17 @@ export const Input = forwardRef(function Input(
   }, [_type, id]);
 
   return (
-    <div className={cn(['jui', 'jui-input'], { disabled: !!_props.disabled, error: !!error, loading: !!loading }, className)}>
-      <Label id={id} label={label} hint={hint} />
+    <div className={cn(['jj', 'jj-input'], { disabled: !!_props.disabled, error: !!error, loading: !!loading }, className)}>
+      <Label id={id} label={label} />
 
       <div className="control">
-        <div className="loader-backdrop"><span className="jui-loading" /></div>
+        <div className="overlay"><span className="jj jj-spinner"/></div>
         {prefix ? typeof prefix === 'string' ? <div className="prefix">{prefix}</div> : prefix : null}
         <input id={id} type={type} ref={ref} {..._props} />
         {suffix ? typeof suffix === 'string' ? <div className="suffix">{suffix}</div> : suffix : null}
       </div>
 
-      <ErrorMessage error={error}/>
+      <Subscript error={error} hint={hint}/>
     </div>
   );
 });

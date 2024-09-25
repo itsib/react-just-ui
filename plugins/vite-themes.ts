@@ -51,6 +51,7 @@ export default async function themes(config?: ThemesGeneratorConfig): Promise<Pl
   const projectRootDir = resolve(import.meta.dirname, '..');
   const configsDir = _configs && isAbsolute(_configs) ? _configs : join(projectRootDir, (_configs || './themes'));
   let isGenerated = false;
+  let warnLog: (msg: string) => void;
 
   // Read configs
   const configsFiles = await fs.readdir(configsDir, { encoding: 'utf8' });
@@ -73,7 +74,9 @@ export default async function themes(config?: ThemesGeneratorConfig): Promise<Pl
     const PostCSS = postcss([
       autoprefixer(),
       advancedVariables({
-        variables: configs[themeName]?.variables || {},
+        variables(key: string) {
+          return formatCssValue(key, configs[themeName]?.variables ?? {});
+        },
         unresolved: 'warn',
       }),
       postcssNesting(),
@@ -87,10 +90,56 @@ export default async function themes(config?: ThemesGeneratorConfig): Promise<Pl
     return result.code;
   }
 
+  function formatCssValue(key: string, scheme: Record<string, any>): string {
+    let value: number | string = scheme[key];
+    // Value is link to other value
+    if (typeof value === 'string' && value.charAt(0) === '$') {
+      const keyRef = value.slice(1);
+      if (keyRef in scheme) {
+        value = scheme[keyRef];
+      } else {
+        warnLog?.(`Key ${keyRef} not found in theme`);
+      }
+    }
+    if (typeof value === 'number' && !key.includes('z-index')) {
+      return `${value}px`;
+    }
+    return `${value}`;
+  }
+
+  function formatCssKey(name: string, prefix: string, isColor?: boolean): string {
+    let output = prefix ? `--${prefix}-` : '--';
+    output += name
+      .replace('background', 'bg')
+      .replace('foreground', 'fg');
+
+    output = isColor ? output + '-rgb' : output;
+    return output;
+  }
+
+  function renderScheme(selector: string, scheme: Record<string, any>, prefix: string, isColors?: boolean): string {
+    let output = `${selector} {\n`;
+    const keys = Object.keys(scheme);
+    for (const key of keys) {
+      output += `  ${formatCssKey(key, prefix, isColors)}:${formatCssValue(key, scheme)};\n`;
+    }
+    return output + '}\n\n';
+  }
+
+  function renderVariablesCss(theme: Record<string, any>, prefix: string = ''): string {
+    return renderScheme('html', theme.light, prefix, true)
+      + renderScheme('html.dark', theme.dark, prefix, true)
+      + renderScheme('html', theme['css-variables'], prefix);
+  }
+
   return {
     name: 'vite:themes',
     apply: 'build',
+    buildStart() {
+      warnLog = this.warn;
+    },
     async generateBundle(options) {
+
       if (isGenerated) return;
       if (!options.dir) throw new Error('No output dir defined');
 
@@ -126,28 +175,4 @@ function parseThemeConfig(themeRaw: string): Record<string, any> {
     variables: flatten<Record<string, any>, Record<string, any>>(theme.variables || {}, { delimiter: '-' }),
     'css-variables': flatten<Record<string, any>, Record<string, any>>(theme['css-variables'] || {}, { delimiter: '-' }),
   }
-}
-
-function renderVariablesCss(theme: Record<string, any>, prefix: string = ''): string {
-  const formatName = (name: string, isColor?: boolean): string => {
-    let output = prefix ? `--${prefix}-` : '--';
-    output += name
-      .replace('background', 'bg')
-      .replace('foreground', 'fg');
-
-    output = isColor ? output + '-rgb' : output;
-    return output;
-  }
-  const renderScheme = (selector: string, scheme: Record<string, any>, isColors?: boolean) => {
-    let output = `${selector} {\n`;
-    const names = Object.keys(scheme);
-    for (const name of names) {
-      output += `  ${formatName(name, isColors)}:${scheme[name]};\n`;
-    }
-    return output + '}\n\n';
-  };
-
-  return renderScheme('html', theme.light, true)
-    + renderScheme('html.dark', theme.dark, true)
-    + renderScheme('html', theme['css-variables']);
 }
