@@ -2,34 +2,6 @@
 
   .control-otp {
 
-    > input {
-      border: 0 solid transparent !important;
-      outline: 0 solid transparent !important;
-      background: transparent !important;
-      color: transparent !important;
-      opacity: 0 !important;
-      box-shadow: none !important;
-      -webkit-text-fill-color: transparent !important;
-      line-height: 1;
-      letter-spacing: -.5em;
-      font-family: monospace;
-      font-variant-numeric: tabular-nums;
-
-      &::selection {
-        background: transparent !important;
-        color: transparent !important;
-      }
-
-      &:autofill {
-        background: transparent !important;
-        color: transparent !important;
-        border-color: transparent !important;
-        opacity: 0 !important;
-        box-shadow: none !important;
-        -webkit-text-fill-color: transparent !important;
-      }
-    }
-
     .group {
       height: inherit;
       display: flex;
@@ -46,12 +18,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-
-        &.in:empty:after {
-          content: "|";
-          color: rgb(var(--jj-form-text-rgb));
-          animation: jj-blink 0.8s cubic-bezier(1, 0, 0, 1) infinite;
-        }
+        position: relative;
       }
 
       .divider {
@@ -72,36 +39,6 @@
         &.d-rect {
           width: 0.3em;
           height: 0.3em;
-        }
-      }
-    }
-  }
-
-  &.error {
-
-    .control-group {
-
-      .group {
-
-        input {
-          border: var(--jj-form-border-width) solid rgb(var(--jj-error-rgb));
-          box-shadow: 0 0 0 0 transparent;
-        }
-      }
-    }
-  }
-
-  &.disabled {
-
-    .control-group {
-
-      .group {
-
-        input {
-          box-shadow: 0 0 0 0 transparent;
-          border: var(--jj-form-border-width) solid rgb(var(--jj-border-rgb));
-          background-color: rgb(var(--jj-bg-disabled-rgb));
-          opacity: .8;
         }
       }
     }

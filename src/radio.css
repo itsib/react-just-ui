@@ -9,8 +9,6 @@
   }
 
   .control-radio {
-    width: $radio-size;
-    height: $radio-size;
     margin: 5px 10px;
     position: relative;
     cursor: pointer;
@@ -20,8 +18,8 @@
     input[type="radio"] {
       inset: 0;
       margin: 0;
-      width: $radio-size;
-      height: $radio-size;
+      width: inherit;
+      height: inherit;
       position: absolute;
       appearance: none;
       opacity: 0;
@@ -29,21 +27,21 @@
     }
 
     .radio {
-      width: $radio-size;
-      height: $radio-size;
+      width: inherit;
+      height: inherit;
       position: absolute;
       z-index: 1;
 
       .outline, .center {
         fill: none;
-        stroke: rgb(var(--jj-checkbox-rgb));
+        stroke: rgb(var(--jj-form-checkbox-border-rgb));
         stroke-linecap: round;
         stroke-linejoin: round;
         stroke-width: 2px;
       }
 
       .center {
-        fill: rgb(var(--jj-checkbox-rgb));
+        fill: rgb(var(--jj-form-checkbox-tick-rgb));
         opacity: 1;
         transform: scale(0,0);
         transform-origin: 12px 12px;

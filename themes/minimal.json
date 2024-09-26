@@ -26,11 +26,11 @@
       "disabled": {
         "border": "$muted",
         "background": "$muted"
+      },
+      "checkbox": {
+        "border": "0 0 0",
+        "tick": "0 0 0"
       }
-    },
-    "checkbox": {
-      "border": "0 0 0",
-      "tick": "0 0 0"
     },
     "hint": {
       "foreground": "0 0 0",
@@ -69,11 +69,11 @@
       "disabled": {
         "border": "$muted",
         "background": "$muted"
+      },
+      "checkbox": {
+        "border": "255 255 255",
+        "tick": "255 255 255"
       }
-    },
-    "checkbox": {
-      "border": "255 255 255",
-      "tick": "255 255 255"
     },
     "hint": {
       "foreground": "255 255 255",
@@ -115,6 +115,12 @@
     "checkbox": {
       "size": 20,
       "animation": { "in": ".4s", "out": ".2s", "ease": "cubic-bezier(.4,.0,.23,1)" }
+    },
+    "radio": {
+      "size": 18
+    },
+    "switch": {
+      "width": 46
     },
     "scroll": {
       "width": 4,

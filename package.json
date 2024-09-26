@@ -11,7 +11,7 @@
   "private": false,
   "type": "module",
   "scripts": {
-    "watch": "vite watch",
+    "watch": "tsx ./plugins/watch.ts",
     "clean": "rm -rf ./dist",
     "build": "npm run clean && npm run build:types && npm run build:lib",
     "build:types": "tsc --emitDeclarationOnly --noEmit false --declaration true",

@@ -26,10 +26,10 @@ export const Checkbox = React.forwardRef(function Checkbox(
   _props: CheckboxProps,
   _ref: React.ForwardedRef<HTMLInputElement>
 ) {
-  const { id, label, hint, className, rowReverse, error, ...props } = _props;
+  const { id, label, hint, className, rowReverse, error, disabled, ...props } = _props;
 
   return (
-    <div className={`jj jj-checkbox ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}>
+    <div className={`jj jj-checkbox ${rowReverse ? ' row-reverse' : 'row'}${disabled ? ' disabled' : ''} ${className ?? ''}`}>
       <Label id={id} label={label} />
 
       <div className="control-checkbox">
@@ -37,6 +37,7 @@ export const Checkbox = React.forwardRef(function Checkbox(
           id={id}
           type="checkbox"
           role="checkbox"
+          disabled={disabled}
           ref={_ref}
           {...props}
         />

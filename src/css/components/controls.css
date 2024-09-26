@@ -92,9 +92,7 @@
     position: relative;
 
     > input {
-      inset: 0;
-      font-size: var(--jj-otp-root-height);
-      position: absolute;
+
     }
 
     .group {
@@ -114,11 +112,22 @@
     width: $checkbox-size;
     height: $checkbox-size;
 
+    input[type="checkbox"] {
+
+      + .checkbox {
+
+        .tick {
+          transition-duration: $checkbox-animation-out;
+        }
+      }
+    }
+
     input[type="checkbox"]:checked {
 
       + .checkbox {
 
         .tick {
+          transition-duration: 0s;
           animation-duration: $checkbox-animation-in;
           animation-timing-function: $checkbox-animation-ease;
         }
@@ -126,9 +135,14 @@
     }
   }
 
+  .control-radio {
+    width: $radio-size;
+    height: $radio-size;
+  }
+
   &:focus-within .control,
   &.focus .control,
-  .control-otp .group .symbol.in {
+  .group .symbol:focus {
     background-color: rgb(var(--jj-form-focus-bg-rgb));
     border-color: rgb(var(--jj-form-focus-border-rgb));
     box-shadow: 0 0 0 1px rgb(var(--jj-black-rgb)), 0 0 3px 0 rgb(var(--jj-form-focus-border-rgb));
@@ -142,7 +156,8 @@
 
   &.error {
 
-    .control, .control-otp .group .symbol {
+    .control,
+    .control-otp .group .symbol {
       background-color: rgb(var(--jj-form-error-bg-rgb));
       border-color: rgb(var(--jj-form-error-border-rgb));
       box-shadow: none;
@@ -156,7 +171,8 @@
 
   &.disabled {
 
-    .control, .control-otp .group .symbol {
+    .control,
+    .control-otp .group .symbol {
       background-color: rgb(var(--jj-form-disabled-bg-rgb));
       border-color: rgb(var(--jj-form-disabled-border-rgb));
       box-shadow: none;

@@ -27,19 +27,18 @@
       + .checkbox {
         width: inherit;
         height: inherit;
-        border: 2px solid rgb(var(--jj-checkbox-border-rgb));
+        border: 2px solid rgb(var(--jj-form-checkbox-border-rgb));
         border-radius: 4px;
         position: absolute;
         z-index: 1;
 
         .tick {
           fill: none;
-          stroke: rgb(var(--jj-checkbox-tick-rgb));
+          stroke: rgb(var(--jj-form-checkbox-tick-rgb));
           stroke-dasharray: 24;
           stroke-dashoffset: 0;
           transform-origin: 8px 8px;
-          transition-duration: var(--jj-checkbox-animation-out);
-          transition-timing-function:  ease-in;
+          transition-timing-function: ease-in;
           transition-property: opacity, transform;
           transform: scale(0,0);
           opacity: 0;
@@ -62,15 +61,24 @@
     }
 
     input[type="checkbox"]:disabled {
+      pointer-events: none;
 
       + .checkbox {
-        border-color: rgb(var(--jj-form-border-rgb));
+        border-color: rgb(var(--jj-form-disabled-border-rgb));
 
         .tick {
-          stroke: rgb(var(--jj-form-border-rgb));
+          stroke: rgb(var(--jj-form-disabled-border-rgb));
         }
       }
     }
+  }
+
+  &.disabled {
+
+    .control-checkbox {
+      cursor: default;
+    }
+
   }
 
   .jj-subscript {
