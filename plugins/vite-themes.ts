@@ -107,9 +107,10 @@ export default async function themes(config?: ThemesGeneratorConfig): Promise<Pl
     return `${value}`;
   }
 
-  function formatCssKey(name: string, prefix: string, isColor?: boolean): string {
+  function formatCssKey(key: string, prefix: string, isColor?: boolean): string {
     let output = prefix ? `--${prefix}-` : '--';
-    output += name
+    output += key
+      .replace('.default', '')
       .replace('background', 'bg')
       .replace('foreground', 'fg');
 

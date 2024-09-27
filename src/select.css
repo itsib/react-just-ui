@@ -9,64 +9,20 @@
       margin: 0;
       position: absolute;
     }
-
-    .fake-input {
-      width: 100%;
-      height: calc($form-height - (var(--jj-form-border-width) * 2));
-      padding: $form-padding-y $form-padding-x;
-      user-select: none;
-      display: flex;
-      align-items: center;
-      justify-content: start;
-
-      > .icon {
-        width: 20px;
-        height: auto;
-        min-width: 20px;
-        max-width: 20px;
-        aspect-ratio: 1/1;
-        margin-right: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        > * {
-          width: 100%;
-          height: 100%;
-        }
-      }
-
-      > .label {
-        margin-right: auto;
-      }
-    }
-
-    .drop {
-      top: 11px;
-      right: 11px;
-      position: absolute;
-      stroke: currentColor;
-      stroke-width: 2px;
-    }
   }
 }
 
 .jj.jj-select-dropdown {
   /*noinspection ALL*/
-  .jj-dropdown-options {
-    color: rgb(var(--jj-text-rgb));
+  .jj-list {
     overflow-y: auto;
-    scroll-padding-top: var(--jj-dropdown-padding);
     scroll-snap-type: y mandatory;
-    background-color: rgb(var(--jj-bg-rgb));
-    box-shadow: var(--jj-box-shadow);
-    box-sizing: border-box;
-    border-radius: var(--jj-form-border-radius);
+    box-shadow: var(--jj-shadow-md);
     position: absolute;
     opacity: 1;
     transform: translateY(0) scale(1);
     transition: all .15s ease-in;
-    z-index: var(--jj-dropdown-z-index);
+    z-index: var(--jj-z-index-dropdown);
 
     &.animation-from {
       opacity: 0;
@@ -78,65 +34,15 @@
     }
   }
 
+  .jj-list-item {
+    scroll-snap-align: start;
+    cursor: pointer;
+  }
+
   .jj-overlay {
     inset: 0;
     position: fixed;
     z-index: var(--jj-overlay-z-index);
     user-select: none;
-  }
-}
-
-.jj.jj-option {
-  width: 100%;
-  /*noinspection CssUnresolvedCustomProperty*/
-  height: 38px;
-  padding: 4px 12px;
-  font-weight: normal;
-  color: rgb(var(--jj-text-rgb));
-  text-align: start;
-  scroll-snap-align: start;
-  border: none;
-  outline: none;
-  border-radius: calc(var(--jj-form-border-radius) - 1px);
-  background-color: rgb(var(--jj-bg-rgb));
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  user-select: none;
-
-  > .icon {
-    width: 20px;
-    height: auto;
-    min-width: 20px;
-    max-width: 20px;
-    aspect-ratio: 1/1;
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    > * {
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  > .label {
-    margin-right: auto;
-  }
-
-  > svg {
-    width: 16px;
-    height: 16px;
-    aspect-ratio: 1/1;
-    fill: currentColor;
-  }
-
-  &.active {
-    background-color: rgb(var(--jj-bg-hover-rgb) / 0.6)
-  }
-
-  &:hover {
-    background-color: rgb(var(--jj-bg-hover-rgb));
   }
 }

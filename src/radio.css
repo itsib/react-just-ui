@@ -34,14 +34,14 @@
 
       .outline, .center {
         fill: none;
-        stroke: rgb(var(--jj-form-checkbox-border-rgb));
+        stroke: rgb(var(--jj-checkbox-border-rgb));
         stroke-linecap: round;
         stroke-linejoin: round;
         stroke-width: 2px;
       }
 
       .center {
-        fill: rgb(var(--jj-form-checkbox-tick-rgb));
+        fill: rgb(var(--jj-checkbox-tick-rgb));
         opacity: 1;
         transform: scale(0,0);
         transform-origin: 12px 12px;

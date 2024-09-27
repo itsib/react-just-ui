@@ -1,12 +1,17 @@
 .jj {
 
+  ::placeholder {
+    color: rgb(var(--jj-form-placeholder-rgb) / 1);
+    font-weight: 400;
+  }
+
   &.jj-label {
     margin-bottom: $form-margin-top;
   }
 
   &.jj-subscript {
     height: calc(var(--jj-font-xs) + 4px);
-    padding-left: $form-border-radius;
+    padding-left: var(--jj-br-md);
     padding-top: $form-margin-bottom;
     font-size: var(--jj-font-xs);
     line-height: 1.2;
@@ -30,7 +35,7 @@
     color: rgb(var(--jj-form-text-rgb));
     box-shadow: none;
     border: $form-border-width solid rgb(var(--jj-form-border-rgb));
-    border-radius: $form-border-radius;
+    border-radius: var(--jj-br-md);
     overflow: hidden;
     display: flex;
     position: relative;
@@ -38,7 +43,7 @@
     justify-content: space-between;
     transition: box-shadow .15s ease-in-out, border-color .15s ease-in-out, background-color .15s ease-in-out;
 
-    input, select {
+    input, select, .select {
       width: 100%;
       height: calc($form-height - ($form-border-width * 2));
       padding: $form-padding-y $form-padding-x;
@@ -64,13 +69,13 @@
 
     > .prefix {
       color: rgb(var(--jj-form-prefix-rgb));
-      border-radius: calc($form-border-radius - 1px) 0 0 calc($form-border-radius - 1px);
+      border-radius: calc(var(--jj-br-md) - 1px) 0 0 calc(var(--jj-br-md) - 1px);
       border-right: $form-border-width solid rgb(var(--jj-form-border-rgb));
     }
 
     > .suffix {
       color: rgb(var(--jj-form-suffix-rgb));
-      border-radius: 0 calc($form-border-radius - 1px) calc($form-border-radius - 1px) 0;
+      border-radius: 0 calc(var(--jj-br-md) - 1px) calc(var(--jj-br-md) - 1px) 0;
       border-left: $form-border-width solid rgb(var(--jj-form-border-rgb));
     }
 
@@ -103,7 +108,7 @@
         width: calc($form-height * 0.8);
         text-align: center;
         border: $form-border-width solid rgb(var(--jj-form-border-rgb));
-        border-radius: $form-border-radius;
+        border-radius: var(--jj-br-md);
       }
     }
   }

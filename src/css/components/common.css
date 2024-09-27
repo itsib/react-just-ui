@@ -13,9 +13,5 @@
 
 .jj {
 
-  ::placeholder {
-    color: rgb(var(--jj-placeholder-rgb) / .7);
-    font-weight: 400;
-    opacity: .6;
-  }
+
 }

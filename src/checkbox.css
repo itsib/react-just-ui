@@ -27,14 +27,14 @@
       + .checkbox {
         width: inherit;
         height: inherit;
-        border: 2px solid rgb(var(--jj-form-checkbox-border-rgb));
+        border: 2px solid rgb(var(--jj-checkbox-border-rgb));
         border-radius: 4px;
         position: absolute;
         z-index: 1;
 
         .tick {
           fill: none;
-          stroke: rgb(var(--jj-form-checkbox-tick-rgb));
+          stroke: rgb(var(--jj-checkbox-tick-rgb));
           stroke-dasharray: 24;
           stroke-dashoffset: 0;
           transform-origin: 8px 8px;

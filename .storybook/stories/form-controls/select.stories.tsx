@@ -1,6 +1,7 @@
-import { Select } from '../../../src/select';
+import { Select } from 'react-just-ui';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 
 type Story = StoryObj<typeof Select>;
 
@@ -83,10 +84,11 @@ export const Basic: Story = {
     onChange: action('onChange'),
   },
   render: function Render(args) {
+    const [value, setValue] = useState(args.value);
 
     return (
       <div style={{ width: '300px' }}>
-        <Select {...args} />
+        <Select {...args} value={value} onChange={event => setValue((event.target as any).value)} />
       </div>
     );
   }

@@ -35,10 +35,10 @@
       line-height: 1.2;
       font-weight: 400;
       background-color: rgb(var(--jj-hint-bg-rgb));
-      border-radius: $hint-border-radius;
+      border-radius: var(--jj-br-sm);
       border: 1px solid rgb(var(--jj-hint-border-rgb));
       box-shadow: 0 0 5px 0 rgb(var(--jj-hint-border-rgb) / .8);
-      z-index: $hint-z-index;
+      z-index: var(--jj-z-index-tooltip);
       display: block;
     }
 

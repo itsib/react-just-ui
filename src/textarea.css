@@ -14,7 +14,7 @@
     background-color: rgb(var(--jj-bg-rgb));
     color: rgb(var(--jj-text-rgb) / .6);
     border: var(--jj-form-border-width) solid rgb(var(--jj-border-rgb));
-    border-radius: var(--jj-form-border-radius);
+    border-radius: var(--jj-br-md);
     z-index: 10;
   }
 

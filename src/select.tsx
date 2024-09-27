@@ -6,7 +6,7 @@ import React, {
   useMemo,
   useRef,
   useState,
-  type CSSProperties
+  type CSSProperties, type ReactNode,
 } from 'react';
 import { createPortal } from 'react-dom';
 import type { BaseControlProps, SelectOption } from './types';
@@ -34,6 +34,7 @@ export const Select = forwardRef(function Select(
   const activeIndex = useMemo(() => (value != null ? options.findIndex(i => i.value === value) : -1), [value, options]);
 
   const activeLabel = options[activeIndex]?.label;
+  const activeValue = options[activeIndex]?.value;
   const activeIcon = options[activeIndex]?.icon;
 
   function onClick(event: MouseEvent<HTMLDivElement>) {
@@ -84,22 +85,16 @@ export const Select = forwardRef(function Select(
         <div className="overlay"><span className="jj jj-spinner"/></div>
         <input id={id} readOnly className="hidden-select" ref={ref} {..._props} />
 
-        <div className="fake-input">
+        <div className="jj jj-list-item">
           {activeIcon ? (
-            <div className="icon">
-              {typeof activeIcon === 'string' ? (
-                <>{URL.canParse(activeIcon) || activeIcon.startsWith('/') ? <img src={activeIcon} alt={value}/> : <i className={activeIcon}/>}</>
-              ) : (
-                <>{activeIcon}</>
-              )}
-            </div>
+            <Icon icon={activeIcon} value={activeValue}/>
           ) : null}
           <div className="label">{activeLabel}</div>
-        </div>
 
-        <svg className="drop" height="16px" viewBox="0 0 16 16" width="16px" xmlns="http://www.w3.org/2000/svg">
-          <path d="M14,5l-6,6l-6,-6" fill="#0000" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
+          <svg className="mark" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14,5l-6,6l-6,-6" stroke="currentColor" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
       </div>
 
       <Subscript error={error} hint={hint}/>
@@ -212,7 +207,7 @@ export function SelectDropdown(props: SelectDropdownProps) {
       <div className="jj-overlay" aria-label="dropdown overlay" onClick={onClickOverlay}/>
 
       <div
-        className={`jj-dropdown-options ${dropdownClass}`}
+        className={`jj jj-list ${dropdownClass}`}
         aria-label="dropdown"
         style={{
           top: `${points.top}px`,
@@ -220,10 +215,11 @@ export function SelectDropdown(props: SelectDropdownProps) {
           width: `${points.width}px`,
           height: `${points.height}px`,
           padding: `${points.padding}px`,
+          scrollPaddingTop: `${points.padding}px`,
         } as CSSProperties}
         ref={optionsRef}
       >
-        {options.map((option, i) => (<Option key={option.value} id={id} active={i === activeIndex} icon={option.icon} label={option.label} value={option.value} onClick={onClickItemBtn} />))}
+        {options.map((option, i) => (<Option key={option.value} id={id} active={i === activeIndex} onClick={onClickItemBtn} {...option} />))}
       </div>
     </div>,
     document.body,
@@ -243,26 +239,33 @@ export function Option(props: OptionProps) {
     <button
       id={active ? `${id}-active` : undefined}
       type="button"
-      className={`jj jj-option ${active ? 'active' : ''}`}
+      className={`jj jj-list-item ${active ? 'active' : ''}`}
       value={value}
       onClick={() => onClick(value)}
     >
       {icon ? (
-        <div className="icon">
-          {typeof icon === 'string' ? (
-            <>{URL.canParse(icon) || icon.startsWith('/') ? <img src={icon} alt={value}/> : <i className={icon}/>}</>
-          ) : (
-            <>{icon}</>
-          )}
-        </div>
+        <Icon icon={icon} value={value} />
       ) : null}
       <div className="label">{label}</div>
 
       {active ? (
-        <svg viewBox="0 0 16 16">
-          <path d="M13.969 2.969L6.5 10.438l-4.469-4.47L.97 7.032l5.531 5.53 8.531-8.53z"/>
+        <svg className="mark" viewBox="0 0 16 16">
+          <path fill="currentColor" d="M13.969 2.969L6.5 10.438l-4.469-4.47L.97 7.032l5.531 5.53 8.531-8.53z"/>
         </svg>
       ) : null}
     </button>
+  );
+}
+
+function Icon({ icon, value }: { icon?: ReactNode; value: string; }) {
+  return (
+    <div className="icon">
+      {typeof icon === 'string' ? (
+        <>{URL.canParse(icon) || icon.startsWith('/') ? <img src={icon} alt={value}/> :
+          <i className={icon}/>}</>
+      ) : (
+        <>{icon}</>
+      )}
+    </div>
   );
 }

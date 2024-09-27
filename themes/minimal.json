@@ -11,6 +11,7 @@
     "form": {
       "label": "25 25 25",
       "text": "$foreground",
+      "placeholder": "100 100 100",
       "prefix": "$foreground",
       "suffix": "$foreground",
       "border": "208 208 211",
@@ -26,10 +27,22 @@
       "disabled": {
         "border": "$muted",
         "background": "$muted"
+      }
+    },
+    "checkbox": {
+      "border": "0 0 0",
+      "tick": "0 0 0"
+    },
+    "list": {
+      "text": "$foreground",
+      "background": "$background",
+      "hover": {
+        "text": "$foreground",
+        "background": "230 230 230"
       },
-      "checkbox": {
-        "border": "0 0 0",
-        "tick": "0 0 0"
+      "active": {
+        "text": "$foreground",
+        "background": "$background"
       }
     },
     "hint": {
@@ -55,6 +68,7 @@
       "label": "$foreground",
       "border": "78 78 78",
       "text": "$foreground",
+      "placeholder": "107 107 107",
       "prefix": "$foreground",
       "suffix": "$foreground",
       "background": "$background",
@@ -69,10 +83,22 @@
       "disabled": {
         "border": "$muted",
         "background": "$muted"
+      }
+    },
+    "checkbox": {
+      "border": "255 255 255",
+      "tick": "255 255 255"
+    },
+    "list": {
+      "text": "$foreground",
+      "background": "$background",
+      "hover": {
+        "text": "$foreground",
+        "background": "47 47 47"
       },
-      "checkbox": {
-        "border": "255 255 255",
-        "tick": "255 255 255"
+      "active": {
+        "text": "$foreground",
+        "background": "inherit"
       }
     },
     "hint": {
@@ -94,6 +120,24 @@
     },
     "image": {
       "border": { "width": 0, "radius": "50%" }
+    },
+    "shadow": {
+      "md": "0 0 12px -1px rgb(var(--jj-black-rgb) / 0.2), 0 0 1px 1px rgb(var(--jj-shadow-rgb) / 0.2)"
+    },
+    "br": {
+      "lg": 8,
+      "md": 6,
+      "sm": 4,
+      "xs": 2
+    },
+    "z-index": {
+      "dropdown": 1000,
+      "sticky": 1020,
+      "fixed": 1030,
+      "modal": 1040,
+      "popover": 1050,
+      "tooltip": 1060,
+      "toast": 1070
     }
   },
   "variables": {
@@ -101,16 +145,14 @@
       "height": 40,
       "margin": { "top": 4, "bottom": 2 },
       "padding": { "x": "0.75rem", "y": "0.25rem" },
-      "border": { "width": 1, "radius": 6 }
+      "border": { "width": 1 }
     },
     "hint": {
       "margin": 2,
       "padding": { "x": 10, "y": 8 },
       "arrow": 6,
-      "border": { "radius": 4 },
       "delay": { "show": ".4s", "hide": "0s" },
-      "ease": { "duration": ".2s" },
-      "z-index": "210"
+      "ease": { "duration": ".2s" }
     },
     "checkbox": {
       "size": 20,
