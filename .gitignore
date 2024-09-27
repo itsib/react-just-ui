@@ -25,6 +25,7 @@ temp
 *.sln
 *.sw?
 
+.npmrc
 storybook-static/
 demo/public/json
 *storybook.log
