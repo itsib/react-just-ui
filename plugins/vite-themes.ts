@@ -101,7 +101,7 @@ export default async function themes(config?: ThemesGeneratorConfig): Promise<Pl
         warnLog?.(`Key ${keyRef} not found in theme`);
       }
     }
-    if (typeof value === 'number' && !key.includes('z-index')) {
+    if (typeof value === 'number' && !key.includes('z-index') && !key.includes('ratio')) {
       return `${value}px`;
     }
     return `${value}`;
@@ -110,7 +110,7 @@ export default async function themes(config?: ThemesGeneratorConfig): Promise<Pl
   function formatCssKey(key: string, prefix: string, isColor?: boolean): string {
     let output = prefix ? `--${prefix}-` : '--';
     output += key
-      .replace('.default', '')
+      .replace('-default', '')
       .replace('background', 'bg')
       .replace('foreground', 'fg');
 

@@ -1,11 +1,11 @@
-import type { AllHTMLAttributes, FC, ReactNode, CSSProperties } from 'react';
+import type { AllHTMLAttributes, FC, ReactNode } from 'react';
 import { useState, useReducer, useEffect } from 'react';
 import { cn } from './utils';
-import './image.css';
+import './avatar.css';
 
 const BAD_URLS = new Set<string>();
 
-export interface ImageProps extends Omit<AllHTMLAttributes<HTMLImageElement>, 'onLoad' | 'onError' | 'loading' | 'id'> {
+export interface AvatarProps extends Omit<AllHTMLAttributes<HTMLImageElement>, 'onLoad' | 'onError' | 'loading' | 'id' | 'size'> {
   /**
    * The URL of the displayed image
    */
@@ -18,7 +18,7 @@ export interface ImageProps extends Omit<AllHTMLAttributes<HTMLImageElement>, 'o
    * Image size. The size of the image in pixels.
    * @defaultValue 32
    */
-  size?: number;
+  size?: number | string;
   /**
    * Fallback image. The URL of the image or the Reaction component that will be
    * displayed in case of an error loading the image.
@@ -43,14 +43,15 @@ export interface ImageProps extends Omit<AllHTMLAttributes<HTMLImageElement>, 'o
 }
 
 /**
- * Circle image. A component for displaying a circle image.
+ * Avatar - circle image for displaying a user photo.
  *
  * Features:
  * - Support for the preloader, which turns on when the image file is loaded.
  * - Fallback URL - link to the backup image if the main one failed to load.
  * - Active state, suitable for lists where several items can be highlighted.
  */
-export const Image: FC<ImageProps> = ({ className, src, alt, size = 32, fallback, loading = false, active = false, disabled = false, border = 0, ...props }) => {
+export const Avatar: FC<AvatarProps> = props => {
+  const { className, src, alt, size = 32, width, height, fallback, loading = false, active = false, disabled = false, border = 0, ...rest } = props;
   const [ready, setReady] = useState(false);
   const [, update] = useReducer(x => x + 1, 0);
 
@@ -59,16 +60,27 @@ export const Image: FC<ImageProps> = ({ className, src, alt, size = 32, fallback
 
   const state = {
     ready: ready || (noFallback && noSrc),
-    loading: loading && !disabled,
-    active: active && !disabled && !loading,
+    loading: !disabled && loading,
+    active: !disabled && !loading && active,
     disabled
   }
 
   useEffect(() => setReady(false), [src]);
 
   return (
-    <div className={cn('jj jj-image', className, state)} style={{'--jj-image-size': `${size}px`, '--jj-image-border-width': `${border}px`} as CSSProperties}>
-      <div className="image">
+    <div
+      className={cn('jj jj-avatar', className, state)}
+      style={{
+        width: width ? (typeof width === 'number' ? `${width}px` : size) : (typeof size === 'number' ? `${size}px` : size),
+        height: height ? (typeof height === 'number' ? `${height}px` : size) : (typeof size === 'number' ? `${size}px` : size),
+      }}
+    >
+      <div
+        className="avatar"
+        style={{
+          borderWidth: `${border}px`,
+        }}
+      >
         {src && !BAD_URLS.has(src) ? (
           <img
             src={src}
@@ -82,7 +94,7 @@ export const Image: FC<ImageProps> = ({ className, src, alt, size = 32, fallback
               update();
             }}
             loading="lazy"
-            {...props}
+            {...rest}
           />
         ) : fallback && typeof fallback === 'string' && !BAD_URLS.has(fallback) ? (
           <img
@@ -94,7 +106,7 @@ export const Image: FC<ImageProps> = ({ className, src, alt, size = 32, fallback
               update();
             }}
             loading="lazy"
-            {...props}
+            {...rest}
           />
         ) : fallback && typeof fallback === 'object' ? (
           <>{fallback}</>

@@ -9,9 +9,8 @@
       box-sizing: border-box;
     }
   }
-}
 
-.jj {
-
-
+  .jj-image-placeholder {
+    mask-image: $image-fallback;
+  }
 }

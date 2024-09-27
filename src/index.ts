@@ -21,5 +21,5 @@ export * from './textarea';
 export * from './radio';
 export * from './switch';
 export * from './otp-input';
-export * from './image';
+export * from './avatar';
 

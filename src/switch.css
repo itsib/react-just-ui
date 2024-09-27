@@ -1,22 +1,9 @@
 .jj.jj-switch {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-
-  .jj-label {
-    margin-bottom: 0;
-    user-select: none;
-  }
 
   .control-switch {
-    --jj-switch-aspect-ratio: 1.85;
-    --jj-switch-padding: 3px;
-    --jj-switch-height: calc($switch-width / var(--jj-switch-aspect-ratio));
-    --jj-switch-thumb-size: calc(var(--jj-switch-height) - (var(--jj-switch-padding) * 2));
-
     height: var(--jj-switch-height);
-    width: $switch-width;
-    aspect-ratio: var(--jj-switch-aspect-ratio);
+    width: var(--jj-switch-width);
+    aspect-ratio: var(--jj-switch-ratio);
     cursor: pointer;
     user-select: none;
     position: relative;
@@ -62,7 +49,7 @@
       background-color: rgb(var(--jj-accent-rgb));
 
       .thumb {
-        left: calc($switch-width - var(--jj-switch-thumb-size) - var(--jj-switch-padding));
+        left: calc(var(--jj-switch-width) - var(--jj-switch-thumb-size) - var(--jj-switch-padding));
       }
     }
 
@@ -71,44 +58,8 @@
     }
 
     input[type="checkbox"]:disabled + .switch {
-      background-color: rgb(var(--jj-bg-disabled-rgb));
+      background-color: rgb(var(--jj-switch-disabled-bg-rgb));
       opacity: .8;
-    }
-  }
-
-  .jj-subscript {
-    width: 100%;
-  }
-
-  &.row {
-
-    .jj-label {
-      order: 2;
-    }
-
-    .control-switch {
-      margin-right: 15px;
-      order: 1;
-    }
-
-    .jj-subscript {
-      order: 3;
-    }
-  }
-
-  &.row-reverse {
-
-    .jj-label {
-      order: 1;
-    }
-
-    .control-switch {
-      margin-left: 15px;
-      order: 2;
-    }
-
-    .jj-subscript {
-      order: 3;
     }
   }
 }

@@ -1,9 +1,9 @@
-import { Image } from 'react-just-ui/image';
+import { Avatar } from 'react-just-ui/avatar';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
   title: 'Components/Image',
-  component: Image,
+  component: Avatar,
   parameters: {
     controls: {
       sort: 'alpha',
@@ -56,25 +56,25 @@ const meta = {
   },
   args: {
     src: '/images/avatar-1.png',
-    fallback: '/images/no-avatar.svg',
+    fallback: '',
     size: 48,
     border: 0,
     loading: false,
     active: false,
     disabled: false,
   },
-} satisfies Meta<typeof Image>;
+} satisfies Meta<typeof Avatar>;
 
 export default meta;
 
-type Story = StoryObj<typeof Image>;
+type Story = StoryObj<typeof Avatar>;
 
 export const Basic: Story = {
   args: {},
   render: function Render(args) {
     return (
       <div>
-        <Image {...args} />
+        <Avatar {...args} />
       </div>
     );
   },

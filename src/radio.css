@@ -1,12 +1,4 @@
 .jj.jj-radio {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-
-  .jj-label {
-    margin-bottom: 0;
-    user-select: none;
-  }
 
   .control-radio {
     margin: 5px 10px;
@@ -60,46 +52,12 @@
     input[type="radio"]:disabled + .radio {
 
       .outline {
-        stroke: rgb(var(--jj-bg-disabled-rgb));
+        stroke: rgb(var(--jj-muted-rgb));
       }
 
       .center {
         display: none;
       }
-    }
-  }
-
-  .jj-subscript {
-    width: 100%;
-  }
-
-  &.row {
-
-    .jj-label {
-      order: 2;
-    }
-
-    .control-radio {
-      order: 1;
-    }
-
-    .jj-subscript {
-      order: 3;
-    }
-  }
-
-  &.row-reverse {
-
-    .jj-label {
-      order: 1;
-    }
-
-    .control-radio {
-      order: 2;
-    }
-
-    .jj-subscript {
-      order: 3;
     }
   }
 }

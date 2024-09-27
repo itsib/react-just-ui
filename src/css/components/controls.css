@@ -1,41 +1,20 @@
 .jj {
 
-  ::placeholder {
-    color: rgb(var(--jj-form-placeholder-rgb) / 1);
-    font-weight: 400;
-  }
-
-  &.jj-label {
-    margin-bottom: $form-margin-top;
-  }
-
-  &.jj-subscript {
-    height: calc(var(--jj-font-xs) + 4px);
-    padding-left: var(--jj-br-md);
-    padding-top: $form-margin-bottom;
-    font-size: var(--jj-font-xs);
-    line-height: 1.2;
-
-    div {
-      top: calc((var(--jj-font-xs) + 6px) * -1);
-      transform: translateY(0);
-      transition: .15s ease-in-out;
-      position: relative;
-    }
-
-    &.active div {
-      transform: translateY(calc(100% + $form-margin-bottom + 2px));
-    }
+  textarea.control {
+    padding: $form-padding-x $form-padding-x;
   }
 
   .control {
     height: $form-height;
+    min-height: $form-height;
+    width: 100%;
+    max-width: 100%;
     background-color: rgb(var(--jj-form-bg-rgb));
     font-size: var(--jj-font-md);
     color: rgb(var(--jj-form-text-rgb));
     box-shadow: none;
-    border: $form-border-width solid rgb(var(--jj-form-border-rgb));
-    border-radius: var(--jj-br-md);
+    border: var(--jj-border-width) solid rgb(var(--jj-form-border-rgb));
+    border-radius: var(--jj-border-radius-md);
     overflow: hidden;
     display: flex;
     position: relative;
@@ -45,7 +24,7 @@
 
     input, select, .select {
       width: 100%;
-      height: calc($form-height - ($form-border-width * 2));
+      height: calc($form-height - (var(--jj-border-width) * 2));
       padding: $form-padding-y $form-padding-x;
       color: inherit;
       border: none;
@@ -69,25 +48,14 @@
 
     > .prefix {
       color: rgb(var(--jj-form-prefix-rgb));
-      border-radius: calc(var(--jj-br-md) - 1px) 0 0 calc(var(--jj-br-md) - 1px);
-      border-right: $form-border-width solid rgb(var(--jj-form-border-rgb));
+      border-radius: calc(var(--jj-border-radius-md) - 1px) 0 0 calc(var(--jj-border-radius-md) - 1px);
+      border-right: var(--jj-border-width) solid rgb(var(--jj-form-border-rgb));
     }
 
     > .suffix {
       color: rgb(var(--jj-form-suffix-rgb));
-      border-radius: 0 calc(var(--jj-br-md) - 1px) calc(var(--jj-br-md) - 1px) 0;
-      border-left: $form-border-width solid rgb(var(--jj-form-border-rgb));
-    }
-
-    > .overlay {
-      inset: 0;
-      background-color: rgb(var(--jj-form-bg-rgb));
-      color: rgb(var(--jj-form-text-rgb) / .6);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      position: absolute;
-      z-index: 10;
+      border-radius: 0 calc(var(--jj-border-radius-md) - 1px) calc(var(--jj-border-radius-md) - 1px) 0;
+      border-left: var(--jj-border-width) solid rgb(var(--jj-form-border-rgb));
     }
   }
 
@@ -107,15 +75,13 @@
         aspect-ratio: 0.8;
         width: calc($form-height * 0.8);
         text-align: center;
-        border: $form-border-width solid rgb(var(--jj-form-border-rgb));
-        border-radius: var(--jj-br-md);
+        border: var(--jj-border-width) solid rgb(var(--jj-form-border-rgb));
+        border-radius: var(--jj-border-radius-md);
       }
     }
   }
 
   .control-checkbox {
-    width: $checkbox-size;
-    height: $checkbox-size;
 
     input[type="checkbox"] {
 
@@ -138,11 +104,6 @@
         }
       }
     }
-  }
-
-  .control-radio {
-    width: $radio-size;
-    height: $radio-size;
   }
 
   &:focus-within .control,
@@ -199,12 +160,17 @@
       }
     }
 
+    .jj-label {
+      opacity: 0.6;
+      cursor: default;
+    }
+
     .jj-subscript div {
       transform: translateY(0);
     }
   }
 
-  &.loading {
+  &.loading:not(.disabled) {
 
     .control {
       border-color:  rgb(var(--jj-form-border-rgb));
@@ -212,14 +178,92 @@
       box-shadow: none;
       pointer-events: none;
       opacity: 1;
+    }
 
-      .overlay {
-        display: flex;
-      }
+    .overlay {
+      inset: 0;
+      background-color: rgb(var(--jj-form-bg-rgb));
+      color: rgb(var(--jj-form-text-rgb) / .6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      z-index: 10;
     }
 
     .jj-subscript div {
       transform: translateY(0);
+    }
+  }
+}
+
+.jj {
+
+  ::placeholder {
+    color: rgb(var(--jj-form-placeholder-rgb) / 1);
+    font-weight: 400;
+  }
+
+  &.jj-label {
+    margin-bottom: $form-margin-top;
+  }
+
+  &.jj-subscript {
+    padding-top: $form-margin-bottom;
+
+    div {
+      transform: translateY(0);
+    }
+
+    &.active div {
+      transform: translateY(calc(100% + $form-margin-bottom + 2px));
+    }
+  }
+
+  &.row, &.row-reverse {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .jj-label {
+      margin-bottom: 0;
+      user-select: none;
+    }
+
+    .jj-subscript {
+      width: 100%;
+    }
+  }
+
+  &.row {
+
+    .jj-label {
+      order: 2;
+    }
+
+    .control-switch, .control-checkbox, .control-radio {
+      margin-right: 15px;
+      order: 1;
+    }
+
+    .jj-subscript {
+      order: 3;
+    }
+  }
+
+  &.row-reverse {
+
+    .jj-label {
+      order: 1;
+    }
+
+    .control-switch, .control-checkbox, .control-radio {
+      margin-left: 15px;
+      order: 2;
+    }
+
+    .jj-subscript {
+      order: 3;
     }
   }
 }

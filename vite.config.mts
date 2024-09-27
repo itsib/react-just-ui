@@ -63,7 +63,6 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
             'utils/index': [
               resolve(__dirname, 'src/utils/index.ts'),
               resolve(__dirname, 'src/utils/class-names.ts'),
-              resolve(__dirname, 'src/utils/string-utils.ts'),
             ]
           }
         },
@@ -87,7 +86,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
     ],
     test: {
       css: false,
-      include: ['tests/**/*.{spec,test}.{js,jsx,ts,tsx}'],
+      include: ['src/**/*.{spec,test}.{js,jsx,ts,tsx}'],
       globals: true,
       environment: 'node',
       // setupFiles: 'tests/setup-tests.ts',

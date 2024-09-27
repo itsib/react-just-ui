@@ -47,3 +47,20 @@ export type BaseControlProps<Element extends HTMLElement> = {
    */
   onChange?: (event: ChangeEvent<Element>) => void;
 } & Omit<AllHTMLAttributes<Element>, 'prefix' | 'label' | 'value' | 'disabled' | 'id'>;
+
+export type BaseCheckedControlProps<Element extends HTMLElement> = {
+  /**
+   * Swap the label and form control.
+   */
+  rowReverse?: boolean;
+  /**
+   * You can use the checked attribute to
+   * control the state of the form control checked/enabled.
+   */
+  checked?: boolean,
+  /**
+   * Form control size. For the switch, it means the height
+   * of the switch.  The width is calculated with the ratio constant.
+   */
+  size?: number;
+} & BaseControlProps<Element>;

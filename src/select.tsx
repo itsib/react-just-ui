@@ -1,16 +1,17 @@
 import React, {
+  type CSSProperties,
   ForwardedRef,
-  MouseEvent,
   forwardRef,
+  MouseEvent,
+  type ReactNode,
   useEffect,
   useMemo,
   useRef,
   useState,
-  type CSSProperties, type ReactNode,
 } from 'react';
 import { createPortal } from 'react-dom';
 import type { BaseControlProps, SelectOption } from './types';
-import { cn } from './utils';
+import { inputCN } from './utils';
 import { Subscript } from './subscript';
 import { Label } from './label';
 import './select.css';
@@ -24,7 +25,7 @@ export const Select = forwardRef(function Select(
   props: SelectProps,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
-  const { id, className, label, hint, error, options, loading, ..._props } = props;
+  const { id, className, label, hint, error, options, loading, disabled, ..._props } = props;
   const controlRef = useRef<HTMLDivElement>(null);
 
   const [value, setValue] = useState<string>();
@@ -78,12 +79,12 @@ export const Select = forwardRef(function Select(
   }, [id]);
 
   return (
-    <div className={cn(['jj', 'jj-select'], { disabled: !!_props.disabled, error: !!error, loading: !!loading }, className)}>
+    <div className={inputCN('select', className, loading, disabled, error)}>
       <Label id={id} label={label} />
 
       <div className="control" ref={controlRef} onClick={onClick}>
-        <div className="overlay"><span className="jj jj-spinner"/></div>
-        <input id={id} readOnly className="hidden-select" ref={ref} {..._props} />
+        {loading && !disabled ? <div className="overlay"><span className="jj jj-spinner"/></div> : null}
+        <input id={id} type="hidden" className="hidden-select" disabled={disabled} ref={ref} {..._props} />
 
         <div className="jj jj-list-item">
           {activeIcon ? (
@@ -114,7 +115,6 @@ export const Select = forwardRef(function Select(
     </div>
   );
 });
-
 
 export interface SelectDropdownProps {
   id: string;

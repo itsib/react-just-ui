@@ -1,29 +1,26 @@
-:root {
-  --jj-image-size: 32px;
+html {
   --jj-image-animation: jj-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-.jj.jj-image {
-  width: var(--jj-image-size);
-  min-width: var(--jj-image-size);
-  height: var(--jj-image-size);
+.jj.jj-avatar {
   aspect-ratio: 1;
   position: relative;
 
-  .image {
-    width: 100%;
-    height: 100%;
-    border-radius: var(--jj-image-border-radius);
+  .avatar {
+    width: inherit;
+    height: inherit;
+    border-radius: var(--jj-border-radius-full);
     overflow: hidden;
-    border: var(--jj-image-border-width) solid rgb(var(--jj-image-bg-rgb));
-    background-color: rgb(var(--jj-image-bg-rgb));
+    border-style: solid;
+    border-color: rgb(var(--jj-bg-rgb));
+    background-color: rgb(var(--jj-bg-rgb));
     animation: var(--jj-image-animation);
     transition: border-color .2s ease-in-out;
 
     & > * {
-      width: 100%;
-      height: 100%;
-      border-radius: var(--jj-image-border-radius);
+      width: inherit;
+      height: inherit;
+      border-radius: var(--jj-border-radius-full);
       overflow: hidden;
       aspect-ratio: 1;
       display: block;
@@ -34,7 +31,6 @@
     .jj-image-placeholder {
       color: rgb(var(--jj-image-border-rgb));
       background-color: currentColor;
-      mask-image: var(--jj-image-falback-svg);
       mask-repeat: no-repeat;
       mask-size: 100% 100%;
     }
@@ -43,10 +39,10 @@
   .ripple {
     top: 0;
     left: 0;
-    width: var(--jj-image-size);
-    height: var(--jj-image-size);
+    width: inherit;
+    height: inherit;
     border: 1px solid rgb(var(--jj-image-border-rgb));
-    border-radius: var(--jj-image-border-radius);
+    border-radius: var(--jj-border-radius-full);
     position: absolute;
     animation: 1.5s linear 0s infinite normal none running jj-image-ripple;
     display: none;
@@ -54,7 +50,7 @@
 
   &.ready {
 
-    .image {
+    .avatar {
       animation: none;
       border-color: rgb(var(--jj-image-border-rgb));
 
@@ -66,7 +62,7 @@
 
   &.active {
 
-    .image {
+    .avatar {
       border-color: rgb(var(--jj-image-border-rgb) / 25%);
     }
 
@@ -77,7 +73,7 @@
 
   &.loading {
 
-    .image {
+    .avatar {
       animation: var(--jj-image-animation);
       border-color: rgb(var(--jj-image-bg-rgb));
 

@@ -19,7 +19,7 @@
     "build:storybook": "storybook build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "test": "vitest run",
-    "preversion": "npm run lint",
+    "preversion": "npm run lint && npm test",
     "postversion": "git push && git push --tags",
     "storybook": "storybook dev --port 6006 --disable-telemetry --no-open"
   },

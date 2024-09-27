@@ -35,7 +35,7 @@
       line-height: 1.2;
       font-weight: 400;
       background-color: rgb(var(--jj-hint-bg-rgb));
-      border-radius: var(--jj-br-sm);
+      border-radius: var(--jj-border-radius-sm);
       border: 1px solid rgb(var(--jj-hint-border-rgb));
       box-shadow: 0 0 5px 0 rgb(var(--jj-hint-border-rgb) / .8);
       z-index: var(--jj-z-index-tooltip);

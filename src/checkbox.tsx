@@ -1,20 +1,9 @@
 import React from 'react';
 import { Label } from './label';
 import { Subscript } from './subscript';
-import type { BaseControlProps } from './types';
+import { BaseCheckedControlProps } from './types';
+import { switchCN } from './utils';
 import './checkbox.css';
-
-export interface CheckboxProps extends Omit<BaseControlProps<HTMLInputElement>, 'value'> {
-  /**
-   * Swap the checkbox and label
-   */
-  rowReverse?: boolean;
-  /**
-   * You can use the checked attribute to
-   * control the state of the checkbox.
-   */
-  checked?: boolean,
-}
 
 /**
  * A wrapper for an input element of the checkbox type as boxes that are
@@ -23,16 +12,16 @@ export interface CheckboxProps extends Omit<BaseControlProps<HTMLInputElement>, 
  * system configuration under which the browser is running.
  */
 export const Checkbox = React.forwardRef(function Checkbox(
-  _props: CheckboxProps,
+  _props: Omit<BaseCheckedControlProps<HTMLInputElement>, 'value'>,
   _ref: React.ForwardedRef<HTMLInputElement>
 ) {
-  const { id, label, hint, className, rowReverse, error, disabled, ...props } = _props;
+  const { id, label, hint, className, rowReverse, error, disabled, size = 20, ...props } = _props;
 
   return (
-    <div className={`jj jj-checkbox ${rowReverse ? ' row-reverse' : 'row'}${disabled ? ' disabled' : ''} ${className ?? ''}`}>
+    <div className={switchCN('checkbox', className, disabled, rowReverse)}>
       <Label id={id} label={label} />
 
-      <div className="control-checkbox">
+      <div className="control-checkbox" style={{ width: `${size}px`, height: `${size}px` }}>
         <input
           id={id}
           type="checkbox"

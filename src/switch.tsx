@@ -1,41 +1,34 @@
-import { forwardRef, ForwardedRef } from 'react';
-import type { BaseControlProps } from './types';
+import { CSSProperties, ForwardedRef, forwardRef } from 'react';
+import { BaseCheckedControlProps } from './types';
 import { Label } from './label';
 import { Subscript } from './subscript';
 import './switch.css';
+import { switchCN } from './utils';
 
-export interface SwitchProps extends BaseControlProps<HTMLInputElement> {
-  rowReverse?: boolean;
-}
+const RATIO = 1.85;
+const PADDING = 3;
 
 export const Switch = forwardRef(function Switch(
-  _props: SwitchProps,
-  _ref: ForwardedRef<HTMLInputElement>
+  props: BaseCheckedControlProps<HTMLInputElement>,
+  ref: ForwardedRef<HTMLInputElement>,
 ) {
-  const {
-    id,
-    label,
-    hint,
-    className,
-    rowReverse,
-    error,
-    ...register
-  } = _props;
+  const { id, label, hint, className, rowReverse, error, disabled, size = 24, ...rest } = props;
 
   return (
     <div
-      className={`jj jj-switch ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}
+      className={switchCN('switch', className, disabled, rowReverse)}
+      style={{
+        '--jj-switch-height': `${size}px`,
+        '--jj-switch-width': `${Math.round(size * RATIO / 2) * 2}px`,
+        '--jj-switch-ratio': `${RATIO}`,
+        '--jj-switch-padding': `${PADDING}px`,
+        '--jj-switch-thumb-size': `${size - (PADDING * 2)}px`
+      } as CSSProperties}
     >
       <Label id={id} label={label} />
 
       <div className="control-switch">
-        <input
-          id={id}
-          type="checkbox"
-          role="checkbox"
-          ref={_ref}
-          {...register}
-        />
+        <input id={id} type="checkbox" role="checkbox" disabled={disabled} ref={ref} {...rest}/>
         <div className="switch">
           <div className="thumb"/>
         </div>

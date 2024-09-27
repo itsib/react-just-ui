@@ -2,18 +2,18 @@
 
   &.jj-list {
     background-color: rgb(var(--jj-bg-rgb));
-    border-radius: var(--jj-br-md);
+    border-radius: var(--jj-border-radius-md);
   }
 
   &.jj-list-item {
     width: 100%;
-    height: calc($form-height - ($form-border-width * 2));
+    height: calc($form-height - (var(--jj-border-width) * 2));
     padding: $form-padding-y $form-padding-x;
     color: rgb(var(--jj-list-text-rgb));
     user-select: none;
     font-weight: normal;
     text-align: start;
-    border-radius: calc(var(--jj-br-md) - 1px);
+    border-radius: calc(var(--jj-border-radius-md) - 1px);
     background-color: rgb(var(--jj-list-bg-rgb));
     border: none;
     outline: none;

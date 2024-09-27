@@ -3,6 +3,7 @@ import path from 'node:path';
 import { exec } from 'child_process';
 
 const SRC_DIR = path.resolve(process.cwd(), 'src');
+const THEMES_DIR = path.resolve(process.cwd(), 'themes');
 
 const FRAMES = ['⢰', '⣠', '⣄', '⡆', '⠇', '⠋', '⠙', '⠸'];
 let current = 0;
@@ -112,6 +113,7 @@ async function run() {
   }, 100);
 
   fs.watch(SRC_DIR, { recursive: true }, async () => run(1));
+  fs.watch(THEMES_DIR, { recursive: true }, async () => run(1));
 }
 
 run().catch(console.error);

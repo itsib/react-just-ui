@@ -1,10 +1,11 @@
-import { forwardRef, ForwardedRef } from 'react';
-import type { BaseControlProps } from './types';
+import { ForwardedRef, forwardRef } from 'react';
+import { BaseCheckedControlProps } from './types';
 import { Label } from './label';
 import { Subscript } from './subscript';
 import './radio.css';
+import { switchCN } from './utils';
 
-export interface RadioProps extends Omit<BaseControlProps<HTMLInputElement>, 'value'> {
+export interface RadioProps extends Omit<BaseCheckedControlProps<HTMLInputElement>, 'value'> {
   /**
    * If true, then label and checkbox are swapped
    */
@@ -37,14 +38,14 @@ export const Radio = forwardRef(function Checkbox(
   _props: RadioProps,
   _ref: ForwardedRef<HTMLInputElement>
 ) {
-  const { id, label, hint, className, rowReverse, error, ...props } = _props;
+  const { id, label, hint, className, rowReverse, size = 18, error, disabled, ...props } = _props;
 
   return (
-    <div className={`jj jj-radio ${rowReverse ? 'row-reverse' : 'row'} ${className ?? ''}`}>
+    <div className={switchCN('radio', className, disabled, rowReverse)}>
       <Label id={id} label={label} />
 
-      <div className="control-radio">
-        <input id={id} type="radio" role="radio" ref={_ref} {...props} />
+      <div className="control-radio" style={{ width: `${size}px`, height: `${size}px` }}>
+        <input id={id} type="radio" role="radio" disabled={disabled} ref={_ref} {...props} />
 
         <svg className="radio" viewBox="0 0 24 24" version="1.1"
              preserveAspectRatio="xMaxYMax"

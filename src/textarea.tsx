@@ -2,7 +2,7 @@ import { ForwardedRef, forwardRef, useEffect } from 'react';
 import type { BaseControlProps } from './types';
 import { Subscript } from './subscript';
 import { Label } from './label';
-import { cn } from './utils';
+import { inputCN } from './utils';
 import './textarea.css';
 
 export interface TextareaProps extends BaseControlProps<HTMLTextAreaElement> {
@@ -26,7 +26,7 @@ export const Textarea = forwardRef(function Textarea(
   props: TextareaProps,
   ref: ForwardedRef<HTMLTextAreaElement>,
 ) {
-  const { id, className, placeholder, elastic = true, label, hint, minHeight, minWidth, maxWidth, maxHeight, limit = 5000, loading, error, ..._props } = props;
+  const { id, className, placeholder, elastic = true, label, hint, minHeight, minWidth, maxWidth, maxHeight, limit = 5000, loading, disabled, error, ..._props } = props;
 
   // Elastic textarea
   useEffect(() => {
@@ -86,7 +86,7 @@ export const Textarea = forwardRef(function Textarea(
 
   // Loading indicator
   useEffect(() => {
-    if (!loading) {
+    if (!loading || disabled) {
       return;
     }
     const textarea = document.getElementById(id) as HTMLTextAreaElement;
@@ -102,18 +102,21 @@ export const Textarea = forwardRef(function Textarea(
     return () => {
       loader.remove();
     };
-  }, [loading, id]);
+  }, [loading, disabled, id]);
 
   return (
-    <div className={cn(['jj', 'jj-textarea'], {
-      disabled: !!_props.disabled,
-      error: !!error,
-      loading: !!loading
-    }, className)}>
+    <div className={inputCN('textarea', className, loading, disabled, error)}>
       <Label id={id} label={label}/>
 
-      <textarea className="control jj-scroll" placeholder={placeholder} id={id} ref={ref}
-                style={{ minHeight, maxHeight, minWidth, maxWidth }} {..._props} />
+      <textarea
+        className="control jj-scroll"
+        placeholder={placeholder}
+        id={id}
+        disabled={disabled}
+        ref={ref}
+        style={{ minHeight, maxHeight, minWidth, maxWidth }}
+        {..._props}
+      />
 
       <Subscript error={error} hint={hint} />
     </div>

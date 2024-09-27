@@ -1,30 +1,13 @@
 .jj.jj-textarea {
 
-  ::placeholder {
-    color: rgb(var(--jj-placeholder-rgb) / .7);
-    font-weight: 400;
-    opacity: .6;
-  }
-
-  .loader-backdrop {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(var(--jj-bg-rgb));
-    color: rgb(var(--jj-text-rgb) / .6);
-    border: var(--jj-form-border-width) solid rgb(var(--jj-border-rgb));
-    border-radius: var(--jj-br-md);
+  .overlay {
+    inset: revert;
+    border: var(--jj-border-width) solid rgb(var(--jj-form-border-rgb));
+    border-radius: var(--jj-border-radius-md);
     z-index: 10;
   }
 
   .control {
-    width: 100%;
-    max-width: 100%;
-    min-height: $form-height;
-    padding: $form-padding-x $form-padding-x;
-    font-size: inherit;
-    color: rgb(var(--jj-text-rgb));
     line-height: 1;
     outline: none;
   }

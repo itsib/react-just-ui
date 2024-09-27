@@ -1,6 +1,6 @@
 import { type ForwardedRef, forwardRef, useEffect, type ReactNode } from 'react';
 import type { BaseControlProps } from './types';
-import { cn } from './utils';
+import { inputCN } from './utils';
 import { Subscript } from './subscript';
 import { Label } from './label';
 import './input.css';
@@ -53,7 +53,7 @@ export const Input = forwardRef(function Input(
   props: InputProps,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
-  const { id, className, label, hint, type: _type, prefix, suffix, loading, error, ..._props } = props;
+  const { id, className, label, hint, type: _type, prefix, suffix, loading, disabled, error, ..._props } = props;
   const type = _type === 'number' ? 'text' : _type;
 
   useEffect(() => {
@@ -80,13 +80,13 @@ export const Input = forwardRef(function Input(
   }, [_type, id]);
 
   return (
-    <div className={cn(['jj', 'jj-input'], { disabled: !!_props.disabled, error: !!error, loading: !!loading }, className)}>
+    <div className={inputCN('input', className, loading, disabled, error)}>
       <Label id={id} label={label} />
 
       <div className="control">
-        <div className="overlay"><span className="jj jj-spinner"/></div>
+        {!disabled && loading ? <div className="overlay"><span className="jj jj-spinner"/></div> : null}
         {prefix ? typeof prefix === 'string' ? <div className="prefix">{prefix}</div> : prefix : null}
-        <input id={id} type={type} ref={ref} {..._props} />
+        <input id={id} type={type} disabled={disabled} ref={ref} {..._props} />
         {suffix ? typeof suffix === 'string' ? <div className="suffix">{suffix}</div> : suffix : null}
       </div>
 

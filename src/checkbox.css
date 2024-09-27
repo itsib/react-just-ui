@@ -1,12 +1,4 @@
 .jj.jj-checkbox {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-
-  .jj-label {
-    margin-bottom: 0;
-    user-select: none;
-  }
 
   .control-checkbox {
     margin: 5px 10px;
@@ -70,48 +62,6 @@
           stroke: rgb(var(--jj-form-disabled-border-rgb));
         }
       }
-    }
-  }
-
-  &.disabled {
-
-    .control-checkbox {
-      cursor: default;
-    }
-
-  }
-
-  .jj-subscript {
-    width: 100%;
-  }
-
-  &.row {
-
-    .jj-label {
-      order: 2;
-    }
-
-    .control-checkbox {
-      order: 1;
-    }
-
-    .jj-subscript {
-      order: 3;
-    }
-  }
-
-  &.row-reverse {
-
-    .jj-label {
-      order: 1;
-    }
-
-    .control-checkbox {
-      order: 2;
-    }
-
-    .jj-subscript {
-      order: 3;
     }
   }
 }
