@@ -29,13 +29,18 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       'process.env.NODE_ENV': JSON.stringify(mode),
     },
     css: {
-      postcss: {
-        plugins: [
-          postcssImport(),
-          autoprefixer(),
-          postcssNesting(),
-        ],
-      }
+      preprocessorOptions: {
+        scss: {
+          additionalData: `$injectedColor: orange;`,
+        },
+      },
+      // postcss: {
+      //   plugins: [
+      //     postcssImport(),
+      //     autoprefixer(),
+      //     postcssNesting(),
+      //   ],
+      // }
     },
     build: {
       minify: true,

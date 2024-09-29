@@ -11,7 +11,8 @@
   "private": false,
   "type": "module",
   "scripts": {
-    "watch": "tsx ./plugins/watch.ts",
+    "watch:build": "tsx plugins/watch-build.ts",
+    "watch:storybook": "tsx plugins/watch-storybook.ts",
     "clean": "rm -rf ./dist",
     "build": "npm run clean && npm run build:types && npm run build:lib",
     "build:types": "tsc --emitDeclarationOnly --noEmit false --declaration true",
@@ -21,7 +22,7 @@
     "test": "vitest run",
     "preversion": "npm run lint && npm test",
     "postversion": "git push && git push --tags",
-    "storybook": "storybook dev --port 6006 --disable-telemetry --no-open"
+    "storybook": "storybook dev --exact-port --port 6060 --disable-telemetry --no-open"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -60,6 +61,7 @@
     "postcss-advanced-variables": "^4.0.0",
     "postcss-import": "^16.1.0",
     "postcss-nesting": "^12.1.5",
+    "react-hook-form": "^7.53.0",
     "react-just-ui": "file:./dist",
     "storybook": "8.3.1",
     "tsx": "^4.19.1",

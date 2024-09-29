@@ -128,18 +128,15 @@
       "lg": "1.25rem",
       "md": "1rem",
       "sm": "0.875rem",
-      "xs": "0.75rem"
+      "tooltip": "12px"
     },
     "shadow": {
       "md": "0 0 12px -1px rgb(var(--jj-black-rgb) / 0.2), 0 0 1px 1px rgb(var(--jj-shadow-rgb) / 0.2)"
     },
     "border": {
       "radius": {
-        "lg": 8,
         "md": 6,
-        "sm": 4,
-        "xs": 2,
-        "full": "999999px"
+        "full": "99999999px"
       },
       "width": {
         "default": 1
@@ -163,7 +160,6 @@
     },
     "hint": {
       "margin": 2,
-      "padding": { "x": 10, "y": 8 },
       "arrow": 6,
       "delay": { "show": ".4s", "hide": "0s" },
       "ease": { "duration": ".2s" }
