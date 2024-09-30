@@ -26,7 +26,13 @@ export default tseslint.config(
         sourceType: 'module',
         ecmaVersion: 2022,
         project: ['tsconfig.eslint.json'],
+        warnOnUnsupportedTypeScriptVersion: false,
+        loggerFn: false,
+        ecmaFeatures: {
+          jsx: true,
+        }
       },
+
       globals: {
         ...globals.es2021,
         ...globals.node,
