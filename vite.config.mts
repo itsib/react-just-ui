@@ -73,7 +73,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       themes({
         themes: resolve(__dirname, 'src/themes/*'),
         varPrefix: PREFIX,
-        compress: false,
+        compress: true,
       }),
       libInjectCss(),
       generatePackageJson(),

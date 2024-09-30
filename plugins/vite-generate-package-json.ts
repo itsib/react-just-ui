@@ -7,17 +7,21 @@ export default function generatePkg(): Plugin {
   let entries: Record<string, string> = {};
   let packageJson: Record<string, any> | null = null;
   let isGenerated = false;
+  let isDisabled = false;
 
   return {
     name: 'vite:generate-package-json',
     apply: 'build',
-    async configResolved({ build }) {
+    async configResolved({ build, command, resolve }) {
+      isDisabled = command !== 'build' || (resolve?.conditions || []).includes('storybook');
+      if (isDisabled) return;
+
       entries = (build!.lib as any)!.entry;
       formats = (build!.lib as any)!.formats as string[];
       packageJson = JSON.parse(await fs.readFile('./package.json', 'utf8')) as Record<string, any>;
     },
     async generateBundle(options) {
-      if (isGenerated || !formats.length) return;
+      if (isDisabled || isGenerated || !formats.length) return;
       if (!options.dir || !packageJson) throw new Error('package.json not found');
 
       const { scripts: _a, devDependencies: _b, overrides: _c, ...pkg } = packageJson;
