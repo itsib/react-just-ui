@@ -1,0 +1,63 @@
+@use "sass:string";
+@use "sass:color";
+@use "sass:math";
+@use "config:prefix" as config;
+
+$prefix: #{config.$prefix};
+
+@mixin class($className: "", $isDouble: false) {
+  @if $isDouble and $className == "" {
+    @error "Enabled double and empty class name"
+  }
+
+  @if $className == "" {
+    $className: ".#{$prefix}";
+  } @else if $isDouble {
+    $className: ".#{$prefix}.#{$prefix}-#{$className}";
+  } @else {
+    $className: ".#{$prefix}-#{$className}";
+  }
+
+  #{$className} {
+    @content;
+  }
+}
+
+@mixin create($key, $value, $type: "value") {
+  $keyPrefix: string.slice($key, 0, 2);
+
+  @if $keyPrefix == "--" {
+    $key: string.slice($key, 3);
+  }
+  $color: "";
+  @if $type == "color" {
+    $color: "-c";
+    $value: math.round(color.channel($value, "red")) math.round(color.channel($value, "green")) math.round(color.channel($value, "blue"));
+  }
+  --#{$prefix}#{$color}-#{$key}: #{$value};
+}
+
+@function get($key) {
+  $keyPrefix: string.slice($key, 0, 2);
+
+  @if $keyPrefix == "--" {
+    $key: string.slice($key, 3);
+  }
+
+  @return var(--#{$prefix}-#{$key});
+}
+
+@function getColor($key, $opacity: 1) {
+  $keyPrefix: string.slice($key, 0, 2);
+  @if $keyPrefix == "--" {
+    $key: string.slice($key, 3);
+  }
+
+  @if $opacity == 1 {
+    @return string.unquote("rgb(var(--#{$prefix}-c-#{$key}))");
+  } @else {
+    @return string.unquote("rgb(var(--#{$prefix}-c-#{$key}) / #{$opacity})");
+  }
+
+
+}

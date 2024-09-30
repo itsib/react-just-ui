@@ -1,0 +1,19 @@
+@use "css/mixins/variable";
+
+@include variable.class(label, true) {
+  color: variable.getColor(--form-label);
+  font-size: variable.get(--font-size-label);
+  cursor: pointer;
+  user-select: none;
+  display: block;
+
+
+  .required-marker {
+    color: variable.getColor(--error);
+    font-size: inherit;
+  }
+}
+
+
+
+

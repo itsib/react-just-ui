@@ -2,8 +2,8 @@ import { ForwardedRef, forwardRef, useEffect } from 'react';
 import type { BaseControlProps } from './types';
 import { Subscript } from './subscript';
 import { Label } from './label';
-import { inputCN } from './utils';
-import './textarea.css';
+import './textarea.scss';
+import { inputCN, prefixedCN } from './intermal/css-class';
 
 export interface TextareaProps extends BaseControlProps<HTMLTextAreaElement> {
   elastic?: boolean;
@@ -93,7 +93,7 @@ export const Textarea = forwardRef(function Textarea(
 
     const loader = document.createElement('div');
     loader.classList.add('overlay');
-    loader.innerHTML = '<span class="jj jj-spinner"/>';
+    loader.innerHTML = `<span class="${prefixedCN('spinner', true)}"/>`;
     loader.style.width = `${textarea.offsetWidth}px`;
     loader.style.height = `${textarea.offsetHeight}px`;
     textarea.parentElement!.insertBefore(loader, textarea);
@@ -109,7 +109,7 @@ export const Textarea = forwardRef(function Textarea(
       <Label id={id} label={label}/>
 
       <textarea
-        className="control jj-scroll"
+        className={`${prefixedCN('scroll')} control`}
         placeholder={placeholder}
         id={id}
         disabled={disabled}

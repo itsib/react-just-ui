@@ -2,7 +2,8 @@ import { ForwardedRef, forwardRef, useEffect, useMemo, useRef } from 'react';
 import type { BaseControlProps } from './types';
 import { Label } from './label';
 import { Subscript } from './subscript';
-import './otp-input.css';
+import './otp-input.scss';
+import { inputCN } from './intermal/css-class';
 
 export interface OtpInputProps extends BaseControlProps<HTMLInputElement> {
   /**
@@ -28,7 +29,6 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
   ref: ForwardedRef<HTMLInputElement>,
 ) {
   const { id, className, label, hint, error, layout = 'ddd-ddd', ..._props} = props;
-  // const indexRef = useRef(0);
   const callbacksRef = useRef(_props);
   callbacksRef.current = _props;
 
@@ -226,7 +226,7 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
   }, [id, layout]);
 
   return (
-    <div className={`jj jj-otp-input ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''} ${className ?? ''}`}>
+    <div className={inputCN('otp-input', className, false, _props.disabled, error)}>
       <Label id={id} label={label} />
 
       <div className="control-otp">

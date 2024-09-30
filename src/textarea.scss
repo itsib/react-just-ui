@@ -1,0 +1,19 @@
+@use "css/mixins/variable";
+
+@include variable.class(textarea, true) {
+
+  &.loading:not(.disabled) {
+
+    .overlay {
+      inset: revert;
+      border: variable.get(--form-border-width) solid variable.getColor(--form-border);
+      border-radius: variable.get(--form-round);
+    }
+  }
+
+
+  .control {
+    line-height: 1;
+    outline: none;
+  }
+}

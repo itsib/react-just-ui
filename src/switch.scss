@@ -1,9 +1,11 @@
-.jj.jj-switch {
+@use "css/mixins/variable";
+
+@include variable.class(switch, true) {
 
   .control-switch {
-    height: var(--jj-switch-height);
-    width: var(--jj-switch-width);
-    aspect-ratio: var(--jj-switch-ratio);
+    height: var(--switch-height);
+    width: var(--switch-width);
+    aspect-ratio: var(--switch-ratio);
     cursor: pointer;
     user-select: none;
     position: relative;
@@ -25,19 +27,19 @@
       inset: 0;
       display: block;
       position: absolute;
-      background-color: rgb(var(--jj-switch-bg-rgb));
+      background-color: variable.getColor(--switch-bg);
       transition: background-color .1s linear;
       border-radius: 99999999px;
 
       .thumb {
-        top: var(--jj-switch-padding);
-        left: var(--jj-switch-padding);
-        width: var(--jj-switch-thumb-size);
-        height: var(--jj-switch-thumb-size);
+        top: var(--switch-padding);
+        left: var(--switch-padding);
+        width: var(--switch-thumb-size);
+        height: var(--switch-thumb-size);
         aspect-ratio: 1/1;
         border-radius: 50%;
-        background-color: rgb(var(--jj-white-rgb));
-        box-shadow: 0 0 2px 1px rgb(var(--jj-black-rgb) / 0.1);
+        background-color: variable.getColor(--white);
+        box-shadow: 0 0 2px 1px variable.getColor(--black, .1);
         transition: left .1s linear;
         display: block;
         position: absolute;
@@ -46,10 +48,10 @@
     }
 
     input[type="checkbox"]:checked + .switch {
-      background-color: rgb(var(--jj-accent-rgb));
+      background-color: variable.getColor(--accent);
 
       .thumb {
-        left: calc(var(--jj-switch-width) - var(--jj-switch-thumb-size) - var(--jj-switch-padding));
+        left: calc(var(--switch-width) - var(--switch-thumb-size) - var(--switch-padding));
       }
     }
 
@@ -58,7 +60,7 @@
     }
 
     input[type="checkbox"]:disabled + .switch {
-      background-color: rgb(var(--jj-switch-disabled-bg-rgb));
+      background-color: variable.getColor(--muted);
       opacity: .8;
     }
   }

@@ -1,0 +1,19 @@
+@use "mixins/variable";
+
+@include variable.class {
+  font-size: variable.get(--font-size-base);
+  box-sizing: border-box;
+
+  * {
+    box-sizing: border-box;
+
+    &:before, &:after {
+      box-sizing: border-box;
+    }
+  }
+
+  ::placeholder {
+    color: variable.getColor(--form-placeholder);
+    font-weight: 400;
+  }
+}

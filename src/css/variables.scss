@@ -1,0 +1,61 @@
+@use "sass:map";
+@use 'sass:color';
+@use "mixins/variable";
+
+$schemes: (light: (), dark: ()) !default;
+$font-size: () !default;
+$light: map.get($schemes, "light");
+$dark: map.get($schemes, "dark");
+
+@mixin defineColors ($name, $schemes) {
+  $scheme: map.get($schemes, $name);
+
+  @each $name, $value in $scheme {
+    @include variable.create($name, $value, "color");
+  }
+
+  @include variable.create(--theme-invert, color.invert(map.get($scheme, 'theme')), "color");
+
+  // Switch
+  @include variable.create(--switch-bg, map.get($scheme, 'switch'), "color");
+
+  // List colors
+  @include variable.create(--list-text, map.get($scheme, 'foreground'), "color");
+  @include variable.create(--list-bg, map.get($scheme, 'background'), "color");
+  @include variable.create(--list-hover-text, map.get($scheme, 'foreground'), "color");
+  @include variable.create(--list-hover-bg, color.invert(map.get($scheme, 'background'), 9%), "color");
+  @include variable.create(--list-active-text, map.get($scheme, 'foreground'), "color");
+  @include variable.create(--list-active-bg, map.get($scheme, 'background'), "color");
+
+  // Tooltip
+  @include variable.create(--tooltip-text, map.get($scheme, 'foreground'), "color");
+  @include variable.create(--tooltip-bg, map.get($scheme, 'theme'), "color");
+  @include variable.create(--tooltip-border, color.invert(map.get($scheme, 'background'), 15%), "color");
+
+
+}
+
+html {
+  @include defineColors("light", $schemes);
+}
+
+html.dark {
+  @include defineColors("dark", $schemes);
+}
+
+html {
+  // Fontsize
+  @include variable.create(--font-size-base, map.get($font-size, 'base'));
+  @include variable.create(--font-size-label, map.get($font-size, 'label'));
+  @include variable.create(--font-size-tooltip, map.get($font-size, 'tooltip'));
+
+  // Z index
+  @include variable.create(--zi-dropdown, 1000);
+  @include variable.create(--zi-sticky, 1020);
+  @include variable.create(--zi-fixed, 1030);
+  @include variable.create(--zi-modal, 1040);
+  @include variable.create(--zi-popover, 1050);
+  @include variable.create(--zi-tooltip, 1060);
+  @include variable.create(--zi-toast, 1070);
+
+}

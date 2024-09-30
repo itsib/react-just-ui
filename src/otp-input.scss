@@ -1,4 +1,6 @@
-.jj.jj-otp-input {
+@use "css/mixins/variable";
+
+@include variable.class(otp-input, true) {
 
   .control-otp {
 
@@ -10,8 +12,8 @@
       gap: 0.5rem;
 
       .symbol {
-        color: rgb(var(--jj-form-text-rgb));
-        background-color: rgb(var(--jj-form-bg-rgb));
+        color: variable.getColor(--form-text);
+        background-color: variable.getColor(--form-bg);
         box-shadow: none;
         outline: none;
         transition: all .15s ease-in-out;
@@ -23,7 +25,7 @@
 
       .divider {
         margin: 0 3px;
-        background-color: rgb(var(--jj-form-border-rgb));
+        background-color: variable.getColor(--form-border);
 
         &.d-dash {
           height: 1px;

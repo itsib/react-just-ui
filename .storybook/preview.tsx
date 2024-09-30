@@ -4,7 +4,7 @@ import { decorator as reportDecorator, loader as reportLoader } from './componen
 import { decorator as themeDecorator } from './components/switch-theme';
 import theme from './theme';
 import '../dist/theme/minimal.css';
-import './styles.css';
+import './styles.scss';
 
 const preview: Preview = {
   tags: ['autodocs'],
@@ -34,7 +34,7 @@ const preview: Preview = {
     options: {
       storySort: {
         method: 'alphabetical',
-        order: ['Basic', '*'],
+        order: ['Get Started', '*'],
       },
     },
     docs: {

@@ -1,4 +1,6 @@
-@keyframes jj-image-ripple {
+@use "mixins/variable";
+
+@keyframes #{variable.$prefix}-image-ripple {
   0% {
     transform: scale(1);
     opacity: 1;
@@ -10,7 +12,7 @@
   }
 }
 
-@keyframes jj-pulse {
+@keyframes #{variable.$prefix}-pulse {
   0%, 100% {
     opacity: 1;
   }
@@ -19,13 +21,13 @@
   }
 }
 
-@keyframes jj-blink {
+@keyframes #{variable.$prefix}-blink {
   to {
     opacity: 0;
   }
 }
 
-@keyframes jj-checkbox-checked {
+@keyframes #{variable.$prefix}-checkbox-checked {
   from {
     stroke-dashoffset: 24;
   }

@@ -131,7 +131,7 @@
       "tooltip": "12px"
     },
     "shadow": {
-      "md": "0 0 12px -1px rgb(var(--jj-black-rgb) / 0.2), 0 0 1px 1px rgb(var(--jj-shadow-rgb) / 0.2)"
+      "md": "0 0 12px -1px rgb(var(prefixed(--black-rgb)) / 0.2), 0 0 1px 1px rgb(var(prefixed(--shadow-rgb)) / 0.2)"
     },
     "border": {
       "radius": {

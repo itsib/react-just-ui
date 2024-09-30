@@ -1,6 +1,7 @@
 import { FC, useEffect, useRef } from 'react';
 import { ValidationError } from './types';
-import './subscript.css';
+import './subscript.scss';
+import { prefixedCN } from './intermal/css-class';
 
 export interface ISubscript {
   error?: ValidationError | false;
@@ -32,7 +33,7 @@ export const Subscript: FC<ISubscript> = ({ error }) => {
   }, [message]);
 
   return (
-    <div className="jj jj-subscript" role="alert" ref={ref}>
+    <div className={prefixedCN('subscript')} role="alert" ref={ref}>
       <div />
     </div>
   )

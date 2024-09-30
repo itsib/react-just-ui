@@ -2,8 +2,8 @@ import { CSSProperties, ForwardedRef, forwardRef } from 'react';
 import { BaseCheckedControlProps } from './types';
 import { Label } from './label';
 import { Subscript } from './subscript';
-import './switch.css';
-import { switchCN } from './utils';
+import { switchCN } from './intermal/css-class';
+import './switch.scss';
 
 const RATIO = 1.85;
 const PADDING = 3;
@@ -18,11 +18,11 @@ export const Switch = forwardRef(function Switch(
     <div
       className={switchCN('switch', className, disabled, rowReverse)}
       style={{
-        '--jj-switch-height': `${size}px`,
-        '--jj-switch-width': `${Math.round(size * RATIO / 2) * 2}px`,
-        '--jj-switch-ratio': `${RATIO}`,
-        '--jj-switch-padding': `${PADDING}px`,
-        '--jj-switch-thumb-size': `${size - (PADDING * 2)}px`
+        '--switch-height': `${size}px`,
+        '--switch-width': `${Math.round(size * RATIO / 2) * 2}px`,
+        '--switch-ratio': `${RATIO}`,
+        '--switch-padding': `${PADDING}px`,
+        '--switch-thumb-size': `${size - (PADDING * 2)}px`
       } as CSSProperties}
     >
       <Label id={id} label={label} />

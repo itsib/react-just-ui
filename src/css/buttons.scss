@@ -1,0 +1,5 @@
+@use "mixins/variable";
+
+@include variable.class(button, true) {
+
+}

@@ -1,8 +1,10 @@
-import { defineConfig, UserConfig } from 'vite';
+import { defineConfig, loadConfigFromFile, mergeConfig, UserConfig } from 'vite';
 import { resolve } from 'node:path';
 
-export default defineConfig(async ({ mode }): Promise<UserConfig> => {
-  return {
+export default defineConfig(async ({ mode, command }): Promise<UserConfig> => {
+  const rootConfig = await loadConfigFromFile({ mode, command }, resolve(__dirname, '../vite.config.mts'));
+
+  return mergeConfig(rootConfig!.config, {
     mode,
     appType: 'custom',
     resolve: {
@@ -14,5 +16,6 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
     define: {
       'process.env.NODE_ENV': JSON.stringify(mode),
     },
-  }
+  })
+
 });

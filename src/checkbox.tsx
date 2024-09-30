@@ -2,8 +2,8 @@ import React from 'react';
 import { Label } from './label';
 import { Subscript } from './subscript';
 import { BaseCheckedControlProps } from './types';
-import { switchCN } from './utils';
-import './checkbox.css';
+import { switchCN } from './intermal/css-class';
+import './checkbox.scss';
 
 /**
  * A wrapper for an input element of the checkbox type as boxes that are

@@ -49,27 +49,3 @@ export function cn(...objs: (string | Record<string, boolean> | string[] | null 
   }
   return output.trim();
 }
-
-/**
- * Generates a set of classes for binary form input controls.
- *
- * @param {'checkbox'|'radio'|'switch'|string} type
- * @param className
- * @param disabled
- * @param rowReverse
- */
-export function switchCN(type: string, className?: string, disabled?: boolean, rowReverse?: boolean): string {
-  return cn(`jj jj-${type}`, className, {
-    row: !rowReverse,
-    'row-reverse': !!rowReverse,
-    disabled: !!disabled,
-  });
-}
-
-export function inputCN(type: string, className?: string, loading?: boolean, disabled?: boolean, error?: any): string {
-  return cn(`jj jj-${type}`, className, {
-    loading: !!loading,
-    error: !!error,
-    disabled: !!disabled,
-  });
-}

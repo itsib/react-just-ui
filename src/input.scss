@@ -1,0 +1,5 @@
+@use "css/mixins/variable";
+
+@include variable.class(input, true) {
+  display: block;
+}

@@ -1,13 +1,18 @@
-.jj-scroll {
+@use "mixins/variable";
+
+$width: 4px !default;
+$padding: 4px 0 !default;
+
+@include variable.class(scroll) {
 
   ::-webkit-scrollbar {
-    width: $scroll-width;
-    height: $scroll-width;
+    width: $width;
+    height: $width;
     transition: all .15s ease-in-out;
   }
 
   ::-webkit-scrollbar-track {
-    padding: $scroll-padding-y $scroll-padding-x;
+    padding: $padding;
     position: relative;
     background-color: transparent;
   }
@@ -18,8 +23,8 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    border-radius: $scroll-width;
-    background-color: rgb(var(--jj-bg-hover-rgb) / 0.6);
+    border-radius: $width;
+    background-color: variable.getColor(--muted, 0.6);
   }
 
   ::-webkit-scrollbar-corner {

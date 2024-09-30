@@ -9,8 +9,8 @@ addons.setConfig({
   // panelPosition: 'bottom',
   enableShortcuts: false,
   // showToolbar: true,
-  // selectedPanel: 'Get Started',
-  // initialActive: 'sidebar',
+  selectedPanel: 'Get Started',
+  initialActive: 'Get Started',
   // sidebar: {
     // showRoots: true,
     // collapsedRoots: ['other'],

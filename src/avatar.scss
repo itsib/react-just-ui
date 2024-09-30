@@ -1,26 +1,28 @@
+@use "css/mixins/variable";
+
 html {
-  --jj-image-animation: jj-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --image-animation: #{variable.$prefix}-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-.jj.jj-avatar {
+@include variable.class(avatar, true) {
   aspect-ratio: 1;
   position: relative;
 
   .avatar {
     width: inherit;
     height: inherit;
-    border-radius: var(--jj-border-radius-full);
+    border-radius: 999999px;
     overflow: hidden;
     border-style: solid;
-    border-color: rgb(var(--jj-bg-rgb));
-    background-color: rgb(var(--jj-bg-rgb));
-    animation: var(--jj-image-animation);
+    border-color: variable.getColor(--background);
+    background-color: variable.getColor(--background);
+    animation: var(--image-animation);
     transition: border-color .2s ease-in-out;
 
     & > * {
       width: inherit;
       height: inherit;
-      border-radius: var(--jj-border-radius-full);
+      border-radius: 999999px;
       overflow: hidden;
       aspect-ratio: 1;
       display: block;
@@ -28,11 +30,10 @@ html {
       opacity: 0;
     }
 
-    .jj-image-placeholder {
-      color: rgb(var(--jj-image-border-rgb));
-      background-color: currentColor;
-      mask-repeat: no-repeat;
-      mask-size: 100% 100%;
+    .avatar-placeholder {
+      fill: variable.getColor(--accent);
+      width: 100%;
+      height: 100%;
     }
   }
 
@@ -41,10 +42,10 @@ html {
     left: 0;
     width: inherit;
     height: inherit;
-    border: 1px solid rgb(var(--jj-image-border-rgb));
-    border-radius: var(--jj-border-radius-full);
+    border: 1px solid variable.getColor(--accent);
+    border-radius: 999999px;
     position: absolute;
-    animation: 1.5s linear 0s infinite normal none running jj-image-ripple;
+    animation: 1.5s linear 0s infinite normal none running #{variable.$prefix}-image-ripple;
     display: none;
   }
 
@@ -52,7 +53,7 @@ html {
 
     .avatar {
       animation: none;
-      border-color: rgb(var(--jj-image-border-rgb));
+      border-color: variable.getColor(--accent);
 
       & > * {
         opacity: 1;
@@ -63,7 +64,7 @@ html {
   &.active {
 
     .avatar {
-      border-color: rgb(var(--jj-image-border-rgb) / 25%);
+      border-color: variable.getColor(--accent, .25);
     }
 
     .ripple {
@@ -74,8 +75,8 @@ html {
   &.loading {
 
     .avatar {
-      animation: var(--jj-image-animation);
-      border-color: rgb(var(--jj-image-bg-rgb));
+      animation: var(--image-animation);
+      border-color: variable.getColor(--background);;
 
       & > * {
         opacity: 0;

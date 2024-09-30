@@ -1,3 +1,5 @@
+import { Importer, ImporterResult } from 'sass-embedded';
+
 /**
  * Format filesize in kilobytes
  * @param size
@@ -47,4 +49,14 @@ export function flatten<T, R>(target: T, opts: Record<string, any> = {}): R {
   step(target);
 
   return output;
+}
+
+export function getPrefixImporter(prefix = ''): Importer<'sync'> {
+  return {
+    canonicalize: (url: string): any => url.startsWith('config:prefix') ? new URL(url) : null,
+    load: (_: URL) => ({
+      contents: `$prefix: "${prefix}"`,
+      syntax: 'scss'
+    } as ImporterResult)
+  }
 }

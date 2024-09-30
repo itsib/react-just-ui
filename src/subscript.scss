@@ -1,0 +1,19 @@
+@use "css/mixins/variable";
+
+@include variable.class(subscript, true) {
+  height: calc(var(prefixed(--font-xs)) + 4px);
+  padding-left: var(prefixed(--border-radius-md));
+  font-size: var(prefixed(--font-xs));
+  line-height: 1.2;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  pointer-events: none;
+
+  div {
+    top: calc((var(prefixed(--font-xs)) + 6px) * -1);
+    color: rgb(var(prefixed(--form-error-border-rgb)));
+    transition: .15s ease-in-out;
+    position: relative;
+  }
+}

@@ -2,8 +2,8 @@ import { ForwardedRef, forwardRef } from 'react';
 import { BaseCheckedControlProps } from './types';
 import { Label } from './label';
 import { Subscript } from './subscript';
-import './radio.css';
-import { switchCN } from './utils';
+import { switchCN } from './intermal/css-class';
+import './radio.scss';
 
 export interface RadioProps extends Omit<BaseCheckedControlProps<HTMLInputElement>, 'value'> {
   /**

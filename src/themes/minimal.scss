@@ -1,0 +1,88 @@
+$schemes: (
+  light: (
+      'theme': rgb(255 255 255),
+      'black': rgb(0 0 0),
+      'white': rgb(255 255 255),
+      'accent': rgb(0 115 229),
+      'error': rgb(220 38 38),
+      'background': rgb(255 255 255),
+      'foreground': rgb(0 0 0),
+      'active': rgb(38 38 38),
+      'border': rgb(208 208 211),
+      'muted': rgb(220 220 220),
+      'switch': rgb(228 228 231),
+  ),
+  dark: (
+      'theme': rgb(0 0 0),
+      'black': rgb(0 0 0),
+      'white': rgb(255 255 255),
+      'accent': rgb(0 115 229),
+      'error': rgb(240 28 28),
+      'background': rgb(29 29 29),
+      'foreground': rgb(255 255 255),
+      'active': rgb(212 212 212),
+      'border': rgb(78 78 78),
+      'muted': rgb(48 48 48),
+      'switch': rgb(65 65 65),
+  )
+);
+
+$font-size: (
+  'base': 1rem,
+  'label': .875rem,
+  'tooltip': 12px,
+);
+
+@use "../css/variables" with (
+  $schemes: $schemes,
+  $font-size: $font-size,
+);
+
+@use '../css/animations';
+
+@use '../css/scroll' with (
+  $width: 4px,
+  $padding: 4px 0,
+);
+
+@use '../css/tooltip' with (
+  $font-size: 12px,
+  $arrow-size: 0.5em,
+  $indent: 2px,
+  $hide-delay: 0s,
+  $show-delay: .4s,
+  $transition-duration: .2s,
+);
+
+@use '../css/common';
+
+@use '../css/buttons';
+
+@use '../css/checkbox';
+
+@use '../css/form' with (
+  $schemes: $schemes,
+  $font-size: 1rem,
+  $font-size-label: .875rem,
+  $height: 40px,
+  $margin-top: 4px,
+  $margin-bottom: 2px,
+  $padding-y: 0.25rem,
+  $padding-x: 0.75rem,
+  $border-width: 1px,
+  $border-radius: 6px,
+);
+
+@use '../css/list' with (
+  $item-height: 40px,
+  $item-padding: 0.25rem 0.75rem,
+  $border-radius: 6px,
+  $border: none,
+);
+
+@use '../css/spinner' with (
+  $size: 40px,
+  $spinner-img: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='4' cy='12' r='0' fill='%23000'%3E%3Canimate fill='freeze' attributeName='r' begin='0;a.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='0;3'/%3E%3Canimate fill='freeze' attributeName='cx' begin='b.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='4;12'/%3E%3Canimate fill='freeze' attributeName='cx' begin='c.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='12;20'/%3E%3Canimate id='e' fill='freeze' attributeName='r' begin='d.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='3;0'/%3E%3Canimate id='a' fill='freeze' attributeName='cx' begin='e.end' dur='0.001s' values='20;4'/%3E%3C/circle%3E%3Ccircle cx='4' cy='12' r='3' fill='%23000'%3E%3Canimate fill='freeze' attributeName='cx' begin='0;a.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='4;12'/%3E%3Canimate fill='freeze' attributeName='cx' begin='b.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='12;20'/%3E%3Canimate id='f' fill='freeze' attributeName='r' begin='c.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='3;0'/%3E%3Canimate id='d' fill='freeze' attributeName='cx' begin='f.end' dur='0.001s' values='20;4'/%3E%3Canimate fill='freeze' attributeName='r' begin='d.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='0;3'/%3E%3C/circle%3E%3Ccircle cx='12' cy='12' r='3' fill='%23000'%3E%3Canimate fill='freeze' attributeName='cx' begin='0;a.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='12;20'/%3E%3Canimate id='g' fill='freeze' attributeName='r' begin='b.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='3;0'/%3E%3Canimate id='c' fill='freeze' attributeName='cx' begin='g.end' dur='0.001s' values='20;4'/%3E%3Canimate fill='freeze' attributeName='r' begin='c.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='0;3'/%3E%3Canimate fill='freeze' attributeName='cx' begin='d.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='4;12'/%3E%3C/circle%3E%3Ccircle cx='20' cy='12' r='3' fill='%23000'%3E%3Canimate id='h' fill='freeze' attributeName='r' begin='0;a.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='3;0'/%3E%3Canimate id='b' fill='freeze' attributeName='cx' begin='h.end' dur='0.001s' values='20;4'/%3E%3Canimate fill='freeze' attributeName='r' begin='b.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='0;3'/%3E%3Canimate fill='freeze' attributeName='cx' begin='c.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='4;12'/%3E%3Canimate fill='freeze' attributeName='cx' begin='d.end' calcMode='spline' dur='0.5s' keySplines='.36,.6,.31,1' values='12;20'/%3E%3C/circle%3E%3C/svg%3E\")",
+);
+
+

@@ -1,4 +1,11 @@
-.jj.jj-checkbox {
+@use "css/mixins/variable";
+
+html {
+  --transition-duration-in: .4s;
+  --transition-duration-out: .2s;
+}
+
+@include variable.class(checkbox, true) {
 
   .control-checkbox {
     margin: 5px 10px;
@@ -19,19 +26,20 @@
       + .checkbox {
         width: inherit;
         height: inherit;
-        border: 2px solid rgb(var(--jj-checkbox-border-rgb));
+        border: 2px solid variable.getColor(--foreground);
         border-radius: 4px;
         position: absolute;
         z-index: 1;
 
         .tick {
           fill: none;
-          stroke: rgb(var(--jj-checkbox-tick-rgb));
+          stroke: variable.getColor(--foreground);
           stroke-dasharray: 24;
           stroke-dashoffset: 0;
-          transform-origin: 8px 8px;
           transition-timing-function: ease-in;
           transition-property: opacity, transform;
+          transition-duration: var(--transition-duration-out);
+          transform-origin: 8px 8px;
           transform: scale(0,0);
           opacity: 0;
         }
@@ -46,7 +54,9 @@
           opacity: 1;
           transform: scale(1,1);
           transition-duration: 0s;
-          animation-name: jj-checkbox-checked;
+          animation-duration: var(--transition-duration-in);
+          animation-timing-function: cubic-bezier(.4,.0,.23,1);
+          animation-name: #{variable.$prefix}-checkbox-checked;
           animation-fill-mode: forwards;
         }
       }
@@ -56,10 +66,10 @@
       pointer-events: none;
 
       + .checkbox {
-        border-color: rgb(var(--jj-form-disabled-border-rgb));
+        border-color: variable.getColor(--muted);
 
         .tick {
-          stroke: rgb(var(--jj-form-disabled-border-rgb));
+          stroke: variable.getColor(--muted);
         }
       }
     }

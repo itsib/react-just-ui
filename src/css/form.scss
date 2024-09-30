@@ -1,0 +1,237 @@
+@use "mixins/variable";
+@use 'sass:color';
+@use "sass:map";
+
+$schemes: (light: (), dark: ()) !default;
+$light: map.get($schemes, "light");
+$dark: map.get($schemes, "dark");
+$font-size: 1rem !default;
+$font-size-label: .875rem !default;
+$height: 40px !default;
+$margin-top: 4px !default;
+$margin-bottom: 2px !default;
+$padding-y: 0.25rem !default;
+$padding-x: 0.75rem !default;
+$border-width: 1px !default;
+$border-radius: 6px !default;
+
+html {
+  @include variable.create(--form-label, color.invert(map.get($light, 'foreground'), 10%), "color");
+  @include variable.create(--form-text, map.get($light, 'foreground'), "color");
+  @include variable.create(--form-placeholder, color.invert(map.get($light, 'foreground'), 40%), "color");
+  @include variable.create(--form-border, map.get($light, 'border'), "color");
+  @include variable.create(--form-bg, map.get($light, 'background'), "color");
+  @include variable.create(--form-focus-border, map.get($light, 'active'), "color");
+  @include variable.create(--form-focus-bg, map.get($light, 'background'), "color");
+  @include variable.create(--form-disabled-border, map.get($light, 'muted'), "color");
+  @include variable.create(--form-disabled-bg, map.get($light, 'muted'), "color");
+
+  @include variable.create(--form-height, $height);
+  @include variable.create(--form-round, $border-radius);
+  @include variable.create(--form-border-width, $border-width);
+
+  &.dark {
+    @include variable.create(--form-label, color.invert(map.get($dark, 'foreground'), 10%), "color");
+    @include variable.create(--form-text, map.get($dark, 'foreground'), "color");
+    @include variable.create(--form-placeholder, color.invert(map.get($dark, 'foreground'), 40%), "color");
+    @include variable.create(--form-border, map.get($dark, 'border'), "color");
+    @include variable.create(--form-bg, map.get($dark, 'background'), "color");
+    @include variable.create(--form-focus-border, map.get($dark, 'active'), "color");
+    @include variable.create(--form-focus-bg, map.get($dark, 'background'), "color");
+    @include variable.create(--form-disabled-border, map.get($dark, 'muted'), "color");
+    @include variable.create(--form-disabled-bg, map.get($dark, 'muted'), "color");
+  }
+}
+
+@include variable.class {
+
+  textarea.control {
+    padding: $padding-x $padding-x;
+  }
+
+  .control {
+    height: $height;
+    min-height: $height;
+    width: 100%;
+    max-width: 100%;
+    background-color: variable.getColor(--form-bg);
+    font-size: variable.get(--font-size-base);
+    color: variable.getColor(--form-text);
+    box-shadow: none;
+    border: $border-width solid variable.getColor(--form-border);
+    border-radius: $border-radius;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    align-items: stretch;
+    justify-content: space-between;
+    transition: box-shadow .15s ease-in-out, border-color .15s ease-in-out, background-color .15s ease-in-out;
+
+    input, select, .select {
+      width: 100%;
+      height: calc($height - ($border-width * 2));
+      padding: $padding-y $padding-x;
+      color: inherit;
+      border: none;
+      outline: none;
+      font-size: inherit;
+      background-color: transparent;
+    }
+
+    .prefix, .suffix {
+      padding: 0 0.75em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+      user-select: none;
+      box-shadow: none;
+      white-space: nowrap;
+      transition: inherit;
+      font-size: inherit;
+    }
+
+    > .prefix {
+      color: variable.getColor(--form-text);
+      border-radius: calc($border-radius - 1px) 0 0 calc($border-radius - 1px);
+      border-right: $border-width solid variable.getColor(--form-border);
+    }
+
+    > .suffix {
+      color: variable.getColor(--form-text);
+      border-radius: 0 calc($border-radius - 1px) calc($border-radius - 1px) 0;
+      border-left: $border-width solid variable.getColor(--form-border);
+    }
+  }
+
+  .control-otp {
+    height: $height;
+    position: relative;
+
+    > input {
+
+    }
+
+    .group {
+
+      .symbol {
+        height: inherit;
+        aspect-ratio: 0.8;
+        width: ($height * 0.8);
+        text-align: center;
+        border: $border-width solid variable.getColor(--form-border);
+        border-radius: $border-radius;
+      }
+    }
+  }
+
+  &:focus-within .control,
+  &.focus .control,
+  .group .symbol:focus {
+    background-color: variable.getColor(--form-focus-bg);
+    border-color: variable.getColor(--form-focus-border);
+    box-shadow: 0 0 0 1px variable.getColor(--black), 0 0 3px 0 variable.getColor(--form-focus-border);
+
+    .suffix, .prefix {
+      border-color: variable.getColor(--form-focus-border);
+      box-shadow: 0 0 2px 0 variable.getColor(--form-focus-border),
+        0 0 2px -1px inset variable.getColor(--form-focus-border);
+    }
+  }
+
+  &.error {
+
+    .control,
+    .control-otp .group .symbol {
+      border-color: variable.getColor(--error);
+      box-shadow: none;
+
+      .suffix, .prefix {
+        border-color: variable.getColor(--error);
+        box-shadow: none;
+      }
+    }
+  }
+
+  &.disabled {
+
+    .control,
+    .control-otp .group .symbol {
+      background-color: variable.getColor(--form-disabled-bg);
+      border-color: variable.getColor(--form-disabled-border);
+      box-shadow: none;
+      pointer-events: none;
+      opacity: .8;
+
+      .suffix, .prefix {
+        color: variable.getColor(--form-text, .6);
+        border-color: variable.getColor(--form-disabled-border);
+        box-shadow: none;
+      }
+
+      > .prefix {
+        color: variable.getColor(--form-text, .6);
+      }
+
+      > .suffix {
+        color: variable.getColor(--form-text, .6);
+      }
+    }
+
+    @include variable.class(label) {
+      opacity: 0.6;
+      cursor: default;
+    }
+
+    @include variable.class(subscript) {
+
+      div {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &.loading:not(.disabled) {
+
+    .control {
+      border-color: variable.getColor(--form-border);
+      background-color: variable.getColor(--form-bg);
+      box-shadow: none;
+      pointer-events: none;
+      opacity: 1;
+    }
+
+    .overlay {
+      inset: 0;
+      background-color: variable.getColor(--form-bg);
+      color: variable.getColor(--form-text, .6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      z-index: 10;
+    }
+
+    @include variable.class(subscript) {
+      div {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+@include variable.class(label, true) {
+  margin-bottom: $margin-top;
+}
+
+@include variable.class(subscript, true) {
+  padding-top: $margin-bottom;
+
+  div {
+    transform: translateY(0);
+  }
+
+  &.active div {
+    transform: translateY(calc(100% + ($margin-bottom + 2px)));
+  }
+}

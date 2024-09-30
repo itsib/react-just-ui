@@ -6,13 +6,13 @@ import { glob } from 'glob';
 import { defineConfig, UserConfig } from 'vite';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import copy from 'vite-plugin-cp';
-import autoprefixer from 'autoprefixer';
-import postcssNesting from 'postcss-nesting';
-import postcssImport from 'postcss-import';
 import pkg from './package.json';
 import generatePackageJson from './plugins/vite-generate-package-json';
 import bundleReport from './plugins/vite-bundle-report';
 import themes from './plugins/vite-themes';
+import { getPrefixImporter } from './plugins/utils';
+
+const PREFIX = 'jj';
 
 export default defineConfig(async ({ mode }): Promise<UserConfig> => {
   const entries = await getEntries();
@@ -26,21 +26,16 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       },
     },
     define: {
+      PREFIX: JSON.stringify(PREFIX),
       'process.env.NODE_ENV': JSON.stringify(mode),
     },
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `$injectedColor: orange;`,
+          api: 'modern-compiler',
+          importers: [getPrefixImporter(PREFIX)],
         },
       },
-      // postcss: {
-      //   plugins: [
-      //     postcssImport(),
-      //     autoprefixer(),
-      //     postcssNesting(),
-      //   ],
-      // }
     },
     build: {
       minify: true,
@@ -76,9 +71,9 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
     plugins: [
       react(),
       themes({
-        configs: './themes',
-        prefix: 'jj',
-        include: ['./src/css/components/*'],
+        themes: resolve(__dirname, 'src/themes/*'),
+        varPrefix: PREFIX,
+        compress: false,
       }),
       libInjectCss(),
       generatePackageJson(),
@@ -94,7 +89,6 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       include: ['src/**/*.{spec,test}.{js,jsx,ts,tsx}'],
       globals: true,
       environment: 'node',
-      // setupFiles: 'tests/setup-tests.ts',
       restoreMocks: true,
     },
   }

@@ -1,4 +1,6 @@
-.jj.jj-radio {
+@use "css/mixins/variable";
+
+@include variable.class(radio, true) {
 
   .control-radio {
     margin: 5px 10px;
@@ -26,14 +28,14 @@
 
       .outline, .center {
         fill: none;
-        stroke: rgb(var(--jj-checkbox-border-rgb));
+        stroke: variable.getColor(--foreground);
         stroke-linecap: round;
         stroke-linejoin: round;
         stroke-width: 2px;
       }
 
       .center {
-        fill: rgb(var(--jj-checkbox-tick-rgb));
+        fill: variable.getColor(--foreground);
         opacity: 1;
         transform: scale(0,0);
         transform-origin: 12px 12px;
@@ -52,7 +54,7 @@
     input[type="radio"]:disabled + .radio {
 
       .outline {
-        stroke: rgb(var(--jj-muted-rgb));
+        stroke: variable.getColor(--muted);
       }
 
       .center {

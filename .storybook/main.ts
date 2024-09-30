@@ -1,7 +1,24 @@
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
+  core: {
+    disableTelemetry: true,
+    disableWhatsNewNotifications: true,
+    enableCrashReports: false,
+    crossOriginIsolated: true,
+  },
+  features: {
+    backgroundsStoryGlobals: false,
+    viewportStoryGlobals: false,
+  },
+  // refs: {
+  //   'react-just-ui': {
+  //     title: 'Just UI - components library for react',
+  //     url: 'https://github.com/itsib/react-just-ui',
+  //   },
+  // },
   stories: [
+    './stories/get-started.mdx',
     './stories/**/*.mdx',
     './stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'
   ],

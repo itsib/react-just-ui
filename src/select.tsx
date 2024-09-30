@@ -11,16 +11,20 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import type { BaseControlProps, SelectOption } from './types';
-import { inputCN } from './utils';
+import { inputCN, prefixedCN } from './intermal/css-class';
 import { Subscript } from './subscript';
 import { Label } from './label';
-import './select.css';
+import './select.scss';
 
 export interface SelectProps extends BaseControlProps<HTMLInputElement> {
   options: SelectOption[];
   loading?: boolean;
 }
 
+/**
+ * Select is a form control for selecting a value
+ * from a set of options, similar to the native \<select\> element.
+ */
 export const Select = forwardRef(function Select(
   props: SelectProps,
   ref: ForwardedRef<HTMLInputElement>,
@@ -83,10 +87,10 @@ export const Select = forwardRef(function Select(
       <Label id={id} label={label} />
 
       <div className="control" ref={controlRef} onClick={onClick}>
-        {loading && !disabled ? <div className="overlay"><span className="jj jj-spinner"/></div> : null}
+        {loading && !disabled ? <div className="overlay"><span className={prefixedCN('spinner', true)}/></div> : null}
         <input id={id} type="hidden" className="hidden-select" disabled={disabled} ref={ref} {..._props} />
 
-        <div className="jj jj-list-item">
+        <div className={prefixedCN('list-item', true)}>
           {activeIcon ? (
             <Icon icon={activeIcon} value={activeValue}/>
           ) : null}
@@ -138,7 +142,7 @@ export function SelectDropdown(props: SelectDropdownProps) {
     }
     const margin = 10;
     const padding = 4;
-    const itemHeight = 38;
+    const itemHeight = 40;
     const itemsDisplay = Math.min(options.length, 7);
     const centerX = rect.left + (rect.width / 2);
     const centerY = rect.top + (rect.height / 2);
@@ -203,11 +207,11 @@ export function SelectDropdown(props: SelectDropdownProps) {
   }, [points?.scrollY, open]);
 
   return (process || open) && rect && points ? createPortal(
-    <div className="jj jj-select-dropdown jj-scroll">
-      <div className="jj-overlay" aria-label="dropdown overlay" onClick={onClickOverlay}/>
+    <div className={prefixedCN('select-dropdown', 'scroll', true)}>
+      <div className={prefixedCN('overlay')} aria-label="dropdown overlay" onClick={onClickOverlay}/>
 
       <div
-        className={`jj jj-list ${dropdownClass}`}
+        className={`${prefixedCN('list', true)} ${dropdownClass}`}
         aria-label="dropdown"
         style={{
           top: `${points.top}px`,
@@ -239,7 +243,7 @@ export function Option(props: OptionProps) {
     <button
       id={active ? `${id}-active` : undefined}
       type="button"
-      className={`jj jj-list-item ${active ? 'active' : ''}`}
+      className={`${prefixedCN('list-item', true)} ${active ? 'active' : ''}`}
       value={value}
       onClick={() => onClick(value)}
     >
