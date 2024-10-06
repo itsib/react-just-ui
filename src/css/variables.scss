@@ -16,6 +16,9 @@ $dark: map.get($schemes, "dark");
 
   @include variable.create(--theme-invert, color.invert(map.get($scheme, 'theme')), "color");
 
+  // Buttons
+  @include variable.create(--btn-primary, color.invert(map.get($scheme, 'theme')), "color");
+
   // Switch
   @include variable.create(--switch-bg, map.get($scheme, 'switch'), "color");
 

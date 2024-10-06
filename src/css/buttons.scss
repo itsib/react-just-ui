@@ -1,5 +1,35 @@
 @use "mixins/variable";
+@use "sass:map";
+
+$schemes: (light: (), dark: ()) !default;
+$light: map.get($schemes, "light");
+$dark: map.get($schemes, "dark");
+$height: 40px !default;
+$padding-y: 0.5rem !default;
+$padding-x: 1rem !default;
+$border-width: 1px !default;
+$border-radius: .5em !default;
+
 
 @include variable.class(button, true) {
+  height: $height;
+  min-height: $height;
+  padding: $padding-y $padding-x;
+  font-weight: 600;
+  font-size: variable.get(--font-size-label);
+  line-height: 1.5;
+  border: $border-width solid variable.getColor(--btn-primary);
+  border-radius: $border-radius;
+  background-color: variable.getColor(--btn-primary);
+  transition: all .2s cubic-bezier(.4,0,.2,1);
 
+  &:hover {
+    background-color: color-mix(in srgb, variable.getColor(--btn-primary) 85%, variable.getColor(--theme) 15%);
+    border-color: variable.getColor(--btn-primary);
+  }
+
+  &.w-full {
+    width: 100%;
+    max-width: 100%;
+  }
 }

@@ -60,8 +60,6 @@ $font-size: (
 
 @use '../css/common';
 
-@use '../css/buttons';
-
 @use '../css/checkbox';
 
 @use '../css/form' with (
@@ -71,6 +69,15 @@ $font-size: (
   $margin-bottom: 2px,
   $padding-y: 0.25em,
   $padding-x: 0.75em,
+  $border-width: 1px,
+  $border-radius: .375em,
+);
+
+@use '../css/buttons' with (
+  $schemes: $schemes,
+  $height: 40px,
+  $padding-y: 0.5rem,
+  $padding-x: 1em,
   $border-width: 1px,
   $border-radius: .375em,
 );
