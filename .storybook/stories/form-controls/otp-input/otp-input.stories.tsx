@@ -2,6 +2,7 @@ import { OtpInput } from 'react-just-ui';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+import { ExtendedDemo } from './extended-demo';
 
 type Story = StoryObj<typeof OtpInput>;
 
@@ -27,14 +28,34 @@ export const Basic: Story = {
     label: 'Enter the code from the SMS',
     onChange: action('onChange'),
   },
-  render: function Render({label, id, disabled, layout, onChange}) {
+  render: function Render({ label, id, disabled, layout, onChange }) {
     const [data, setData] = useState('');
 
     return (
       <OtpInput id={id} label={label} disabled={disabled} layout={layout} value={data} onChange={event => {
-        setData(event.target.value);
-        onChange(event);
+        setData((event.target as any).value);
+        onChange?.(event);
       }}/>
     );
   }
+};
+
+export const Extended: Story = {
+  args: {
+    label: 'Enter the code from the SMS',
+    hint: 'This is an additional hint text',
+    layout: 'sss-sss',
+    disabled: false,
+  },
+  argTypes: {
+    disabled: {
+      type: 'boolean',
+    },
+    id: { table: { disable: true } },
+    error: { table: { disable: true } },
+    onChange: { table: { disable: true } },
+    ref: { table: { disable: true } },
+    value: { table: { disable: true } },
+  },
+  render: ({ label, disabled, layout, hint }) => <ExtendedDemo label={label as any} hint={hint} disabled={disabled} layout={layout} />
 };

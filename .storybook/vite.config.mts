@@ -16,6 +16,9 @@ export default defineConfig(async ({ mode, command }): Promise<UserConfig> => {
     define: {
       'process.env.NODE_ENV': JSON.stringify(mode),
     },
+    // build: {
+    //   so
+    // },
   })
 
 });

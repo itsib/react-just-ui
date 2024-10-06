@@ -3,7 +3,6 @@ import path from 'node:path';
 import { spawn } from 'child_process';
 
 const SRC_DIR = path.resolve(process.cwd(), 'src');
-const THEMES_DIR = path.resolve(process.cwd(), 'themes');
 
 function debounce<T>(callback: (value: T) => void, delay: number) {
   let _innerValue: T;
@@ -40,7 +39,6 @@ async function run() {
 
   runBuild(null);
   fs.watch(SRC_DIR, { recursive: true, signal: abort.signal }).on('change', runBuild);
-  fs.watch(THEMES_DIR, { recursive: true, signal: abort.signal }).on('change', runBuild);
 
   process.on('exit', () => {
     abort.abort();

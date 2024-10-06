@@ -1,4 +1,4 @@
-import { Textarea } from '../../../src/textarea';
+import { Textarea } from 'react-just-ui';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 

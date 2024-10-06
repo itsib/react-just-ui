@@ -1,0 +1,51 @@
+import { FC } from 'react';
+import { useForm } from 'react-hook-form';
+import { OtpInput } from 'react-just-ui/otp-input';
+
+export interface ExtendedProps {
+  label?: string;
+  hint?: string;
+  disabled?: boolean;
+  layout?: string;
+}
+
+export const ExtendedDemo: FC<ExtendedProps> = ({ label, hint, layout, disabled }) => {
+  const { register, handleSubmit, formState } = useForm<{ otp: string }>({
+    reValidateMode: 'onChange',
+    mode: 'onChange',
+    defaultValues: {
+      otp: '',
+    }
+  });
+  const { errors } = formState;
+
+  return (
+    <form onSubmit={handleSubmit(console.log)}>
+      <OtpInput
+        id="otp-input"
+        label={label}
+        hint={hint}
+        disabled={disabled}
+        layout={layout}
+        error={errors.otp}
+        {...register('otp', {
+          required: 'OTP code is required',
+          minLength: {
+            message: 'The OTP code consists of six characters',
+            value: 6,
+          }
+        })}
+      />
+
+      <div className="button-block">
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
+
+        <button type="reset" className="btn btn-primary">
+          Reset
+        </button>
+      </div>
+    </form>
+  );
+};

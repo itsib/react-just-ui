@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { ValidationError } from './types';
 import './subscript.scss';
 import { prefixedCN } from './intermal/css-class';
@@ -8,33 +8,41 @@ export interface ISubscript {
   hint?: string;
 }
 
-export const Subscript: FC<ISubscript> = ({ error }) => {
+export const Subscript: FC<ISubscript> = ({ error, hint }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const message = error && error.message || null;
 
+  const [messageCopy, setMessageCopy] = useState<string | null>(message);
+  const [hintCopy, setHintCopy] = useState<string | null>(hint || null);
+
   useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-
-    const div = element.firstChild as HTMLDivElement;
-
     if (message) {
-      div.innerHTML = message;
-      element.classList.add('active');
+      setMessageCopy(message);
     } else {
-      const timer = setTimeout(() => (div.innerHTML = ''), 200);
-      element.classList.remove('active');
+      const timer = setTimeout(() => setMessageCopy(null), 200);
 
       return () => {
-        div.innerHTML = '';
         clearTimeout(timer);
       };
     }
   }, [message]);
 
+  useEffect(() => {
+    if (hint) {
+      setHintCopy(hint);
+    } else {
+      const timer = setTimeout(() => setHintCopy(null), 200);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [hint]);
+
   return (
-    <div className={prefixedCN('subscript')} role="alert" ref={ref}>
-      <div />
+    <div className={prefixedCN('subscript', true)} role="alert" ref={ref}>
+      <div className={`error ${message ? 'active' : ''}`}>{message || messageCopy}</div>
+      <div className={`hint ${!message && !messageCopy && hint ? 'active' : ''}`}>{hint || hintCopy}</div>
     </div>
   )
 };

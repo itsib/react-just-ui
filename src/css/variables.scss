@@ -31,8 +31,6 @@ $dark: map.get($schemes, "dark");
   @include variable.create(--tooltip-text, map.get($scheme, 'foreground'), "color");
   @include variable.create(--tooltip-bg, map.get($scheme, 'theme'), "color");
   @include variable.create(--tooltip-border, color.invert(map.get($scheme, 'background'), 15%), "color");
-
-
 }
 
 html {
@@ -47,6 +45,7 @@ html {
   // Fontsize
   @include variable.create(--font-size-base, map.get($font-size, 'base'));
   @include variable.create(--font-size-label, map.get($font-size, 'label'));
+  @include variable.create(--font-size-sub, map.get($font-size, 'sub'));
   @include variable.create(--font-size-tooltip, map.get($font-size, 'tooltip'));
 
   // Z index

@@ -19,8 +19,8 @@ const config: StorybookConfig = {
   // },
   stories: [
     './stories/get-started.mdx',
-    './stories/**/*.mdx',
-    './stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'
+    './stories/**/**/*.mdx',
+    './stories/**/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
   addons: [
     '@storybook/addon-links',
@@ -35,6 +35,7 @@ const config: StorybookConfig = {
       builder: {
         viteConfigPath: './.storybook/vite.config.mts',
       },
+
     },
   },
   staticDirs: ['./public/'],

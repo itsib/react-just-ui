@@ -1,4 +1,4 @@
-import { Radio } from '../../../src/radio';
+import { Radio } from 'react-just-ui';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';

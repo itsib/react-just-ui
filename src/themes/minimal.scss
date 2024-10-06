@@ -28,9 +28,14 @@ $schemes: (
 );
 
 $font-size: (
-  'base': 1rem,
-  'label': .875rem,
-  'tooltip': 12px,
+    // Main font size
+    'base': 1rem,
+    // Form control label
+    'label': .875rem,
+    // Form control subscript (error, hint)
+    'sub': 12px,
+    // Tooltip
+    'tooltip': 12px,
 );
 
 @use "../css/variables" with (
@@ -46,7 +51,6 @@ $font-size: (
 );
 
 @use '../css/tooltip' with (
-  $font-size: 12px,
   $arrow-size: 0.5em,
   $indent: 2px,
   $hide-delay: 0s,
@@ -62,15 +66,13 @@ $font-size: (
 
 @use '../css/form' with (
   $schemes: $schemes,
-  $font-size: 1rem,
-  $font-size-label: .875rem,
   $height: 40px,
   $margin-top: 4px,
   $margin-bottom: 2px,
-  $padding-y: 0.25rem,
-  $padding-x: 0.75rem,
+  $padding-y: 0.25em,
+  $padding-x: 0.75em,
   $border-width: 1px,
-  $border-radius: 6px,
+  $border-radius: .375em,
 );
 
 @use '../css/list' with (

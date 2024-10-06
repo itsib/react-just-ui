@@ -55,6 +55,7 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
     }
     const mask: string[] = layout.split('').filter(el => ['d', 's', 'w'].includes(el as any));
     const maxLength = mask.length;
+    const lastIndex = maxLength - 1;
     const off = new Array<() => void>(maxLength);   // Callbacks for remove event listeners for each input
     const input = document.getElementById(id) as HTMLInputElement;  // The main input field where the entire code is written
     const inputsGroup = new Array<HTMLInputElement>(maxLength); // Text fields for each character of the code
@@ -64,8 +65,10 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
       inputsGroup[i] = document.getElementById(`${id}-${i}`) as HTMLInputElement;
     }
 
-    let value = input.value;
-    let blurFireTimer: any;
+    let active: number | null = null;
+    let skipBlurHandle = false;
+    let skipFocusHandle = false;
+    let skipChangeHandle = true;
 
     const testOtpCodeSymbol = (maskItem: string, symbol: string): boolean => {
       switch (maskItem) {
@@ -80,36 +83,124 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
       }
     };
 
+    const insertAll = (code: string) => {
+      for (let i = 0; i < maxLength; i++) {
+        const symbol = code.charAt(i);
+        if (symbol && inputsGroup[i]) {
+          inputsGroup[i].value = symbol;
+          active = i;
+        } else if (!symbol && inputsGroup[i]) {
+          inputsGroup[i].value = '';
+          active = i;
+        }
+      }
+      active = active == null ? lastIndex : active;
+
+      inputsGroup[active].focus();
+      inputsGroup[active].setSelectionRange(1, 1);
+
+      skipChangeHandle = false;
+      emitOnChange();
+    };
+
     const emitEnter = (event: KeyboardEvent) => {
+      emitOnChange();
       callbacksRef.current.onKeyDown?.(event as any);
     };
 
-    const emitCodeToMain = (code: string) => {
-      input.value = code;
-      const event = new Event('change');
-      input.dispatchEvent(event);
+    const getValue = () => {
+      let output = '';
+      for (let i = 0; i < maxLength; i++) {
+        const inputCell = inputsGroup[i];
+        const symbol = inputCell?.value;
+        if (!symbol) {
+          break;
+        }
+        output += symbol;
+      }
+      return output;
+    };
 
+    const emitOnChange = () => {
+      const event = new Event('change');
+      input.value = getValue();
+      input.dispatchEvent(event);
       callbacksRef.current.onChange?.(event as any);
     };
 
-    const focusNext = (index: number) => {
-      if (index < 0 || index >= maxLength) {
+    const emitOnBlur = () => {
+      const event = new Event('blur');
+      input.dispatchEvent(event);
+      callbacksRef.current.onBlur?.(event as any);
+    }
+
+    const addSymbol = (symbol: string) => {
+      if (active === null || !inputsGroup[active] || !symbol) {
         return;
       }
-      inputsGroup[index].focus();
+
+      const next = active + 1;
+      const nextInput = inputsGroup[next]
+      const currentInput = inputsGroup[active];
+
+      if (currentInput.value && !nextInput) {
+        return;
+      }
+      currentInput.value = symbol;
+      if (!skipChangeHandle) {
+        emitOnChange();
+      }
+
+
+      if (!nextInput) {
+        skipChangeHandle = false;
+        emitOnChange();
+        return;
+      }
+      setTimeout(() => {
+        active = next;
+        skipBlurHandle = true;
+        skipFocusHandle = true;
+        nextInput.focus();
+        nextInput.setSelectionRange(0, 1, 'forward');
+      }, 1);
     };
 
-    const insertAll = (code: string) => {
-      let output = '';
-      for (let i = 0; i < maxLength; i++) {
-        const symbol = code.charAt(i);
-        if (!symbol) return;
-        inputsGroup[i].focus();
-        inputsGroup[i].setSelectionRange(1, 1);
-        inputsGroup[i].value = symbol;
-        output += symbol;
+    const backspaceRemove = () => {
+      if (active === null) {
+        return;
       }
-      emitCodeToMain(output);
+      const currentInput = inputsGroup[active];
+      if (!currentInput) {
+        return;
+      }
+      currentInput.value = '';
+      skipChangeHandle = false;
+      emitOnChange();
+
+      const prev = active - 1;
+      const prevInput = inputsGroup[prev];
+      if (!prevInput) {
+        return;
+      }
+
+      setTimeout(() => {
+        active = prev;
+        skipBlurHandle = true;
+        skipFocusHandle = true;
+        prevInput.focus();
+        prevInput.setSelectionRange(0, 1, 'forward');
+      }, 1);
+    };
+
+    const resetHandler = () => {
+      active = null;
+      skipBlurHandle = false;
+      skipFocusHandle = false;
+      skipChangeHandle = true;
+      for (let i = 0; i < events.length; i++) {
+        inputsGroup[i].value = '';
+      }
     };
 
     const handlers: Record<string, any> = {
@@ -120,78 +211,83 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
 
         switch (event.inputType) {
           case 'insertText': {
-            if (!data || data.length !== 1 || !testOtpCodeSymbol(mask[index], data)) {
-              return event.preventDefault();
-            } else {
-              setTimeout(() => focusNext(index + 1), 1);
-              return;
+            if (data && data.length === 1 && testOtpCodeSymbol(mask[index], data)) {
+              addSymbol(data);
             }
+            break;
           }
           case 'deleteContentBackward': {
-            setTimeout(() => focusNext(index - 1), 1);
-            return;
+            backspaceRemove();
+            break;
           }
           case 'insertFromPaste': {
             if (data) {
-              const substring = data!.split('').filter((symbol, index) => testOtpCodeSymbol(mask[index], symbol)).join('');
-              if (substring) {
-                setTimeout(() => insertAll(substring), 1);
+              const code = data.trim().split('').filter((symbol, index) => testOtpCodeSymbol(mask[index], symbol)).join('');
+              if (code) {
+                insertAll(code);
               }
             }
-            event.preventDefault();
-            return;
+            break;
           }
           case 'historyUndo':
           case 'historyRedo':
-            event.preventDefault();
             break;
         }
+        return event.preventDefault();
       },
-      input: () => {
-        let output = '';
+      focusin: () => {
+        if (skipFocusHandle) {
+          skipFocusHandle = false;
+          return;
+        }
 
         for (let i = 0; i < maxLength; i++) {
-          output += inputsGroup[i].value;
+          const inputCell = inputsGroup[i];
+          const symbol = inputCell?.value;
+          if (!symbol && inputCell) {
+            active = i;
+            break;
+          }
         }
+        active = active === null ? lastIndex : active;
 
-        emitCodeToMain(output);
-      },
-      focusin: (event: FocusEvent) => {
-        if (event.relatedTarget) {
-          return;
-        }
-        clearTimeout(blurFireTimer);
-        const currentIndex = +(event.target as any).dataset.index;
-        const shouldIndex = value.length;
-        if (shouldIndex < currentIndex) {
-          focusNext(shouldIndex);
-          return;
-        }
-
-        const self = event.target as HTMLInputElement;
-        self.setSelectionRange(0, 1, 'forward');
+        const target = inputsGroup[active] as HTMLInputElement;
+        target.focus()
+        target.setSelectionRange(0, 1, 'forward');
       },
       blur: () => {
-        const event = new Event('blur');
-        input.dispatchEvent(event);
-        blurFireTimer = setTimeout(() => callbacksRef.current.onBlur?.(event as any), 100);
+        if (skipBlurHandle) {
+          skipBlurHandle = false;
+          return;
+        }
+
+        active = null;
+        emitOnChange();
+        emitOnBlur();
       },
       keydown(event: KeyboardEvent) {
-        const self = event.target as HTMLInputElement;
-        const index = self.dataset.index ? parseInt(self.dataset.index, 10) : 0;
-
-        if (event.key === 'ArrowLeft') {
-          setTimeout(() => focusNext(index - 1), 1);
-        }
-
-        else if (event.key === 'ArrowRight') {
-          setTimeout(() => focusNext(index + 1), 1);
-        }
-
-        else if (event.key === 'Enter') {
+        const newEvent = new KeyboardEvent('keydown', {
+          code: event.code,
+          isComposing: event.isComposing,
+          key: event.key,
+          location: event.location,
+          repeat: event.repeat,
+        });
+        input.dispatchEvent(newEvent);
+        if (event.key === 'Enter') {
           emitEnter(event);
         }
       },
+      keyup(event: KeyboardEvent) {
+        const newEvent = new KeyboardEvent('keydown', {
+          code: event.code,
+          isComposing: event.isComposing,
+          key: event.key,
+          location: event.location,
+          repeat: event.repeat,
+        });
+        input.dispatchEvent(newEvent);
+      }
     };
 
     const events = Object.keys(handlers);
@@ -210,17 +306,21 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
 
     Object.defineProperty(input, 'value', {
       get(): any {
-        return value;
+        return this._value || '';
       },
       set(_value: string) {
+        if (this._value === _value) return;
+
+        this._value = _value;
         for (let i = 0; i < inputsGroup.length; i++) {
-          inputsGroup[i].value = _value.charAt(i);
+          inputsGroup[i].value = this._value.charAt(i);
         }
-        value = _value;
       }
     });
 
+    input.addEventListener('reset', resetHandler);
     return () => {
+      input.removeEventListener('reset', resetHandler);
       off.forEach(el => el());
     };
   }, [id, layout]);
@@ -230,7 +330,7 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
       <Label id={id} label={label} />
 
       <div className="control-otp">
-        <input id={id} type="hidden" aria-invalid={error ? 'true' : 'false'} ref={ref} {..._props} />
+        <input id={id} type="hidden" aria-invalid={error ? 'true' : 'false'} ref={ref} {..._props} style={{ color: 'white', backgroundColor: 'transparent' }} />
 
         <div className="group">
           {elements}

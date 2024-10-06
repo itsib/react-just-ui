@@ -1,6 +1,5 @@
 @use "mixins/variable";
 
-$font-size: 12px !default;
 $arrow-size: 0.5em !default;
 $padding: 0.5em 0.75em !default;
 $indent: 2px !default;
@@ -9,7 +8,7 @@ $show-delay: .4s !default;
 $transition-duration: .2s !default;
 
 html {
-  --tooltip-font-size: #{$font-size};
+  --tooltip-font-size: #{variable.get(--font-size-tooltip)};
   --tooltip-padding: #{$padding};
   --tooltip-z-index: #{variable.get(--zi-tooltip)};
 }

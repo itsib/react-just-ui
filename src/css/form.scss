@@ -5,15 +5,13 @@
 $schemes: (light: (), dark: ()) !default;
 $light: map.get($schemes, "light");
 $dark: map.get($schemes, "dark");
-$font-size: 1rem !default;
-$font-size-label: .875rem !default;
 $height: 40px !default;
 $margin-top: 4px !default;
 $margin-bottom: 2px !default;
 $padding-y: 0.25rem !default;
 $padding-x: 0.75rem !default;
 $border-width: 1px !default;
-$border-radius: 6px !default;
+$border-radius: .5em !default;
 
 html {
   @include variable.create(--form-label, color.invert(map.get($light, 'foreground'), 10%), "color");
@@ -227,11 +225,15 @@ html {
 @include variable.class(subscript, true) {
   padding-top: $margin-bottom;
 
-  div {
-    transform: translateY(0);
-  }
 
-  &.active div {
-    transform: translateY(calc(100% + ($margin-bottom + 2px)));
+  .error, .hint {
+    opacity: 0;
+    transform: translateY(calc((100% * -1) - ($margin-bottom + 2px)));
+
+
+    &.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
