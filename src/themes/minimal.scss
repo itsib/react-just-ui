@@ -4,6 +4,7 @@ $schemes: (
       'black': rgb(0 0 0),
       'white': rgb(255 255 255),
       'accent': rgb(0 115 229),
+      'primary': rgb(24, 24, 27),
       'error': rgb(220 38 38),
       'background': rgb(255 255 255),
       'foreground': rgb(0 0 0),
@@ -17,6 +18,7 @@ $schemes: (
       'black': rgb(0 0 0),
       'white': rgb(255 255 255),
       'accent': rgb(0 115 229),
+      'primary': rgb(250, 250, 250),
       'error': rgb(240 28 28),
       'background': rgb(29 29 29),
       'foreground': rgb(255 255 255),
@@ -27,20 +29,12 @@ $schemes: (
   )
 );
 
-$font-size: (
-    // Main font size
-    'base': 1rem,
-    // Form control label
-    'label': .875rem,
-    // Form control subscript (error, hint)
-    'sub': 12px,
-    // Tooltip
-    'tooltip': 12px,
-);
-
 @use "../css/variables" with (
   $schemes: $schemes,
-  $font-size: $font-size,
+  $font-size-base: 1rem,
+  $font-size-label: .875rem,
+  $font-size-sub: 12px,
+  $font-size-tooltip: 12px,
 );
 
 @use '../css/animations';
@@ -74,12 +68,13 @@ $font-size: (
 );
 
 @use '../css/buttons' with (
-  $schemes: $schemes,
   $height: 40px,
   $padding-y: 0.5rem,
   $padding-x: 1em,
   $border-width: 1px,
   $border-radius: .375em,
+  $ring-width: 1px,
+  $ring-offset: 2px,
 );
 
 @use '../css/list' with (

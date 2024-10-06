@@ -3,7 +3,7 @@ import { Input } from 'react-just-ui/input'
 import { useState } from 'react';
 
 interface ButtonControls {
-  style: string
+  disabled: boolean;
 }
 
 const description = `
@@ -24,6 +24,17 @@ const meta = {
         component: description,
       }
     },
+  },
+  argTypes: {
+    disabled: {
+      name: 'disabled',
+      description: 'Disable button',
+      type: { name: 'boolean' },
+      control: { type: 'boolean' },
+    },
+  },
+  args: {
+    disabled: false,
   }
 } satisfies Meta;
 
@@ -33,14 +44,15 @@ type Story = StoryObj<ButtonControls>;
 
 export const Basic: Story = {
   args: {
-    style: 'primary',
+    disabled: false,
   },
-  render: function Render() {
+
+  render: function Render({ disabled }) {
     const [value, setValue] = useState('')
     return (
       <section>
         <Input id="input-1" value={value} onChange={e => setValue((e.target as any).value)}  />
-        <button className="jj jj-button w-full">
+        <button className="jj jj-button w-full" disabled={disabled}>
           <span>Submit</span>
         </button>
       </section>

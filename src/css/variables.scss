@@ -1,11 +1,15 @@
 @use "sass:map";
 @use 'sass:color';
 @use "mixins/variable";
+@use "mixins/utils";
 
 $schemes: (light: (), dark: ()) !default;
-$font-size: () !default;
 $light: map.get($schemes, "light");
 $dark: map.get($schemes, "dark");
+$font-size-base: 1rem !default;     // Main font size
+$font-size-label: .875rem !default; // Form control label
+$font-size-sub: 12px !default;      // Form control subscript (error, hint)
+$font-size-tooltip: 12px !default;  // Tooltip
 
 @mixin defineColors ($name, $schemes) {
   $scheme: map.get($schemes, $name);
@@ -14,10 +18,13 @@ $dark: map.get($schemes, "dark");
     @include variable.create($name, $value, "color");
   }
 
-  @include variable.create(--theme-invert, color.invert(map.get($scheme, 'theme')), "color");
+  $theme-color: map.get($scheme, 'theme');
+  $invert-theme-color: color.invert($theme-color);
+  @include variable.create(--theme-invert, $invert-theme-color, "color");
 
   // Buttons
-  @include variable.create(--btn-primary, color.invert(map.get($scheme, 'theme')), "color");
+  @include variable.create(--btn-primary-bg, map.get($scheme, 'primary'), "color");
+  @include variable.create(--btn-primary-fg, utils.grtTextColor(map.get($scheme, 'primary'), map.get($scheme, 'foreground')), "color");
 
   // Switch
   @include variable.create(--switch-bg, map.get($scheme, 'switch'), "color");
@@ -46,10 +53,10 @@ html.dark {
 
 html {
   // Fontsize
-  @include variable.create(--font-size-base, map.get($font-size, 'base'));
-  @include variable.create(--font-size-label, map.get($font-size, 'label'));
-  @include variable.create(--font-size-sub, map.get($font-size, 'sub'));
-  @include variable.create(--font-size-tooltip, map.get($font-size, 'tooltip'));
+  @include variable.create(--font-size-base, $font-size-base);
+  @include variable.create(--font-size-label, $font-size-label);
+  @include variable.create(--font-size-sub, $font-size-sub);
+  @include variable.create(--font-size-tooltip, $font-size-tooltip);
 
   // Z index
   @include variable.create(--zi-dropdown, 1000);

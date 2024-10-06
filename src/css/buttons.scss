@@ -9,23 +9,43 @@ $padding-y: 0.5rem !default;
 $padding-x: 1rem !default;
 $border-width: 1px !default;
 $border-radius: .5em !default;
-
+$ring-width: 1px !default;
+$ring-offset: 2px !default;
 
 @include variable.class(button, true) {
   height: $height;
   min-height: $height;
   padding: $padding-y $padding-x;
+  color: variable.getColor(--btn-primary-fg);
   font-weight: 600;
   font-size: variable.get(--font-size-label);
   line-height: 1.5;
-  border: $border-width solid variable.getColor(--btn-primary);
+  user-select: none;
+  white-space: nowrap;
+  border: $border-width solid variable.getColor(--btn-primary-bg);
   border-radius: $border-radius;
-  background-color: variable.getColor(--btn-primary);
+  background-color: variable.getColor(--btn-primary-bg);
   transition: all .2s cubic-bezier(.4,0,.2,1);
 
   &:hover {
-    background-color: color-mix(in srgb, variable.getColor(--btn-primary) 85%, variable.getColor(--theme) 15%);
-    border-color: variable.getColor(--btn-primary);
+    background-color: color-mix(in srgb, variable.getColor(--btn-primary-bg) 92%, variable.getColor(--btn-primary-fg) 8%);
+    border-color: variable.getColor(--btn-primary-bg);
+  }
+
+  &:active {
+    background-color: color-mix(in srgb, variable.getColor(--btn-primary-bg) 95%, variable.getColor(--btn-primary-fg) 15%);
+    border-color: variable.getColor(--btn-primary-bg);
+    transition-duration: 0s;
+  }
+
+  &:disabled, &.disabled {
+    background-color: variable.getColor(--btn-primary-bg);
+    border-color: variable.getColor(--btn-primary-bg);
+    filter: #{"grayscale()"};
+    opacity: .8;
+    box-shadow: none;
+    pointer-events: none;
+    cursor: default;
   }
 
   &.w-full {
