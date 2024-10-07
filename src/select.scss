@@ -11,6 +11,10 @@
       margin: 0;
       position: absolute;
     }
+
+    @include variable.class(list-item) {
+      height: 100%;
+    }
   }
 }
 
@@ -19,7 +23,7 @@
   @include variable.class(list) {
     overflow-y: auto;
     scroll-snap-type: y mandatory;
-    box-shadow: 0 0 2px 1px variable.getColor(--black, 0.1);
+    box-shadow: 0 0 8px 3px variable.getColor(--black, 0.15);
     position: absolute;
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -37,6 +41,7 @@
   }
 
   @include variable.class(list-item) {
+
     scroll-snap-align: start;
     cursor: pointer;
   }

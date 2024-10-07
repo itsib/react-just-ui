@@ -49,6 +49,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       emptyOutDir: false,
       outDir: resolve(__dirname, 'dist'),
       rollupOptions: {
+        treeshake: 'smallest',
         external: [
           'react/jsx-runtime',
           'react/jsx-dev-runtime',
