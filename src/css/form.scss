@@ -14,6 +14,8 @@ $border-width: 1px !default;
 $border-radius: .5em !default;
 
 html {
+  --__prefix__-form-label: color.invert(map.get($light, 'foreground'), 10%);
+
   @include variable.create(--form-label, color.invert(map.get($light, 'foreground'), 10%), "color");
   @include variable.create(--form-text, map.get($light, 'foreground'), "color");
   @include variable.create(--form-placeholder, color.invert(map.get($light, 'foreground'), 40%), "color");

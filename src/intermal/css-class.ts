@@ -9,7 +9,7 @@ import { cn } from '../utils';
  * @param rowReverse
  */
 export function switchCN(type: string, className?: string, disabled?: boolean, rowReverse?: boolean): string {
-  return cn(`${PREFIX} ${PREFIX}-${type}`, className, {
+  return cn(`__prefix__ __prefix__-${type}`, className, {
     row: !rowReverse,
     'row-reverse': !!rowReverse,
     disabled: !!disabled,

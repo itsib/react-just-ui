@@ -1,64 +1,67 @@
-@use "css/mixins/variable";
+@use "css/mixins/toggler";
 
-@include variable.class(radio, true) {
+.__prefix__.__prefix__-radio {
 
-  .control-radio {
-    margin: 5px 10px;
-    position: relative;
-    cursor: pointer;
-    flex-shrink: 0;
-    flex-grow: 0;
+  @include toggler.layout {
 
-    input[type="radio"] {
-      inset: 0;
-      margin: 0;
-      width: inherit;
-      height: inherit;
-      position: absolute;
-      appearance: none;
-      opacity: 0;
-      z-index: 2;
-    }
+    .control-toggler {
+      margin: 5px 10px;
+      position: relative;
+      cursor: pointer;
+      flex-shrink: 0;
+      flex-grow: 0;
 
-    .radio {
-      width: inherit;
-      height: inherit;
-      position: absolute;
-      z-index: 1;
-
-      .outline, .center {
-        fill: none;
-        stroke: variable.getColor(--foreground);
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-width: 2px;
+      input[type="radio"] {
+        inset: 0;
+        margin: 0;
+        width: inherit;
+        height: inherit;
+        position: absolute;
+        appearance: none;
+        opacity: 0;
+        z-index: 2;
       }
 
-      .center {
-        fill: variable.getColor(--foreground);
-        opacity: 1;
-        transform: scale(0,0);
-        transform-origin: 12px 12px;
-        transition: all .4s cubic-bezier(.45,1.8,.5,.75);
+      .radio {
+        width: inherit;
+        height: inherit;
+        position: absolute;
+        z-index: 1;
+
+        .outline, .center {
+          fill: none;
+          stroke: rgb(var(--__prefix__c-radio));
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          stroke-width: 2px;
+        }
+
+        .center {
+          fill: rgb(var(--__prefix__c-radio));
+          opacity: 1;
+          transform: scale(0,0);
+          transform-origin: 12px 12px;
+          transition: all .4s cubic-bezier(.45,1.8,.5,.75);
+        }
       }
-    }
 
-    input[type="radio"]:checked + .radio, .radio.active {
+      input[type="radio"]:checked + .radio, .radio.active {
 
-      .center {
-        opacity: 1;
-        transform: scale(1,1);
-      }
-    }
-
-    input[type="radio"]:disabled + .radio {
-
-      .outline {
-        stroke: variable.getColor(--muted);
+        .center {
+          opacity: 1;
+          transform: scale(1,1);
+        }
       }
 
-      .center {
-        display: none;
+      input[type="radio"]:disabled + .radio {
+
+        .outline {
+          stroke: rgb(var(--__prefix__c-radio-disabled));
+        }
+
+        .center {
+          display: none;
+        }
       }
     }
   }

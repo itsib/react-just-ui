@@ -2,7 +2,6 @@ import { CSSProperties, ForwardedRef, forwardRef } from 'react';
 import { BaseCheckedControlProps } from './types';
 import { Label } from './label';
 import { Subscript } from './subscript';
-import { switchCN } from './intermal/css-class';
 import './switch.scss';
 
 const RATIO = 1.85;
@@ -16,18 +15,18 @@ export const Switch = forwardRef(function Switch(
 
   return (
     <div
-      className={switchCN('switch', className, disabled, rowReverse)}
+      className={`__prefix__ __prefix__-switch ${className || ''} ${disabled ? 'disabled' : ''} ${rowReverse ? 'row-reverse' : 'row'}`}
       style={{
-        '--switch-height': `${size}px`,
-        '--switch-width': `${Math.round(size * RATIO / 2) * 2}px`,
-        '--switch-ratio': `${RATIO}`,
-        '--switch-padding': `${PADDING}px`,
-        '--switch-thumb-size': `${size - (PADDING * 2)}px`
+        '--__prefix__-switch-height': `${size}px`,
+        '--__prefix__-switch-width': `${Math.round(size * RATIO / 2) * 2}px`,
+        '--__prefix__-switch-ratio': `${RATIO}`,
+        '--__prefix__-switch-padding': `${PADDING}px`,
+        '--__prefix__-switch-thumb-size': `${size - (PADDING * 2)}px`
       } as CSSProperties}
     >
       <Label id={id} label={label} />
 
-      <div className="control-switch">
+      <div className="control-toggler">
         <input id={id} type="checkbox" role="checkbox" disabled={disabled} ref={ref} {...rest}/>
         <div className="switch">
           <div className="thumb"/>

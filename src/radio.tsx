@@ -2,7 +2,6 @@ import { ForwardedRef, forwardRef } from 'react';
 import { BaseCheckedControlProps } from './types';
 import { Label } from './label';
 import { Subscript } from './subscript';
-import { switchCN } from './intermal/css-class';
 import './radio.scss';
 
 export interface RadioProps extends Omit<BaseCheckedControlProps<HTMLInputElement>, 'value'> {
@@ -41,10 +40,10 @@ export const Radio = forwardRef(function Checkbox(
   const { id, label, hint, className, rowReverse, size = 18, error, disabled, ...props } = _props;
 
   return (
-    <div className={switchCN('radio', className, disabled, rowReverse)}>
+    <div className={`__prefix__ __prefix__-radio ${className || ''} ${disabled ? 'disabled' : ''} ${rowReverse ? 'row-reverse' : 'row'}`}>
       <Label id={id} label={label} />
 
-      <div className="control-radio" style={{ width: `${size}px`, height: `${size}px` }}>
+      <div className="control-toggler" style={{ width: `${size}px`, height: `${size}px` }}>
         <input id={id} type="radio" role="radio" disabled={disabled} ref={_ref} {...props} />
 
         <svg className="radio" viewBox="0 0 24 24" version="1.1"

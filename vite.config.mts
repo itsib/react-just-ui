@@ -10,6 +10,7 @@ import pkg from './package.json';
 import generatePackageJson from './plugins/vite-generate-package-json';
 import bundleReport from './plugins/vite-bundle-report';
 import themes from './plugins/vite-themes';
+import replacer from './plugins/vite-replacer';
 import { getPrefixImporter } from './plugins/utils';
 
 const PREFIX = 'jj';
@@ -71,6 +72,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       },
     },
     plugins: [
+      replacer({ prefix: PREFIX }),
       react(),
       themes({
         themes: resolve(__dirname, 'src/themes/*'),

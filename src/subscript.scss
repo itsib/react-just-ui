@@ -1,7 +1,8 @@
 @use "css/mixins/variable";
 
-@include variable.class(subscript, true) {
-  height: calc(variable.get(--font-size-sub) + 4px);
+.__prefix__.__prefix__-subscript {
+  height: calc(var(--__prefix__v-form-font-sub) + 4px);
+  padding-top: var(--__prefix__v-form-margin-bottom);
   line-height: 1.4;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -13,18 +14,23 @@
 
   .error, .hint  {
     top: 2px;
-    font-size: variable.get(--font-size-sub);
-    transition:
-        transform .2s ease-out,
-        opacity .15s ease-out;
+    font-size: var(--__prefix__v-form-font-sub);
+    opacity: 0;
+    transform: translateY(calc((100% * -1) - (var(--__prefix__v-form-margin-bottom) + 2px)));
+    transition: transform .2s ease-out, opacity .15s ease-out;
     position: absolute;
+
+    &.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .error {
-    color: variable.getColor(--error);
+    color: rgb(var(--__prefix__c-error));
   }
 
   .hint {
-    color: variable.getColor(--foreground, 0.7);
+    color: rgb(var(--__prefix__c-form-label) / .7);
   }
 }

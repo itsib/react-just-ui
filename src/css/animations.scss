@@ -27,11 +27,11 @@
   }
 }
 
-@keyframes #{variable.$prefix}-checkbox-checked {
-  from {
-    stroke-dashoffset: 24;
+@keyframes #{variable.$prefix}-button-loader {
+  0% {
+    background-position: 26px 0;
   }
-  to {
-    stroke-dashoffset: 0;
+  100% {
+    background-position: 0 0;
   }
 }

@@ -1,67 +1,70 @@
-@use "css/mixins/variable";
+@use "css/mixins/toggler";
 
-@include variable.class(switch, true) {
+.__prefix__.__prefix__-switch {
 
-  .control-switch {
-    height: var(--switch-height);
-    width: var(--switch-width);
-    aspect-ratio: var(--switch-ratio);
-    cursor: pointer;
-    user-select: none;
-    position: relative;
-    overflow: hidden;
-    flex-shrink: 0;
-    flex-grow: 0;
+  @include toggler.layout {
 
-    input[type="checkbox"] {
-      inset: 0;
-      margin: 0;
-      padding: 0;
+    .control-toggler {
+      height: var(--__prefix__-switch-height);
+      width: var(--__prefix__-switch-width);
+      aspect-ratio: var(--__prefix__-switch-ratio);
       cursor: pointer;
-      position: absolute;
-      opacity: 0;
-      z-index: 3;
-    }
+      user-select: none;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+      flex-grow: 0;
 
-    .switch {
-      inset: 0;
-      display: block;
-      position: absolute;
-      background-color: variable.getColor(--switch-bg);
-      transition: background-color .1s linear;
-      border-radius: 99999999px;
+      input[type="checkbox"] {
+        inset: 0;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+        position: absolute;
+        opacity: 0;
+        z-index: 3;
+      }
 
-      .thumb {
-        top: var(--switch-padding);
-        left: var(--switch-padding);
-        width: var(--switch-thumb-size);
-        height: var(--switch-thumb-size);
-        aspect-ratio: 1/1;
-        border-radius: 50%;
-        background-color: variable.getColor(--white);
-        box-shadow: 0 0 2px 1px variable.getColor(--black, .1);
-        transition: left .1s linear;
+      .switch {
+        inset: 0;
         display: block;
         position: absolute;
-        z-index: 2;
+        background-color: rgb(var(--__prefix__c-switch-bg));
+        transition: background-color .1s linear;
+        border-radius: 99999999px;
+
+        .thumb {
+          top: var(--__prefix__-switch-padding);
+          left: var(--__prefix__-switch-padding);
+          width: var(--__prefix__-switch-thumb-size);
+          height: var(--__prefix__-switch-thumb-size);
+          aspect-ratio: 1/1;
+          border-radius: 50%;
+          background-color: rgb(var(--__prefix__c-switch-thumb));
+          box-shadow: 0 0 2px 1px rgb(var(--__prefix__c-black), .1);
+          transition: left .1s linear;
+          display: block;
+          position: absolute;
+          z-index: 2;
+        }
       }
-    }
 
-    input[type="checkbox"]:checked + .switch {
-      background-color: variable.getColor(--accent);
+      input[type="checkbox"]:checked + .switch {
+        background-color: rgb(var(--__prefix__c-switch-active));
 
-      .thumb {
-        left: calc(var(--switch-width) - var(--switch-thumb-size) - var(--switch-padding));
+        .thumb {
+          left: calc(var(--__prefix__-switch-width) - var(--__prefix__-switch-thumb-size) - var(--__prefix__-switch-padding));
+        }
       }
-    }
 
-    input[type="checkbox"]:disabled {
-      cursor: default;
-    }
+      input[type="checkbox"]:disabled {
+        cursor: default;
+      }
 
-    input[type="checkbox"]:disabled + .switch {
-      background-color: variable.getColor(--muted);
-      opacity: .8;
+      input[type="checkbox"]:disabled + .switch {
+        background-color: rgb(var(--__prefix__c-switch-disabled));
+        opacity: .8;
+      }
     }
   }
 }

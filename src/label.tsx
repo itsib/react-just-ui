@@ -1,6 +1,5 @@
 import type  { FC, ReactNode } from 'react';
 import './label.scss';
-import { prefixedCN } from './intermal/css-class';
 
 export interface LabelProps {
   id: string;
@@ -10,7 +9,7 @@ export interface LabelProps {
 
 export const Label: FC<LabelProps> = ({ id, label, required }) => {
   return label ? (
-    <label htmlFor={id} className={prefixedCN('label', true)}>
+    <label htmlFor={id} className="__prefix__ __prefix__-label">
       <>{label}</>
       {required ? <span className="required-marker">*</span> : null}
     </label>

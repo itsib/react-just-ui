@@ -11,7 +11,7 @@ $schemes: (
       'active': rgb(38 38 38),
       'border': rgb(208 208 211),
       'muted': rgb(220 220 220),
-      'switch': rgb(228 228 231),
+      'switch': rgb(155, 155, 159),
   ),
   dark: (
       'theme': rgb(0 0 0),
@@ -31,10 +31,23 @@ $schemes: (
 
 @use "../css/variables" with (
   $schemes: $schemes,
-  $font-size-base: 1rem,
-  $font-size-label: .875rem,
-  $font-size-sub: 12px,
-  $font-size-tooltip: 12px,
+  $form-height: 40px,
+  $form-margin: ('top': 4px, 'bottom': 2px),
+  $form-padding: ('x': .75em, 'y': .25em),
+  $form-border: ('width': 1px, 'radius': .375em),
+  $form-font: (
+    'base': 1rem,
+    'label': .875rem,
+    'sub': 12px,
+  ),
+  $tooltip: (
+    'font-size': 12px,
+    'arrow-size': 0.5em,
+    'indent': 2px,
+    'hide-delay': 0s,
+    'show-delay': .4s,
+    'duration': .2s,
+  ),
 );
 
 @use '../css/animations';
@@ -54,18 +67,16 @@ $schemes: (
 
 @use '../css/common';
 
-@use '../css/checkbox';
-
-@use '../css/form' with (
-  $schemes: $schemes,
-  $height: 40px,
-  $margin-top: 4px,
-  $margin-bottom: 2px,
-  $padding-y: 0.25em,
-  $padding-x: 0.75em,
-  $border-width: 1px,
-  $border-radius: .375em,
-);
+//@use '../css/form' with (
+//  $schemes: $schemes,
+//  $height: 40px,
+//  $margin-top: 4px,
+//  $margin-bottom: 2px,
+//  $padding-y: 0.25em,
+//  $padding-x: 0.75em,
+//  $border-width: 1px,
+//  $border-radius: .375em,
+//);
 
 @use '../css/buttons' with (
   $height: 40px,
@@ -77,12 +88,12 @@ $schemes: (
   $ring-offset: 2px,
 );
 
-@use '../css/list' with (
-  $item-height: 40px,
-  $item-padding: 0.25rem 0.75rem,
-  $border-radius: 6px,
-  $border: none,
-);
+//@use '../css/list' with (
+//  $item-height: 40px,
+//  $item-padding: 0.25rem 0.75rem,
+//  $border-radius: 6px,
+//  $border: none,
+//);
 
 @use '../css/spinner' with (
   $size: 40px,

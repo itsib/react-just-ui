@@ -1,50 +1,50 @@
-@use "mixins/variable";
+@mixin layout {
 
-@include variable.class {
+  @content;
 
   &.row, &.row-reverse {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
 
-    @include variable.class(label) {
+    .__prefix__-label {
       margin-bottom: 0;
       user-select: none;
     }
 
-    @include variable.class(subscript) {
+    .__prefix__-subscript {
       width: 100%;
     }
   }
 
   &.row {
 
-    @include variable.class(label) {
+    .__prefix__-label {
       order: 2;
     }
 
-    .control-switch, .control-checkbox, .control-radio {
+    .control-toggler {
       margin-right: 15px;
       order: 1;
     }
 
-    @include variable.class(subscript) {
+    .__prefix__-subscript {
       order: 3;
     }
   }
 
   &.row-reverse {
 
-    @include variable.class(label) {
+    .__prefix__-label {
       order: 1;
     }
 
-    .control-switch, .control-checkbox, .control-radio {
+    .control-toggler {
       margin-left: 15px;
       order: 2;
     }
 
-    @include variable.class(subscript) {
+    .__prefix__-subscript {
       order: 3;
     }
   }

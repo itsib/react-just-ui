@@ -23,18 +23,25 @@ $prefix: #{config.$prefix};
   }
 }
 
-@mixin create($key, $value, $type: "value") {
+@mixin create($key, $value, $type: "variable") {
   $keyPrefix: string.slice($key, 0, 2);
 
   @if $keyPrefix == "--" {
     $key: string.slice($key, 3);
   }
-  $color: "";
+  $suffix: "";
   @if $type == "color" {
-    $color: "-c";
+    $suffix: "c";
     $value: math.round(color.channel($value, "red")) math.round(color.channel($value, "green")) math.round(color.channel($value, "blue"));
   }
-  --#{$prefix}#{$color}-#{$key}: #{$value};
+  @if $type == "z-index" {
+    $suffix: "z";
+  }
+  @if $type == "variable" {
+    $suffix: "v";
+  }
+
+  --#{$prefix}#{$suffix}-#{$key}: #{$value};
 }
 
 @function get($key) {

@@ -1,5 +1,73 @@
-@use "css/mixins/variable";
+@use "./css/mixins/forms";
+@use "./css/mixins/spinner";
 
-@include variable.class(input, true) {
-  display: block;
+.__prefix__.__prefix__-input {
+
+  @include forms.control(".control", input, "var(--__prefix__v-form-padding-y) var(--__prefix__v-form-padding-x)") {
+
+    .prefix, .suffix {
+      padding: 0 var(--__prefix__v-form-padding-x);
+      color: rgb(var(--__prefix__c-form-text));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+      user-select: none;
+      box-shadow: none;
+      white-space: nowrap;
+      transition: inherit;
+      font-size: inherit;
+    }
+
+    > .prefix {
+      border-radius: calc(var(--__prefix__v-form-border-radius) - 1px) 0 0 calc(var(--__prefix__v-form-border-radius) - 1px);
+      border-right: var(--__prefix__v-form-border-width) solid rgb(var(--__prefix__c-form-border));
+    }
+
+    > .suffix {
+      border-radius: 0 calc(var(--__prefix__v-form-border-radius) - 1px) calc(var(--__prefix__v-form-border-radius) - 1px) 0;
+      border-left: var(--__prefix__v-form-border-width) solid rgb(var(--__prefix__c-form-border));
+    }
+  }
+
+  @include forms.focus("&:focus-within", ".control") {
+
+    .suffix, .prefix {
+      background-color: rgb(var(--__prefix__c-form-focus-bg));
+      border-color: rgb(var(--__prefix__c-form-focus-border));
+      box-shadow: 0 0 2px 0 rgb(var(--__prefix__c-form-focus-border)),
+      0 0 2px -1px inset rgb(var(--__prefix__c-form-focus-border));
+    }
+  }
+
+  @include forms.error("&.error", ".control") {
+
+    .suffix, .prefix {
+      border-color: rgb(var(--__prefix__c-error));
+      box-shadow: none;
+    }
+  }
+
+  @include forms.disabled("&.disabled", ".control") {
+
+    .suffix, .prefix {
+      color: rgb(var(--__prefix__c-form-text) / .6);
+      border-color: rgb(var(--__prefix__c-form-disabled-border));
+      background-color: rgb(var(--__prefix__c-form-disabled-bg));
+      box-shadow: none;
+    }
+
+    > .prefix {
+      color: rgb(var(--__prefix__c-form-text) / .6);
+    }
+
+    > .suffix {
+      color: rgb(var(--__prefix__c-form-text) / .6);
+    }
+  }
+
+  @include forms.loading("&.loading:not(.disabled)", ".control") {
+
+    @include spinner.spinner(".overlay", 7px);
+  }
 }

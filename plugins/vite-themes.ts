@@ -17,7 +17,7 @@ export interface ThemesGeneratorConfig {
   compress?: boolean;
 }
 
-export default async function themes(config?: ThemesGeneratorConfig): Promise<Plugin> {
+export default function themes(config?: ThemesGeneratorConfig): Plugin {
   const { themes, varPrefix = '', compress } = config || {};
   const projectRootDir = resolve(import.meta.dirname, '..');
   const themesDir = themes && isAbsolute(themes) ? themes : join(projectRootDir, (themes || './themes/*'));

@@ -1,6 +1,5 @@
 import { type ForwardedRef, forwardRef, useEffect, type ReactNode } from 'react';
 import type { BaseControlProps } from './types';
-import { inputCN, prefixedCN } from './intermal/css-class';
 import { Subscript } from './subscript';
 import { Label } from './label';
 import './input.scss';
@@ -80,11 +79,11 @@ export const Input = forwardRef(function Input(
   }, [_type, id]);
 
   return (
-    <div className={inputCN('input', className, loading, disabled, error)}>
+    <div className={`__prefix__ __prefix__-input ${className || ''} ${disabled ? 'disabled' : ''} ${loading ? 'loading' : ''} ${error ? 'error' : ''}`}>
       <Label id={id} label={label} />
 
       <div className="control">
-        {!disabled && loading ? <div className="overlay"><span className={prefixedCN('spinner', true)}/></div> : null}
+        {!disabled && loading ? <div className="overlay"></div> : null}
         {prefix ? typeof prefix === 'string' ? <div className="prefix">{prefix}</div> : prefix : null}
         <input id={id} type={type} disabled={disabled} ref={ref} {..._props} />
         {suffix ? typeof suffix === 'string' ? <div className="suffix">{suffix}</div> : suffix : null}

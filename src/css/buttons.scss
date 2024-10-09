@@ -1,51 +1,101 @@
 @use "mixins/variable";
 @use "sass:map";
 
-$schemes: (light: (), dark: ()) !default;
-$light: map.get($schemes, "light");
-$dark: map.get($schemes, "dark");
 $height: 40px !default;
 $padding-y: 0.5rem !default;
 $padding-x: 1rem !default;
 $border-width: 1px !default;
-$border-radius: .5em !default;
+$border-radius: .375em   !default;
 $ring-width: 1px !default;
 $ring-offset: 2px !default;
+
+// Button primary
+@include variable.class(button, true) {
+
+  &.primary {
+    --button-text-color: #{variable.getColor(--btn-primary-fg)};
+    --button-border-color: #{variable.getColor(--btn-primary-bg)};
+    --button-background-color: #{variable.getColor(--btn-primary-bg)};
+  }
+
+  &.primary:hover {
+    --button-background-color: color-mix(in srgb, #{variable.getColor(--btn-primary-bg)} 85%, #{variable.getColor(--btn-primary-fg)} 15%);
+    --button-border-color: #{variable.getColor(--btn-primary-bg)};
+  }
+
+  &.primary:active {
+    --button-background-color: color-mix(in srgb, #{variable.getColor(--btn-primary-bg)} 95%, #{variable.getColor(--btn-primary-fg)} 5%);
+    --button-border-color: #{variable.getColor(--btn-primary-bg)};
+  }
+
+  &.primary:disabled {
+    --button-background-color: #{variable.getColor(--btn-primary-bg)};
+    --button-border-color: #{variable.getColor(--btn-primary-bg)};
+  }
+}
+
+// Button secondary
+@include variable.class(button, true) {
+
+  &.secondary {
+    --button-text-color: #{variable.getColor(--btn-primary-fg)};
+    --button-border-color: #{variable.getColor(--btn-primary-bg)};
+    --button-background-color: #{variable.getColor(--btn-primary-bg)};
+  }
+
+  &.secondary:hover {
+    --button-background-color: color-mix(in srgb, #{variable.getColor(--btn-primary-bg)} 85%, #{variable.getColor(--btn-primary-fg)} 15%);
+    --button-border-color: #{variable.getColor(--btn-primary-bg)};
+  }
+
+  &.secondary:active {
+    --button-background-color: color-mix(in srgb, #{variable.getColor(--btn-primary-bg)} 95%, #{variable.getColor(--btn-primary-fg)} 5%);
+    --button-border-color: #{variable.getColor(--btn-primary-bg)};
+  }
+
+  &.secondary:disabled {
+    --button-background-color: #{variable.getColor(--btn-primary-bg)};
+    --button-border-color: #{variable.getColor(--btn-primary-bg)};
+  }
+}
 
 @include variable.class(button, true) {
   height: $height;
   min-height: $height;
   padding: $padding-y $padding-x;
-  color: variable.getColor(--btn-primary-fg);
+  color: var(--button-text-color);
   font-weight: 600;
   font-size: variable.get(--font-size-label);
   line-height: 1.5;
   user-select: none;
   white-space: nowrap;
-  border: $border-width solid variable.getColor(--btn-primary-bg);
+  border: $border-width solid var(--button-border-color);
   border-radius: $border-radius;
-  background-color: variable.getColor(--btn-primary-bg);
-  transition: all .2s cubic-bezier(.4,0,.2,1);
+  background-color: var(--button-background-color);
+  transition: all .2s cubic-bezier(.4, 0, .2, 1);
 
-  &:hover {
-    background-color: color-mix(in srgb, variable.getColor(--btn-primary-bg) 92%, variable.getColor(--btn-primary-fg) 8%);
-    border-color: variable.getColor(--btn-primary-bg);
-  }
 
   &:active {
-    background-color: color-mix(in srgb, variable.getColor(--btn-primary-bg) 95%, variable.getColor(--btn-primary-fg) 15%);
-    border-color: variable.getColor(--btn-primary-bg);
     transition-duration: 0s;
   }
 
-  &:disabled, &.disabled {
-    background-color: variable.getColor(--btn-primary-bg);
-    border-color: variable.getColor(--btn-primary-bg);
-    filter: #{"grayscale()"};
+  &:disabled, &.disabled, &.loading {
+    filter: #{"grayscale(0.8) brightness(0.5)"};
     opacity: .8;
     box-shadow: none;
     pointer-events: none;
     cursor: default;
+  }
+
+  &.loading {
+    color: transparent;
+    background-image: linear-gradient(45deg, variable.getColor(--muted, .25) 25%, transparent 25%, transparent 50%, variable.getColor(--muted, .25) 50%, variable.getColor(--muted, .25) 75%, transparent 75%, transparent);
+    background-size: 26px 26px;
+    animation: #{variable.$prefix}-button-loader 1s linear infinite;
+  }
+
+  &.loading * {
+    display: none;
   }
 
   &.w-full {
@@ -53,3 +103,5 @@ $ring-offset: 2px !default;
     max-width: 100%;
   }
 }
+
+

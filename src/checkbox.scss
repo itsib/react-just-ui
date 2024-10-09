@@ -1,78 +1,81 @@
-@use "css/mixins/variable";
+@use "css/mixins/toggler";
 
-html {
-  --transition-duration-in: .4s;
-  --transition-duration-out: .2s;
-}
+.__prefix__.__prefix__-checkbox {
 
-@include variable.class(checkbox, true) {
+  @include toggler.layout {
 
-  .control-checkbox {
-    margin: 5px 10px;
-    position: relative;
-    cursor: pointer;
-    flex-shrink: 0;
-    flex-grow: 0;
-
-    input[type="checkbox"] {
-      margin: 0;
-      width: inherit;
-      height: inherit;
-      position: absolute;
-      opacity: 0;
-      z-index: 2;
+    .control-toggler {
+      margin: 5px 10px;
+      position: relative;
       cursor: pointer;
+      flex-shrink: 0;
+      flex-grow: 0;
 
-      + .checkbox {
+      input[type="checkbox"] {
+        margin: 0;
         width: inherit;
         height: inherit;
-        border: 2px solid variable.getColor(--foreground);
-        border-radius: 4px;
         position: absolute;
-        z-index: 1;
+        opacity: 0;
+        z-index: 2;
+        cursor: pointer;
 
-        .tick {
-          fill: none;
-          stroke: variable.getColor(--foreground);
-          stroke-dasharray: 24;
-          stroke-dashoffset: 0;
-          transition-timing-function: ease-in;
-          transition-property: opacity, transform;
-          transition-duration: var(--transition-duration-out);
-          transform-origin: 8px 8px;
-          transform: scale(0,0);
-          opacity: 0;
+        + .checkbox {
+          width: inherit;
+          height: inherit;
+          border: 2px solid rgb(var(--__prefix__c-checkbox-border));
+          border-radius: 4px;
+          position: absolute;
+          z-index: 1;
+
+          .tick {
+            fill: none;
+            stroke: rgb(var(--__prefix__c-checkbox-tick));
+            stroke-dasharray: 24;
+            stroke-dashoffset: 0;
+            transition: opacity .2s ease-in, transform .2s  ease-in;
+            transform-origin: 8px 8px;
+            transform: scale(0,0);
+            opacity: 0;
+          }
+        }
+      }
+
+      input[type="checkbox"]:checked {
+
+        + .checkbox {
+
+          .tick {
+            opacity: 1;
+            transform: scale(1,1);
+            transition-duration: 0s;
+            animation: __prefix__-checkbox-checked .4s cubic-bezier(.4,.0,.23,1);
+            animation-fill-mode: forwards;
+          }
+        }
+      }
+
+      input[type="checkbox"]:disabled {
+        pointer-events: none;
+
+        + .checkbox {
+          border-color: rgb(var(--__prefix__c-checkbox-disabled));
+
+          .tick {
+            stroke: rgb(var(--__prefix__c-checkbox-disabled));
+          }
         }
       }
     }
+  }
+}
 
-    input[type="checkbox"]:checked {
-
-      + .checkbox {
-
-        .tick {
-          opacity: 1;
-          transform: scale(1,1);
-          transition-duration: 0s;
-          animation-duration: var(--transition-duration-in);
-          animation-timing-function: cubic-bezier(.4,.0,.23,1);
-          animation-name: #{variable.$prefix}-checkbox-checked;
-          animation-fill-mode: forwards;
-        }
-      }
-    }
-
-    input[type="checkbox"]:disabled {
-      pointer-events: none;
-
-      + .checkbox {
-        border-color: variable.getColor(--muted);
-
-        .tick {
-          stroke: variable.getColor(--muted);
-        }
-      }
-    }
+@keyframes __prefix__-checkbox-checked {
+  from {
+    stroke-dashoffset: 24;
+  }
+  to {
+    stroke-dashoffset: 0;
   }
 }
 

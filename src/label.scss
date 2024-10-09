@@ -1,15 +1,13 @@
-@use "css/mixins/variable";
-
-@include variable.class(label, true) {
-  color: variable.getColor(--form-label);
-  font-size: variable.get(--font-size-label);
+.__prefix__.__prefix__-label {
+  margin-bottom: var(--__prefix__v-form-margin-top);
+  color: rgb(var(--__prefix__c-form-label));
+  font-size: var(--__prefix__v-form-font-label);
   cursor: pointer;
   user-select: none;
   display: block;
 
-
   .required-marker {
-    color: variable.getColor(--error);
+    color: rgb(var(--__prefix__c-error));
     font-size: inherit;
   }
 }

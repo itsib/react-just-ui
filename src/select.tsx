@@ -11,7 +11,6 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import type { BaseControlProps, SelectOption } from './types';
-import { inputCN, prefixedCN } from './intermal/css-class';
 import { Subscript } from './subscript';
 import { Label } from './label';
 import './select.scss';
@@ -83,14 +82,14 @@ export const Select = forwardRef(function Select(
   }, [id]);
 
   return (
-    <div className={inputCN('select', className, loading, disabled, error)}>
+    <div className={`__prefix__ __prefix__-select ${className || ''} ${disabled ? 'disabled' : ''} ${loading ? 'loading' : ''} ${error ? 'error' : ''}`}>
       <Label id={id} label={label} />
 
       <div className="control" ref={controlRef} onClick={onClick}>
-        {loading && !disabled ? <div className="overlay"><span className={prefixedCN('spinner', true)}/></div> : null}
+        {loading && !disabled ? <div className="overlay" /> : null}
         <input id={id} type="hidden" className="hidden-select" disabled={disabled} ref={ref} {..._props} />
 
-        <div className={prefixedCN('list-item', true)}>
+        <div className="__prefix__ __prefix__-select-option select">
           {activeIcon ? (
             <Icon icon={activeIcon} value={activeValue}/>
           ) : null}
@@ -207,11 +206,11 @@ export function SelectDropdown(props: SelectDropdownProps) {
   }, [points?.scrollY, open]);
 
   return (process || open) && rect && points ? createPortal(
-    <div className={prefixedCN('select-dropdown', 'scroll', true)}>
-      <div className={prefixedCN('overlay')} aria-label="dropdown overlay" onClick={onClickOverlay}/>
+    <div className="__prefix__ __prefix__-select-dropdown __prefix__-scroll">
+      <div className="__prefix__-overlay" aria-label="dropdown overlay" onClick={onClickOverlay}/>
 
       <div
-        className={`${prefixedCN('list', true)} ${dropdownClass}`}
+        className={`__prefix__ __prefix__-list ${dropdownClass}`}
         aria-label="dropdown"
         style={{
           top: `${points.top}px`,
@@ -243,7 +242,7 @@ export function Option(props: OptionProps) {
     <button
       id={active ? `${id}-active` : undefined}
       type="button"
-      className={`${prefixedCN('list-item', true)} ${active ? 'active' : ''}`}
+      className={`__prefix__ __prefix__-select-option ${active ? 'active' : ''}`}
       value={value}
       onClick={() => onClick(value)}
     >

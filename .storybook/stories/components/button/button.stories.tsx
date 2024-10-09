@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 interface ButtonControls {
   disabled: boolean;
+  loading: boolean;
 }
 
 const description = `
@@ -32,9 +33,16 @@ const meta = {
       type: { name: 'boolean' },
       control: { type: 'boolean' },
     },
+    loading: {
+      name: 'loading',
+      description: 'Display loading state',
+      type: { name: 'boolean' },
+      control: { type: 'boolean' },
+    },
   },
   args: {
     disabled: false,
+    loading: false,
   }
 } satisfies Meta;
 
@@ -45,15 +53,21 @@ type Story = StoryObj<ButtonControls>;
 export const Basic: Story = {
   args: {
     disabled: false,
+    loading: false,
   },
 
-  render: function Render({ disabled }) {
+  render: function Render({ disabled, loading }) {
     const [value, setValue] = useState('')
     return (
-      <section>
+      <section style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
         <Input id="input-1" value={value} onChange={e => setValue((e.target as any).value)}  />
-        <button className="jj jj-button w-full" disabled={disabled}>
-          <span>Submit</span>
+        <button className={`jj jj-button primary w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
+          <span>Primary</span>
+        </button>
+
+
+        <button className={`jj jj-button secondary w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
+          <span>Secondary</span>
         </button>
       </section>
     );

@@ -6,10 +6,19 @@
 $schemes: (light: (), dark: ()) !default;
 $light: map.get($schemes, "light");
 $dark: map.get($schemes, "dark");
-$font-size-base: 1rem !default;     // Main font size
-$font-size-label: .875rem !default; // Form control label
-$font-size-sub: 12px !default;      // Form control subscript (error, hint)
-$font-size-tooltip: 12px !default;  // Tooltip
+$form-height: 40px !default;
+$form-margin: ('top': 4px, 'bottom': 2px) !default;
+$form-padding: ('x': .75em, 'y': .25em) !default;
+$form-border: ('width': 1px, 'radius': .375em) !default;
+$form-font: ('base': 1rem, 'label': .875rem, 'sub': 12px) !default;
+$tooltip: (
+    'font-size': 12px,
+    'arrow-size': 0.5em,
+    'indent': 2px,
+    'hide-delay': 0s,
+    'show-delay': .4s,
+    'duration': .2s,
+) !default;
 
 @mixin defineColors ($name, $schemes) {
   $scheme: map.get($schemes, $name);
@@ -26,8 +35,27 @@ $font-size-tooltip: 12px !default;  // Tooltip
   @include variable.create(--btn-primary-bg, map.get($scheme, 'primary'), "color");
   @include variable.create(--btn-primary-fg, utils.grtTextColor(map.get($scheme, 'primary'), map.get($scheme, 'foreground')), "color");
 
-  // Switch
+  // Togglers
   @include variable.create(--switch-bg, map.get($scheme, 'switch'), "color");
+  @include variable.create(--switch-thumb, map.get($scheme, 'white'), "color");
+  @include variable.create(--switch-active, map.get($scheme, 'accent'), "color");
+  @include variable.create(--switch-disabled, map.get($scheme, 'muted'), "color");
+  @include variable.create(--checkbox-border, map.get($scheme, 'foreground'), "color");
+  @include variable.create(--checkbox-tick, map.get($scheme, 'foreground'), "color");
+  @include variable.create(--checkbox-disabled, map.get($scheme, 'muted'), "color");
+  @include variable.create(--radio, map.get($scheme, 'foreground'), "color");
+  @include variable.create(--radio-disabled, map.get($scheme, 'muted'), "color");
+
+  // Forms
+  @include variable.create(--form-label, color.invert(map.get($scheme, 'foreground'), 10%), "color");
+  @include variable.create(--form-text, map.get($scheme, 'foreground'), "color");
+  @include variable.create(--form-placeholder, color.invert(map.get($scheme, 'foreground'), 40%), "color");
+  @include variable.create(--form-border, map.get($scheme, 'border'), "color");
+  @include variable.create(--form-bg, map.get($scheme, 'background'), "color");
+  @include variable.create(--form-focus-border, map.get($scheme, 'active'), "color");
+  @include variable.create(--form-focus-bg, map.get($scheme, 'background'), "color");
+  @include variable.create(--form-disabled-border, map.get($scheme, 'muted'), "color");
+  @include variable.create(--form-disabled-bg, map.get($scheme, 'muted'), "color");
 
   // List colors
   @include variable.create(--list-text, map.get($scheme, 'foreground'), "color");
@@ -52,19 +80,32 @@ html.dark {
 }
 
 html {
-  // Fontsize
-  @include variable.create(--font-size-base, $font-size-base);
-  @include variable.create(--font-size-label, $font-size-label);
-  @include variable.create(--font-size-sub, $font-size-sub);
-  @include variable.create(--font-size-tooltip, $font-size-tooltip);
-
   // Z index
-  @include variable.create(--zi-dropdown, 1000);
-  @include variable.create(--zi-sticky, 1020);
-  @include variable.create(--zi-fixed, 1030);
-  @include variable.create(--zi-modal, 1040);
-  @include variable.create(--zi-popover, 1050);
-  @include variable.create(--zi-tooltip, 1060);
-  @include variable.create(--zi-toast, 1070);
+  @include variable.create(--dropdown, 1000, "z-index");
+  @include variable.create(--sticky, 1020, "z-index");
+  @include variable.create(--fixed, 1030, "z-index");
+  @include variable.create(--modal, 1040, "z-index");
+  @include variable.create(--popover, 1050, "z-index");
+  @include variable.create(--tooltip, 1060, "z-index");
+  @include variable.create(--toast, 1070, "z-index");
 
+  // Tooltip
+  @include variable.create(--tooltip-font-size, map.get($tooltip, "font-size"));
+  @include variable.create(--tooltip-arrow-size, map.get($tooltip, "arrow-size"));
+  @include variable.create(--tooltip-indent, map.get($tooltip, "indent"));
+  @include variable.create(--tooltip-hide-delay, map.get($tooltip, "hide-delay"));
+  @include variable.create(--tooltip-show-delay, map.get($tooltip, "show-delay"));
+  @include variable.create(--tooltip-duration, map.get($tooltip, "duration"));
+
+  // Forms
+  @include variable.create(--form-height, $form-height);
+  @include variable.create(--form-font-base, map.get($form-font, "base"));
+  @include variable.create(--form-font-label, map.get($form-font, "label"));
+  @include variable.create(--form-font-sub, map.get($form-font, "sub"));
+  @include variable.create(--form-border-width, map.get($form-border, "width"));
+  @include variable.create(--form-border-radius, map.get($form-border, "radius"));
+  @include variable.create(--form-padding-x, map.get($form-padding, "x"));
+  @include variable.create(--form-padding-y, map.get($form-padding, "y"));
+  @include variable.create(--form-margin-top, map.get($form-margin, "top"));
+  @include variable.create(--form-margin-bottom, map.get($form-margin, "bottom"));
 }

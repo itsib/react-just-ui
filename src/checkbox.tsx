@@ -2,7 +2,6 @@ import React from 'react';
 import { Label } from './label';
 import { Subscript } from './subscript';
 import { BaseCheckedControlProps } from './types';
-import { switchCN } from './intermal/css-class';
 import './checkbox.scss';
 
 /**
@@ -18,10 +17,10 @@ export const Checkbox = React.forwardRef(function Checkbox(
   const { id, label, hint, className, rowReverse, error, disabled, size = 20, ...props } = _props;
 
   return (
-    <div className={switchCN('checkbox', className, disabled, rowReverse)}>
+    <div className={`__prefix__ __prefix__-checkbox ${className || ''} ${disabled ? 'disabled' : ''} ${rowReverse ? 'row-reverse' : 'row'}`}>
       <Label id={id} label={label} />
 
-      <div className="control-checkbox" style={{ width: `${size}px`, height: `${size}px` }}>
+      <div className="control-toggler" style={{ width: `${size}px`, height: `${size}px` }}>
         <input
           id={id}
           type="checkbox"
