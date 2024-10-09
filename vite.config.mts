@@ -41,7 +41,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
     build: {
       minify: true,
       cssCodeSplit: true,
-      sourcemap: 'inline',
+      sourcemap: false,
       lib: {
         name: 'ReactJustUI',
         entry: { ...entries },
