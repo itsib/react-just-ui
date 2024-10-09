@@ -1,19 +1,42 @@
-@use "css/mixins/variable";
+@use "./css/mixins/forms";
+@use "./css/mixins/spinner";
+@use "./css/mixins/scroll";
 
-@include variable.class(textarea, true) {
+.__prefix__.__prefix__-textarea {
+
+  @include scroll.scroll;
+
+  @include forms.control("textarea.control") {
+    overflow: auto;
+    min-height: 3em;
+    line-height: 1.3;
+    padding: var(--__prefix__v-form-padding-x) var(--__prefix__v-form-padding-x);
+  };
+
+  @include forms.focus("&:focus-within", ".control");
+
+  @include forms.error("&.error", ".control");
+
+  @include forms.disabled("&.disabled", ".control");
+
+  @include forms.loading("&.loading:not(.disabled)", ".control") {
+    line-height: 1;
+    outline: none;
+    color: transparent;
+    pointer-events: none;
+    overflow: hidden;
+  }
 
   &.loading:not(.disabled) {
 
-    .overlay {
-      inset: revert;
-      border: variable.get(--form-border-width) solid variable.getColor(--form-border);
-      border-radius: variable.get(--form-round);
+    ::placeholder {
+      color: transparent;
     }
-  }
 
-
-  .control {
-    line-height: 1;
-    outline: none;
+    .overlay {
+      position: absolute;
+      z-index: 2;
+      @include spinner.spinner(".spinner", 7px);
+    }
   }
 }

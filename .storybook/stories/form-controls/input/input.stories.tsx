@@ -59,7 +59,9 @@ export const Basic: Story = {
     const [text, setText] = useState('')
 
     return (
-      <Input {...args} value={text} onChange={e => setText((e.target as any).value)} />
+      <div style={{ width: 300 }}>
+        <Input {...args} value={text} onChange={e => setText((e.target as any).value)} />
+      </div>
     );
   }
 };

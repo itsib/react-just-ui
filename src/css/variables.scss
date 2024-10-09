@@ -49,7 +49,7 @@ $tooltip: (
   // Forms
   @include variable.create(--form-label, color.invert(map.get($scheme, 'foreground'), 10%), "color");
   @include variable.create(--form-text, map.get($scheme, 'foreground'), "color");
-  @include variable.create(--form-placeholder, color.invert(map.get($scheme, 'foreground'), 40%), "color");
+  @include variable.create(--form-placeholder, color.invert(map.get($scheme, 'foreground'), 50%), "color");
   @include variable.create(--form-border, map.get($scheme, 'border'), "color");
   @include variable.create(--form-bg, map.get($scheme, 'background'), "color");
   @include variable.create(--form-focus-border, map.get($scheme, 'active'), "color");

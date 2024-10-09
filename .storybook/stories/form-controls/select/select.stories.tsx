@@ -87,7 +87,7 @@ export const Basic: Story = {
     const [value, setValue] = useState(args.value);
 
     return (
-      <div style={{ width: '300px' }}>
+      <div style={{ width: 300 }}>
         <Select {...args} value={value} onChange={event => setValue((event.target as any).value)} />
       </div>
     );

@@ -3,7 +3,6 @@ import type { BaseControlProps } from './types';
 import { Subscript } from './subscript';
 import { Label } from './label';
 import './textarea.scss';
-import { inputCN, prefixedCN } from './intermal/css-class';
 
 export interface TextareaProps extends BaseControlProps<HTMLTextAreaElement> {
   elastic?: boolean;
@@ -25,7 +24,7 @@ export interface TextareaProps extends BaseControlProps<HTMLTextAreaElement> {
 export const Textarea = forwardRef(function Textarea(
   props: TextareaProps,
   ref: ForwardedRef<HTMLTextAreaElement>,
-) {
+)   {
   const { id, className, placeholder, elastic = true, label, hint, minHeight, minWidth, maxWidth, maxHeight, limit = 5000, loading, disabled, error, ..._props } = props;
 
   // Elastic textarea
@@ -33,6 +32,7 @@ export const Textarea = forwardRef(function Textarea(
     if (!elastic) {
       return;
     }
+    let skipOnChange = false;
     const textarea = document.getElementById(id) as HTMLTextAreaElement;
     const element = document.createElement('div');
     document.body.appendChild(element);
@@ -54,22 +54,53 @@ export const Textarea = forwardRef(function Textarea(
     element.style.overflowWrap = 'break-word';
     element.style.whiteSpace = 'pre-wrap';
 
+
     const onChange = () => {
+      if (skipOnChange) {
+        skipOnChange = false;
+        return;
+      }
+
+      if (!textarea.value) return;
 
       element.innerHTML = textarea.value.replace(/\n/g, '\n¦') || '¦';
       setTimeout(() => {
-        textarea.style.height = `${element.offsetHeight}px`;
+        textarea.style.height = `${element.offsetHeight + 4}px`;
       });
     }
 
     const onBeforeinput = (event: InputEvent) => {
-      if (event.inputType === 'insertText' && textarea.value.length >= limit) {
-        return event.preventDefault();
-      } else if (event.inputType === 'insertFromPaste' && ((event.data ?? '').length + (textarea.value.length - Math.abs(textarea.selectionStart - textarea.selectionEnd))) >= limit) {
-        const [start, end] = textarea.selectionStart < textarea.selectionEnd ? [textarea.selectionStart, textarea.selectionEnd] : [textarea.selectionEnd, textarea.selectionStart];
-        const full = textarea.value.slice(0, start) + (event.data ?? '') + textarea.value.slice(end);
-        textarea.value = full.slice(0, limit);
-        return event.preventDefault();
+      const value = textarea.value;
+      const selectionStart = textarea.selectionStart ?? 0;
+      const selectionEnd = textarea.selectionEnd ?? 0;
+
+      switch (event.inputType) {
+        // Handle typed text
+        case 'insertText':
+          if (event.data && textarea.value.length >= limit) {
+            return event.preventDefault();
+          }
+          break;
+        // Handle paste
+        case 'insertFromPaste':
+          if (event.data && (event.data.length + (value.length - Math.abs(selectionStart - selectionEnd))) >= limit) {
+            setTimeout(() => {
+              textarea.value = textarea.value.slice(0, limit);
+            }, 1);
+          }
+          break;
+        case 'insertLineBreak': {
+          const styleMap = textarea.computedStyleMap();
+          const fontSize = (styleMap.get('font-size') as any)?.value || 0;
+          const lineHeight = (styleMap.get('line-height') as any)?.value || 1.3;
+          if (!fontSize || !lineHeight) break;
+          textarea.style.height = `${textarea.offsetHeight + fontSize * lineHeight}px`;
+          skipOnChange=true;
+          break;
+        }
+        case 'deleteContentForward': {
+          setTimeout(() => onChange(), 1);
+        }
       }
     }
 
@@ -91,30 +122,33 @@ export const Textarea = forwardRef(function Textarea(
     }
     const textarea = document.getElementById(id) as HTMLTextAreaElement;
 
-    const loader = document.createElement('div');
-    loader.classList.add('overlay');
-    loader.innerHTML = `<span class="${prefixedCN('spinner', true)}"/>`;
-    loader.style.width = `${textarea.offsetWidth}px`;
-    loader.style.height = `${textarea.offsetHeight}px`;
-    textarea.parentElement!.insertBefore(loader, textarea);
+    const overlay = document.createElement('div');
+    overlay.style.width = `${textarea.offsetWidth}px`;
+    overlay.style.height = `${textarea.offsetHeight}px`;
+    overlay.classList.add('overlay');
 
+    const spinner = document.createElement('div');
+    spinner.classList.add('spinner')
+    overlay.append(spinner)
+
+    textarea.parentElement!.insertBefore(overlay, textarea);
 
     return () => {
-      loader.remove();
+      overlay.remove();
     };
   }, [loading, disabled, id]);
 
   return (
-    <div className={inputCN('textarea', className, loading, disabled, error)}>
+    <div className={`__prefix__ __prefix__-textarea ${className || ''} ${disabled ? 'disabled' : ''} ${loading ? 'loading' : ''} ${error ? 'error' : ''}`}>
       <Label id={id} label={label}/>
 
       <textarea
-        className={`${prefixedCN('scroll')} control`}
-        placeholder={placeholder}
         id={id}
+        className="__prefix__-scroll control"
+        placeholder={placeholder}
         disabled={disabled}
+        style={{ minHeight, maxHeight, minWidth, maxWidth, lineHeight: 1.3 }}
         ref={ref}
-        style={{ minHeight, maxHeight, minWidth, maxWidth }}
         {..._props}
       />
 

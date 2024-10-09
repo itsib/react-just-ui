@@ -1,6 +1,12 @@
 @use "sass:string";
 
-@mixin control($control-selector, $input-selector, $input-padding) {
+@mixin control($control-selector, $input-selector: null, $input-padding: null) {
+  width: 100%;
+
+  ::placeholder {
+    color: rgb(var(--__prefix__c-form-placeholder) / .7);
+    font-weight: 400;
+  }
 
   #{$control-selector} {
     height: var(--__prefix__v-form-height);
@@ -13,6 +19,7 @@
     box-shadow: none;
     border: var(--__prefix__v-form-border-width) solid rgb(var(--__prefix__c-form-border));
     border-radius: var(--__prefix__v-form-border-radius);
+    outline: none;
     overflow: hidden;
     display: flex;
     position: relative;
@@ -20,15 +27,20 @@
     justify-content: space-between;
     transition: box-shadow .15s ease-in-out, border-color .15s ease-in-out, background-color .15s ease-in-out;
 
-    #{$input-selector} {
-      width: 100%;
-      height: calc(var(--__prefix__v-form-height) - (var(--__prefix__v-form-border-width) * 2));
-      padding: string.unquote($input-padding);
-      color: inherit;
-      border: none;
-      outline: none;
-      font-size: inherit;
-      background-color: transparent;
+    @if $input-selector {
+      #{$input-selector} {
+        width: 100%;
+        height: calc(var(--__prefix__v-form-height) - (var(--__prefix__v-form-border-width) * 2));
+        color: inherit;
+        border: none;
+        outline: none;
+        font-size: inherit;
+        background-color: transparent;
+
+        @if $input-padding {
+          padding: string.unquote($input-padding);
+        }
+      }
     }
 
     @content;
@@ -71,6 +83,7 @@
       border-color: rgb(var(--__prefix__c-form-disabled-border));
       box-shadow: none;
       pointer-events: none;
+      user-select: none;
       opacity: .8;
 
       @content;
@@ -90,7 +103,7 @@
   }
 }
 
-@mixin loading($loading-selector, $control-selector) {
+@mixin loading($loading-selector, $control-selector: null) {
 
   #{$loading-selector} {
 

@@ -3,6 +3,11 @@
 
 .__prefix__.__prefix__-input {
 
+  ::placeholder {
+    color: rgb(var(--__prefix__c-form-placeholder) / .7);
+    font-weight: 400;
+  }
+
   @include forms.control(".control", input, "var(--__prefix__v-form-padding-y) var(--__prefix__v-form-padding-x)") {
 
     .prefix, .suffix {
@@ -67,6 +72,10 @@
   }
 
   @include forms.loading("&.loading:not(.disabled)", ".control") {
+
+    > input {
+      display: none;
+    }
 
     @include spinner.spinner(".overlay", 7px);
   }

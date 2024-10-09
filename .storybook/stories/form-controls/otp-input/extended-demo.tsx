@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { memo } from 'react';
 import { useForm } from 'react-hook-form';
 import { OtpInput } from 'react-just-ui/otp-input';
 
@@ -9,7 +9,7 @@ export interface ExtendedProps {
   layout?: string;
 }
 
-export const ExtendedDemo: FC<ExtendedProps> = ({ label, hint, layout, disabled }) => {
+export const ExtendedDemo = memo(function ExtendedDemo({ label, hint, layout, disabled }: ExtendedProps) {
   const { register, handleSubmit, formState } = useForm<{ otp: string }>({
     reValidateMode: 'onChange',
     mode: 'onChange',
@@ -48,4 +48,4 @@ export const ExtendedDemo: FC<ExtendedProps> = ({ label, hint, layout, disabled 
       </div>
     </form>
   );
-};
+});

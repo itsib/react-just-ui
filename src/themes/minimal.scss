@@ -52,10 +52,10 @@ $schemes: (
 
 @use '../css/animations';
 
-@use '../css/scroll' with (
-  $width: 4px,
-  $padding: 4px 0,
-);
+//@use '../css/scroll' with (
+//  $width: 4px,
+//  $padding: 4px 0,
+//);
 
 @use '../css/tooltip' with (
   $arrow-size: 0.5em,

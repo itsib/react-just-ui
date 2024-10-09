@@ -1,18 +1,14 @@
-@use "mixins/variable";
 
-$width: 4px !default;
-$padding: 4px 0 !default;
-
-.#{variable.$prefix}.#{variable.$prefix}-scroll {
+@mixin scroll() {
 
   ::-webkit-scrollbar {
-    width: $width;
-    height: $width;
+    width: 4px;
+    height: 4px;
     transition: all .15s ease-in-out;
   }
 
   ::-webkit-scrollbar-track {
-    padding: $padding;
+    padding: 4px 0;
     position: relative;
     background-color: transparent;
   }
@@ -23,8 +19,8 @@ $padding: 4px 0 !default;
   }
 
   ::-webkit-scrollbar-thumb {
-    border-radius: $width;
-    background-color: rgb(var(--#{variable.$prefix}c-muted) /  0.6);
+    border-radius: 4px;
+    background-color: rgb(var(--__prefix__c-foreground) /  .5);
   }
 
   ::-webkit-scrollbar-corner {

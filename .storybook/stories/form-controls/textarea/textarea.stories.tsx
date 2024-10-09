@@ -1,6 +1,16 @@
 import { Textarea } from 'react-just-ui';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
+import { useForm } from 'react-hook-form';
+import { memo, useEffect } from 'react';
+
+type Story = StoryObj<typeof Textarea>;
+
+interface BaseStoryProps {
+  id: string;
+  disabled?: boolean;
+  loading?: boolean;
+}
 
 const meta = {
   title: 'Form Controls/Textarea',
@@ -11,12 +21,7 @@ const meta = {
     }
   },
   argTypes: {
-    // id: { required: true, type: 'string' },
-    type: {
-      type: { name: 'enum', value: ['text', 'password', 'email', 'search', 'tel', 'url', 'number'] },
-      control: { type: 'select' },
-      options: ['text', 'password', 'email', 'search', 'tel', 'url', 'number'],
-    },
+    id: { required: true, type: 'string' },
     label: {
       control: { type: 'text' },
     },
@@ -25,7 +30,7 @@ const meta = {
     },
   },
   args: {
-    type: 'text',
+    id: 'textarea-id',
     value: '',
     label: 'Overview',
     placeholder: '',
@@ -38,18 +43,53 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof Textarea>;
+const BaseStory = memo(function BaseStory({ id, disabled, loading }: BaseStoryProps) {
+  const { register, formState, watch } = useForm({
+    mode: 'onChange',
+    defaultValues: {
+      textarea: '',
+    }
+  });
+  const { errors } = formState;
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
+  useEffect(() => {
+    const { unsubscribe } = watch(({ textarea: _ }, { name, type }) => {
+      if (name === 'textarea' && type) {
+        action(type)
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  return (
+    <div style={{ width: 300 }}>
+      <Textarea
+        id={id}
+        label="Overview"
+        placeholder="Placeholder..."
+        loading={loading}
+        maxHeight={300}
+        limit={50}
+        error={errors?.textarea}
+        {...register('textarea', {
+          required: 'Field is required',
+          disabled: !!disabled,
+        })}
+      />
+    </div>
+  );
+});
+
 export const Basic: Story = {
   args: {
-    id: 'test-input',
+    id: 'textarea-id',
     onChange: action('onChange'),
   },
-  render: function Render(args) {
-
-    return (
-      <Textarea {...args} />
-    );
-  }
+  render: ({ id, disabled, loading }) => <BaseStory id={id} loading={loading} disabled={disabled} />
 };
+
+
+
