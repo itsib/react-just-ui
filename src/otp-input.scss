@@ -1,6 +1,6 @@
-@use "css/mixins/variable";
+@use "css/mixins/forms";
 
-@include variable.class(otp-input, true) {
+.__prefix__.__prefix__-otp-input {
 
   .control-otp {
 
@@ -11,21 +11,15 @@
       justify-content: space-between;
       gap: 0.5rem;
 
-      .symbol {
-        color: variable.getColor(--form-text);
-        background-color: variable.getColor(--form-bg);
-        box-shadow: none;
-        outline: none;
-        transition: all .15s ease-in-out;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
+      @include forms.control(".symbol") {
+        aspect-ratio: 0.8;
+        width: calc(var(--__prefix__v-form-height) * 0.8);
+        text-align: center;
       }
 
       .divider {
         margin: 0 3px;
-        background-color: variable.getColor(--form-border);
+        background-color: rgb(var(--__prefix__c-form-border));
 
         &.d-dash {
           height: 1px;
@@ -45,4 +39,10 @@
       }
     }
   }
+
+  @include forms.focus(".group", ".symbol:focus");
+
+  @include forms.error("&.error", ".control-otp .group .symbol");
+
+  @include forms.disabled("&.disabled", ".control-otp .group .symbol")
 }

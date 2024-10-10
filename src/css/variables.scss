@@ -1,16 +1,23 @@
 @use "sass:map";
 @use 'sass:color';
-@use "mixins/variable";
-@use "mixins/utils";
+@use "./mixins/variable";
+@use "./mixins/button";
 
 $schemes: (light: (), dark: ()) !default;
 $light: map.get($schemes, "light");
 $dark: map.get($schemes, "dark");
-$form-height: 40px !default;
-$form-margin: ('top': 4px, 'bottom': 2px) !default;
-$form-padding: ('x': .75em, 'y': .25em) !default;
-$form-border: ('width': 1px, 'radius': .375em) !default;
-$form-font: ('base': 1rem, 'label': .875rem, 'sub': 12px) !default;
+$form: (
+    'height': 40px,
+    'margin-top': 4px,
+    'margin-bottom': 2px,
+    'padding-x': .75em,
+    'padding-y': .25em,
+    'border-width': 1px,
+    'border-radius': .375em,
+    'font-base': 1rem,
+    'font-label': .875rem,
+    'font-sub': 12px,
+) !default;
 $tooltip: (
     'font-size': 12px,
     'arrow-size': 0.5em,
@@ -23,26 +30,31 @@ $tooltip: (
 @mixin defineColors ($name, $schemes) {
   $scheme: map.get($schemes, $name);
 
+  // Define all colors
   @each $name, $value in $scheme {
     @include variable.create($name, $value, "color");
   }
 
   $theme-color: map.get($scheme, 'theme');
   $invert-theme-color: color.invert($theme-color);
-  @include variable.create(--theme-invert, $invert-theme-color, "color");
 
   // Buttons
-  @include variable.create(--btn-primary-bg, map.get($scheme, 'primary'), "color");
-  @include variable.create(--btn-primary-fg, utils.grtTextColor(map.get($scheme, 'primary'), map.get($scheme, 'foreground')), "color");
+  @include button.colors("primary", map.get($scheme, 'primary'), map.get($scheme, 'foreground'));
+  @include button.colors("secondary", map.get($scheme, 'muted'), map.get($scheme, 'foreground'));
+  @include button.colors("danger", map.get($scheme, 'error'), map.get($scheme, 'foreground'));
 
-  // Togglers
+  // Switch
   @include variable.create(--switch-bg, map.get($scheme, 'switch'), "color");
   @include variable.create(--switch-thumb, map.get($scheme, 'white'), "color");
   @include variable.create(--switch-active, map.get($scheme, 'accent'), "color");
   @include variable.create(--switch-disabled, map.get($scheme, 'muted'), "color");
+
+  // Checkbox
   @include variable.create(--checkbox-border, map.get($scheme, 'foreground'), "color");
   @include variable.create(--checkbox-tick, map.get($scheme, 'foreground'), "color");
   @include variable.create(--checkbox-disabled, map.get($scheme, 'muted'), "color");
+
+  // Radio
   @include variable.create(--radio, map.get($scheme, 'foreground'), "color");
   @include variable.create(--radio-disabled, map.get($scheme, 'muted'), "color");
 
@@ -71,15 +83,15 @@ $tooltip: (
   @include variable.create(--tooltip-border, color.invert(map.get($scheme, 'background'), 15%), "color");
 }
 
-html {
+:root {
   @include defineColors("light", $schemes);
 }
 
-html.dark {
+:root.dark {
   @include defineColors("dark", $schemes);
 }
 
-html {
+:root {
   // Z index
   @include variable.create(--dropdown, 1000, "z-index");
   @include variable.create(--sticky, 1020, "z-index");
@@ -91,21 +103,23 @@ html {
 
   // Tooltip
   @include variable.create(--tooltip-font-size, map.get($tooltip, "font-size"));
-  @include variable.create(--tooltip-arrow-size, map.get($tooltip, "arrow-size"));
-  @include variable.create(--tooltip-indent, map.get($tooltip, "indent"));
   @include variable.create(--tooltip-hide-delay, map.get($tooltip, "hide-delay"));
   @include variable.create(--tooltip-show-delay, map.get($tooltip, "show-delay"));
   @include variable.create(--tooltip-duration, map.get($tooltip, "duration"));
 
   // Forms
-  @include variable.create(--form-height, $form-height);
-  @include variable.create(--form-font-base, map.get($form-font, "base"));
-  @include variable.create(--form-font-label, map.get($form-font, "label"));
-  @include variable.create(--form-font-sub, map.get($form-font, "sub"));
-  @include variable.create(--form-border-width, map.get($form-border, "width"));
-  @include variable.create(--form-border-radius, map.get($form-border, "radius"));
-  @include variable.create(--form-padding-x, map.get($form-padding, "x"));
-  @include variable.create(--form-padding-y, map.get($form-padding, "y"));
-  @include variable.create(--form-margin-top, map.get($form-margin, "top"));
-  @include variable.create(--form-margin-bottom, map.get($form-margin, "bottom"));
+  @include variable.create(--form-height, map.get($form, "height"));
+  @include variable.create(--form-font-base, map.get($form, "font-base"));
+  @include variable.create(--form-font-label, map.get($form, "font-label"));
+  @include variable.create(--form-font-sub, map.get($form, "font-sub"));
+  @include variable.create(--form-border-width, map.get($form, "border-width"));
+  @include variable.create(--form-border-radius, map.get($form, "border-radius"));
+  @include variable.create(--form-padding-x, map.get($form, "padding-x"));
+  @include variable.create(--form-padding-y, map.get($form, "padding-y"));
+  @include variable.create(--form-margin-top, map.get($form, "margin-top"));
+  @include variable.create(--form-margin-bottom, map.get($form, "margin-bottom"));
+}
+
+.#{variable.$prefix} * {
+  box-sizing: border-box;
 }

@@ -3,15 +3,6 @@
 $arrow-size: 0.5em !default;
 $padding: 0.5em 0.75em !default;
 $indent: 2px !default;
-$hide-delay: 0s !default;
-$show-delay: .4s !default;
-$transition-duration: .2s !default;
-
-html {
-  --tooltip-font-size: #{variable.get(--font-size-tooltip)};
-  --tooltip-padding: #{$padding};
-  --tooltip-z-index: #{variable.get(--zi-tooltip)};
-}
 
 [aria-label] {
 
@@ -41,7 +32,7 @@ html {
       height: min-content;
       width: max-content;
       max-width: 180px;
-      padding: var(--tooltip-padding);
+      padding: $padding;
       color: variable.getColor(--tooltip-text);
       text-wrap: balance;
       white-space: pre-wrap;
@@ -51,7 +42,7 @@ html {
       border-radius: 4px;
       border: 1px solid variable.getColor(--tooltip-border);
       box-shadow: 0 0 5px 0 variable.getColor(--tooltip-border, 0.8);
-      z-index: var(--tooltip-z-index);
+      z-index: variable.get(--tooltip, "z-index");
     }
 
     &:before {
@@ -59,27 +50,27 @@ html {
       height: 0;
       width: 0;
       border: $arrow-size solid transparent;
-      z-index: calc(var(--tooltip-z-index) + 1);
+      z-index: calc(#{variable.get(--tooltip, "z-index")} + 1);
     }
 
     &:after, &:before {
       box-sizing: border-box;
       user-select: none;
-      font-size: var(--tooltip-font-size);
+      font-size: variable.get(--tooltip-font-size);
       opacity: 0;
       display: block;
       pointer-events: none;
       position: absolute;
-      transition-duration: $transition-duration;
+      transition-duration: variable.get(--tooltip-duration);
       transition-timing-function: ease;
-      transition-delay: $hide-delay;
+      transition-delay: variable.get(--tooltip-hide-delay);
     }
 
     &:hover {
 
       &:after, &:before {
         opacity: 1;
-        transition-delay: $show-delay;
+        transition-delay: variable.get(--tooltip-show-delay);
       }
     }
   }

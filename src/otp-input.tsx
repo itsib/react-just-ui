@@ -3,7 +3,6 @@ import type { BaseControlProps } from './types';
 import { Label } from './label';
 import { Subscript } from './subscript';
 import './otp-input.scss';
-import { inputCN } from './intermal/css-class';
 
 export interface OtpInputProps extends BaseControlProps<HTMLInputElement> {
   /**
@@ -326,7 +325,7 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
   }, [id, layout]);
 
   return (
-    <div className={inputCN('otp-input', className, false, _props.disabled, error)}>
+    <div className={`__prefix__ __prefix__-otp-input ${className || ''} ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''}`}>
       <Label id={id} label={label} />
 
       <div className="control-otp">

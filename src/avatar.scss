@@ -1,10 +1,4 @@
-@use "css/mixins/variable";
-
-html {
-  --image-animation: #{variable.$prefix}-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@include variable.class(avatar, true) {
+.__prefix__.__prefix__-avatar {
   aspect-ratio: 1;
   position: relative;
 
@@ -14,9 +8,9 @@ html {
     border-radius: 999999px;
     overflow: hidden;
     border-style: solid;
-    border-color: variable.getColor(--background);
-    background-color: variable.getColor(--background);
-    animation: var(--image-animation);
+    border-color: rgb(var(--__prefix__c-background));
+    background-color: rgb(var(--__prefix__c-background));
+    animation: __prefix__-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     transition: border-color .2s ease-in-out;
 
     & > * {
@@ -31,7 +25,7 @@ html {
     }
 
     .avatar-placeholder {
-      fill: variable.getColor(--accent);
+      fill: rgb(var(--__prefix__c-accent));
       width: 100%;
       height: 100%;
     }
@@ -42,10 +36,10 @@ html {
     left: 0;
     width: inherit;
     height: inherit;
-    border: 1px solid variable.getColor(--accent);
+    border: 1px solid rgb(var(--__prefix__c-accent));
     border-radius: 999999px;
     position: absolute;
-    animation: 1.5s linear 0s infinite normal none running #{variable.$prefix}-image-ripple;
+    animation: 1.5s linear 0s infinite normal none running __prefix__-image-ripple;
     display: none;
   }
 
@@ -53,7 +47,7 @@ html {
 
     .avatar {
       animation: none;
-      border-color: variable.getColor(--accent);
+      border-color: rgb(var(--__prefix__c-accent));
 
       & > * {
         opacity: 1;
@@ -64,7 +58,7 @@ html {
   &.active {
 
     .avatar {
-      border-color: variable.getColor(--accent, .25);
+      border-color: rgb(var(--__prefix__c-accent) / .25)
     }
 
     .ripple {
@@ -75,8 +69,8 @@ html {
   &.loading {
 
     .avatar {
-      animation: var(--image-animation);
-      border-color: variable.getColor(--background);;
+      animation: __prefix__-image-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      border-color: rgb(var(--__prefix__c-background));
 
       & > * {
         opacity: 0;
@@ -87,6 +81,27 @@ html {
   &.disabled {
     filter: grayscale(1) brightness(0.5);
     pointer-events: none;
+  }
+}
+
+@keyframes __prefix__-image-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes __prefix__-image-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
   }
 }
 

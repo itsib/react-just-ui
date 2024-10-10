@@ -1,79 +1,35 @@
-@use "mixins/variable";
+@use "./mixins/variable";
+@use "./mixins/button";
 @use "sass:map";
 
 $height: 40px !default;
-$padding-y: 0.5rem !default;
-$padding-x: 1rem !default;
-$border-width: 1px !default;
-$border-radius: .375em   !default;
+$padding: ("y": 0.5rem, "x": 1rem) !default;
+$font: ("size": 1rem, "weight": 400, "height": 1.5) !default;
+$border: ("width": 1px, "radius": .375em) !default;
 $ring-width: 1px !default;
 $ring-offset: 2px !default;
 
-// Button primary
-@include variable.class(button, true) {
-
-  &.primary {
-    --button-text-color: #{variable.getColor(--btn-primary-fg)};
-    --button-border-color: #{variable.getColor(--btn-primary-bg)};
-    --button-background-color: #{variable.getColor(--btn-primary-bg)};
-  }
-
-  &.primary:hover {
-    --button-background-color: color-mix(in srgb, #{variable.getColor(--btn-primary-bg)} 85%, #{variable.getColor(--btn-primary-fg)} 15%);
-    --button-border-color: #{variable.getColor(--btn-primary-bg)};
-  }
-
-  &.primary:active {
-    --button-background-color: color-mix(in srgb, #{variable.getColor(--btn-primary-bg)} 95%, #{variable.getColor(--btn-primary-fg)} 5%);
-    --button-border-color: #{variable.getColor(--btn-primary-bg)};
-  }
-
-  &.primary:disabled {
-    --button-background-color: #{variable.getColor(--btn-primary-bg)};
-    --button-border-color: #{variable.getColor(--btn-primary-bg)};
-  }
-}
-
-// Button secondary
-@include variable.class(button, true) {
-
-  &.secondary {
-    --button-text-color: #{variable.getColor(--btn-primary-fg)};
-    --button-border-color: #{variable.getColor(--btn-primary-bg)};
-    --button-background-color: #{variable.getColor(--btn-primary-bg)};
-  }
-
-  &.secondary:hover {
-    --button-background-color: color-mix(in srgb, #{variable.getColor(--btn-primary-bg)} 85%, #{variable.getColor(--btn-primary-fg)} 15%);
-    --button-border-color: #{variable.getColor(--btn-primary-bg)};
-  }
-
-  &.secondary:active {
-    --button-background-color: color-mix(in srgb, #{variable.getColor(--btn-primary-bg)} 95%, #{variable.getColor(--btn-primary-fg)} 5%);
-    --button-border-color: #{variable.getColor(--btn-primary-bg)};
-  }
-
-  &.secondary:disabled {
-    --button-background-color: #{variable.getColor(--btn-primary-bg)};
-    --button-border-color: #{variable.getColor(--btn-primary-bg)};
-  }
-}
-
-@include variable.class(button, true) {
+.btn {
   height: $height;
-  min-height: $height;
-  padding: $padding-y $padding-x;
-  color: var(--button-text-color);
-  font-weight: 600;
-  font-size: variable.get(--font-size-label);
-  line-height: 1.5;
+  padding: map.get($padding, "y") map.get($padding, "x");
+  font-size: map.get($font, "size");
+  font-weight: map.get($font, "weight");
+  line-height: map.get($font, "height");
+  color: variable.getColor(--foreground);
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
   user-select: none;
-  white-space: nowrap;
-  border: $border-width solid var(--button-border-color);
-  border-radius: $border-radius;
-  background-color: var(--button-background-color);
-  transition: all .2s cubic-bezier(.4, 0, .2, 1);
-
+  cursor: pointer;
+  display: inline-block;
+  background-color: transparent;
+  border: map.get($border, "width") solid transparent;
+  border-radius: map.get($border, "radius");
+  transition:
+      color .15s ease-in-out,
+      background-color .15s ease-in-out,
+      border-color .15s ease-in-out,
+      box-shadow .15s ease-in-out;
 
   &:active {
     transition-duration: 0s;
@@ -89,13 +45,21 @@ $ring-offset: 2px !default;
 
   &.loading {
     color: transparent;
-    background-image: linear-gradient(45deg, variable.getColor(--muted, .25) 25%, transparent 25%, transparent 50%, variable.getColor(--muted, .25) 50%, variable.getColor(--muted, .25) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(
+            45deg,
+            variable.getColor(--muted, .25) 25%,
+            transparent 25%,
+            transparent 50%,
+            variable.getColor(--muted, .25) 50%,
+            variable.getColor(--muted, .25) 75%,
+            transparent 75%, transparent
+    );
     background-size: 26px 26px;
     animation: #{variable.$prefix}-button-loader 1s linear infinite;
-  }
 
-  &.loading * {
-    display: none;
+    * {
+      display: none;
+    }
   }
 
   &.w-full {
@@ -104,4 +68,18 @@ $ring-offset: 2px !default;
   }
 }
 
+@include button.layout("primary", ());
 
+@include button.layout("secondary", ());
+
+@include button.layout("danger", ());
+
+// Loading animation
+@keyframes #{variable.$prefix}-button-loader {
+  0% {
+    background-position: 26px 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}

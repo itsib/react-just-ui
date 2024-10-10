@@ -44,14 +44,25 @@ $prefix: #{config.$prefix};
   --#{$prefix}#{$suffix}-#{$key}: #{$value};
 }
 
-@function get($key) {
+@function get($key, $type: "variable") {
   $keyPrefix: string.slice($key, 0, 2);
 
   @if $keyPrefix == "--" {
     $key: string.slice($key, 3);
   }
 
-  @return var(--#{$prefix}-#{$key});
+  $suffix: "";
+  @if $type == "color" {
+    $suffix: "c";
+  }
+  @if $type == "z-index" {
+    $suffix: "z";
+  }
+  @if $type == "variable" {
+    $suffix: "v";
+  }
+
+  @return var(--#{$prefix}#{$suffix}-#{$key});
 }
 
 @function getColor($key, $opacity: 1) {
@@ -61,9 +72,9 @@ $prefix: #{config.$prefix};
   }
 
   @if $opacity == 1 {
-    @return string.unquote("rgb(var(--#{$prefix}-c-#{$key}))");
+    @return string.unquote("rgb(var(--#{$prefix}c-#{$key}))");
   } @else {
-    @return string.unquote("rgb(var(--#{$prefix}-c-#{$key}) / #{$opacity})");
+    @return string.unquote("rgb(var(--#{$prefix}c-#{$key}) / #{$opacity})");
   }
 
 

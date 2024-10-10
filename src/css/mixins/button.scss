@@ -1,0 +1,68 @@
+@use "sass:color";
+@use "sass:math";
+@use "./variable";
+
+@function getForegroundColor($bg-color, $fg-color-default) {
+  $fg-color: $fg-color-default;
+
+  $fg-lightness: color.channel($fg-color-default, 'lightness', $space: hsl);
+  $bg-lightness: color.channel($bg-color, 'lightness', $space: hsl);
+
+  $diff: math.abs($fg-lightness - $bg-lightness);
+
+  @if $diff < 40% {
+    $fg-color: color.invert($fg-color-default);
+  }
+
+  @return $fg-color;
+}
+
+@mixin colors($name, $base-bg, $fg-color) {
+  $base-fg: getForegroundColor($base-bg, $fg-color);
+
+  @include variable.create(--btn-#{$name}-bg, $base-bg, "color");
+  @include variable.create(--btn-#{$name}-fg, $base-fg, "color");
+
+  $hover-bg: color.mix($base-fg, $base-bg, 10%);
+  $hover-fg: getForegroundColor($hover-bg, $base-fg);
+  @include variable.create(--btn-#{$name}-hover-bg, $hover-bg, "color");
+  @include variable.create(--btn-#{$name}-hover-fg, $hover-fg, "color");
+
+  $active-bg: color.mix($base-fg, $base-bg, 15%);
+  $active-fg: getForegroundColor($active-bg, $base-fg);
+  @include variable.create(--btn-#{$name}-active-bg, $active-bg, "color");
+  @include variable.create(--btn-#{$name}-active-fg, $active-fg, "color");
+}
+
+@mixin layout($name, $params) {
+
+  .btn.btn-#{$name} {
+    background-color: variable.getColor(--btn-#{$name}-bg);
+    border-color: variable.getColor(--btn-#{$name}-bg);
+    color: variable.getColor(--btn-#{$name}-fg);
+  }
+
+  .btn.btn-#{$name}:hover {
+    background-color: variable.getColor(--btn-#{$name}-hover-bg);
+    border-color: variable.getColor(--btn-#{$name}-hover-bg);
+    color: variable.getColor(--btn-#{$name}-hover-fg);
+  }
+
+  .btn.btn-#{$name}:active {
+    background-color: variable.getColor(--btn-#{$name}-active-bg);
+    border-color: variable.getColor(--btn-#{$name}-active-bg);
+    color: variable.getColor(--btn-#{$name}-active-fg);
+  }
+
+  .btn.btn-#{$name}:disabled {
+    background-color: variable.getColor(--btn-#{$name}-bg);
+    border-color: variable.getColor(--btn-#{$name}-bg);
+    color: variable.getColor(--btn-#{$name}-fg);
+    filter: #{"grayscale(0.8) brightness(0.5)"};
+    opacity: .8;
+    box-shadow: none;
+    pointer-events: none;
+    cursor: default;
+  }
+
+}

@@ -13,29 +13,3 @@ html.dark {
   justify-content: stretch;
   gap: 16px;
 }
-
-.btn.btn-primary {
-  --button-color: rgb(0 115 229);
-  height: 40px;
-  width: 100%;
-  padding: 8px 16px;
-  text-align: center;
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
-  cursor: pointer;
-  background-color: var(--button-color);
-  border: 1px solid var(--button-color);
-  transition: all .3s ease-in-out;
-  border-radius: .375rem;
-  appearance: none;
-
-  &:hover {
-    --button-color: rgb(0 115 229 / .8);
-  }
-
-  &:active {
-    transition-duration: 0s;
-    --button-color: rgb(0 115 229 / .7);
-  }
-}

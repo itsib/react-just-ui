@@ -1,7 +1,6 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import { ValidationError } from './types';
 import './subscript.scss';
-import { prefixedCN } from './intermal/css-class';
 
 export interface ISubscript {
   error?: ValidationError | false;
@@ -40,7 +39,7 @@ export const Subscript: FC<ISubscript> = ({ error, hint }) => {
   }, [hint]);
 
   return (
-    <div className={prefixedCN('subscript', true)} role="alert" ref={ref}>
+    <div className="__prefix__ __prefix__-subscript" role="alert" ref={ref}>
       <div className={`error ${message ? 'active' : ''}`}>{message || messageCopy}</div>
       <div className={`hint ${!message && !messageCopy && hint ? 'active' : ''}`}>{hint || hintCopy}</div>
     </div>

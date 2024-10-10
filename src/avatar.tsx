@@ -1,8 +1,7 @@
 import type { AllHTMLAttributes, FC, ReactNode } from 'react';
-import { useState, useReducer, useEffect } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { cn } from './utils';
 import './avatar.scss';
-import { prefixedCN } from './intermal/css-class';
 
 const BAD_URLS = new Set<string>();
 
@@ -70,7 +69,7 @@ export const Avatar: FC<AvatarProps> = props => {
 
   return (
     <div
-      className={cn(prefixedCN('avatar', true), className, state)}
+      className={cn('__prefix__', '__prefix__-avatar', className, state) }
       style={{
         width: width ? (typeof width === 'number' ? `${width}px` : size) : (typeof size === 'number' ? `${size}px` : size),
         height: height ? (typeof height === 'number' ? `${height}px` : size) : (typeof size === 'number' ? `${size}px` : size),
