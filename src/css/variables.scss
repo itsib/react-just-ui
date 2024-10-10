@@ -26,6 +26,12 @@ $tooltip: (
     'show-delay': .4s,
     'duration': .2s,
 ) !default;
+$modal: (
+    'border-width': 1px,
+    'border-radius': .5em,
+    'padding-x': 1rem,
+    'padding-y': .875rem,
+) !default;
 
 @mixin defineColors ($name, $schemes) {
   $scheme: map.get($schemes, $name);
@@ -81,6 +87,9 @@ $tooltip: (
   @include variable.create(--tooltip-text, map.get($scheme, 'foreground'), "color");
   @include variable.create(--tooltip-bg, map.get($scheme, 'theme'), "color");
   @include variable.create(--tooltip-border, color.invert(map.get($scheme, 'background'), 15%), "color");
+
+  // Modal
+  @include variable.create(--modal-bg, map.get($scheme, 'modal'), "color");
 }
 
 :root {
@@ -118,6 +127,12 @@ $tooltip: (
   @include variable.create(--form-padding-y, map.get($form, "padding-y"));
   @include variable.create(--form-margin-top, map.get($form, "margin-top"));
   @include variable.create(--form-margin-bottom, map.get($form, "margin-bottom"));
+
+  // Modal
+  @include variable.create(--modal-border-width, map.get($modal, "border-width"));
+  @include variable.create(--modal-border-radius, map.get($modal, "border-radius"));
+  @include variable.create(--modal-padding-x, map.get($modal, "padding-x"));
+  @include variable.create(--modal-padding-y, map.get($modal, "padding-y"));
 }
 
 .#{variable.$prefix} * {

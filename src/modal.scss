@@ -1,0 +1,104 @@
+.__prefix__.__prefix__-modal-overlay {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 60px 0;
+  overflow: auto;
+  background: rgb(var(--__prefix__c-black) / 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: var(--__prefix__z-modal);
+  opacity: 0;
+  backdrop-filter: blur(0px);
+  transition: opacity .2s ease-out, backdrop-filter .2s ease-out;
+
+  .__prefix__-modal-content {
+    width: unset;
+    max-width: 90vw;
+    margin: auto;
+    padding: 0;
+    background: rgb(var(--__prefix__c-modal-bg));
+    box-shadow: 0 0 0 1px rgb(var(--__prefix__c-white) / .05);
+    border-radius: var(--__prefix__v-modal-border-radius);
+    border: var(--__prefix__v-modal-border-width) solid transparent;
+    opacity: 0;
+    top: 24px;
+    position: relative;
+    transition: top .2s ease-out, opacity .2s ease-out;
+  }
+
+  &.show {
+    opacity: 1;
+    backdrop-filter: blur(3px);
+
+    .__prefix__-modal-content {
+      opacity: 1;
+      top: 0;
+    }
+  }
+}
+
+.modal {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0.5px solid rgb(var(--modal-border-color) / 0.1);
+  border-radius: var(--__prefix__v-modal-border-radius);
+  display: flex;
+  flex-direction: column;
+
+  .modal-header {
+    min-height: 54px;
+    padding: var(--__prefix__v-modal-padding-y) var(--__prefix__v-modal-padding-x) 0 var(--__prefix__v-modal-padding-x)  ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    .btn-close {
+      top: -10px;
+      right: 0;
+      width: 22px;
+      height: 22px;
+      padding: 0;
+      border: none;
+      position: relative;
+
+      &:before, &:after {
+        content: " ";
+        height: 18px;
+        width: 2px;
+        top: 3px;
+        left: 11px;
+        color: rgb(var(--__prefix__c-foreground));
+        border-radius: 2px;
+        background-color: currentColor;
+        transition: color .2s ease-out;
+        border: none;
+        position: absolute;
+      }
+
+      &:before {
+        transform: rotate(45deg);
+      }
+
+      &:after {
+        transform: rotate(-45deg);
+      }
+    }
+
+    .title {
+      padding: .375em 0 1em 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+  }
+
+  .modal-content {
+    padding: 0 var(--__prefix__v-modal-padding-x) var(--__prefix__v-modal-padding-y);
+    border-radius: 0 0 var(--__prefix__v-modal-border-radius) var(--__prefix__v-modal-border-radius);
+  }
+}
