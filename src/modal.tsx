@@ -2,11 +2,11 @@ import { PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import './modal.scss';
 
-export interface ModalProps<T> {
+export interface ModalProps {
   /**
    * Open/Close dialog modal
    */
-  isOpen?: boolean;
+  isOpen: boolean;
   /**
    * Prevent close dialog modal on backdrop
    */
@@ -15,7 +15,7 @@ export interface ModalProps<T> {
    * Dismiss modal action
    * @param args
    */
-  onDismiss?: (args?: T) => void;
+  onDismiss: () => void;
 }
 
 /**
@@ -26,7 +26,7 @@ export interface ModalProps<T> {
  * @param children
  * @constructor
  */
-export function Modal<T = unknown>({ isOpen, onDismiss, isLocked, children }: PropsWithChildren<ModalProps<T>>) {
+export function Modal({ isOpen, onDismiss, isLocked, children }: PropsWithChildren<ModalProps>) {
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const [isShow, setIsShow] = useState(false);
 
