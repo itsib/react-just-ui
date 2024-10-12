@@ -102,13 +102,11 @@ $modal: (
 
 :root {
   // Z index
-  @include variable.create(--dropdown, 1000, "z-index");
-  @include variable.create(--sticky, 1020, "z-index");
-  @include variable.create(--fixed, 1030, "z-index");
-  @include variable.create(--modal, 1040, "z-index");
-  @include variable.create(--popover, 1050, "z-index");
-  @include variable.create(--tooltip, 1060, "z-index");
-  @include variable.create(--toast, 1070, "z-index");
+  @include variable.create(--modal, 1000, "z-index");
+  @include variable.create(--toast, 1050, "z-index");
+  @include variable.create(--dropdown, 1060, "z-index");
+  @include variable.create(--popover, 1070, "z-index");
+  @include variable.create(--tooltip, 1080, "z-index");
 
   // Tooltip
   @include variable.create(--tooltip-font-size, map.get($tooltip, "font-size"));
