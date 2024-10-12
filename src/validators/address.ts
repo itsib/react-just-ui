@@ -32,9 +32,8 @@ export function btcAddress(error: any, testnet = false): ValidationFn {
 }
 
 /**
- * Validate Ethereum address
+ * Validate Ethereum address.
  *
- * @remarks
  * Passive validation of the Ethereum blockchain address
  * with regexp `/^0x[0-9a-fA-F]{42}$/`. All EVM addresses
  * is 42 symbols hex value with prefix "0x"
@@ -48,6 +47,9 @@ export function btcAddress(error: any, testnet = false): ValidationFn {
 export function ethAddress(error: any): ValidationFn {
   return (value: string) => {
     if (!value) return true;
+
+    if (value.length !== 42) return error;
+    if (!value.startsWith('0x')) return error;
 
     return /^0x[0-9a-fA-F]{42}$/.test(value) ? true : error;
   }
