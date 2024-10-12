@@ -1,0 +1,11 @@
+.button-stories {
+  display: grid;
+  grid-template-columns: repeat(2, 200px);
+  row-gap: 16px;
+  column-gap: 20px;
+
+  .header {
+    width: 100%;
+    text-align: center;
+  }
+}

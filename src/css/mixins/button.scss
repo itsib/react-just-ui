@@ -36,6 +36,7 @@
 
 @mixin layout($name, $params) {
 
+  // REGULAR BUTTONS
   .btn.btn-#{$name} {
     background-color: variable.getColor(--btn-#{$name}-bg);
     border-color: variable.getColor(--btn-#{$name}-bg);
@@ -54,15 +55,62 @@
     color: variable.getColor(--btn-#{$name}-active-fg);
   }
 
-  .btn.btn-#{$name}:disabled {
+  .btn.btn-#{$name}:disabled, .btn.btn-#{$name}.disabled {
     background-color: variable.getColor(--btn-#{$name}-bg);
     border-color: variable.getColor(--btn-#{$name}-bg);
     color: variable.getColor(--btn-#{$name}-fg);
-    filter: #{"grayscale(0.8) brightness(0.5)"};
-    opacity: .8;
-    box-shadow: none;
-    pointer-events: none;
-    cursor: default;
+    filter: contrast(0.5) brightness(0.6);
   }
 
+  .btn.btn-#{$name}.loading {
+    background-image: linear-gradient(
+            45deg,
+            variable.getColor(--btn-#{$name}-fg, .2) 25%,
+            transparent 25%,
+            transparent 50%,
+            variable.getColor(--btn-#{$name}-fg, .2) 50%,
+            variable.getColor(--btn-#{$name}-fg, .2) 75%,
+            transparent 75%, transparent
+    );
+  }
+
+  // OUTLINE BUTTONS
+  .btn.btn-outline-#{$name} {
+    background-color: transparent;
+    border-color: variable.getColor(--btn-#{$name}-bg);
+    color: color-mix(in srgb, variable.getColor(--foreground, .8) 70%, variable.getColor(--btn-#{$name}-bg, .8) 30%);
+  }
+
+  .btn.btn-outline-#{$name}:hover {
+    background-color: variable.getColor(--btn-#{$name}-hover-bg, .1);
+    border-color: variable.getColor(--btn-#{$name}-bg);
+    color: color-mix(in srgb, variable.getColor(--foreground, .9) 80%, variable.getColor(--btn-#{$name}-bg, .9) 20%);
+  }
+
+  .btn.btn-outline-#{$name}:active {
+    background-color: variable.getColor(--btn-#{$name}-active-bg, .15);
+    border-color: variable.getColor(--btn-#{$name}-active-bg);
+    color: color-mix(in srgb, variable.getColor(--foreground, .95) 85%, variable.getColor(--btn-#{$name}-bg, .95) 15%);
+  }
+
+  .btn.btn-outline-#{$name}:disabled, .btn.btn-outline-#{$name}.disabled {
+    background-color: variable.getColor(--btn-#{$name}-bg, .25);
+    border-color: variable.getColor(--btn-#{$name}-bg, .25);
+    color: color-mix(in srgb, variable.getColor(--foreground, .8) 70%, variable.getColor(--btn-#{$name}-bg, .8) 30%);
+    filter: contrast(0.5);
+  }
+
+  .btn.btn-outline-#{$name}.loading {
+    background-color: variable.getColor(--btn-#{$name}-bg);
+    border-color: variable.getColor(--btn-#{$name}-bg);
+    background-image: linear-gradient(
+            45deg,
+            variable.getColor(--btn-#{$name}-fg, .2) 25%,
+            transparent 25%,
+            transparent 50%,
+            variable.getColor(--btn-#{$name}-fg, .2) 50%,
+            variable.getColor(--btn-#{$name}-fg, .2) 75%,
+            transparent 75%, transparent
+    );
+  }
 }

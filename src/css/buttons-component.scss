@@ -3,7 +3,7 @@
 @use "sass:map";
 
 $height: 40px !default;
-$padding: ("y": 0.5rem, "x": 1rem) !default;
+$padding: 0.5em 1em !default;
 $font: ("size": 1rem, "weight": 400, "height": 1.5) !default;
 $border: ("width": 1px, "radius": .375em) !default;
 $ring-width: 1px !default;
@@ -11,7 +11,7 @@ $ring-offset: 2px !default;
 
 .btn {
   height: $height;
-  padding: map.get($padding, "y") map.get($padding, "x");
+  padding: $padding;
   font-size: map.get($font, "size");
   font-weight: map.get($font, "weight");
   line-height: map.get($font, "height");
@@ -36,8 +36,6 @@ $ring-offset: 2px !default;
   }
 
   &:disabled, &.disabled, &.loading {
-    filter: #{"grayscale(0.8) brightness(0.5)"};
-    opacity: .8;
     box-shadow: none;
     pointer-events: none;
     cursor: default;
@@ -45,15 +43,6 @@ $ring-offset: 2px !default;
 
   &.loading {
     color: transparent;
-    background-image: linear-gradient(
-            45deg,
-            variable.getColor(--muted, .25) 25%,
-            transparent 25%,
-            transparent 50%,
-            variable.getColor(--muted, .25) 50%,
-            variable.getColor(--muted, .25) 75%,
-            transparent 75%, transparent
-    );
     background-size: 26px 26px;
     animation: #{variable.$prefix}-button-loader 1s linear infinite;
 

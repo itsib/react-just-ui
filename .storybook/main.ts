@@ -11,12 +11,6 @@ const config: StorybookConfig = {
     backgroundsStoryGlobals: false,
     viewportStoryGlobals: false,
   },
-  // refs: {
-  //   'react-just-ui': {
-  //     title: 'Just UI - components library for react',
-  //     url: 'https://github.com/itsib/react-just-ui',
-  //   },
-  // },
   stories: [
     './stories/get-started.mdx',
     './stories/**/**/*.mdx',
@@ -33,9 +27,8 @@ const config: StorybookConfig = {
     name: '@storybook/react-vite',
     options: {
       builder: {
-        viteConfigPath: './.storybook/vite.config.mts',
+        viteConfigPath: '.storybook/vite.config.mts',
       },
-
     },
   },
   staticDirs: ['./public/'],
@@ -60,6 +53,16 @@ const config: StorybookConfig = {
       shouldRemoveUndefinedFromOptional: true,
     },
   },
+  // async viteFinal(config, { configType }) {
+  //   const { mergeConfig } = await import('vite');
+  //
+  //   if (configType === 'DEVELOPMENT') {
+  //
+  //   }
+  //   return mergeConfig(config, {
+  //
+  //   });
+  // },
 };
 
 export default config;
