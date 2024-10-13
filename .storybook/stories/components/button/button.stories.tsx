@@ -70,6 +70,14 @@ export const Basic: Story = {
           <span>Primary</span>
         </button>
 
+        <button className={`btn btn-accent w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
+          <span>Accent</span>
+        </button>
+
+        <button className={`btn btn-outline-accent w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
+          <span>Accent</span>
+        </button>
+
         <button className={`btn btn-secondary w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
           <span>Secondary</span>
         </button>

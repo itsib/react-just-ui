@@ -46,6 +46,7 @@ $modal: (
 
   // Buttons
   @include button.colors("primary", map.get($scheme, 'primary'), map.get($scheme, 'foreground'));
+  @include button.colors("accent", map.get($scheme, 'accent'), map.get($scheme, 'foreground'));
   @include button.colors("secondary", map.get($scheme, 'muted'), map.get($scheme, 'foreground'));
   @include button.colors("danger", map.get($scheme, 'error'), map.get($scheme, 'foreground'));
 

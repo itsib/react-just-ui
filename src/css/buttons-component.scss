@@ -59,6 +59,8 @@ $ring-offset: 2px !default;
 
 @include button.layout("primary", ());
 
+@include button.layout("accent", ());
+
 @include button.layout("secondary", ());
 
 @include button.layout("danger", ());
