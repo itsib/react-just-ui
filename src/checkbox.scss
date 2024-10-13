@@ -57,6 +57,7 @@
 
       input[type="checkbox"]:disabled {
         pointer-events: none;
+        cursor: default;
 
         + .checkbox {
           border-color: rgb(var(--__prefix__c-checkbox-disabled));
@@ -66,6 +67,15 @@
           }
         }
       }
+    }
+  }
+
+  &.disabled {
+
+    .__prefix__-label {
+      color: rgb(var(--__prefix__c-muted));
+      opacity: 1;
+      cursor: default;
     }
   }
 }

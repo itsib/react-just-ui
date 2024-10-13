@@ -23,7 +23,7 @@ export const Basic: Story = {
     hint: '',
     onChange: action('onChange'),
   },
-  render: function Render(args) {
+  render: function Render(args: any) {
     const [checked, setChecked] = useState(args.checked);
 
     function onChange(event: React.ChangeEvent<HTMLInputElement>) {

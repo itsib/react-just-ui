@@ -10,7 +10,7 @@
 
   $diff: math.abs($fg-lightness - $bg-lightness);
 
-  @if $diff < 40% {
+  @if $diff < 60% {
     $fg-color: color.invert($fg-color-default);
   }
 

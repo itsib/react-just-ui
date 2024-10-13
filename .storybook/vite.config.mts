@@ -26,7 +26,7 @@ export default defineConfig(async ({ mode, command }): Promise<UserConfig> => {
           watchKind: ['add', 'change', 'unlink'],
           watch: resolve(__dirname, '../src/**/*.*'),
           run: 'npm run build',
-          delay: 300
+          delay: 1000
         }
       ]),
     ],
