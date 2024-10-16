@@ -1,4 +1,4 @@
-import React, {
+import {
   type CSSProperties,
   ForwardedRef,
   forwardRef,
@@ -160,7 +160,7 @@ export function SelectDropdown(props: SelectDropdownProps) {
     return { width, height, left, top, itemHeight, margin, padding, itemsDisplay, scrollY }
   }, [rect, options.length, activeIndex])
 
-  function onClickOverlay(event: React.MouseEvent<HTMLDivElement>) {
+  function onClickOverlay(event: MouseEvent<HTMLDivElement>) {
     event.stopPropagation();
     onDismiss?.();
   }

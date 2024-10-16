@@ -46,6 +46,7 @@ export default [
     },
     plugins: {
       '@typescript-eslint': tseslint.plugin,
+      // 'eslint-import': eslintImport.flatConfigs.recommended
     },
 
     rules: {

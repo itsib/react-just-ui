@@ -1,4 +1,4 @@
-import React from 'react';
+import { forwardRef, type ForwardedRef } from 'react';
 import { Label } from './label';
 import { Subscript } from './subscript';
 import { BaseCheckedControlProps } from './types';
@@ -10,9 +10,9 @@ import './checkbox.scss';
  * government paper form. The exact appearance depends upon the operating
  * system configuration under which the browser is running.
  */
-export const Checkbox = React.forwardRef(function Checkbox(
+export const Checkbox = forwardRef(function Checkbox(
   _props: Omit<BaseCheckedControlProps<HTMLInputElement>, 'value'>,
-  _ref: React.ForwardedRef<HTMLInputElement>
+  _ref: ForwardedRef<HTMLInputElement>
 ) {
   const { id, label, hint, className, rowReverse, error, disabled, size = 20, ...props } = _props;
 

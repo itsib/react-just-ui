@@ -1,5 +1,4 @@
 import { describe, it, expect } from 'vitest';
-
 import { btcAddress, ethAddress } from './address';
 
 describe('validators/address.ts', () => {
