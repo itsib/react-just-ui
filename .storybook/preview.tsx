@@ -3,7 +3,7 @@ import DocumentationTemplate from './templates/documentation-template.mdx';
 import { decorator as reportDecorator, loader as reportLoader } from './components/report-badge';
 import { decorator as themeDecorator } from './components/switch-theme';
 import theme from './theme';
-import '../dist/theme/minimal.css';
+import '../src/themes/minimal.scss';
 import './styles.scss';
 
 const preview: Preview = {

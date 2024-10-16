@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useForm } from 'react-hook-form';
-import { OtpInput } from 'react-just-ui/otp-input';
+import { OtpInput } from '../../../../src';
 
 export interface ExtendedProps {
   label?: string;

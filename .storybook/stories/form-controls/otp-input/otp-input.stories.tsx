@@ -1,4 +1,4 @@
-import { OtpInput } from 'react-just-ui';
+import { OtpInput } from '../../../../src';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 import { ExtendedDemo } from './extended-demo';

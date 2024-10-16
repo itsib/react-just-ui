@@ -1,4 +1,4 @@
-import { Avatar } from 'react-just-ui/avatar';
+import { Avatar } from '../../../../src';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {

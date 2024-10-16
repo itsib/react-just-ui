@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { OtpInput, OtpInputProps } from 'react-just-ui';
+import { OtpInput, OtpInputProps } from '../../../../src';
 import { useForm } from 'react-hook-form';
 
 export interface SimpleDemoProps extends Omit<OtpInputProps, 'onChange' | 'value'> {

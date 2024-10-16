@@ -1,4 +1,4 @@
-import { Switch } from 'react-just-ui';
+import { Switch } from '../../../../src';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';

@@ -20,15 +20,15 @@ export default defineConfig(async ({ mode, command }): Promise<UserConfig> => {
       'process.env.NODE_ENV': JSON.stringify(mode),
     },
     plugins: [
-      watchAndRun([
-        {
-          name: 'build',
-          watchKind: ['add', 'change', 'unlink'],
-          watch: resolve(__dirname, '../src/**/*.*'),
-          run: 'npm run build',
-          delay: 1000
-        }
-      ]),
+      // watchAndRun([
+      //   {
+      //     name: 'build',
+      //     watchKind: ['add', 'change', 'unlink'],
+      //     watch: resolve(__dirname, '../src/**/*.*'),
+      //     run: 'npm run build',
+      //     delay: 1000
+      //   }
+      // ]),
     ],
   });
 });

@@ -22,4 +22,5 @@ export * from './radio';
 export * from './switch';
 export * from './otp-input';
 export * from './avatar';
+export * from './modal';
 

@@ -1,4 +1,4 @@
-import { Modal } from 'react-just-ui/modal';
+import { Modal } from '../../../../src';
 import { useArgs } from '@storybook/preview-api'
 import type { Meta, StoryObj } from '@storybook/react';
 

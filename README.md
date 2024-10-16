@@ -1,4 +1,11 @@
-# react-just-ui
+<h1>
+<img alt="React Just UI" src=".storybook/public/images/brand-source.svg" width="240" height="60">
+</h1>
+
+
+[![npm version](https://badge.fury.io/js/react-just-ui.svg)](https://badge.fury.io/js/react-just-ui)
+
+---
 
 UI components library for react.
 
@@ -7,10 +14,8 @@ UI components library for react.
 - Simple integration
 - Supports [react-hook-form](https://react-hook-form.com/)
 - Elastic textarea
-- Display validation error
 - Simple styling width css variables
-- Code size 12.03 kB (4.26 kB compressed)
-- Style size 14.41 kB (2.69 kB compressed)
+- Display validation error
 
 ## Installation
 

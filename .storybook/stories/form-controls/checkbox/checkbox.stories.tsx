@@ -1,4 +1,4 @@
-import { Checkbox } from 'react-just-ui';
+import { Checkbox } from '../../../../src';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';

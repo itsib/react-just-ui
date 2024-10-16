@@ -4,6 +4,7 @@ import path from 'node:path';
 import { promisify } from 'util';
 import { gzip as _gzip } from 'node:zlib';
 import { formatSize } from './utils';
+
 const gzip = promisify(_gzip);
 
 export interface ReportConfig {
@@ -18,14 +19,15 @@ export default function bundleReport(config?: ReportConfig): Plugin {
   let { extensions = ['js', 'css', 'cjs'], filename = 'report.json', enableGzip, outputPath } = config || {};
 
   if (!filename) {
-    throw new Error('FIle name shouldn\'t be empty');
+    throw new Error('File name shouldn\'t be empty');
   }
 
   const initReport: { [ext: string]: number } = extensions.reduce((acc, ext) => ({ ...acc, [ext]: 0 }), {});
-  let distPath = path.resolve(import.meta.dirname, '../dist');
+  const rootProject  = path.resolve(import.meta.dirname, '..');
+  let distPath = path.resolve(rootProject, 'dist');
 
   if (outputPath) {
-    outputPath = path.isAbsolute(outputPath) ? outputPath : path.resolve(import.meta.dirname, '..', outputPath);
+    outputPath = path.isAbsolute(outputPath) ? outputPath : path.resolve(rootProject, outputPath);
   } else {
     outputPath = distPath;
   }

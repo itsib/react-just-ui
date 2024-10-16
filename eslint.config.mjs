@@ -1,51 +1,53 @@
-import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
-import perfectionist from 'eslint-plugin-perfectionist';
 import globals from 'globals';
+import eslint from '@eslint/js';
 
-export default tseslint.config(
-  {
-    ignores: [
-      '.storybook',
-      'temp',
-      'plugins',
-      'themes',
-      'dist',
-      'node_modules',
-      'storybook-static',
-      'tsconfig.declare.tsbuildinfo',
-    ],
-  },
-  eslint.configs.recommended,
+export default [
   ...tseslint.configs.recommended,
   ...tseslint.configs.stylistic,
+  eslint.configs.recommended,
   {
+    name: "global-ignores",
+    ignores: [
+      "dist/**",
+      ".storybook/**",
+      "plugins/**",
+      "templates/**",
+      "tests/bench/**",
+      "tests/fixtures/**",
+      "tests/performance/**",
+      "tmp/**",
+      "**/test.js",
+      ".vscode",
+      ".git",
+      ".idea",
+      ".browserslistrc",
+      "vite.config.*"
+    ]
+  },
+  {
+    name: "tslint",
+    files: [
+      "src/**/*.ts",
+      "src/**/*.tsx",
+    ],
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
-        sourceType: 'module',
-        ecmaVersion: 2022,
-        project: ['tsconfig.eslint.json'],
-        warnOnUnsupportedTypeScriptVersion: false,
-        loggerFn: false,
+        project: 'tsconfig.eslint.json',
         ecmaFeatures: {
           jsx: true,
-        }
+        },
       },
 
       globals: {
-        ...globals.es2021,
-        ...globals.node,
+        ...globals.browser,
       },
     },
     plugins: {
       '@typescript-eslint': tseslint.plugin,
-      'perfectionist': perfectionist,
     },
-    files: [
-      'src/**/*.ts',
-      'src/**/*.tsx',
-    ],
+
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/prefer-for-of': 'off',
@@ -55,7 +57,8 @@ export default tseslint.config(
         "argsIgnorePattern": "^_",
         "varsIgnorePattern": "^_",
         "caughtErrorsIgnorePattern": "^_"
-      }]
+      }],
+      'no-unused-vars': 'off',
     }
   },
-);
+];

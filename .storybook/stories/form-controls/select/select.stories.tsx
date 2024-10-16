@@ -1,4 +1,4 @@
-import { Select } from 'react-just-ui';
+import { Select } from '../../../../src';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
