@@ -1,6 +1,8 @@
-<h1>
-<img alt="React Just UI" src=".storybook/public/images/brand-source.svg" width="240" height="60">
-</h1>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".storybook/public/images/brand-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset=".storybook/public/images/brand-light.svg">
+  <img alt="React Just UI" src=".storybook/public/images/brand-dark.svg" width="240" height="60">
+</picture>
 
 
 [![npm version](https://badge.fury.io/js/react-just-ui.svg)](https://badge.fury.io/js/react-just-ui)
