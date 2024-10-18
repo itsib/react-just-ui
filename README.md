@@ -4,6 +4,7 @@
 
 
 [![npm version](https://badge.fury.io/js/react-just-ui.svg)](https://badge.fury.io/js/react-just-ui)
+[![Publish](https://github.com/itsib/react-just-ui/actions/workflows/main.yaml/badge.svg?event=push)](https://github.com/itsib/react-just-ui/actions)
 
 ---
 

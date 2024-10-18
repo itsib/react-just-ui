@@ -30,13 +30,21 @@ import type { ValidationFn } from '../types';
  *
  * @param error - The error text that will be displayed inside the form element.
  *
+ * @param isHttpOnly - Only url starting with http:// or https:// are validated
  * @returns Validation callback {@link ValidationFn | function}.
  *
  * @public
  */
-export function url(error: any): ValidationFn {
+export function url(error: any, isHttpOnly?: boolean): ValidationFn {
   return (value: string) => {
     if (!value) return true;
+
+    if (isHttpOnly) {
+      const prefix = value.split('//')[0];
+      if (prefix !== 'http:' && prefix !== 'https:') {
+        return error;
+      }
+    }
 
     return URL.canParse(value) ? true : error;
   }

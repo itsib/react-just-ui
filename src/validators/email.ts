@@ -39,7 +39,12 @@ export function email(error: string): ValidationFn {
     if (!value) return true;
 
     const segments = value.split('@');
-    if (segments.length === 2 && segments[1].split('.').length >= 2) {
+    if (
+      segments.length === 2 &&
+      segments[0].length > 0 &&
+      segments[1].length > 3 &&
+      segments[1].split('.').length >= 2
+    ) {
       return true;
     }
     return error

@@ -1,5 +1,4 @@
 import { describe, it, expect } from 'vitest';
-
 import { cn } from './class-names';
 
 describe('utils/class-names.ts', () => {

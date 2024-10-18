@@ -92,8 +92,9 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       css: false,
       include: ['src/**/*.{spec,test}.{js,jsx,ts,tsx}'],
       globals: true,
-      environment: 'node',
+      environment: 'jsdom',
       restoreMocks: true,
+      // setupFiles: './test-setup.js',
     },
   }
 });

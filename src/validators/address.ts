@@ -51,7 +51,7 @@ export function ethAddress(error: any): ValidationFn {
     if (value.length !== 42) return error;
     if (!value.startsWith('0x')) return error;
 
-    return /^0x[0-9a-fA-F]{42}$/.test(value) ? true : error;
+    return /^0x[0-9a-fA-F]{40}$/.test(value) ? true : error;
   }
 }
 
