@@ -1,7 +1,8 @@
+
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".storybook/public/images/brand-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset=".storybook/public/images/brand-light.svg">
-  <img alt="React Just UI" src=".storybook/public/images/brand-dark.svg" width="240" height="60">
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/itsib/react-just-ui/raw/refs/heads/master/.storybook/public/images/brand-light.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/itsib/react-just-ui/raw/refs/heads/master/.storybook/public/images/brand-dark.svg">
+  <img alt="React Just UI" src="https://github.com/itsib/react-just-ui/raw/refs/heads/master/.storybook/public/images/brand-light.svg" width="240" height="60">
 </picture>
 
 ---
