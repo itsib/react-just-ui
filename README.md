@@ -4,11 +4,10 @@
   <img alt="React Just UI" src=".storybook/public/images/brand-dark.svg" width="240" height="60">
 </picture>
 
+---
 
 [![npm version](https://badge.fury.io/js/react-just-ui.svg)](https://badge.fury.io/js/react-just-ui)
 [![Publish](https://github.com/itsib/react-just-ui/actions/workflows/main.yaml/badge.svg?event=push)](https://github.com/itsib/react-just-ui/actions)
-
----
 
 UI components library for react.
 
