@@ -6,6 +6,10 @@
     "name": "Sergey",
     "email": "itsib.su@gmail.com"
   },
+  "bugs": {
+    "url": "https://github.com/itsib/react-just-ui/issues"
+  },
+  "homepage": "https://github.com/itsib/react-just-ui#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/itsib/react-just-ui.git"
@@ -24,7 +28,7 @@
     "preversion": "npm run lint && npm test",
     "postversion": "git push && git push --tags",
     "storybook": "storybook dev --exact-port --port 6060 --disable-telemetry --no-open",
-    "chromatic": "chromatic --build-script-name=build:storybook --exit-zero-on-changes"
+    "chromatic": "chromatic --build-script-name=build:storybook"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -87,9 +91,5 @@
     "globals": {
       ".": "^15.11.0"
     }
-  },
-  "bugs": {
-    "url": "https://github.com/itsib/react-just-ui/issues"
-  },
-  "homepage": "https://github.com/itsib/react-just-ui#readme"
+  }
 }
