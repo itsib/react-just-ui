@@ -89,12 +89,13 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       }),
     ],
     test: {
+      name: pkg.name,
       css: false,
-      include: ['src/**/*.{spec,test}.{js,jsx,ts,tsx}'],
+      include: ['tests/**/*.{spec,test}.{js,jsx,ts,tsx}'],
       globals: true,
       environment: 'jsdom',
       restoreMocks: true,
-      // setupFiles: './test-setup.js',
+      setupFiles: 'tests/test-setup.ts',
     },
   }
 });

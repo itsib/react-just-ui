@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { btcAddress, ethAddress, solanaAddress } from './address';
+import { btcAddress, ethAddress, solanaAddress } from '../../src';
 
 describe('validators/address.ts', () => {
   describe('#btcAddress', () => {

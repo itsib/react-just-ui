@@ -1,6 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { email } from './email';
-import { url } from './url';
+import { url } from '../../src';
 
 describe('validators/url.ts', () => {
   describe('#url', () => {
@@ -35,7 +34,7 @@ describe('validators/url.ts', () => {
     });
 
     it('empty value shouldn\'t invalid', () => {
-      const validator = email('error_message');
+      const validator = url('error_message');
 
       expect(validator('', {})).toStrictEqual(true);
     });

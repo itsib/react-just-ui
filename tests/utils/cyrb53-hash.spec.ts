@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { cyrb53Hash } from './cyrb53-hash';
+import { cyrb53Hash } from '../../src';
 
 describe('utils/hash-cyrb53.ts', () => {
   describe('#cyrb53Hash', () => {

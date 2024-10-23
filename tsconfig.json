@@ -21,6 +21,10 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
-  "exclude": ["scripts"]
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "plugins"
+  ]
 }

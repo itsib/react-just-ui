@@ -2,7 +2,10 @@
   "name": "react-just-ui",
   "description": "UI components library for react.",
   "version": "0.5.14",
-  "author": "Sergey <itsib.su@gmail.com>",
+  "author": {
+    "name": "Sergey",
+    "email": "itsib.su@gmail.com"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/itsib/react-just-ui.git"
@@ -18,17 +21,17 @@
     "build:storybook": "storybook build",
     "lint": "eslint --config eslint.config.mjs",
     "test": "vitest run",
-    "postinstall": "tsx plugins/patch-deps.ts",
     "preversion": "npm run lint && npm test",
     "postversion": "git push && git push --tags",
-    "storybook": "storybook dev --exact-port --port 6060 --disable-telemetry --no-open"
+    "storybook": "storybook dev --exact-port --port 6060 --disable-telemetry --no-open",
+    "chromatic": "chromatic --build-script-name=build:storybook --exit-zero-on-changes"
   },
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^2.0.2",
+    "@chromatic-com/storybook": "^3.0.0",
     "@eslint/js": "^9.11.1",
     "@rollup/plugin-replace": "^6.0.1",
     "@storybook/addon-controls": "^8.3.4",
@@ -84,5 +87,9 @@
     "globals": {
       ".": "^15.11.0"
     }
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/itsib/react-just-ui/issues"
+  },
+  "homepage": "https://github.com/itsib/react-just-ui#readme"
 }

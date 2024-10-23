@@ -85,7 +85,14 @@ export const Input = forwardRef(function Input(
       <div className="control">
         {!disabled && loading ? <div className="overlay"></div> : null}
         {prefix ? typeof prefix === 'string' ? <div className="prefix">{prefix}</div> : prefix : null}
-        <input id={id} type={type} disabled={disabled} ref={ref} {..._props} />
+        <input
+          id={id}
+          type={type}
+          disabled={disabled}
+          aria-label={typeof label === 'string' ? label : undefined}
+          ref={ref}
+          {..._props}
+        />
         {suffix ? typeof suffix === 'string' ? <div className="suffix">{suffix}</div> : suffix : null}
       </div>
 

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { required } from './required';
+import { required } from '../../src';
 
 describe('validators/required.ts', () => {
   describe('#required', () => {

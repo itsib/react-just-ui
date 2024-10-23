@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { email } from './email';
+import { email } from '../../src';
 
 describe('validators/email.ts', () => {
   describe('#email', () => {

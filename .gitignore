@@ -29,3 +29,4 @@ temp
 storybook-static/
 demo/public/json
 *storybook.log
+.env

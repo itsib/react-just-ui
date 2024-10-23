@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { cn } from './class-names';
+import { cn } from '../../src';
 
 describe('utils/class-names.ts', () => {
   it('#cn', () => {

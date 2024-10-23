@@ -1,7 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { email } from './email';
-import { merge } from './merge';
-import { required } from './required';
+import { email, merge, required } from '../../src';
 
 describe('validators/merge.ts', () => {
   describe('#merge', () => {
