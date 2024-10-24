@@ -42,7 +42,7 @@ export const ExtendedDemo = memo(function ExtendedDemo({ label, hint, layout, di
           Submit
         </button>
 
-        <button type="reset" className="btn btn-primary">
+        <button type="reset" className="btn btn-secondary">
           Reset
         </button>
       </div>

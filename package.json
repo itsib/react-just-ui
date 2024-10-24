@@ -27,15 +27,13 @@
     "test": "vitest run",
     "preversion": "npm run lint && npm test",
     "postversion": "git push && git push --tags",
-    "storybook": "storybook dev --exact-port --port 6060 --disable-telemetry --no-open",
-    "chromatic": "chromatic --build-script-name=build:storybook"
+    "storybook": "storybook dev --exact-port --port 6060 --disable-telemetry --no-open"
   },
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^3.0.0",
     "@eslint/js": "^9.11.1",
     "@rollup/plugin-replace": "^6.0.1",
     "@storybook/addon-controls": "^8.3.4",

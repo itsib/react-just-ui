@@ -17,6 +17,7 @@ const preview: Preview = {
   ],
   parameters: {
     layout: 'none',
+    disableSaveFromUI: true,
     backgrounds: {
       default: 'dark',
       values: [

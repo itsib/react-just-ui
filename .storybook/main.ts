@@ -19,7 +19,6 @@ const config: StorybookConfig = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@chromatic-com/storybook',
     '@storybook/addon-interactions',
     '@storybook/addon-themes',
   ],
@@ -45,7 +44,7 @@ const config: StorybookConfig = {
           return true;
         }
         if (prop.name === 'ref') {
-          prop.type = {name: 'React.Ref<HTMLInputElement> | null'};
+          prop.type = { name: 'React.Ref<HTMLInputElement> | null' };
           return true;
         }
         return prop.parent ? !/node_modules\/(?!@mui)/.test(prop.parent.fileName) : true;

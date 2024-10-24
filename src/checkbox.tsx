@@ -1,8 +1,10 @@
-import { forwardRef, type ForwardedRef } from 'react';
+import { type ForwardedRef, forwardRef } from 'react';
 import { Label } from './label';
 import { Subscript } from './subscript';
 import { BaseCheckedControlProps } from './types';
 import './checkbox.scss';
+
+export type CheckboxProps = Omit<BaseCheckedControlProps<HTMLInputElement>, 'value'>;
 
 /**
  * A wrapper for an input element of the checkbox type as boxes that are
@@ -11,10 +13,10 @@ import './checkbox.scss';
  * system configuration under which the browser is running.
  */
 export const Checkbox = forwardRef(function Checkbox(
-  _props: Omit<BaseCheckedControlProps<HTMLInputElement>, 'value'>,
+  _props: CheckboxProps,
   _ref: ForwardedRef<HTMLInputElement>
 ) {
-  const { id, label, hint, className, rowReverse, error, disabled, size = 20, ...props } = _props;
+  const { id, label, hint, className, checked, rowReverse, error, disabled, size = 20, ...props } = _props;
 
   return (
     <div className={`__prefix__ __prefix__-checkbox ${className || ''} ${disabled ? 'disabled' : ''} ${rowReverse ? 'row-reverse' : 'row'}`}>
@@ -26,6 +28,7 @@ export const Checkbox = forwardRef(function Checkbox(
           type="checkbox"
           role="checkbox"
           disabled={disabled}
+          checked={checked}
           ref={_ref}
           {...props}
         />

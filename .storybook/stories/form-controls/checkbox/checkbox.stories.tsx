@@ -1,12 +1,49 @@
-import { Checkbox } from '../../../../src';
+import type { Meta, StoryObj,  } from '@storybook/react';
+import { useArgs, useMemo } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
-import type { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import { userEvent, within, expect } from '@storybook/test';
+import { Checkbox, sleep } from '../../../../src';
 
 const meta = {
   id: 'story-checkbox',
   title: 'Form Controls/Checkbox',
   component: Checkbox,
+
+  args: {
+    id: '',
+    label: '',
+    checked: false,
+    disabled: false,
+    rowReverse: false,
+    size: 20,
+    hint: '',
+  },
+  argTypes: {
+    value: {
+      table: {
+        disable: true,
+      },
+    },
+    error: {
+      control: 'text',
+      type: 'string'
+    },
+    hint: {
+      control: 'text',
+      type: 'string'
+    },
+    size: {
+      type: 'number',
+      control: {
+        type: 'range',
+        min: 16,
+        max: 50,
+      },
+    },
+  } as unknown as any,
+  parameters: {
+
+  },
 } satisfies Meta<typeof Checkbox>;
 
 export default meta;
@@ -14,25 +51,63 @@ export default meta;
 type Story = StoryObj<typeof Checkbox>;
 
 export const Basic: Story = {
+  name: 'Basic Usage',
   args: {
     id: 'test-checkbox',
     label: 'I agree to the privacy policy and terms of use',
-    checked: false,
-    disabled: false,
-    rowReverse: false,
-    hint: '',
-    onChange: action('onChange'),
+    error: '' as any,
   },
-  render: function Render(args: any) {
-    const [checked, setChecked] = useState(args.checked);
+  argTypes: {
+    ref: {
+      control: { disable: true },
+      value: { disable: true }
+    },
+    error: {
+      control: { type: 'text' }
+    }
+  },
+  parameters: {
+    controls: {},
+  },
+  render: function Render(_) {
+    const [{ id, error, checked, onChange, ...args }, updateArgs]  = useArgs();
+    const validation = useMemo(() => {
+      if (!error) return undefined;
 
-    function onChange(event: React.ChangeEvent<HTMLInputElement>) {
-      setChecked((event.target as any).checked);
-      args.onChange?.(event);
+      return { message: error };
+    }, [error]);
+
+
+    function onChangeCallback() {
+      action('onchange', { depth: 0 })
+      setTimeout(() => updateArgs({ checked: !checked }), 10)
     }
 
     return (
-      <Checkbox {...args} checked={checked} onChange={onChange} />
+      <Checkbox
+        id={id}
+        error={validation}
+        onChange={onChangeCallback}
+        checked={checked}
+        {...args}
+      />
     );
   },
+  async play({ args, canvasElement }) {
+    const canvas = within(canvasElement);
+
+    const checkbox = canvas.getByLabelText(args.label as string) as HTMLInputElement;
+    checkbox.checked = false;
+
+    await sleep(500);
+    await expect(checkbox).not.toBeChecked()
+
+    await userEvent.click(checkbox);
+
+    await sleep(500);
+    await expect(checkbox).toBeChecked()
+
+    await userEvent.click(checkbox);
+  }
 };
+
