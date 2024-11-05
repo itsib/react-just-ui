@@ -28,7 +28,7 @@ export const Select = forwardRef(function Select(
   props: SelectProps,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
-  const { id, className, label, hint, error, options, loading, disabled, ..._props } = props;
+  const { id, required, className, label, hint, error, options, loading, disabled, ..._props } = props;
   const controlRef = useRef<HTMLDivElement>(null);
 
   const [value, setValue] = useState<string>();
@@ -83,11 +83,11 @@ export const Select = forwardRef(function Select(
 
   return (
     <div className={`__prefix__ __prefix__-select ${className || ''} ${disabled ? 'disabled' : ''} ${loading ? 'loading' : ''} ${error ? 'error' : ''}`}>
-      <Label id={id} label={label} />
+      <Label id={id} label={label} required={required} />
 
       <div className="control" ref={controlRef} onClick={onClick}>
         {loading && !disabled ? <div className="overlay" /> : null}
-        <input id={id} type="hidden" className="hidden-select" disabled={disabled} ref={ref} {..._props} />
+        <input id={id} type="hidden" className="hidden-select" disabled={disabled} required={required} ref={ref} {..._props} />
 
         <div className="__prefix__ __prefix__-select-option select">
           {activeIcon ? (
