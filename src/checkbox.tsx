@@ -16,11 +16,11 @@ export const Checkbox = forwardRef(function Checkbox(
   _props: CheckboxProps,
   _ref: ForwardedRef<HTMLInputElement>
 ) {
-  const { id, label, hint, className, checked, rowReverse, error, disabled, size = 20, ...props } = _props;
+  const { id, label, hint, className, checked, rowReverse, error, disabled, markRequired, size = 20, ...props } = _props;
 
   return (
     <div className={`__prefix__ __prefix__-checkbox ${className || ''} ${disabled ? 'disabled' : ''} ${rowReverse ? 'row-reverse' : 'row'}`}>
-      <Label id={id} label={label} />
+      <Label id={id} label={label} required={markRequired} />
 
       <div className="control-toggler" style={{ width: `${size}px`, height: `${size}px` }}>
         <input

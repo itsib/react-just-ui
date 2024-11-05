@@ -37,11 +37,11 @@ export const Radio = forwardRef(function Checkbox(
   _props: RadioProps,
   _ref: ForwardedRef<HTMLInputElement>
 ) {
-  const { id, label, hint, className, rowReverse, size = 18, error, disabled, ...props } = _props;
+  const { id, label, hint, className, rowReverse, size = 18, error, disabled, markRequired, ...props } = _props;
 
   return (
     <div className={`__prefix__ __prefix__-radio ${className || ''} ${disabled ? 'disabled' : ''} ${rowReverse ? 'row-reverse' : 'row'}`}>
-      <Label id={id} label={label} />
+      <Label id={id} label={label} required={markRequired} />
 
       <div className="control-toggler" style={{ width: `${size}px`, height: `${size}px` }}>
         <input id={id} type="radio" role="radio" disabled={disabled} ref={_ref} {...props} />

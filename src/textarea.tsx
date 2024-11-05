@@ -25,7 +25,7 @@ export const Textarea = forwardRef(function Textarea(
   props: TextareaProps,
   ref: ForwardedRef<HTMLTextAreaElement>,
 )   {
-  const { id, className, placeholder, elastic = true, label, hint, minHeight, minWidth, maxWidth, maxHeight, limit = 5000, loading, disabled, required, error, ..._props } = props;
+  const { id, className, placeholder, elastic = true, label, hint, minHeight, minWidth, maxWidth, maxHeight, limit = 5000, loading, markRequired, disabled, error, ..._props } = props;
 
   // Elastic textarea
   useEffect(() => {
@@ -140,14 +140,13 @@ export const Textarea = forwardRef(function Textarea(
 
   return (
     <div className={`__prefix__ __prefix__-textarea ${className || ''} ${disabled ? 'disabled' : ''} ${loading ? 'loading' : ''} ${error ? 'error' : ''}`}>
-      <Label id={id} label={label} required={required} />
+      <Label id={id} label={label} required={markRequired} />
 
       <textarea
         id={id}
         className="__prefix__-scroll control"
         placeholder={placeholder}
         disabled={disabled}
-        required={required}
         style={{ minHeight, maxHeight, minWidth, maxWidth, lineHeight: 1.3 }}
         ref={ref}
         {..._props}

@@ -11,7 +11,7 @@ export const Switch = forwardRef(function Switch(
   props: BaseCheckedControlProps<HTMLInputElement>,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
-  const { id, label, hint, className, rowReverse, error, disabled, size = 24, ...rest } = props;
+  const { id, label, hint, className, rowReverse, error, disabled, markRequired, size = 24, ...rest } = props;
 
   return (
     <div
@@ -24,7 +24,7 @@ export const Switch = forwardRef(function Switch(
         '--__prefix__-switch-thumb-size': `${size - (PADDING * 2)}px`
       } as CSSProperties}
     >
-      <Label id={id} label={label} />
+      <Label id={id} label={label} required={markRequired} />
 
       <div className="control-toggler">
         <input id={id} type="checkbox" role="checkbox" disabled={disabled} ref={ref} {...rest}/>

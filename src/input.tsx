@@ -52,7 +52,7 @@ export const Input = forwardRef(function Input(
   props: InputProps,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
-  const { id, required, className, label, hint, type: _type, prefix, suffix, loading, disabled, error, ..._props } = props;
+  const { id, markRequired, className, label, hint, type: _type, prefix, suffix, loading, disabled, error, ..._props } = props;
   const type = _type === 'number' ? 'text' : _type;
 
   useEffect(() => {
@@ -80,7 +80,7 @@ export const Input = forwardRef(function Input(
 
   return (
     <div className={`__prefix__ __prefix__-input ${className || ''} ${disabled ? 'disabled' : ''} ${loading ? 'loading' : ''} ${error ? 'error' : ''}`}>
-      <Label id={id} label={label} required={required} />
+      <Label id={id} label={label} required={markRequired} />
 
       <div className="control">
         {!disabled && loading ? <div className="overlay"></div> : null}
@@ -89,7 +89,6 @@ export const Input = forwardRef(function Input(
           id={id}
           type={type}
           disabled={disabled}
-          required={required}
           aria-label={typeof label === 'string' ? label : undefined}
           ref={ref}
           {..._props}

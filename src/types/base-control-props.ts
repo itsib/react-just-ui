@@ -22,6 +22,10 @@ export type BaseControlProps<Element extends HTMLElement> = {
    */
   label?: string | ReactNode;
   /**
+   * Adds the red asterisk symbol "*" to the label
+   */
+  markRequired?: boolean;
+  /**
    * The text of the popup hint. If passed, a
    * question mark icon appears to the
    * right of the label text. It is displayed

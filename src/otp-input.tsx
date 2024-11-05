@@ -27,7 +27,7 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
   props: OtpInputProps,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
-  const { id, className, label, hint, error, layout = 'ddd-ddd', ..._props} = props;
+  const { id, className, label, hint, error, markRequired, layout = 'ddd-ddd', ..._props} = props;
   const callbacksRef = useRef(_props);
   callbacksRef.current = _props;
 
@@ -326,7 +326,7 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
 
   return (
     <div className={`__prefix__ __prefix__-otp-input ${className || ''} ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''}`}>
-      <Label id={id} label={label} />
+      <Label id={id} label={label} required={markRequired} />
 
       <div className="control-otp">
         <input id={id} type="hidden" aria-invalid={error ? 'true' : 'false'} ref={ref} {..._props} style={{ color: 'white', backgroundColor: 'transparent' }} />
