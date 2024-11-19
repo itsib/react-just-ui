@@ -59,6 +59,7 @@
     "@typescript-eslint/typescript-estree": "^8.15.0",
     "@vitejs/plugin-react-swc": "^3.7.1",
     "eslint": "^9.15.0",
+    "eslint-plugin-react": "^7.37.2",
     "glob": "^11.0.0",
     "globals": "^15.12.0",
     "jsdom": "^25.0.1",
