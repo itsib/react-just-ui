@@ -2,7 +2,6 @@
 /// <reference types="vitest" />
 import { defineConfig, loadConfigFromFile, mergeConfig, UserConfig } from 'vite';
 import { resolve } from 'node:path';
-import { watchAndRun } from 'vite-plugin-watch-and-run';
 
 export default defineConfig(async ({ mode, command }): Promise<UserConfig> => {
   const rootConfig = (await loadConfigFromFile({ mode, command }, resolve(__dirname, '../vite.config.mts')))!.config;
