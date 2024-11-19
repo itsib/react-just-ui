@@ -19,6 +19,7 @@ UI components library for react.
 - Elastic textarea
 - Simple styling width css variables
 - Display validation error
+- Full [Documentation](https://itsib.github.io/react-just-ui/).
 
 ## Installation
 
@@ -47,4 +48,3 @@ All the props are passed to the input inside the component, and the internal inp
 />
 ```
 
-There is a demo project in the demo [folder](./demo), where there are examples of using all form elements.
