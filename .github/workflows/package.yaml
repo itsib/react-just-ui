@@ -1,4 +1,4 @@
-name: Publish
+name: Package
 
 on:
   push:
@@ -21,17 +21,17 @@ jobs:
         with:
           node-version: ${{ vars.NODE_VERSION }}
           registry-url: ${{ vars.REGISTRY_URL }}
-      - name: Install dependencies
+      - name: Install Dependencies
         run: |
           npm install -g npm@latest
-          npm install --no-fund --no-audit
-      - name: Lint
-        run: npm run lint
-      - name: Test
-        run: npm test
+          npm ci
+      - name: Lint & Test
+        run: |
+          npm run lint
+          npm test
       - name: Build
         run: npm run build
-      - name: Upload artifact
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ vars.VITE_PACKAGE_NAME }}@${{ github.ref_name }}
@@ -47,7 +47,7 @@ jobs:
         with:
           node-version: ${{ vars.NODE_VERSION }}
           registry-url: ${{ vars.REGISTRY_URL }}
-      - name: Download artifact
+      - name: Fetch Artifact
         uses: actions/download-artifact@v4
         with:
           name: ${{ vars.VITE_PACKAGE_NAME }}@${{ github.ref_name }}

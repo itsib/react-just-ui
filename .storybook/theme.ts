@@ -5,7 +5,7 @@ const theme = create({
   fontBase: 'Roboto, sans-serif',
   brandTitle: 'React UI',
   brandUrl: '/',
-  brandImage: '/images/brand.svg',
+  brandImage: '/images/brand-dark.svg',
   brandTarget: '_self',
 });
 
