@@ -67,9 +67,9 @@ export default {
     id: 'test-select',
     label: 'What is your favorite programming language?',
     options: [
-      { value: 'ts', label: 'TypeScript', icon: '/images/typescript.svg' },
-      { value: 'rust', label: 'Rust', icon: '/images/rust.svg' },
-      { value: 'python', label: 'Python', icon: '/images/python.svg' },
+      { value: 'ts', label: 'TypeScript', icon: './images/typescript.svg' },
+      { value: 'rust', label: 'Rust', icon: './images/rust.svg' },
+      { value: 'python', label: 'Python', icon: './images/python.svg' },
     ],
     value: 'ts',
     disabled: false,
