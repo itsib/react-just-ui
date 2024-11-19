@@ -9,7 +9,7 @@ $border: ("width": 1px, "radius": .375em) !default;
 $ring-width: 1px !default;
 $ring-offset: 2px !default;
 
-.btn {
+.#{variable.$prefix}-btn {
   height: $height;
   padding: $padding;
   font-size: map.get($font, "size");
@@ -35,7 +35,7 @@ $ring-offset: 2px !default;
     transition-duration: 0s;
   }
 
-  &:disabled, &.disabled, &.loading {
+  &:disabled, &[aria-disabled="true"], &.loading {
     box-shadow: none;
     pointer-events: none;
     cursor: default;
@@ -44,7 +44,7 @@ $ring-offset: 2px !default;
   &.loading {
     color: transparent;
     background-size: 26px 26px;
-    animation: #{variable.$prefix}-button-loader 1s linear infinite;
+    animation: #{variable.$prefix}-btn-loader 1s linear infinite;
 
     * {
       display: none;
@@ -66,7 +66,7 @@ $ring-offset: 2px !default;
 @include button.layout("danger", ());
 
 // Loading animation
-@keyframes #{variable.$prefix}-button-loader {
+@keyframes #{variable.$prefix}-btn-loader {
   0% {
     background-position: 26px 0;
   }

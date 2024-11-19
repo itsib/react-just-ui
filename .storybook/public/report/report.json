@@ -1,965 +1,223 @@
 {
   "total": {
     "js": [
-      6339272,
-      1831019
+      31712,
+      12702
     ],
     "css": [
-      75759,
-      11061
+      43707,
+      10195
     ],
     "cjs": [
-      0,
-      0
+      23217,
+      11417
     ]
   },
   "modules": {
+    "avatar": {
+      "js": [
+        3991,
+        1593
+      ],
+      "css": [
+        1457,
+        527
+      ],
+      "cjs": [
+        2960,
+        1452
+      ]
+    },
+    "checkbox": {
+      "js": [
+        1347,
+        645
+      ],
+      "css": [
+        2046,
+        634
+      ],
+      "cjs": [
+        1019,
+        592
+      ]
+    },
+    "index": {
+      "js": [
+        1142,
+        468
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        1070,
+        423
+      ]
+    },
+    "input": {
+      "js": [
+        1745,
+        787
+      ],
+      "css": [
+        4361,
+        1064
+      ],
+      "cjs": [
+        1255,
+        693
+      ]
+    },
+    "label": {
+      "js": [
+        391,
+        257
+      ],
+      "css": [
+        272,
+        173
+      ],
+      "cjs": [
+        353,
+        259
+      ]
+    },
+    "modal": {
+      "js": [
+        1236,
+        603
+      ],
+      "css": [
+        1994,
+        683
+      ],
+      "cjs": [
+        956,
+        535
+      ]
+    },
+    "otp-input": {
+      "js": [
+        6473,
+        2058
+      ],
+      "css": [
+        1947,
+        628
+      ],
+      "cjs": [
+        4083,
+        1762
+      ]
+    },
+    "radio": {
+      "js": [
+        1387,
+        627
+      ],
+      "css": [
+        1710,
+        544
+      ],
+      "cjs": [
+        1013,
+        574
+      ]
+    },
+    "select": {
+      "js": [
+        5959,
+        2208
+      ],
+      "css": [
+        4832,
+        1241
+      ],
+      "cjs": [
+        4237,
+        1910
+      ]
+    },
+    "subscript": {
+      "js": [
+        941,
+        430
+      ],
+      "css": [
+        728,
+        357
+      ],
+      "cjs": [
+        720,
+        398
+      ]
+    },
+    "switch": {
+      "js": [
+        1290,
+        582
+      ],
+      "css": [
+        2058,
+        608
+      ],
+      "cjs": [
+        954,
+        520
+      ]
+    },
+    "textarea": {
+      "js": [
+        3595,
+        1398
+      ],
+      "css": [
+        3324,
+        932
+      ],
+      "cjs": [
+        2755,
+        1261
+      ]
+    },
+    "validators": {
+      "js": [
+        1265,
+        545
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        1038,
+        544
+      ]
+    },
+    "utils": {
+      "js": [
+        950,
+        501
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        804,
+        494
+      ]
+    },
     "theme/minimal": {
       "js": [
         0,
         0
       ],
       "css": [
-        18722,
-        2801
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "sb-preview/globals": {
-      "js": [
-        1793,
-        474
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "sb-preview/runtime": {
-      "js": [
-        349780,
-        98477
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "sb-manager/globals-module-info": {
-      "js": [
-        21932,
-        3790
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "sb-manager/globals-runtime": {
-      "js": [
-        1889808,
-        485112
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "sb-manager/globals": {
-      "js": [
-        2428,
-        576
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "sb-manager/runtime": {
-      "js": [
-        430165,
-        112048
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "sb-addons/themes-11/manager-bundle": {
-      "js": [
-        7574,
-        3588
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "sb-addons/storybook-core-core-server-presets-0/common-manager-bundle": {
-      "js": [
-        1116,
-        668
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "sb-addons/storybook-12/manager-bundle": {
-      "js": [
-        1305,
-        765
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "sb-addons/links-1/manager-bundle": {
-      "js": [
-        891,
-        556
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "sb-addons/interactions-10/manager-bundle": {
-      "js": [
-        329898,
-        108958
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "sb-addons/essentials-viewport-5/manager-bundle": {
-      "js": [
-        16550,
-        6723
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "sb-addons/essentials-toolbars-6/manager-bundle": {
-      "js": [
-        5238,
-        2543
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "sb-addons/essentials-outline-8/manager-bundle": {
-      "js": [
-        6396,
-        3031
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "sb-addons/essentials-measure-7/manager-bundle": {
-      "js": [
-        6354,
-        2994
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "sb-addons/essentials-controls-2/manager-bundle": {
-      "js": [
-        505283,
-        161610
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "sb-addons/essentials-backgrounds-4/manager-bundle": {
-      "js": [
-        14843,
-        6541
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "sb-addons/essentials-actions-3/manager-bundle": {
-      "js": [
-        41065,
-        14205
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "sb-addons/chromatic-com-storybook-9/manager-bundle": {
-      "js": [
-        578386,
-        169754
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "fonts/inter/style": {
-      "js": [
-        0,
-        0
-      ],
-      "css": [
-        5114,
-        442
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "fonts/code-mono/style": {
-      "js": [
-        0,
-        0
-      ],
-      "css": [
-        6867,
-        476
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/Color-ERTF36HU-BM4j6TRx": {
-      "js": [
-        30885,
-        11693
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/DocsRenderer-CFRXHY34-CFdaVz1S": {
-      "js": [
-        1377,
-        729
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/avatar.stories-DLa0yzxV": {
-      "js": [
-        1327,
-        613
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/button-BqhTRNHT": {
-      "js": [
-        0,
-        0
-      ],
-      "css": [
-        150,
-        138
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/button.stories-B7Hpsfce": {
-      "js": [
-        3813,
-        941
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/checkbox.stories-BFBl92LQ": {
-      "js": [
-        1424,
-        728
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/chunk-D5ZWXAHU-CGElDDNX": {
-      "js": [
-        1633,
-        913
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/chunk-H6MOWX77-DTQOW814": {
-      "js": [
-        599,
-        365
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/entry-preview-Bgj81yyZ": {
-      "js": [
-        38382,
-        13679
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/entry-preview-docs-C6EYTBjZ": {
-      "js": [
-        247428,
-        73747
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/get-started-mmTCHpTH": {
-      "js": [
-        3551,
-        1265
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/iframe-hPXIb2u6": {
-      "js": [
-        6757,
-        2272
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets-BwmuJAIN": {
-      "js": [
-        133959,
-        43141
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets-CcnH5Kt0": {
-      "js": [
-        422,
-        271
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets-D-8MO0q_": {
-      "js": [
-        2595,
-        1261
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets-DWt1l_Yu": {
-      "js": [
-        905654,
-        284983
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets-DrFu-skq": {
-      "js": [
-        767,
-        467
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets-DumjqbWy": {
-      "js": [
-        1769,
-        887
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets-RYns6xqu": {
-      "js": [
-        7419,
-        2933
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets-a7PBi24W": {
-      "js": [
-        75134,
-        22717
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets.esm-CXlWx-Sj": {
-      "js": [
-        21686,
-        8340
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/input.stories-ClbYPUC3": {
-      "js": [
-        1553,
-        801
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/jsx-runtime-DEdD30eg": {
-      "js": [
-        918,
-        580
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/modal-3qWfXXnC": {
-      "js": [
-        41234,
-        9993
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/modal-D3De5Hz1": {
-      "js": [
-        0,
-        0
-      ],
-      "css": [
-        24551,
-        3807
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/modal.stories-DyCPBOPL": {
-      "js": [
-        3106,
-        1145
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/otp-input.stories-Bo7V4tjz": {
-      "js": [
-        3098,
-        1183
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/preview-AfdetK0e": {
-      "js": [
-        4816,
-        2055
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/preview-BWzBA1C2": {
-      "js": [
-        7623,
-        1563
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/preview-BhhEZcNS": {
-      "js": [
-        636,
-        445
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/preview-CFgKly6U": {
-      "js": [
-        8121,
-        3095
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/preview-CVgpLj3b": {
-      "js": [
-        54,
-        74
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/preview-D0N1Y6iQ": {
-      "js": [
-        2745,
-        1379
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/preview-D77C14du": {
-      "js": [
-        5030,
-        1857
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/preview-DFmD0pui": {
-      "js": [
-        174,
-        149
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/preview-DGUiP6tS": {
-      "js": [
-        711,
-        495
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/preview-DVI_gYQC": {
-      "js": [
-        545298,
-        144658
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/preview-Dvy7oC3u": {
-      "js": [
-        879,
-        561
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/preview-mItEitFl": {
-      "js": [
-        0,
-        0
-      ],
-      "css": [
-        20355,
-        3397
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/radio.stories-1Y7szsXO": {
-      "js": [
-        2799,
-        1107
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/react-18-Dcuxr4Y8": {
-      "js": [
-        797,
-        467
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/select.stories-1TGXsAZu": {
-      "js": [
-        2211,
-        1009
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/switch.stories-BwSLqQ98": {
-      "js": [
-        1371,
-        718
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/textarea.stories-CVPrnTED": {
-      "js": [
-        1662,
-        872
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/tooltip.stories-Ca8HDx6W": {
-      "js": [
-        6239,
-        2024
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        0,
-        0
-      ]
-    },
-    "assets/v4-CQkTLCs1": {
-      "js": [
-        811,
-        431
-      ],
-      "css": [
-        0,
-        0
+        18978,
+        2804
       ],
       "cjs": [
         0,

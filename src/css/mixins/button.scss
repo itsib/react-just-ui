@@ -10,7 +10,7 @@
 
   $diff: math.abs($fg-lightness - $bg-lightness);
 
-  @if $diff < 50% {
+  @if $diff < 40% {
     $fg-color: color.invert($fg-color-default);
   }
 
@@ -27,7 +27,7 @@
   @include variable.create(--btn-#{$name}-hover-bg, $hover-bg, "color");
   @include variable.create(--btn-#{$name}-hover-fg, $base-fg, "color");
 
-  $active-bg: color.mix($base-fg, $base-bg, 15%);
+  $active-bg: color.mix($base-fg, $base-bg, 20%);
   @include variable.create(--btn-#{$name}-active-bg, $active-bg, "color");
   @include variable.create(--btn-#{$name}-active-fg, $base-fg, "color");
 }
@@ -35,32 +35,33 @@
 @mixin layout($name, $params) {
 
   // REGULAR BUTTONS
-  .btn.btn-#{$name} {
+  .#{variable.$prefix}-btn.btn-#{$name} {
     background-color: variable.getColor(--btn-#{$name}-bg);
     border-color: variable.getColor(--btn-#{$name}-bg);
     color: variable.getColor(--btn-#{$name}-fg);
   }
 
-  .btn.btn-#{$name}:hover {
+  .#{variable.$prefix}-btn.btn-#{$name}:hover {
     background-color: variable.getColor(--btn-#{$name}-hover-bg);
     border-color: variable.getColor(--btn-#{$name}-hover-bg);
     color: variable.getColor(--btn-#{$name}-hover-fg);
   }
 
-  .btn.btn-#{$name}:active {
+  .#{variable.$prefix}-btn.btn-#{$name}:active {
     background-color: variable.getColor(--btn-#{$name}-active-bg);
     border-color: variable.getColor(--btn-#{$name}-active-bg);
     color: variable.getColor(--btn-#{$name}-active-fg);
   }
 
-  .btn.btn-#{$name}:disabled, .btn.btn-#{$name}.disabled {
+  .#{variable.$prefix}-btn.btn-#{$name}:disabled,
+  .#{variable.$prefix}-btn.btn-#{$name}[aria-disabled="true"] {
     background-color: variable.getColor(--btn-#{$name}-bg);
     border-color: variable.getColor(--btn-#{$name}-bg);
     color: variable.getColor(--btn-#{$name}-fg);
     filter: contrast(0.5) brightness(0.6);
   }
 
-  .btn.btn-#{$name}.loading {
+  .#{variable.$prefix}-btn.btn-#{$name}.loading {
     background-image: linear-gradient(
             45deg,
             variable.getColor(--btn-#{$name}-fg, .2) 25%,
@@ -73,32 +74,33 @@
   }
 
   // OUTLINE BUTTONS
-  .btn.btn-outline-#{$name} {
+  .#{variable.$prefix}-btn.btn-outline-#{$name} {
     background-color: transparent;
     border-color: variable.getColor(--btn-#{$name}-bg);
     color: color-mix(in srgb, variable.getColor(--foreground, .8) 70%, variable.getColor(--btn-#{$name}-bg, .8) 30%);
   }
 
-  .btn.btn-outline-#{$name}:hover {
+  .#{variable.$prefix}-btn.btn-outline-#{$name}:hover {
     background-color: variable.getColor(--btn-#{$name}-hover-bg, .1);
     border-color: variable.getColor(--btn-#{$name}-bg);
     color: color-mix(in srgb, variable.getColor(--foreground, .9) 80%, variable.getColor(--btn-#{$name}-bg, .9) 20%);
   }
 
-  .btn.btn-outline-#{$name}:active {
+  .#{variable.$prefix}-btn.btn-outline-#{$name}:active {
     background-color: variable.getColor(--btn-#{$name}-active-bg, .15);
     border-color: variable.getColor(--btn-#{$name}-active-bg);
     color: color-mix(in srgb, variable.getColor(--foreground, .95) 85%, variable.getColor(--btn-#{$name}-bg, .95) 15%);
   }
 
-  .btn.btn-outline-#{$name}:disabled, .btn.btn-outline-#{$name}.disabled {
+  .#{variable.$prefix}-btn.btn-outline-#{$name}:disabled,
+  .#{variable.$prefix}-btn.btn-outline-#{$name}[aria-disabled="true"] {
     background-color: variable.getColor(--btn-#{$name}-bg, .25);
     border-color: variable.getColor(--btn-#{$name}-bg, .25);
     color: color-mix(in srgb, variable.getColor(--foreground, .8) 70%, variable.getColor(--btn-#{$name}-bg, .8) 30%);
     filter: contrast(0.5);
   }
 
-  .btn.btn-outline-#{$name}.loading {
+  .#{variable.$prefix}-btn.btn-outline-#{$name}.loading {
     background-color: variable.getColor(--btn-#{$name}-bg);
     border-color: variable.getColor(--btn-#{$name}-bg);
     background-image: linear-gradient(
