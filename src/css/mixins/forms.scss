@@ -1,6 +1,6 @@
 @use "sass:string";
 
-@mixin control($control-selector, $input-selector: null, $input-padding: null) {
+@mixin control($control-selector, $input-selector: null, $input-width: null, $input-padding: null) {
   width: 100%;
 
   ::placeholder {
@@ -10,9 +10,11 @@
 
   #{$control-selector} {
     height: var(--__prefix__v-form-height);
-    min-height: var(--__prefix__v-form-height);
-    width: 100%;
-    max-width: 100%;
+    @if $input-width {
+      width: var(--__prefix__v-form-width, $input-width);
+    } @else {
+      width: var(--__prefix__v-form-width, 100%);
+    }
     background-color: rgb(var(--__prefix__c-form-bg));
     font-size: var(--__prefix__v-form-font-base);
     color: rgb(var(--__prefix__c-form-text));
@@ -29,7 +31,11 @@
 
     @if $input-selector {
       #{$input-selector} {
-        width: 100%;
+        @if $input-width {
+          width: calc(var(--__prefix__v-form-width, $input-width) - (var(--__prefix__v-form-border-width) * 2));
+        } @else {
+          width: calc(var(--__prefix__v-form-width, 100%) - (var(--__prefix__v-form-border-width) * 2));
+        }
         height: calc(var(--__prefix__v-form-height) - (var(--__prefix__v-form-border-width) * 2));
         color: inherit;
         border: none;

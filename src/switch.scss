@@ -41,7 +41,7 @@
           aspect-ratio: 1/1;
           border-radius: 50%;
           background-color: rgb(var(--__prefix__c-switch-thumb));
-          box-shadow: 0 0 2px 1px rgb(var(--__prefix__c-black), .1);
+          box-shadow: 0 0 2px 1px rgb(var(--__prefix__c-black) / .1);
           transition: left .1s linear;
           display: block;
           position: absolute;

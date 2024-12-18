@@ -38,11 +38,11 @@ export const ExtendedDemo = memo(function ExtendedDemo({ label, hint, layout, di
       />
 
       <div className="button-block">
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="jj-btn btn-accent">
           Submit
         </button>
 
-        <button type="reset" className="btn btn-secondary">
+        <button type="reset" className="jj-btn btn-secondary">
           Reset
         </button>
       </div>

@@ -261,10 +261,16 @@ export function Option(props: OptionProps) {
 }
 
 function Icon({ icon, value }: { icon?: ReactNode; value: string; }) {
+  const isImg = useMemo(() => {
+    if (typeof icon === 'string') {
+      return /\.(png|jpg|jpeg|bmp|icon|svg|webp)$/.test(icon);
+    }
+    return false;
+  }, [icon])
   return (
     <div className="icon">
       {typeof icon === 'string' ? (
-        <>{URL.canParse(icon) || icon.startsWith('/') ? <img src={icon} alt={value}/> :
+        <>{URL.canParse(icon) || isImg ? <img src={icon} alt={value}/> :
           <i className={icon}/>}</>
       ) : (
         <>{icon}</>
