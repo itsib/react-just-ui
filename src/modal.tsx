@@ -23,23 +23,57 @@ export interface ModalProps {
  */
 export function Modal({ isOpen, onDismiss, children }: PropsWithChildren<ModalProps>) {
   const overlayRef = useRef<HTMLDivElement | null>(null);
-  const [isShow, setIsShow] = useState(false);
+  const [isForceOpen, setIsForceOpen] = useState(false);
+  const _isOpen = isForceOpen || isOpen;
 
+  // Open
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-      setIsShow(true);
-      setTimeout(() => {
-        overlayRef.current?.classList.add('show');
-      }, 10);
-    } else {
-      document.body.style.overflow = 'visible';
-      overlayRef.current?.classList.remove('show');
-      overlayRef.current?.addEventListener('transitionend', () => setIsShow(false), { once: true });
-    }
-  }, [isOpen]);
+    const overlay = overlayRef.current;
+    if (!overlay || !_isOpen) return;
 
-  return isShow ? (
+    setIsForceOpen(true);
+    document.body.style.overflow = 'hidden';
+
+    setTimeout(() => {
+      overlay.classList.add('show');
+    }, 50)
+  }, [_isOpen]);
+
+  // Close
+  useEffect(() => {
+    const overlay = overlayRef.current;
+    if (!overlay || isOpen || !(!isOpen && isForceOpen)) return;
+
+    overlay.addEventListener('transitionend', () => {
+      setIsForceOpen(false);
+      document.body.style.overflow = 'visible';
+    }, { once: true });
+
+    overlay.classList.remove('show');
+  }, [isOpen, isForceOpen]);
+
+
+  // useEffect(() => {
+  //   const overlay = overlayRef.current;
+  //   if (!overlay) return;
+  //
+  //   if (isOpen) {
+  //     document.body.style.overflow = 'hidden';
+  //     overlay.style.display = 'flex';
+  //     setIsForceOpen(true);
+  //
+  //
+  //     setTimeout(() => {
+  //       overlay.classList.add('show');
+  //     }, 50);
+  //   } else {
+  //     document.body.style.overflow = 'visible';
+  //     overlayRef.current?.classList.remove('show');
+  //     overlayRef.current?.addEventListener('transitionend', () => setIsForceOpen(false), { once: true });
+  //   }
+  // }, [isOpen]);
+
+  return isForceOpen || isOpen ? (
     <>
       {createPortal(
         <div
