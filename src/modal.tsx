@@ -44,34 +44,17 @@ export function Modal({ isOpen, onDismiss, children }: PropsWithChildren<ModalPr
     const overlay = overlayRef.current;
     if (!overlay || isOpen || !(!isOpen && isForceOpen)) return;
 
+    console.log('close')
+
     overlay.addEventListener('transitionend', () => {
-      setIsForceOpen(false);
-      document.body.style.overflow = 'visible';
+      setTimeout(() => {
+        setIsForceOpen(false);
+        document.body.style.overflow = 'visible';
+      }, 50);
     }, { once: true });
 
     overlay.classList.remove('show');
   }, [isOpen, isForceOpen]);
-
-
-  // useEffect(() => {
-  //   const overlay = overlayRef.current;
-  //   if (!overlay) return;
-  //
-  //   if (isOpen) {
-  //     document.body.style.overflow = 'hidden';
-  //     overlay.style.display = 'flex';
-  //     setIsForceOpen(true);
-  //
-  //
-  //     setTimeout(() => {
-  //       overlay.classList.add('show');
-  //     }, 50);
-  //   } else {
-  //     document.body.style.overflow = 'visible';
-  //     overlayRef.current?.classList.remove('show');
-  //     overlayRef.current?.addEventListener('transitionend', () => setIsForceOpen(false), { once: true });
-  //   }
-  // }, [isOpen]);
 
   return isForceOpen || isOpen ? (
     <>
