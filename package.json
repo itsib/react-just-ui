@@ -30,8 +30,8 @@
     "storybook": "storybook dev --exact-port --port 6060 --disable-telemetry --no-open"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^17 || ^18 || ^19",
+    "react-dom": "^17 || ^18 || ^19"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
