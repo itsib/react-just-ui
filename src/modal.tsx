@@ -23,54 +23,64 @@ export interface ModalProps {
  */
 export function Modal({ isOpen, onDismiss, children }: PropsWithChildren<ModalProps>) {
   const overlayRef = useRef<HTMLDivElement | null>(null);
-  const [isForceOpen, setIsForceOpen] = useState(false);
-  const _isOpen = isForceOpen || isOpen;
+  const [isShow, setIsShow] = useState(false);
 
   // Open
   useEffect(() => {
-    const overlay = overlayRef.current;
-    if (!overlay || !_isOpen) return;
+    if (!isOpen) return;
 
-    setIsForceOpen(true);
+    setIsShow(true);
+
     document.body.style.overflow = 'hidden';
 
     setTimeout(() => {
+      const overlay = overlayRef.current;
+      if (!overlay) return;
+
       overlay.classList.add('show');
     }, 50)
-  }, [_isOpen]);
+  }, [isOpen]);
 
   // Close
   useEffect(() => {
+    if (isOpen) return;
+
     const overlay = overlayRef.current;
-    if (!overlay || isOpen || !(!isOpen && isForceOpen)) return;
+    if (!overlay) return;
 
-    console.log('close')
+    const fakeOverlay = document.createElement('div');
+    fakeOverlay.className = '__prefix__ __prefix__-modal-overlay show';
+    fakeOverlay.innerHTML = overlay.innerHTML;
+    fakeOverlay.style.display = 'flex';
+    fakeOverlay.style.position = 'fixed';
 
-    overlay.addEventListener('transitionend', () => {
-      setTimeout(() => {
-        setIsForceOpen(false);
-        document.body.style.overflow = 'visible';
-      }, 50);
-    }, { once: true });
+    document.body.appendChild(fakeOverlay);
 
-    overlay.classList.remove('show');
-  }, [isOpen, isForceOpen]);
+    setIsShow(false);
 
-  return isForceOpen || isOpen ? (
-    <>
-      {createPortal(
-        <div
-          aria-label="dialog overlay"
-          className="__prefix__ __prefix__-modal-overlay"
-          onClick={onDismiss}
-          ref={overlayRef}
-        >
-          <div aria-label="dialog content" className="__prefix__-modal-content" onClick={e => e.stopPropagation()}>
-            {children}
-          </div>
-        </div>,
-        document.body,
-      )}
-    </>
+    setTimeout(() => {
+      fakeOverlay.addEventListener('transitionend', () => {
+        setTimeout(() => {
+          fakeOverlay.remove();
+          document.body.style.overflow = 'visible';
+        }, 50);
+      }, { once: true });
+
+      fakeOverlay.classList.remove('show');
+    }, 50);
+  }, [isOpen]);
+
+  return isShow ? createPortal(
+    <div
+      aria-label="dialog overlay"
+      className="__prefix__ __prefix__-modal-overlay"
+      onClick={onDismiss}
+      ref={overlayRef}
+    >
+      <div aria-label="dialog content" className="__prefix__-modal-content" onClick={e => e.stopPropagation()}>
+        {children}
+      </div>
+    </div>,
+    document.body,
   ) : null;
 }
