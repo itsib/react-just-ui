@@ -3,7 +3,7 @@
 
 .__prefix__.__prefix__-select {
 
-  @include forms.control(".control", ".select", 300px, "var(--__prefix__v-form-padding-y) var(--__prefix__v-form-padding-x)") {
+  @include forms.control(".control", ".select", "var(--__prefix__v-form-padding-y) var(--__prefix__v-form-padding-x)") {
 
     .hidden-select {
       width: 0;

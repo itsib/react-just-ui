@@ -6,7 +6,7 @@
 
   @include scroll.scroll;
 
-  @include forms.control("textarea.control", null, 300px) {
+  @include forms.control("textarea.control") {
     overflow: auto;
     min-height: 3em;
     line-height: 1.3;

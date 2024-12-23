@@ -13,7 +13,7 @@
     font-size: 16px;
   }
 
-  @include forms.control(".control", input, 300px, "var(--__prefix__v-form-padding-y) var(--__prefix__v-form-padding-x)") {
+  @include forms.control(".control", input, "var(--__prefix__v-form-padding-y) var(--__prefix__v-form-padding-x)") {
 
     .prefix, .suffix {
       padding: 0 var(--__prefix__v-form-padding-x);

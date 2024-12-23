@@ -34,6 +34,10 @@ export type BaseControlProps<Element extends HTMLElement> = {
    */
   hint?: string;
   /**
+   * The width of the field in any css units of measurement.
+   */
+  width?: number;
+  /**
    * The validation error of this element is passed here.
    * Supports <a href="https://react-hook-form.com/ts#FieldError" target="_blank">react-hook-form#FieldError</a>.
    */

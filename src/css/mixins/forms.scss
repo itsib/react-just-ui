@@ -1,7 +1,7 @@
 @use "sass:string";
 
-@mixin control($control-selector, $input-selector: null, $input-width: null, $input-padding: null) {
-  width: 100%;
+@mixin  control($control-selector, $input-selector: null, $input-padding: null) {
+  width: var(--__prefix__v-form-width, 100%);
 
   ::placeholder {
     color: rgb(var(--__prefix__c-form-placeholder) / .7);
@@ -10,11 +10,7 @@
 
   #{$control-selector} {
     height: var(--__prefix__v-form-height);
-    @if $input-width {
-      width: var(--__prefix__v-form-width, $input-width);
-    } @else {
-      width: var(--__prefix__v-form-width, 100%);
-    }
+    width: var(--__prefix__v-form-width, inherit);
     background-color: rgb(var(--__prefix__c-form-bg));
     font-size: var(--__prefix__v-form-font-base);
     color: rgb(var(--__prefix__c-form-text));
@@ -31,11 +27,7 @@
 
     @if $input-selector {
       #{$input-selector} {
-        @if $input-width {
-          width: calc(var(--__prefix__v-form-width, $input-width) - (var(--__prefix__v-form-border-width) * 2));
-        } @else {
-          width: calc(var(--__prefix__v-form-width, 100%) - (var(--__prefix__v-form-border-width) * 2));
-        }
+        width: calc(100% - (var(--__prefix__v-form-border-width) * 2));
         height: calc(var(--__prefix__v-form-height) - (var(--__prefix__v-form-border-width) * 2));
         color: inherit;
         border: none;

@@ -1,4 +1,4 @@
-import { ForwardedRef, forwardRef, useEffect, useMemo, useRef } from 'react';
+import { CSSProperties, ForwardedRef, forwardRef, useEffect, useMemo, useRef } from 'react';
 import type { BaseControlProps } from './types';
 import { Label } from './label';
 import { Subscript } from './subscript';
@@ -331,7 +331,7 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
       <div className="control-otp">
         <input id={id} type="hidden" aria-invalid={error ? 'true' : 'false'} ref={ref} {..._props} style={{ color: 'white', backgroundColor: 'transparent' }} />
 
-        <div className="group">
+        <div className="group" style={{ '--__prefix__v-form-width': 'calc(var(--__prefix__v-form-height) * 0.8)' } as CSSProperties}>
           {elements}
         </div>
       </div>

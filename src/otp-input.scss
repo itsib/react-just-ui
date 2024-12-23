@@ -11,7 +11,7 @@
       justify-content: space-between;
       gap: 0.5rem;
 
-      @include forms.control(".symbol", null, calc(var(--__prefix__v-form-height)  * 0.8)) {
+      @include forms.control(".symbol") {
         aspect-ratio: 0.8;
         text-align: center;
       }

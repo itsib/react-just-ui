@@ -30,6 +30,10 @@ export interface InputProps extends BaseControlProps<HTMLInputElement> {
    */
   suffix?: ReactNode;
   /**
+   * The width of the field in any css units of measurement.
+   */
+  width?: number;
+  /**
    * Show the loading indicator.
    * Blocks the input field.
    */
@@ -52,7 +56,7 @@ export const Input = forwardRef(function Input(
   props: InputProps,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
-  const { id, markRequired, className, label, hint, type: _type, prefix, suffix, loading, disabled, error, ..._props } = props;
+  const { id, markRequired, className, label, hint, type: _type, prefix, suffix, loading, disabled, width, error, ..._props } = props;
   const type = _type === 'number' ? 'text' : _type;
 
   useEffect(() => {
@@ -79,7 +83,10 @@ export const Input = forwardRef(function Input(
   }, [_type, id]);
 
   return (
-    <div className={`__prefix__ __prefix__-input ${className || ''} ${disabled ? 'disabled' : ''} ${loading ? 'loading' : ''} ${error ? 'error' : ''}`}>
+    <div
+      className={`__prefix__ __prefix__-input ${className || ''} ${disabled ? 'disabled' : ''} ${loading ? 'loading' : ''} ${error ? 'error' : ''}`}
+      style={{  }}
+    >
       <Label id={id} label={label} required={markRequired} />
 
       <div className="control">
