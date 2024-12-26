@@ -19,7 +19,7 @@ export const Checkbox = forwardRef(function Checkbox(
   const { id, label, hint, className, checked, rowReverse, error, disabled, markRequired, size = 20, ...props } = _props;
 
   return (
-    <div className={`__prefix__ __prefix__-checkbox ${className || ''} ${disabled ? 'disabled' : ''} ${rowReverse ? 'row-reverse' : 'row'}`}>
+    <div className={`__prefix__ __prefix__-checkbox ${className || ''}${disabled ? ' disabled' : ''}${rowReverse ? ' row-reverse' : ' row'}`}>
       <Label id={id} label={label} required={markRequired} />
 
       <div className="control-toggler" style={{ width: `${size}px`, height: `${size}px` }}>

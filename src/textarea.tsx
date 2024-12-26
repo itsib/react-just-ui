@@ -139,7 +139,7 @@ export const Textarea = forwardRef(function Textarea(
   }, [loading, disabled, id]);
 
   return (
-    <div className={`__prefix__ __prefix__-textarea ${className || ''} ${disabled ? 'disabled' : ''} ${loading ? 'loading' : ''} ${error ? 'error' : ''}`}>
+    <div className={`__prefix__ __prefix__-textarea ${className || ''}${disabled ? ' disabled' : ''}${loading ? ' loading' : ''}${error ? ' error' : ''}`}>
       <Label id={id} label={label} required={markRequired} />
 
       <textarea

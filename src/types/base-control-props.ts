@@ -51,7 +51,7 @@ export type BaseControlProps<Element extends HTMLElement> = {
    * @param event
    */
   onChange?: (event: ChangeEvent<Element>) => void;
-} & Omit<AllHTMLAttributes<Element>, 'prefix' | 'label' | 'value' | 'disabled' | 'id'>;
+} & Omit<AllHTMLAttributes<Element>, 'prefix' | 'label' | 'value' | 'disabled' | 'id' | 'type'>;
 
 export type BaseCheckedControlProps<Element extends HTMLElement> = {
   /**

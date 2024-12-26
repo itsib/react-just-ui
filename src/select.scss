@@ -3,7 +3,13 @@
 
 .__prefix__.__prefix__-select {
 
-  @include forms.control(".control", ".select", "var(--__prefix__v-form-padding-y) var(--__prefix__v-form-padding-x)") {
+  .control {
+    @extend %control;
+    @extend %control-normal;
+
+    .select {
+      padding: var(--__prefix__v-form-padding-y) var(--__prefix__v-form-padding-x);
+    }
 
     .hidden-select {
       width: 0;
@@ -18,19 +24,52 @@
     }
   }
 
-  @include forms.focus("&:focus-within", ".control");
+  &:focus-within {
 
-  @include forms.error("&.error", ".control");
+    .control {
+      @extend %control-focused;
+    }
+  }
 
-  @include forms.disabled("&.disabled", ".control");
+  &.error {
 
-  @include forms.loading("&.loading:not(.disabled)", ".control") {
+    .control {
+      @extend %control-error;
+    }
+  }
 
-    > .select {
-      display: none;
+  &.disabled {
+
+    .control {
+      @extend %control-disabled;
     }
 
-    @include spinner.spinner(".overlay", 7px);
+    .__prefix__-subscript {
+
+      > .error {
+        display: none;
+      }
+    }
+  }
+
+  &.loading:not(.disabled) {
+
+    .control {
+      @extend %control-normal;
+
+      > .select {
+        display: none;
+      }
+
+      @include spinner.spinner(".overlay", 7px);
+    }
+
+    .__prefix__-subscript {
+
+      > .error {
+        display: none;
+      }
+    }
   }
 }
 

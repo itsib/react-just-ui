@@ -1,127 +1,53 @@
-@use "sass:string";
-
-@mixin  control($control-selector, $input-selector: null, $input-padding: null) {
-  width: var(--__prefix__v-form-width, 100%);
-
-  ::placeholder {
-    color: rgb(var(--__prefix__c-form-placeholder) / .7);
-    font-weight: 400;
-  }
-
-  #{$control-selector} {
-    height: var(--__prefix__v-form-height);
-    width: var(--__prefix__v-form-width, inherit);
-    background-color: rgb(var(--__prefix__c-form-bg));
-    font-size: var(--__prefix__v-form-font-base);
-    color: rgb(var(--__prefix__c-form-text));
-    box-shadow: none;
-    border: var(--__prefix__v-form-border-width) solid rgb(var(--__prefix__c-form-border));
-    border-radius: var(--__prefix__v-form-border-radius);
-    outline: none;
-    overflow: hidden;
-    display: flex;
-    position: relative;
-    align-items: stretch;
-    justify-content: space-between;
-    transition: box-shadow .15s ease-in-out, border-color .15s ease-in-out, background-color .15s ease-in-out;
-
-    @if $input-selector {
-      #{$input-selector} {
-        width: calc(100% - (var(--__prefix__v-form-border-width) * 2));
-        height: calc(var(--__prefix__v-form-height) - (var(--__prefix__v-form-border-width) * 2));
-        color: inherit;
-        border: none;
-        outline: none;
-        font-size: inherit;
-        background-color: transparent;
-
-        @if $input-padding {
-          padding: string.unquote($input-padding);
-        }
-      }
-    }
-
-    @content;
-  }
+%placeholder {
+  color: rgb(var(--__prefix__c-form-placeholder) / .7);
+  font-weight: 400;
 }
 
-@mixin focus($focus-selector, $control-selector) {
-
-  #{$focus-selector} {
-
-    #{$control-selector} {
-      background-color: rgb(var(--__prefix__c-form-focus-bg));
-      border-color: rgb(var(--__prefix__c-form-focus-border));
-      box-shadow: 0 0 0 1px rgb(var(--__prefix__c-black)), 0 0 3px 0 rgb(var(--__prefix__c-form-focus-border));
-
-      @content;
-    }
-  }
+%input {
+  color: inherit;
+  border: none;
+  outline: none;
+  font-size: inherit;
+  background-color: transparent;
 }
 
-@mixin error($error-selector, $control-selector) {
-
-  #{$error-selector} {
-
-    #{$control-selector} {
-      border-color: rgb(var(--__prefix__c-error));
-      box-shadow: none;
-
-      @content;
-    }
-  }
+%control {
+  height: var(--__prefix__v-form-height);
+  font-size: var(--__prefix__v-form-font-base);
+  color: rgb(var(--__prefix__c-form-text));
+  border-radius: var(--__prefix__v-form-border-radius);
+  outline: none;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+  align-items: stretch;
+  justify-content: space-between;
+  transition: box-shadow .15s ease-in-out, border-color .15s ease-in-out, background-color .15s ease-in-out;
 }
 
-@mixin disabled($disabled-selector, $control-selector) {
-
-  #{$disabled-selector} {
-
-    #{$control-selector} {
-      background-color: rgb(var(--__prefix__c-form-disabled-bg));
-      border-color: rgb(var(--__prefix__c-form-disabled-border));
-      box-shadow: none;
-      pointer-events: none;
-      user-select: none;
-      opacity: .8;
-
-      @content;
-    }
-
-    .__prefix__-label {
-      opacity: 0.6;
-      cursor: default;
-    }
-
-    .__prefix__-subscript {
-
-      div {
-        transform: translateY(0);
-      }
-    }
-  }
+%control-normal {
+  background-color: rgb(var(--__prefix__c-form-bg));
+  border: var(--__prefix__v-form-border-width) solid rgb(var(--__prefix__c-form-border));
+  box-shadow: none;
 }
 
-@mixin loading($loading-selector, $control-selector: null) {
-
-  #{$loading-selector} {
-
-    #{$control-selector} {
-      border-color: rgb(var(--__prefix__c-form-border));
-      background-color: rgb(var(--__prefix__c-form-bg));
-      box-shadow: none;
-      pointer-events: none;
-      opacity: 1;
-
-      @content
-    }
-
-    .__prefix__-subscript {
-
-      div {
-        transform: translateY(0);
-      }
-    }
-  }
-
-
+%control-focused {
+  background-color: rgb(var(--__prefix__c-form-focus-bg));
+  border-color: rgb(var(--__prefix__c-form-focus-border));
+  box-shadow: 0 0 0 1px rgb(var(--__prefix__c-black)), 0 0 3px 0 rgb(var(--__prefix__c-form-focus-border));
 }
+
+%control-error {
+  border-color: rgb(var(--__prefix__c-error));
+  box-shadow: none;
+}
+
+%control-disabled {
+  background-color: rgb(var(--__prefix__c-form-disabled-bg));
+  border-color: rgb(var(--__prefix__c-form-disabled-border));
+  box-shadow: none;
+  pointer-events: none;
+  user-select: none;
+  opacity: .8;
+}
+

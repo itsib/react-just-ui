@@ -11,9 +11,16 @@
       justify-content: space-between;
       gap: 0.5rem;
 
-      @include forms.control(".symbol") {
+      .symbol {
+        @extend %control;
+        @extend %control-normal;
+        width: calc(var(--__prefix__v-form-height) * 0.8);
         aspect-ratio: 0.8;
         text-align: center;
+
+        &:focus {
+          @extend %control-focused;
+        }
       }
 
       .divider {
@@ -39,9 +46,36 @@
     }
   }
 
-  @include forms.focus(".group", ".symbol:focus");
+  &.error {
 
-  @include forms.error("&.error", ".control-otp .group .symbol");
+    .control-otp {
 
-  @include forms.disabled("&.disabled", ".control-otp .group .symbol")
+      .group {
+
+        .symbol {
+          @extend %control-error;
+        }
+      }
+    }
+  }
+
+  &.disabled {
+
+    .control-otp {
+
+      .group {
+
+        .symbol {
+          @extend %control-disabled;
+        }
+      }
+    }
+
+    .__prefix__-subscript {
+
+      > .error {
+        display: none;
+      }
+    }
+  }
 }

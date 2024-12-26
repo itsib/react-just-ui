@@ -43,7 +43,7 @@ export const Select = forwardRef(function Select(
 
   function onClick(event: MouseEvent<HTMLDivElement>) {
     const input = document.getElementById(id) as HTMLInputElement;
-    if (input.disabled) {
+    if (input.disabled || loading) {
       return;
     }
     input.focus();
@@ -82,7 +82,7 @@ export const Select = forwardRef(function Select(
   }, [id]);
 
   return (
-    <div className={`__prefix__ __prefix__-select ${className || ''} ${disabled ? 'disabled' : ''} ${loading ? 'loading' : ''} ${error ? 'error' : ''}`}>
+    <div className={`__prefix__ __prefix__-select ${className || ''}${disabled ? ' disabled' : ''}${loading ? ' loading' : ''}${error ? ' error' : ''}`}>
       <Label id={id} label={label} required={markRequired} />
 
       <div className="control" ref={controlRef} onClick={onClick}>
@@ -107,7 +107,7 @@ export const Select = forwardRef(function Select(
         id={id}
         activeIndex={activeIndex}
         options={options}
-        open={open}
+        open={open && !loading && !disabled}
         rect={rect}
         onDismiss={() => {
           setOpen(false);

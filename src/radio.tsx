@@ -40,7 +40,7 @@ export const Radio = forwardRef(function Checkbox(
   const { id, label, hint, className, rowReverse, size = 18, error, disabled, markRequired, ...props } = _props;
 
   return (
-    <div className={`__prefix__ __prefix__-radio ${className || ''} ${disabled ? 'disabled' : ''} ${rowReverse ? 'row-reverse' : 'row'}`}>
+    <div className={`__prefix__ __prefix__-radio ${className || ''}${disabled ? ' disabled' : ''}${rowReverse ? ' row-reverse' : ' row'}`}>
       <Label id={id} label={label} required={markRequired} />
 
       <div className="control-toggler" style={{ width: `${size}px`, height: `${size}px` }}>

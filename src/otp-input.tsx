@@ -325,7 +325,7 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
   }, [id, layout]);
 
   return (
-    <div className={`__prefix__ __prefix__-otp-input ${className || ''} ${_props.disabled ? 'disabled' : ''} ${error ? 'error' : ''}`}>
+    <div className={`__prefix__ __prefix__-otp-input ${className || ''}${_props.disabled ? ' disabled' : ''}${error ? ' error' : ''}`}>
       <Label id={id} label={label} required={markRequired} />
 
       <div className="control-otp">

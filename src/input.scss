@@ -2,18 +2,23 @@
 @use "./css/mixins/spinner";
 
 .__prefix__.__prefix__-input {
+  @extend %placeholder;
 
-  ::placeholder {
-    color: rgb(var(--__prefix__c-form-placeholder) / .7);
-    font-weight: 400;
-  }
+  .control {
+    @extend %control;
+    @extend %control-normal;
 
-  input[type="password"] {
-    font: small-caption;
-    font-size: 16px;
-  }
+    > input {
+      @extend %input;
 
-  @include forms.control(".control", input, "var(--__prefix__v-form-padding-y) var(--__prefix__v-form-padding-x)") {
+      width: 100%;
+      padding: var(--__prefix__v-form-padding-y) var(--__prefix__v-form-padding-x);
+
+      &[type="password"] {
+        font: small-caption;
+        font-size: 16px;
+      }
+    }
 
     .prefix, .suffix {
       padding: 0 var(--__prefix__v-form-padding-x);
@@ -40,46 +45,76 @@
     }
   }
 
-  @include forms.focus("&:focus-within", ".control") {
+  &:focus-within {
 
-    .suffix, .prefix {
-      background-color: rgb(var(--__prefix__c-form-focus-bg));
-      border-color: rgb(var(--__prefix__c-form-focus-border));
-      box-shadow: 0 0 2px 0 rgb(var(--__prefix__c-form-focus-border)),
-      0 0 2px -1px inset rgb(var(--__prefix__c-form-focus-border));
+    .control {
+      @extend %control-focused;
+
+      .suffix, .prefix {
+        background-color: rgb(var(--__prefix__c-form-focus-bg));
+        border-color: rgb(var(--__prefix__c-form-focus-border));
+        box-shadow: 0 0 2px 0 rgb(var(--__prefix__c-form-focus-border)),
+        0 0 2px -1px inset rgb(var(--__prefix__c-form-focus-border));
+      }
     }
   }
 
-  @include forms.error("&.error", ".control") {
+  &.error {
 
-    .suffix, .prefix {
-      border-color: rgb(var(--__prefix__c-error));
-      box-shadow: none;
+    > .control {
+      @extend %control-error;
+
+      .suffix, .prefix {
+        border-color: rgb(var(--__prefix__c-error));
+        box-shadow: none;
+      }
     }
   }
 
-  @include forms.disabled("&.disabled", ".control") {
+  &.disabled {
 
-    .suffix, .prefix {
-      color: rgb(var(--__prefix__c-form-text) / .6);
-      border-color: rgb(var(--__prefix__c-form-disabled-border));
-      background-color: rgb(var(--__prefix__c-form-disabled-bg));
-      box-shadow: none;
+    .control {
+      @extend %control-disabled;
+
+      .suffix, .prefix {
+        color: rgb(var(--__prefix__c-form-text) / .6);
+        border-color: rgb(var(--__prefix__c-form-disabled-border));
+        background-color: rgb(var(--__prefix__c-form-disabled-bg));
+        box-shadow: none;
+      }
+
+      > .prefix {
+        color: rgb(var(--__prefix__c-form-text) / .6);
+      }
+
+      > .suffix {
+        color: rgb(var(--__prefix__c-form-text) / .6);
+      }
     }
 
-    > .prefix {
-      color: rgb(var(--__prefix__c-form-text) / .6);
-    }
+    .__prefix__-subscript {
 
-    > .suffix {
-      color: rgb(var(--__prefix__c-form-text) / .6);
+      > .error {
+        display: none;
+      }
     }
   }
 
-  @include forms.loading("&.loading:not(.disabled)", ".control") {
+  &.loading:not(.disabled) {
 
-    > input {
-      display: none;
+    .control {
+      @extend %control-normal;
+
+      > input {
+        display: none;
+      }
+    }
+
+    .__prefix__-subscript {
+
+      > .error {
+        display: none;
+      }
     }
 
     @include spinner.spinner(".overlay", 7px);
