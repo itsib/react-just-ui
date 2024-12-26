@@ -44,7 +44,21 @@ $ring-offset: 2px !default;
   &.loading {
     color: transparent;
     background-size: 26px 26px;
-    animation: #{variable.$prefix}-btn-loader 1s linear infinite;
+    position: relative;
+
+    &:before {
+      content: "";
+      top: 2px;
+      width: 20px;
+      height: 20px;
+      box-sizing: border-box;
+      position: relative;
+      display: inline-block;
+      border-radius: 50%;
+      border: 3px solid;
+      object-fit: cover;
+      animation: #{variable.$prefix}-btn-loader 1.7s linear infinite ;
+    }
 
     * {
       display: none;
@@ -65,12 +79,27 @@ $ring-offset: 2px !default;
 
 @include button.layout("danger", ());
 
+
 // Loading animation
 @keyframes #{variable.$prefix}-btn-loader {
-  0% {
-    background-position: 26px 0;
+  0%  {
+    transform: rotate(0deg);
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 0%, 100% 0%);
+  }
+  25%  {
+    transform: rotate(180deg);
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 100% 100%);
+  }
+  50%  {
+    transform: rotate(360deg);
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 50% 100%);
+  }
+  70%  {
+    transform: rotate(540deg);
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 100% 100%);
   }
   100% {
-    background-position: 0 0;
+    transform: rotate(720deg);
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 0%, 100% 0%);
   }
 }

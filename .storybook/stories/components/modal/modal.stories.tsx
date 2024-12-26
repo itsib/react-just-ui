@@ -32,6 +32,7 @@ export const Basic: Story = {
 
     return (
       <div>
+        <button type="button" className="jj-btn btn-accent" onClick={() => setArgs({ ...args, isOpen: true })}>Open Modal</button>
         <Modal isOpen={args.isOpen} onDismiss={() => setArgs({ ...args, isOpen: false })}>
           <div className="modal" style={{ width: 500 }}>
             <div className="modal-header">

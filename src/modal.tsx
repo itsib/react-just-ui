@@ -70,14 +70,46 @@ export function Modal({ isOpen, onDismiss, children }: PropsWithChildren<ModalPr
     }, 50);
   }, [isOpen]);
 
+  // Dismiss
+  useEffect(() => {
+    if (!isShow) return;
+
+    const overlay = overlayRef.current;
+    if (!overlay) return;
+
+    let isPressed = false;
+
+    function mousedown(event: Event) {
+      if (event.target === overlay) {
+        isPressed = true;
+      }
+    }
+
+    function mouseup(event: Event) {
+      if (!isPressed) return;
+      isPressed = false;
+
+      if (event.target === overlay) {
+        onDismiss?.();
+      }
+    }
+
+    overlay.addEventListener('mousedown', mousedown);
+    window.addEventListener('mouseup', mouseup);
+
+    return () => {
+      overlay.removeEventListener('mousedown', mousedown);
+      window.removeEventListener('mouseup', mouseup);
+    }
+  }, [isShow]);
+
   return isShow ? createPortal(
     <div
       aria-label="dialog overlay"
       className="__prefix__ __prefix__-modal-overlay"
-      onClick={onDismiss}
       ref={overlayRef}
     >
-      <div aria-label="dialog content" className="__prefix__-modal-content" onClick={e => e.stopPropagation()}>
+      <div aria-label="dialog content" className="__prefix__-modal-content">
         {children}
       </div>
     </div>,
