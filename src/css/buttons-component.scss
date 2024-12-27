@@ -79,7 +79,6 @@ $ring-offset: 2px !default;
 
 @include button.layout("danger", ());
 
-
 // Loading animation
 @keyframes #{variable.$prefix}-btn-loader {
   0%  {

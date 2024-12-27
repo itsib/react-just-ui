@@ -1,10 +1,7 @@
 @use "./css/mixins/forms";
 @use "./css/mixins/spinner";
-@use "./css/mixins/scroll";
 
 .__prefix__.__prefix__-textarea {
-
-  @include scroll.scroll;
 
   textarea.control {
     @extend %control;

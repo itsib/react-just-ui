@@ -33,6 +33,8 @@ $schemes: (
   )
 );
 
+@use '../css/scroll-compponent';
+
 @use "../css/css-vars-component" with (
   $schemes: $schemes,
   $form: (

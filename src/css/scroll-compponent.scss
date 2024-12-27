@@ -1,5 +1,6 @@
+@use "./mixins/variable";
 
-@mixin scroll() {
+.#{variable.$prefix}-scroll {
 
   ::-webkit-scrollbar {
     width: 4px;
