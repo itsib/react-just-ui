@@ -71,8 +71,6 @@ const BaseStory = memo(function BaseStory({ id, disabled, loading }: BaseStoryPr
         label="Overview"
         placeholder="Placeholder..."
         loading={loading}
-        maxHeight={300}
-        limit={50}
         error={errors?.textarea}
         {...register('textarea', {
           required: 'Field is required',

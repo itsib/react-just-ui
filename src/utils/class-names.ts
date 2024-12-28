@@ -7,7 +7,7 @@
  * disable this name in the list of classes.
  *
  * @example
- * ```tsx
+ * ```typescript
  * <div
  *   classNames={
  *     cn(

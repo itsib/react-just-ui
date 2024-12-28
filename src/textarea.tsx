@@ -5,14 +5,40 @@ import { Label } from './label';
 import './textarea.scss';
 
 export interface TextareaProps extends BaseControlProps<HTMLTextAreaElement> {
-  elastic?: boolean;
+  /**
+   * The text that will be displayed in
+   * the input field while nothing has been
+   * entered there yet.
+   */
   placeholder?: string;
+  /**
+   * Show the loading indicator.
+   * Blocks the input field.
+   */
   loading?: boolean;
-  limit?: number;
+  /**
+   * Automatically changes the height of the text field within
+   * the limits set by the parameters
+   * {@link TextareaProps.minHeight} and {@link TextareaProps.maxHeight}.
+   *
+   * @default true
+   */
+  elastic?: boolean;
+  /**
+   * Set the minimum height of the text field.
+   * By default, the current line height is.
+   */
   minHeight?: number;
+  /**
+   * Set the maximum height of the text
+   * field. It is unlimited by default.
+   */
   maxHeight?: number;
-  minWidth?: number;
-  maxWidth?: number;
+  /**
+   * Text area fixed width
+   * @default 100%
+   */
+  width?: number;
 }
 
 /**
@@ -24,96 +50,101 @@ export interface TextareaProps extends BaseControlProps<HTMLTextAreaElement> {
 export const Textarea = forwardRef(function Textarea(
   props: TextareaProps,
   ref: ForwardedRef<HTMLTextAreaElement>,
-)   {
-  const { id, className, placeholder, elastic = true, label, hint, minHeight, minWidth, maxWidth, maxHeight, limit = 5000, loading, markRequired, disabled, error, ..._props } = props;
+) {
+  const { id, className, placeholder, elastic = true, label, hint, minHeight, width, maxHeight, loading, markRequired, disabled, error, ..._props } = props;
 
   // Elastic textarea
   useEffect(() => {
-    if (!elastic) {
-      return;
-    }
-    let skipOnChange = false;
+    if (!elastic) return;
+
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext('2d')!;
     const textarea = document.getElementById(id) as HTMLTextAreaElement;
-    const element = document.createElement('div');
-    document.body.appendChild(element);
 
     const styleMap = textarea.computedStyleMap();
+    const fontSize = (styleMap.get('font-size') as any).value || 14;
+    const paddingLeft = (styleMap.get('padding-left') as any).value || 0;
+    const paddingRight = (styleMap.get('padding-right') as any).value || 0;
+    const fontWeight = (styleMap.get('font-weight') as any).value || 400;
+    const lineHeight = (styleMap.get('line-height') as any).value || 1.3;
+    const fontFamily = (styleMap.get('font-family') as any).toString();
+    const stringHeight = fontSize * lineHeight;
+    const paddingX = paddingRight + paddingLeft;
 
-    element.style.left = `-999999px`;
-    element.style.position = `absolute`;
-    element.style.width = `${textarea.offsetWidth}px`;
-    element.style.minWidth = `${textarea.offsetWidth}px`;
-    element.style.height = 'auto';
-    element.style.paddingTop = `${styleMap.get('padding-top')}`;
-    element.style.paddingBottom = `${styleMap.get('padding-bottom')}`;
-    element.style.paddingLeft = `${styleMap.get('padding-left')}`;
-    element.style.paddingRight = `${styleMap.get('padding-right')}`;
-    element.style.fontSize = `${styleMap.get('font-size')}`;
-    element.style.fontFamily = `${styleMap.get('font-family')}`;
-    element.style.lineHeight = `${styleMap.get('line-height')}`;
-    element.style.overflowWrap = 'break-word';
-    element.style.whiteSpace = 'pre-wrap';
+    context.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
 
+    const innerMinHeight = minHeight != null && minHeight > stringHeight ? minHeight : stringHeight;
 
-    const onChange = () => {
-      if (skipOnChange) {
-        skipOnChange = false;
-        return;
+    const insert = (base: string, replacer: string, start: number = base.length, end: number = start): string => {
+      [start, end] = start <= end ? [start, end] : [end, start];
+
+      if (base.length <= start) {
+        const spaces = start - base.length;
+        return base + ' '.repeat(spaces) + replacer;
       }
 
-      if (!textarea.value) return;
+      let output = base.slice(0, start);
+      output += replacer;
+      output += base.slice(end);
+      return output;
+    };
 
-      element.innerHTML = textarea.value.replace(/\n/g, '\n¦') || '¦';
-      setTimeout(() => {
-        textarea.style.height = `${element.offsetHeight + 4}px`;
-      });
-    }
+    const predictHeight = (insertedText: string, posStart: number, postEnd: number): number => {
+      const strings = insert(textarea.value, insertedText, posStart, postEnd).split('\n');
+      let count = 0;
 
-    const onBeforeinput = (event: InputEvent) => {
-      const value = textarea.value;
-      const selectionStart = textarea.selectionStart ?? 0;
-      const selectionEnd = textarea.selectionEnd ?? 0;
+      for (let i = 0; i < strings.length; i++) {
+        const string = strings[i];
+        if (string.length <= 5) {
+          count++;
+          continue;
+        }
+        const width = textarea.clientWidth - paddingX;
+        const metrics = context.measureText(string);
+
+        count += Math.ceil(metrics.width / width);
+      }
+
+      const height = (count * stringHeight);
+      if (maxHeight != null && maxHeight < height) {
+        return maxHeight;
+      }
+      if (innerMinHeight > height) {
+        return innerMinHeight;
+      }
+      return height;
+    };
+
+    const onBeforeinput = async (event: InputEvent) => {
+      let selectionStart = textarea.selectionStart ?? 0;
+      let selectionEnd = textarea.selectionEnd ?? 0;
+      let data = event.data || '';
 
       switch (event.inputType) {
-        // Handle typed text
-        case 'insertText':
-          if (event.data && textarea.value.length >= limit) {
-            return event.preventDefault();
-          }
+        case 'insertLineBreak':
+          data += '\n';
           break;
-        // Handle paste
-        case 'insertFromPaste':
-          if (event.data && (event.data.length + (value.length - Math.abs(selectionStart - selectionEnd))) >= limit) {
-            setTimeout(() => {
-              textarea.value = textarea.value.slice(0, limit);
-            }, 1);
-          }
+        case 'deleteContentBackward':
+          selectionStart = selectionStart > 0 ? selectionStart - 1 : selectionStart;
           break;
-        case 'insertLineBreak': {
-          const styleMap = textarea.computedStyleMap();
-          const fontSize = (styleMap.get('font-size') as any)?.value || 0;
-          const lineHeight = (styleMap.get('line-height') as any)?.value || 1.3;
-          if (!fontSize || !lineHeight) break;
-          textarea.style.height = `${textarea.offsetHeight + fontSize * lineHeight}px`;
-          skipOnChange=true;
+        case 'deleteContentForward':
+          selectionEnd = selectionEnd + 1;
           break;
-        }
-        case 'deleteContentForward': {
-          setTimeout(() => onChange(), 1);
-        }
       }
+
+      const height = predictHeight(data, selectionStart, selectionEnd);
+
+      textarea.style.height = `${height}px`;
     }
 
-    textarea.addEventListener('input', onChange);
+    const height = predictHeight(' ', 0, 1);
+    textarea.style.height = `${height}px`;
+
     textarea.addEventListener('beforeinput', onBeforeinput);
-
     return () => {
-      textarea.removeEventListener('input', onChange);
       textarea.removeEventListener('beforeinput', onBeforeinput);
-      document.body.removeChild(element);
     }
-
-  }, [id, elastic, limit]);
+  }, [id, elastic, minHeight, maxHeight]);
 
   // Loading indicator
   useEffect(() => {
@@ -147,7 +178,7 @@ export const Textarea = forwardRef(function Textarea(
         className="__prefix__-scroll control"
         placeholder={placeholder}
         disabled={disabled}
-        style={{ minHeight, maxHeight, minWidth, maxWidth, lineHeight: 1.3 }}
+        style={{ width, lineHeight: 1.3 }}
         ref={ref}
         {..._props}
       />
