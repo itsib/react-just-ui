@@ -8,6 +8,7 @@
     @extend %control-normal;
     overflow: auto;
     min-height: 3em;
+    width: 100%;
     line-height: 1.3;
     background-color: transparent;
     padding: var(--__prefix__v-form-padding-x) var(--__prefix__v-form-padding-x);
