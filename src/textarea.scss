@@ -2,6 +2,9 @@
 @use "./css/mixins/spinner";
 
 .__prefix__.__prefix__-textarea {
+  ::placeholder {
+    @extend %placeholder;
+  }
 
   textarea.control {
     @extend %control;
