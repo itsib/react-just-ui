@@ -38,7 +38,7 @@ export function Modal({ isOpen, onDismiss, children }: PropsWithChildren<ModalPr
       if (!overlay) return;
 
       overlay.classList.add('show');
-    }, 50)
+    }, 10)
   }, [isOpen]);
 
   // Close
@@ -63,11 +63,11 @@ export function Modal({ isOpen, onDismiss, children }: PropsWithChildren<ModalPr
         setTimeout(() => {
           fakeOverlay.remove();
           document.body.style.overflow = 'visible';
-        }, 50);
+        }, 10);
       }, { once: true });
 
       fakeOverlay.classList.remove('show');
-    }, 50);
+    }, 10);
   }, [isOpen]);
 
   // Dismiss
