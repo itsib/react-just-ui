@@ -5,15 +5,14 @@
   left: 0;
   padding: 60px 0;
   overflow: auto;
-  background: rgb(var(--__prefix__c-black) / 0.3);
+  background: rgb(var(--__prefix__c-black) / 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
   z-index: var(--__prefix__z-modal);
   opacity: 0;
-  backdrop-filter: blur(0px);
-  transition: opacity .3s ease-out, backdrop-filter .3s ease-out;
+  transition: opacity .3s ease-out;
 
   .__prefix__-modal-content {
     width: unset;
@@ -32,7 +31,7 @@
 
   &.show {
     opacity: 1;
-    backdrop-filter: blur(3px);
+
 
     .__prefix__-modal-content {
       opacity: 1;
