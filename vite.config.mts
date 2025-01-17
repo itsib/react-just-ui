@@ -3,7 +3,7 @@
 import { resolve, extname } from 'node:path';
 import react from '@vitejs/plugin-react-swc';
 import { glob } from 'glob';
-import { defineConfig, UserConfig } from 'vite';
+import { defineConfig, type UserConfig } from 'vite';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import copy from 'vite-plugin-cp';
 import pkg from './package.json';
@@ -65,8 +65,10 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
           manualChunks: {
             'utils/index': [
               resolve(__dirname, 'src/utils/index.ts'),
-              resolve(__dirname, 'src/utils/class-names.ts'),
-            ]
+            ],
+            'cn/index': [
+              resolve(__dirname, 'src/cn/index.ts'),
+            ],
           }
         },
       },
@@ -89,7 +91,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       }),
     ],
     test: {
-      name: pkg.name,
+      name: pkg.name as string,
       css: false,
       include: ['tests/**/*.{spec,test}.{js,jsx,ts,tsx}'],
       globals: true,
@@ -112,6 +114,7 @@ async function getEntries(): Promise<Record<string, string>> {
   // Add other libs
   entries['validators/index'] = resolve(__dirname, 'src/validators/index.ts');
   entries['utils/index'] = resolve(__dirname, 'src/utils/index.ts');
+  entries['cn/index'] = resolve(__dirname, 'src/cn/index.ts');
 
   return entries;
 }

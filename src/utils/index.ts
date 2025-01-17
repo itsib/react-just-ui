@@ -1,4 +1,3 @@
-export * from './class-names';
-export * from './cyrb53-hash';
+export * from './cyrb53';
 export * from './sleep';
 export * from './throttle';

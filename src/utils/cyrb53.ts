@@ -18,7 +18,7 @@ import type { Hash } from '../types';
  * @param str - The string from which the hash will be calculated.
  * @param seed - Salt, an additional number that adds uniqueness. You can use a random number.
  */
-export function cyrb53Hash(str: string, seed = 0): Hash {
+export function cyrb53(str: string, seed = 0): Hash {
   let h1 = 0xdeadbeef ^ seed;
   let h2 = 0x41c6ce57 ^ seed;
 

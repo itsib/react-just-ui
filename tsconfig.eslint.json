@@ -8,7 +8,8 @@
   },
   "include": [
     "src",
-    "eslint.config.mjs"
+    "eslint.config.mjs",
+    "node_modules/vitest"
   ],
   "exclude": [
     ".storybook",

@@ -1,6 +1,6 @@
 import type { AllHTMLAttributes, FC, ReactNode } from 'react';
 import { useEffect, useReducer, useState } from 'react';
-import { cn } from './utils';
+import { cn } from './cn';
 import './avatar.scss';
 
 const BAD_URLS = new Set<string>();
