@@ -48,16 +48,21 @@ $ring-offset: 2px !default;
 
     &:before {
       content: "";
-      top: 2px;
-      width: 20px;
-      height: 20px;
+      top: 3px;
+      width: 22px;
+      height: 22px;
       box-sizing: border-box;
       position: relative;
       display: inline-block;
       border-radius: 50%;
-      border: 3px solid;
+      border: 4px solid;
       object-fit: cover;
-      animation: #{variable.$prefix}-btn-loader 1.7s linear infinite ;
+      animation-fill-mode: both;
+      animation-direction: normal;
+      animation-name: #{variable.$prefix}-btn-loader;
+      animation-duration: 1.7s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
     }
 
     * {
@@ -79,26 +84,49 @@ $ring-offset: 2px !default;
 
 @include button.layout("danger", ());
 
-// Loading animation
 @keyframes #{variable.$prefix}-btn-loader {
-  0%  {
+  0% { /* 0 - 30 */
     transform: rotate(0deg);
-    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 0%, 100% 0%);
+    clip-path: path(evenodd, "M 12 12 L 24 12 A 12 12 0 0 1 22.3923 18 L 12 12 Z");
   }
-  25%  {
+  10% { /* 18 - 90 */
+    transform: rotate(36deg);
+    clip-path: path(evenodd, "M 12 12 L 23.41268 15.7082 A 12 12 0 0 1 12 24 L 12 12 Z");
+  }
+  20% { /* 36 - 150 */
+    transform: rotate(72deg);
+    clip-path: path(evenodd, "M 12 12 L 21.7082 19.05342 A 12 12 0 0 1 1.6077 18 L 12 12 Z");
+  }
+  30% { /* 54 - 210 */
+    transform: rotate(108deg);
+    clip-path: path(evenodd, "M 12 12 L 19.05342 21.7082 A 12 12 0 1 1 1.6077 6 L 12 12 Z");
+  }
+  40% { /* 72 - 270 */
+    transform: rotate(144deg);
+    clip-path: path(evenodd, "M 12 12 L 15.7082 23.41268 A 12 12 0 1 1 12 0 L 12 12 Z");
+  }
+  50% { /* 90 - 330 */
     transform: rotate(180deg);
-    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 100% 100%);
+    clip-path: path(evenodd, "M 12 12 L 12 24 A 12 12 0 1 1 22.3923 6 L 12 12 Z");
   }
-  50%  {
+  60% { /* 144 - 342 */
+    transform: rotate(216deg);
+    clip-path: path(evenodd, "M 12 12 L 2.2918 19.05342 A 12 12 0 1 1 23.41268 8.2918 L 12 12 Z");
+  }
+  70% { /* 198 - 354 */
+    transform: rotate(252deg);
+    clip-path: path(evenodd, "M 12 12 L 0.58732 8.2918 A 12 12 0 1 1 23.93426 10.74566 L 12 12 Z");
+  }
+  80% { /* 252 - 366 */
+    transform: rotate(288deg);
+    clip-path: path(evenodd, "M 12 12 L 8.2918 0.58732 A 12 12 0 1 1 23.93426 13.25434 L 12 12 Z");
+  }
+  90% { /* 306 - 378 */
+    transform: rotate(324deg);
+    clip-path: path(evenodd, "M 12 12 L 19.05342 2.2918 A 12 12 0 1 1 23.41268 15.7082 L 12 12 Z");
+  }
+  100% { /* 360 - 390 */
     transform: rotate(360deg);
-    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 50% 100%);
-  }
-  70%  {
-    transform: rotate(540deg);
-    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 100% 100%);
-  }
-  100% {
-    transform: rotate(720deg);
-    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 0%, 100% 0%);
+    clip-path: path(evenodd, "M 12 12 L 24 12 A 12 12 0 1 1 22.3923 18 L 12 12 Z");
   }
 }

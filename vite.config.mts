@@ -15,7 +15,7 @@ import { getPrefixImporter } from './plugins/utils';
 
 const PREFIX = 'jj';
 
-export default defineConfig(async ({ mode }): Promise<UserConfig> => {
+export default defineConfig(async ({ mode }) => {
   const entries = await getEntries();
 
   return {
@@ -99,7 +99,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
       restoreMocks: true,
       setupFiles: 'tests/test-setup.ts',
     },
-  }
+  } as UserConfig;
 });
 
 async function getEntries(): Promise<Record<string, string>> {

@@ -97,9 +97,10 @@
 
   .#{variable.$prefix}-btn.btn-outline-#{$name}.loading {
     border-color: variable.getColor(--btn-#{$name}-bg);
+    color: variable.getColor(--btn-#{$name}-bg);
 
     &:before {
-      border-color: variable.getColor(--btn-#{$name}-bg);
+
     }
   }
 }
