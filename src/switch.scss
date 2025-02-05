@@ -1,70 +1,69 @@
-@use "css/mixins/toggler";
+@use "css-base/form-toggle-base";
 
 .__prefix__.__prefix__-switch {
 
-  @include toggler.layout {
+  .control {
+    height: var(--__prefix__-switch-height);
+    width: var(--__prefix__-switch-width);
+    aspect-ratio: var(--__prefix__-switch-ratio);
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    flex-grow: 0;
 
-    .control-toggler {
-      height: var(--__prefix__-switch-height);
-      width: var(--__prefix__-switch-width);
-      aspect-ratio: var(--__prefix__-switch-ratio);
+    input[type="checkbox"] {
+      inset: 0;
+      margin: 0;
+      padding: 0;
       cursor: pointer;
-      user-select: none;
-      position: relative;
-      overflow: hidden;
-      flex-shrink: 0;
-      flex-grow: 0;
+      position: absolute;
+      opacity: 0;
+      z-index: 3;
+    }
 
-      input[type="checkbox"] {
-        inset: 0;
-        margin: 0;
-        padding: 0;
-        cursor: pointer;
-        position: absolute;
-        opacity: 0;
-        z-index: 3;
-      }
+    .switch {
+      inset: 0;
+      display: block;
+      position: absolute;
+      background-color: rgb(var(--__prefix__c-switch));
+      transition: background-color .1s linear;
+      border-radius: 99999999px;
 
-      .switch {
-        inset: 0;
+      .thumb {
+        top: var(--__prefix__-switch-padding);
+        left: var(--__prefix__-switch-padding);
+        width: var(--__prefix__-switch-thumb-size);
+        height: var(--__prefix__-switch-thumb-size);
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        background-color: rgb(255 255 255);
+        box-shadow: 0 0 2px 1px rgb(0 0 0 / .1);
+        transition: left .1s linear;
         display: block;
         position: absolute;
-        background-color: rgb(var(--__prefix__c-switch-bg));
-        transition: background-color .1s linear;
-        border-radius: 99999999px;
-
-        .thumb {
-          top: var(--__prefix__-switch-padding);
-          left: var(--__prefix__-switch-padding);
-          width: var(--__prefix__-switch-thumb-size);
-          height: var(--__prefix__-switch-thumb-size);
-          aspect-ratio: 1/1;
-          border-radius: 50%;
-          background-color: rgb(var(--__prefix__c-switch-thumb));
-          box-shadow: 0 0 2px 1px rgb(var(--__prefix__c-black) / .1);
-          transition: left .1s linear;
-          display: block;
-          position: absolute;
-          z-index: 2;
-        }
-      }
-
-      input[type="checkbox"]:checked + .switch {
-        background-color: rgb(var(--__prefix__c-switch-active));
-
-        .thumb {
-          left: calc(var(--__prefix__-switch-width) - var(--__prefix__-switch-thumb-size) - var(--__prefix__-switch-padding));
-        }
-      }
-
-      input[type="checkbox"]:disabled {
-        cursor: default;
-      }
-
-      input[type="checkbox"]:disabled + .switch {
-        background-color: rgb(var(--__prefix__c-switch-disabled));
-        opacity: .8;
+        z-index: 2;
       }
     }
+
+    input[type="checkbox"]:checked + .switch {
+      background-color: var(--__prefix__-switch-accent);
+
+      .thumb {
+        left: calc(var(--__prefix__-switch-width) - var(--__prefix__-switch-thumb-size) - var(--__prefix__-switch-padding));
+      }
+    }
+
+    input[type="checkbox"]:disabled {
+      cursor: default;
+    }
+
+    input[type="checkbox"]:disabled + .switch {
+      background-color: rgb(var(--__prefix__c-muted));
+      opacity: .8;
+    }
   }
+
+  @extend %base-toggle;
 }

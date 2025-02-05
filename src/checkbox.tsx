@@ -1,10 +1,10 @@
 import { type ForwardedRef, forwardRef } from 'react';
 import { Label } from './label';
 import { Subscript } from './subscript';
-import { BaseCheckedControlProps } from './types';
+import { BaseToggleControlProps } from './types';
 import './checkbox.scss';
 
-export type CheckboxProps = Omit<BaseCheckedControlProps<HTMLInputElement>, 'value'>;
+export type CheckboxProps = Omit<BaseToggleControlProps<HTMLInputElement>, 'value'>;
 
 /**
  * A wrapper for an input element of the checkbox type as boxes that are
@@ -16,13 +16,13 @@ export const Checkbox = forwardRef(function Checkbox(
   _props: CheckboxProps,
   _ref: ForwardedRef<HTMLInputElement>
 ) {
-  const { id, label, hint, className, checked, rowReverse, error, disabled, markRequired, size = 20, ...props } = _props;
+  const { id, label, hint, className, style, checked, rowReverse, error, disabled, markRequired, size = 20, ...props } = _props;
 
   return (
-    <div className={`__prefix__ __prefix__-checkbox ${className || ''}${disabled ? ' disabled' : ''}${rowReverse ? ' row-reverse' : ' row'}`}>
+    <div className={`__prefix__ __prefix__-checkbox ${className || ''}${disabled ? ' disabled' : ''}${rowReverse ? ' row-reverse' : ' row'}`} style={style}>
       <Label id={id} label={label} required={markRequired} />
 
-      <div className="control-toggler" style={{ width: `${size}px`, height: `${size}px` }}>
+      <div className="control" style={{ width: `${size}px`, height: `${size}px` }}>
         <input
           id={id}
           type="checkbox"

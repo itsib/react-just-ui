@@ -1,14 +1,12 @@
 $schemes: (
   light: (
       'theme': rgb(255 255 255),
-      'black': rgb(0 0 0),
-      'white': rgb(255 255 255),
+      'background': rgb(255 255 255),
+      'foreground': rgb(0 0 0),
       'accent': rgb(0 115 229),
       'primary': rgb(24 24 27),
       'secondary': rgb(198 198 198),
       'error': rgb(228 54 54),
-      'background': rgb(255 255 255),
-      'foreground': rgb(0 0 0),
       'active': rgb(38 38 38),
       'border': rgb(208 208 211),
       'muted': rgb(220 220 220),
@@ -17,14 +15,12 @@ $schemes: (
   ),
   dark: (
       'theme': rgb(0 0 0),
-      'black': rgb(0 0 0),
-      'white': rgb(255 255 255),
+      'background': rgb(29 29 29),
+      'foreground': rgb(255 255 255),
       'accent': rgb(0 115 229),
       'primary': rgb(250 250 250),
       'secondary': rgb(39 39 42),
       'error': rgb(228 54 54),
-      'background': rgb(29 29 29),
-      'foreground': rgb(255 255 255),
       'active': rgb(212 212 212),
       'border': rgb(78 78 78),
       'muted': rgb(48 48 48),
@@ -33,9 +29,7 @@ $schemes: (
   )
 );
 
-@use '../css/scroll-compponent';
-
-@use "../css/css-vars-component" with (
+@use "../css/variables-component" with (
   $schemes: $schemes,
   $form: (
     'height': 40px,
@@ -56,6 +50,8 @@ $schemes: (
     'duration': .2s,
   ),
 );
+
+@use '../css/scroll-compponent';
 
 @use '../css/tooltip-component' with (
   $arrow-size: 0.5em,

@@ -1,4 +1,4 @@
-@use "css/mixins/variable";
+@use "css/mixins/utils";
 
 .__prefix__.__prefix__-subscript {
   height: calc(var(--__prefix__v-form-font-sub) + 4px);

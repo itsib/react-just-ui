@@ -12,7 +12,6 @@ export default defineConfig(async ({ mode, command }): Promise<UserConfig> => {
     resolve: {
       alias: {
         '@': resolve(__dirname, '../src'),
-        'react-just-ui': resolve(__dirname, '../src'),
       },
     },
     define: {

@@ -53,10 +53,17 @@ const meta = {
     disabled: {
       control: {type: 'boolean'},
     },
+    fallback: {
+      control: {type: 'text'},
+    },
+    username: {
+      control: {type: 'text'},
+    },
   },
   args: {
     src: './images/avatar-1.png',
     fallback: '',
+    username: '',
     size: 48,
     border: 0,
     loading: false,

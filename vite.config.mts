@@ -13,7 +13,7 @@ import themes from './plugins/vite-themes';
 import replacer from './plugins/vite-replacer';
 import { getPrefixImporter } from './plugins/utils';
 
-const PREFIX = 'jj';
+const PREFIX = 'ui';
 
 export default defineConfig(async ({ mode }) => {
   const entries = await getEntries();

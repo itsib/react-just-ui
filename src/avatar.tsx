@@ -1,19 +1,15 @@
-import type { AllHTMLAttributes, FC, ReactNode } from 'react';
+import { AllHTMLAttributes, CSSProperties, FC, ReactNode, useMemo } from 'react';
 import { useEffect, useReducer, useState } from 'react';
 import { cn } from './cn';
 import './avatar.scss';
 
 const BAD_URLS = new Set<string>();
 
-export interface AvatarProps extends Omit<AllHTMLAttributes<HTMLImageElement>, 'onLoad' | 'onError' | 'loading' | 'id' | 'size'> {
+export interface AvatarProps extends Omit<AllHTMLAttributes<HTMLImageElement>, 'onLoad' | 'onError' | 'loading' | 'id' | 'size' | 'width' | 'height' | 'alt'> {
   /**
    * The URL of the displayed image
    */
-  src: string;
-  /**
-   * The required alt attribute specifies an alternate text for an image, if the image cannot be displayed.
-   */
-  alt: string;
+  src?: string;
   /**
    * Image size. The size of the image in pixels.
    * @defaultValue 32
@@ -24,6 +20,10 @@ export interface AvatarProps extends Omit<AllHTMLAttributes<HTMLImageElement>, '
    * displayed in case of an error loading the image.
    */
   fallback?: string | ReactNode;
+  /**
+   * If there is no picture, the first letters of the user's name will be displayed.
+   */
+  username?: string;
   /**
    * Display loading. Force to display the download status instead of the image.
    */
@@ -51,7 +51,7 @@ export interface AvatarProps extends Omit<AllHTMLAttributes<HTMLImageElement>, '
  * - Active state, suitable for lists where several items can be highlighted.
  */
 export const Avatar: FC<AvatarProps> = props => {
-  const { className, src, alt, size = 32, width, height, fallback, loading = false, active = false, disabled = false, border = 0, ...rest } = props;
+  const { className, src, size = 32, fallback, loading = false, active = false, disabled = false, border = 0, username, ...rest } = props;
   const [ready, setReady] = useState(false);
   const [, update] = useReducer(x => x + 1, 0);
 
@@ -62,7 +62,7 @@ export const Avatar: FC<AvatarProps> = props => {
     ready: ready || (noFallback && noSrc),
     loading: !disabled && loading,
     active: !disabled && !loading && active,
-    disabled
+    disabled,
   }
 
   useEffect(() => setReady(false), [src]);
@@ -71,20 +71,15 @@ export const Avatar: FC<AvatarProps> = props => {
     <div
       className={cn('__prefix__', '__prefix__-avatar', className, state) }
       style={{
-        width: width ? (typeof width === 'number' ? `${width}px` : size) : (typeof size === 'number' ? `${size}px` : size),
-        height: height ? (typeof height === 'number' ? `${height}px` : size) : (typeof size === 'number' ? `${size}px` : size),
-      }}
+        '--__prefix__-avatar-size': typeof size === 'number' ? `${size}px` : size,
+        '--__prefix__-avatar-border': `${border}px`,
+      } as CSSProperties}
     >
-      <div
-        className="avatar"
-        style={{
-          borderWidth: `${border}px`,
-        }}
-      >
+      <div className="avatar">
         {src && !BAD_URLS.has(src) ? (
           <img
             src={src}
-            alt={alt}
+            alt="A"
             onLoad={() => setReady(true)}
             onError={() => {
               BAD_URLS.add(src!);
@@ -99,7 +94,7 @@ export const Avatar: FC<AvatarProps> = props => {
         ) : fallback && typeof fallback === 'string' && !BAD_URLS.has(fallback) ? (
           <img
             src={fallback}
-            alt={alt}
+            alt="FA"
             onLoad={() => setReady(true)}
             onError={() => {
               BAD_URLS.add(fallback!);
@@ -111,15 +106,40 @@ export const Avatar: FC<AvatarProps> = props => {
         ) : fallback && typeof fallback === 'object' ? (
           <>{fallback}</>
         ) : (
-          <svg className="avatar-placeholder" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-            <path
-              strokeLinecap="round"
-              d="m256 106c-31.9 0-56.1-0.092-76.2 2.61-20.1 2.7-37 8.82-49.7 21.5l-0.016 0.016c-7.35 7.37-12.7 16.3-16.2 26.3a14.8 14.8 0 0 0 9.07 18.8 14.8 14.8 0 0 0 18.8-9.07c2.29-6.53 5.1-11.1 9.21-15.2l6e-3 -6e-3c7.1-7.09 16-10.9 32.7-13.1 16.7-2.25 40.3-2.34 72.2-2.34a14.8 14.8 0 0 0 14.8-14.8 14.8 14.8 0 0 0-14.8-14.8zm50.3 0.504a14.8 14.8 0 0 0-6.63 3.83 14.8 14.8 0 0 0 0 20.9l30.1 30.1-30.1 30.1a14.8 14.8 0 0 0 0 20.9 14.8 14.8 0 0 0 20.9 0l30.1-30.1 30.1 30.1a14.8 14.8 0 0 0 20.9 0 14.8 14.8 0 0 0 0-20.9l-30.1-30.1 30.1-30.1a14.8 14.8 0 0 0 0-20.9 14.8 14.8 0 0 0-20.9 0l-30.1 30.1-30.1-30.1a14.8 14.8 0 0 0-14.3-3.83zm-185 94.2a14.8 14.8 0 0 0-15.1 14.4c-0.276 12.1-0.275 25.6-0.275 40.9 0 31.9-0.0921 56.1 2.61 76.2 2.7 20.1 8.81 37 21.5 49.7 12.7 12.7 29.6 18.8 49.7 21.5 20.1 2.7 44.3 2.61 76.2 2.61s56.1 0.0921 76.2-2.61c20.1-2.7 37-8.82 49.7-21.5l4e-3 -6e-3c12.7-12.7 18.8-29.6 21.5-49.7 2.7-20.1 2.61-44.3 2.61-76.2a14.8 14.8 0 0 0-14.8-14.8 14.8 14.8 0 0 0-14.8 14.8c0 27.9-0.162 49.2-1.69 65.3l-30.7-27.7v2e-3c-19.1-17.2-47.8-18.9-68.8-4.15l-4.04 2.84h-2e-3c-4.95 3.48-11.4 2.92-15.7-1.36h-2e-3l-58-58c-16.7-16.7-43.6-17.8-61.6-2.81 0.0394-4.62 8.8e-4 -10.3 0.0957-14.4a14.8 14.8 0 0 0-14.4-15.1zm44.1 48.4c3.98 0.133 7.9 1.75 11 4.84l58 58h2e-3c14.3 14.3 37.1 16.3 53.6 4.65l4e-3 -2e-3 4.04-2.84c9.9-6.95 23.1-6.16 32.1 1.93l42.3 38c-1.59 2.66-3.36 5.11-5.52 7.26l-4e-3 6e-3 -6e-3 4e-3c-7.08 7.09-16 10.9-32.7 13.1-16.7 2.25-40.3 2.35-72.2 2.35s-55.5-0.0949-72.2-2.35c-16.7-2.25-25.7-6.03-32.8-13.1v-2e-3l-2e-3 -2e-3c-7.09-7.08-10.9-16-13.1-32.7-1.89-14.1-2.17-34.3-2.24-58.8l18.5-16.2 4e-3 -4e-3c3.28-2.87 7.31-4.22 11.3-4.09z" />
-          </svg>
+          <Placeholder username={username} />
         )}
       </div>
 
       <div className="ripple"/>
     </div>
   );
+};
+
+const Placeholder: FC<{ username?: string }> = ({ username }) => {
+  const initials = useMemo(() => {
+    if (!username) return null;
+
+    const names = username.trim().split(' ');
+    const firstName = names[0] != null ? names[0] : '';
+    const lastName = names.length > 1 ? names[names.length - 1] : '';
+    const initials = firstName && lastName ? `${firstName.charAt(0)}${lastName.charAt(0)}` : firstName.charAt(0);
+
+    if (initials) {
+      return initials;
+    } else {
+      return null;
+    }
+  }, [username]);
+
+  return (
+    <svg className="avatar-placeholder" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+      {initials ? (
+        <text x="256" y="256" dy="20" fontSize="240" textAnchor="middle" alignmentBaseline="middle" fontFamily="monospace">{initials}</text>
+      ) : (
+        <path
+          d="m256 126c-37 0-68 30-68 68 0 37 30 68 68 68 37 0 68-30 68-68 0-37-30-68-68-68zm0 27c23 0 41 18 41 41 0 23-18 41-41 41s-41-18-41-41c0-23 18-41 41-41zm123 233v-14a96 96 0 0 0-96-96h-55a96 96 0 0 0-96 96v14h27v-14a68 68 0 0 1 68-68h55a68 68 0 0 1 68 68v14z"
+        />
+      )}
+    </svg>
+  )
 };

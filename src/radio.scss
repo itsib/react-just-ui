@@ -1,68 +1,67 @@
-@use "css/mixins/toggler";
+@use "css-base/form-toggle-base";
 
 .__prefix__.__prefix__-radio {
 
-  @include toggler.layout {
+  .control {
+    margin: 5px 10px;
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+    flex-grow: 0;
 
-    .control-toggler {
-      margin: 5px 10px;
-      position: relative;
-      cursor: pointer;
-      flex-shrink: 0;
-      flex-grow: 0;
+    input[type="radio"] {
+      inset: 0;
+      margin: 0;
+      width: inherit;
+      height: inherit;
+      position: absolute;
+      appearance: none;
+      opacity: 0;
+      z-index: 2;
+    }
 
-      input[type="radio"] {
-        inset: 0;
-        margin: 0;
-        width: inherit;
-        height: inherit;
-        position: absolute;
-        appearance: none;
-        opacity: 0;
-        z-index: 2;
+    .radio {
+      width: inherit;
+      height: inherit;
+      position: absolute;
+      z-index: 1;
+
+      .outline, .center {
+        fill: none;
+        stroke: rgb(var(--__prefix__c-radio, var(--__prefix__c-foreground)));
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
       }
 
-      .radio {
-        width: inherit;
-        height: inherit;
-        position: absolute;
-        z-index: 1;
+      .center {
+        fill: rgb(var(--__prefix__c-radio, var(--__prefix__c-foreground)));
+        opacity: 1;
+        transform: scale(0,0);
+        transform-origin: 12px 12px;
+        transition: all .4s cubic-bezier(.45,1.8,.5,.75);
+      }
+    }
 
-        .outline, .center {
-          fill: none;
-          stroke: rgb(var(--__prefix__c-radio));
-          stroke-linecap: round;
-          stroke-linejoin: round;
-          stroke-width: 2px;
-        }
+    input[type="radio"]:checked + .radio, .radio.active {
 
-        .center {
-          fill: rgb(var(--__prefix__c-radio));
-          opacity: 1;
-          transform: scale(0,0);
-          transform-origin: 12px 12px;
-          transition: all .4s cubic-bezier(.45,1.8,.5,.75);
-        }
+      .center {
+        opacity: 1;
+        transform: scale(1,1);
+      }
+    }
+
+    input[type="radio"]:disabled + .radio {
+
+      .outline {
+        stroke: rgb(var(--__prefix__c-radio-disabled, var(--__prefix__c-muted)));
       }
 
-      input[type="radio"]:checked + .radio, .radio.active {
-
-        .center {
-          opacity: 1;
-          transform: scale(1,1);
-        }
-      }
-
-      input[type="radio"]:disabled + .radio {
-
-        .outline {
-          stroke: rgb(var(--__prefix__c-radio-disabled));
-        }
-
-        .center {
-          display: none;
-        }
+      .center {
+        display: none;
       }
     }
   }
+
+  @extend %base-toggle;
 }

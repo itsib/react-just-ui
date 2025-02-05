@@ -1,0 +1,10 @@
+{
+  "input": ".storybook/public/icons",
+  "output": ".storybook/public/fonts/icon-font",
+  "name": "IconFont",
+  "prefix": "icon",
+  "types": [ "woff2", "woff", "ttf", "eot"],
+  "port": 9000,
+  "fontUrl": "./",
+  "fontUrlHash": false
+}

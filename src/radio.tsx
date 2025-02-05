@@ -1,10 +1,10 @@
 import { ForwardedRef, forwardRef } from 'react';
-import { BaseCheckedControlProps } from './types';
+import { BaseToggleControlProps } from './types';
 import { Label } from './label';
 import { Subscript } from './subscript';
 import './radio.scss';
 
-export interface RadioProps extends Omit<BaseCheckedControlProps<HTMLInputElement>, 'value'> {
+export interface RadioProps extends Omit<BaseToggleControlProps<HTMLInputElement>, 'value'> {
   /**
    * If true, then label and checkbox are swapped
    */
@@ -43,7 +43,7 @@ export const Radio = forwardRef(function Checkbox(
     <div className={`__prefix__ __prefix__-radio ${className || ''}${disabled ? ' disabled' : ''}${rowReverse ? ' row-reverse' : ' row'}`}>
       <Label id={id} label={label} required={markRequired} />
 
-      <div className="control-toggler" style={{ width: `${size}px`, height: `${size}px` }}>
+      <div className="control" style={{ width: `${size}px`, height: `${size}px` }}>
         <input id={id} type="radio" role="radio" disabled={disabled} ref={_ref} {...props} />
 
         <svg className="radio" viewBox="0 0 24 24" version="1.1"

@@ -1,6 +1,4 @@
-@mixin layout {
-
-  @content;
+%base-toggle {
 
   &.row, &.row-reverse {
     display: flex;
@@ -23,7 +21,7 @@
       order: 2;
     }
 
-    .control-toggler {
+    .control {
       margin-right: 15px;
       order: 1;
     }
@@ -39,7 +37,7 @@
       order: 1;
     }
 
-    .control-toggler {
+    .control {
       margin-left: 15px;
       order: 2;
     }

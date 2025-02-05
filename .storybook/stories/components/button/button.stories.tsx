@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import './button.stories.css';
+import { cn } from '../../../../src';
 
 interface ButtonControls {
   disabled: boolean;
@@ -62,35 +63,35 @@ export const Basic: Story = {
 
         <div className="header">Outline</div>
 
-        <button className={`jj-btn btn-primary w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
+        <button className={`btn btn-primary w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
           <span>Primary</span>
         </button>
 
-        <button className={`jj-btn btn-outline-primary w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
+        <button className={`btn btn-outline-primary w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
           <span>Primary</span>
         </button>
 
-        <button className={`jj-btn btn-accent w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
+        <button className={`btn btn-accent w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
           <span>Accent</span>
         </button>
 
-        <button className={`jj-btn btn-outline-accent w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
+        <button className={`btn btn-outline-accent w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
           <span>Accent</span>
         </button>
 
-        <button className={`jj-btn btn-secondary w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
+        <button className={`btn btn-secondary w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
           <span>Secondary</span>
         </button>
 
-        <button className={`jj-btn btn-outline-secondary w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
+        <button className={`btn btn-outline-secondary w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
           <span>Secondary</span>
         </button>
 
-        <button className={`jj-btn btn-danger w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
+        <button className={cn('btn btn-danger w-full', { loading })} disabled={disabled}>
           <span>Danger</span>
         </button>
 
-        <button className={`jj-btn btn-outline-danger w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
+        <button className={`btn btn-outline-danger w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
           <span>Danger</span>
         </button>
       </section>

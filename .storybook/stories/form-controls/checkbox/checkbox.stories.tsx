@@ -1,7 +1,7 @@
-import type { Meta, StoryObj,  } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { useArgs, useMemo } from '@storybook/preview-api';
 import { action } from '@storybook/addon-actions';
-import { userEvent, within, expect } from '@storybook/test';
+import { expect, userEvent, within } from '@storybook/test';
 import { Checkbox, sleep } from '../../../../src';
 
 const meta = {
@@ -15,6 +15,7 @@ const meta = {
     checked: false,
     disabled: false,
     rowReverse: false,
+    markRequired: false,
     size: 20,
     hint: '',
   },
@@ -84,13 +85,15 @@ export const Basic: Story = {
     }
 
     return (
-      <Checkbox
-        id={id}
-        error={validation}
-        onChange={onChangeCallback}
-        checked={checked}
-        {...args}
-      />
+      <div>
+        <Checkbox
+          id={id}
+          error={validation}
+          onChange={onChangeCallback}
+          checked={checked}
+          {...args}
+        />
+      </div>
     );
   },
   async play({ args, canvasElement }) {

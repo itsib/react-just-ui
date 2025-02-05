@@ -1,6 +1,6 @@
 @use "sass:color";
 @use "sass:math";
-@use "./variable";
+@use "./utils" as utils;
 
 @function getForegroundColor($bg-color, $fg-color-default) {
   $fg-color: $fg-color-default;
@@ -20,87 +20,15 @@
 @mixin colors($name, $base-bg, $fg-color) {
   $base-fg: getForegroundColor($base-bg, $fg-color);
 
-  @include variable.create(--btn-#{$name}-bg, $base-bg, "color");
-  @include variable.create(--btn-#{$name}-fg, $base-fg, "color");
+  @include utils.register(--btn-#{$name}-bg, $base-bg, "color");
+  @include utils.register(--btn-#{$name}-fg, $base-fg, "color");
 
   $hover-bg: color.mix($base-fg, $base-bg, 10%);
-  @include variable.create(--btn-#{$name}-hover-bg, $hover-bg, "color");
-  @include variable.create(--btn-#{$name}-hover-fg, $base-fg, "color");
+  @include utils.register(--btn-#{$name}-hover-bg, $hover-bg, "color");
+  @include utils.register(--btn-#{$name}-hover-fg, $base-fg, "color");
 
   $active-bg: color.mix($base-fg, $base-bg, 20%);
-  @include variable.create(--btn-#{$name}-active-bg, $active-bg, "color");
-  @include variable.create(--btn-#{$name}-active-fg, $base-fg, "color");
+  @include utils.register(--btn-#{$name}-active-bg, $active-bg, "color");
+  @include utils.register(--btn-#{$name}-active-fg, $base-fg, "color");
 }
 
-@mixin layout($name, $params) {
-
-  // REGULAR BUTTONS
-  .#{variable.$prefix}-btn.btn-#{$name} {
-    background-color: variable.getColor(--btn-#{$name}-bg);
-    border-color: variable.getColor(--btn-#{$name}-bg);
-    color: variable.getColor(--btn-#{$name}-fg);
-  }
-
-  .#{variable.$prefix}-btn.btn-#{$name}:hover {
-    background-color: variable.getColor(--btn-#{$name}-hover-bg);
-    border-color: variable.getColor(--btn-#{$name}-hover-bg);
-    color: variable.getColor(--btn-#{$name}-hover-fg);
-  }
-
-  .#{variable.$prefix}-btn.btn-#{$name}:active {
-    background-color: variable.getColor(--btn-#{$name}-active-bg);
-    border-color: variable.getColor(--btn-#{$name}-active-bg);
-    color: variable.getColor(--btn-#{$name}-active-fg);
-  }
-
-  .#{variable.$prefix}-btn.btn-#{$name}:disabled,
-  .#{variable.$prefix}-btn.btn-#{$name}[aria-disabled="true"] {
-    background-color: variable.getColor(--btn-#{$name}-bg);
-    border-color: variable.getColor(--btn-#{$name}-bg);
-    color: variable.getColor(--btn-#{$name}-fg);
-    filter: contrast(0.5) brightness(0.6);
-  }
-
-  .#{variable.$prefix}-btn.btn-#{$name}.loading {
-
-    &:before {
-      border-color: variable.getColor(--btn-#{$name}-fg);
-    }
-  }
-
-  // OUTLINE BUTTONS
-  .#{variable.$prefix}-btn.btn-outline-#{$name} {
-    background-color: transparent;
-    border-color: variable.getColor(--btn-#{$name}-bg);
-    color: color-mix(in srgb, variable.getColor(--foreground, .8) 70%, variable.getColor(--btn-#{$name}-bg, .8) 30%);
-  }
-
-  .#{variable.$prefix}-btn.btn-outline-#{$name}:hover {
-    background-color: variable.getColor(--btn-#{$name}-hover-bg, .1);
-    border-color: variable.getColor(--btn-#{$name}-bg);
-    color: color-mix(in srgb, variable.getColor(--foreground, .9) 80%, variable.getColor(--btn-#{$name}-bg, .9) 20%);
-  }
-
-  .#{variable.$prefix}-btn.btn-outline-#{$name}:active {
-    background-color: variable.getColor(--btn-#{$name}-active-bg, .15);
-    border-color: variable.getColor(--btn-#{$name}-active-bg);
-    color: color-mix(in srgb, variable.getColor(--foreground, .95) 85%, variable.getColor(--btn-#{$name}-bg, .95) 15%);
-  }
-
-  .#{variable.$prefix}-btn.btn-outline-#{$name}:disabled,
-  .#{variable.$prefix}-btn.btn-outline-#{$name}[aria-disabled="true"] {
-    background-color: variable.getColor(--btn-#{$name}-bg, .25);
-    border-color: variable.getColor(--btn-#{$name}-bg, .25);
-    color: color-mix(in srgb, variable.getColor(--foreground, .8) 70%, variable.getColor(--btn-#{$name}-bg, .8) 30%);
-    filter: contrast(0.5);
-  }
-
-  .#{variable.$prefix}-btn.btn-outline-#{$name}.loading {
-    border-color: variable.getColor(--btn-#{$name}-bg);
-    color: variable.getColor(--btn-#{$name}-bg);
-
-    &:before {
-
-    }
-  }
-}

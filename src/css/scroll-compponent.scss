@@ -1,6 +1,6 @@
-@use "./mixins/variable";
+@use "mixins/utils" as utils;
 
-.#{variable.$prefix}-scroll {
+.#{utils.$prefix}-scroll {
 
   ::-webkit-scrollbar {
     width: 4px;
@@ -21,7 +21,7 @@
 
   ::-webkit-scrollbar-thumb {
     border-radius: 4px;
-    background-color: rgb(var(--__prefix__c-foreground) /  .5);
+    background-color: utils.getColor(--foreground, .5);
   }
 
   ::-webkit-scrollbar-corner {

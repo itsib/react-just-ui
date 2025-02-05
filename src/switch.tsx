@@ -1,5 +1,5 @@
 import { CSSProperties, ForwardedRef, forwardRef } from 'react';
-import { BaseCheckedControlProps } from './types';
+import { BaseToggleControlProps } from './types';
 import { Label } from './label';
 import { Subscript } from './subscript';
 import './switch.scss';
@@ -7,11 +7,20 @@ import './switch.scss';
 const RATIO = 1.85;
 const PADDING = 3;
 
+export interface SwitchProps extends BaseToggleControlProps<HTMLInputElement> {
+  /**
+   * Switch background color for enabled state
+   *
+   * @default "rgb(var(--uic-accent))"
+   */
+  accent?: string;
+}
+
 export const Switch = forwardRef(function Switch(
-  props: BaseCheckedControlProps<HTMLInputElement>,
+  props: SwitchProps,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
-  const { id, label, hint, className, rowReverse, error, disabled, markRequired, size = 24, ...rest } = props;
+  const { id, label, hint, className, accent, rowReverse, error, disabled, markRequired, size = 24, ...rest } = props;
 
   return (
     <div
@@ -21,12 +30,13 @@ export const Switch = forwardRef(function Switch(
         '--__prefix__-switch-width': `${Math.round(size * RATIO / 2) * 2}px`,
         '--__prefix__-switch-ratio': `${RATIO}`,
         '--__prefix__-switch-padding': `${PADDING}px`,
-        '--__prefix__-switch-thumb-size': `${size - (PADDING * 2)}px`
+        '--__prefix__-switch-thumb-size': `${size - (PADDING * 2)}px`,
+        '--__prefix__-switch-accent': accent || 'rgb(var(--__prefix__c-accent))'
       } as CSSProperties}
     >
       <Label id={id} label={label} required={markRequired} />
 
-      <div className="control-toggler">
+      <div className="control">
         <input id={id} type="checkbox" role="checkbox" disabled={disabled} ref={ref} {...rest}/>
         <div className="switch">
           <div className="thumb"/>

@@ -1,21 +1,22 @@
 .__prefix__.__prefix__-avatar {
+  width: var(--__prefix__-avatar-size);
+  height: var(--__prefix__-avatar-size);
   aspect-ratio: 1;
   position: relative;
 
   .avatar {
-    width: inherit;
-    height: inherit;
+    width: var(--__prefix__-avatar-size);
+    height: var(--__prefix__-avatar-size);
     border-radius: 999999px;
     overflow: hidden;
-    border-style: solid;
-    border-color: rgb(var(--__prefix__c-background));
+    border: var(--__prefix__-avatar-border) solid rgb(var(--__prefix__c-background));
     background-color: rgb(var(--__prefix__c-background));
     animation: __prefix__-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     transition: border-color .2s ease-in-out;
 
     & > * {
-      width: inherit;
-      height: inherit;
+      width: calc(var(--__prefix__-avatar-size) - var(--__prefix__-avatar-border) * 2);
+      height: calc(var(--__prefix__-avatar-size) - var(--__prefix__-avatar-border) * 2);
       border-radius: 999999px;
       overflow: hidden;
       aspect-ratio: 1;

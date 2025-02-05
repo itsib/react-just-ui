@@ -53,7 +53,7 @@ export type BaseControlProps<Element extends HTMLElement> = {
   onChange?: (event: ChangeEvent<Element>) => void;
 } & Omit<AllHTMLAttributes<Element>, 'prefix' | 'label' | 'value' | 'disabled' | 'id' | 'type'>;
 
-export type BaseCheckedControlProps<Element extends HTMLElement> = {
+export type BaseToggleControlProps<Element extends HTMLElement> = {
   /**
    * Swap the label and form control.
    */
