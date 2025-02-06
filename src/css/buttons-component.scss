@@ -1,6 +1,9 @@
 @use "mixins/utils" as utils;
 @use "sass:map";
+@use "sass:color";
+@use "sass:math";
 
+$schemes: (light: (), dark: ()) !default;
 $height: 40px !default;
 $padding: 0.5em 1em !default;
 $font: ("size": 1rem, "weight": 400, "height": 1.5) !default;
@@ -8,383 +11,413 @@ $border: ("width": 1px, "radius": .375em) !default;
 $ring-width: 1px !default;
 $ring-offset: 2px !default;
 
-.btn {
-  height: $height;
-  padding: $padding;
-  font-size: map.get($font, "size");
-  font-weight: map.get($font, "weight");
-  line-height: map.get($font, "height");
-  color: utils.getColor(--foreground);
-  text-align: center;
-  text-decoration: none;
-  vertical-align: middle;
-  user-select: none;
-  cursor: pointer;
-  display: inline-block;
-  background-color: transparent;
-  border: map.get($border, "width") solid transparent;
-  border-radius: map.get($border, "radius");
-  transition:
-      color .15s ease-in-out,
-      background-color .15s ease-in-out,
-      border-color .15s ease-in-out,
-      box-shadow .15s ease-in-out;
+@function getForegroundColor($bg-color, $fg-color-default) {
+  $fg-color: $fg-color-default;
 
-  &:active {
-    transition-duration: 0s;
+  $fg-lightness: color.channel($fg-color-default, 'lightness', $space: hsl);
+  $bg-lightness: color.channel($bg-color, 'lightness', $space: hsl);
+
+  $diff: math.abs($fg-lightness - $bg-lightness);
+
+  @if $diff < 40% {
+    $fg-color: color.invert($fg-color-default);
   }
 
-  &:disabled, &[aria-disabled="true"], &.loading {
-    box-shadow: none;
-    pointer-events: none;
-    cursor: default;
-  }
+  @return $fg-color;
+}
 
-  &.loading {
-    color: transparent;
-    background-size: 26px 26px;
-    position: relative;
+@mixin defineBtnVars($name, $base-bg, $fg-color) {
+  $base-fg: getForegroundColor($base-bg, $fg-color);
 
-    * {
-      display: none;
+  @include utils.register(--btn-#{$name}-bg, $base-bg, "color");
+  @include utils.register(--btn-#{$name}-fg, $base-fg, "color");
+
+  $hover-bg: color.mix($base-fg, $base-bg, 10%);
+  @include utils.register(--btn-#{$name}-hover-bg, $hover-bg, "color");
+  @include utils.register(--btn-#{$name}-hover-fg, $base-fg, "color");
+
+  $active-bg: color.mix($base-fg, $base-bg, 20%);
+  @include utils.register(--btn-#{$name}-active-bg, $active-bg, "color");
+  @include utils.register(--btn-#{$name}-active-fg, $base-fg, "color");
+}
+
+@layer colors {
+  @each $name, $scheme in $schemes {
+    $class-name: "";
+    @if ($name == "dark") {
+      $class-name: ".dark"
     }
 
-    &:before {
-      content: "";
-      top: 3px;
-      width: 22px;
-      height: 22px;
-      box-sizing: border-box;
-      position: relative;
-      display: inline-block;
-      border-radius: 50%;
-      border: 2px solid;
-      object-fit: cover;
-      animation: #{utils.$prefix}-spinner-animation 1.7s linear infinite both normal;
+    :root#{$class-name} {
+
+      @include defineBtnVars("primary", map.get($scheme, 'primary'), map.get($scheme, 'foreground'));
+      @include defineBtnVars("accent", map.get($scheme, 'accent'), map.get($scheme, 'foreground'));
+      @include defineBtnVars("secondary", map.get($scheme, 'muted'), map.get($scheme, 'foreground'));
+      @include defineBtnVars("danger", map.get($scheme, 'error'), map.get($scheme, 'foreground'));
     }
   }
+}
 
-  &.w-full {
-    width: 100%;
-    max-width: 100%;
-  }
+@layer base {
 
-  &.btn-accent {
-    background-color: utils.getColor(--btn-accent-bg);
-    border-color: utils.getColor(--btn-accent-bg);
-    color: utils.getColor(--btn-accent-fg);
-
-    &:hover {
-      background-color: utils.getColor(--btn-accent-hover-bg);
-      border-color: utils.getColor(--btn-accent-hover-bg);
-      color: utils.getColor(--btn-accent-hover-fg);
-    }
+  .btn {
+    height: $height;
+    padding: $padding;
+    font-size: map.get($font, "size");
+    font-weight: map.get($font, "weight");
+    line-height: map.get($font, "height");
+    color: utils.getColor(--foreground);
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    user-select: none;
+    cursor: pointer;
+    display: inline-block;
+    background-color: transparent;
+    border: map.get($border, "width") solid transparent;
+    border-radius: map.get($border, "radius");
+    transition:
+        color .15s ease-in-out,
+        background-color .15s ease-in-out,
+        border-color .15s ease-in-out,
+        box-shadow .15s ease-in-out;
 
     &:active {
-      background-color: utils.getColor(--btn-accent-active-bg);
-      border-color: utils.getColor(--btn-accent-active-bg);
-      color: utils.getColor(--btn-accent-active-fg);
+      transition-duration: 0s;
     }
 
-    &:disabled,
-    &[aria-disabled="true"] {
+    &:disabled, &[aria-disabled="true"], &.loading {
+      box-shadow: none;
+      pointer-events: none;
+      cursor: default;
+    }
+
+    &.loading {
+      color: transparent;
+      background-size: 26px 26px;
+      position: relative;
+
+      * {
+        display: none;
+      }
+
+      &:before {
+        content: "";
+        top: 3px;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        border: 2px solid utils.getColor(--btn-accent-fg, .5);
+        object-fit: cover;
+        box-sizing: border-box;
+        position: relative;
+        display: inline-block;
+        animation: 0.6s linear 0s infinite normal none running #{utils.$prefix}-btn-spinner-animation;
+      }
+    }
+
+    &.w-full {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  @keyframes #{utils.$prefix}-btn-spinner-animation {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+@layer components {
+
+  .btn {
+
+    &.btn-accent {
       background-color: utils.getColor(--btn-accent-bg);
       border-color: utils.getColor(--btn-accent-bg);
       color: utils.getColor(--btn-accent-fg);
-      filter: contrast(0.5) brightness(0.6);
-    }
 
-    &.loading {
+      &:hover {
+        background-color: utils.getColor(--btn-accent-hover-bg);
+        border-color: utils.getColor(--btn-accent-hover-bg);
+        color: utils.getColor(--btn-accent-hover-fg);
+      }
 
-      &:before {
-        border-color: utils.getColor(--btn-accent-fg);
+      &:active {
+        background-color: utils.getColor(--btn-accent-active-bg);
+        border-color: utils.getColor(--btn-accent-active-bg);
+        color: utils.getColor(--btn-accent-active-fg);
+      }
+
+      &:disabled,
+      &[aria-disabled="true"] {
+        background-color: utils.getColor(--btn-accent-bg);
+        border-color: utils.getColor(--btn-accent-bg);
+        color: utils.getColor(--btn-accent-fg);
+        filter: contrast(0.5) brightness(0.6);
+      }
+
+      &.loading {
+
+        &:before {
+          border-color: utils.getColor(--btn-accent-fg, 0.2);
+          border-bottom-color: utils.getColor(--btn-accent-fg);
+        }
       }
     }
-  }
 
-  &.btn-primary {
-    background-color: utils.getColor(--btn-primary-bg);
-    border-color: utils.getColor(--btn-primary-bg);
-    color: utils.getColor(--btn-primary-fg);
-
-    &:hover {
-      background-color: utils.getColor(--btn-primary-hover-bg);
-      border-color: utils.getColor(--btn-primary-hover-bg);
-      color: utils.getColor(--btn-primary-hover-fg);
-    }
-
-    &:active {
-      background-color: utils.getColor(--btn-primary-active-bg);
-      border-color: utils.getColor(--btn-primary-active-bg);
-      color: utils.getColor(--btn-primary-active-fg);
-    }
-
-    &:disabled,
-    &[aria-disabled="true"] {
+    &.btn-primary {
       background-color: utils.getColor(--btn-primary-bg);
       border-color: utils.getColor(--btn-primary-bg);
       color: utils.getColor(--btn-primary-fg);
-      filter: contrast(0.5) brightness(0.6);
-    }
 
-    &.loading {
+      &:hover {
+        background-color: utils.getColor(--btn-primary-hover-bg);
+        border-color: utils.getColor(--btn-primary-hover-bg);
+        color: utils.getColor(--btn-primary-hover-fg);
+      }
 
-      &:before {
-        border-color: utils.getColor(--btn-primary-fg);
+      &:active {
+        background-color: utils.getColor(--btn-primary-active-bg);
+        border-color: utils.getColor(--btn-primary-active-bg);
+        color: utils.getColor(--btn-primary-active-fg);
+      }
+
+      &:disabled,
+      &[aria-disabled="true"] {
+        background-color: utils.getColor(--btn-primary-bg);
+        border-color: utils.getColor(--btn-primary-bg);
+        color: utils.getColor(--btn-primary-fg);
+        filter: contrast(0.5) brightness(0.6);
+      }
+
+      &.loading {
+
+        &:before {
+          border-color: utils.getColor(--btn-primary-fg, 0.2);
+          border-bottom-color: utils.getColor(--btn-primary-fg);
+        }
       }
     }
-  }
 
-  &.btn-secondary {
-    background-color: utils.getColor(--btn-secondary-bg);
-    border-color: utils.getColor(--btn-secondary-bg);
-    color: utils.getColor(--btn-secondary-fg);
-
-    &:hover {
-      background-color: utils.getColor(--btn-secondary-hover-bg);
-      border-color: utils.getColor(--btn-secondary-hover-bg);
-      color: utils.getColor(--btn-secondary-hover-fg);
-    }
-
-    &:active {
-      background-color: utils.getColor(--btn-secondary-active-bg);
-      border-color: utils.getColor(--btn-secondary-active-bg);
-      color: utils.getColor(--btn-secondary-active-fg);
-    }
-
-    &:disabled,
-    &[aria-disabled="true"] {
+    &.btn-secondary {
       background-color: utils.getColor(--btn-secondary-bg);
       border-color: utils.getColor(--btn-secondary-bg);
       color: utils.getColor(--btn-secondary-fg);
-      filter: contrast(0.5) brightness(0.6);
-    }
 
-    &.loading {
+      &:hover {
+        background-color: utils.getColor(--btn-secondary-hover-bg);
+        border-color: utils.getColor(--btn-secondary-hover-bg);
+        color: utils.getColor(--btn-secondary-hover-fg);
+      }
 
-      &:before {
-        border-color: utils.getColor(--btn-secondary-fg);
+      &:active {
+        background-color: utils.getColor(--btn-secondary-active-bg);
+        border-color: utils.getColor(--btn-secondary-active-bg);
+        color: utils.getColor(--btn-secondary-active-fg);
+      }
+
+      &:disabled,
+      &[aria-disabled="true"] {
+        background-color: utils.getColor(--btn-secondary-bg);
+        border-color: utils.getColor(--btn-secondary-bg);
+        color: utils.getColor(--btn-secondary-fg);
+        filter: contrast(0.5) brightness(0.6);
+      }
+
+      &.loading {
+
+        &:before {
+          border-color: utils.getColor(--btn-secondary-fg, 0.2);
+          border-bottom-color: utils.getColor(--btn-secondary-fg);
+        }
       }
     }
-  }
-  
-  &.btn-danger {
-    background-color: utils.getColor(--btn-danger-bg);
-    border-color: utils.getColor(--btn-danger-bg);
-    color: utils.getColor(--btn-danger-fg);
 
-    &:hover {
-      background-color: utils.getColor(--btn-danger-hover-bg);
-      border-color: utils.getColor(--btn-danger-hover-bg);
-      color: utils.getColor(--btn-danger-hover-fg);
-    }
-
-    &:active {
-      background-color: utils.getColor(--btn-danger-active-bg);
-      border-color: utils.getColor(--btn-danger-active-bg);
-      color: utils.getColor(--btn-danger-active-fg);
-    }
-
-    &:disabled,
-    &[aria-disabled="true"] {
+    &.btn-danger {
       background-color: utils.getColor(--btn-danger-bg);
       border-color: utils.getColor(--btn-danger-bg);
       color: utils.getColor(--btn-danger-fg);
-      filter: contrast(0.5) brightness(0.6);
-    }
 
-    &.loading {
+      &:hover {
+        background-color: utils.getColor(--btn-danger-hover-bg);
+        border-color: utils.getColor(--btn-danger-hover-bg);
+        color: utils.getColor(--btn-danger-hover-fg);
+      }
 
-      &:before {
-        border-color: utils.getColor(--btn-danger-fg);
+      &:active {
+        background-color: utils.getColor(--btn-danger-active-bg);
+        border-color: utils.getColor(--btn-danger-active-bg);
+        color: utils.getColor(--btn-danger-active-fg);
+      }
+
+      &:disabled,
+      &[aria-disabled="true"] {
+        background-color: utils.getColor(--btn-danger-bg);
+        border-color: utils.getColor(--btn-danger-bg);
+        color: utils.getColor(--btn-danger-fg);
+        filter: contrast(0.5) brightness(0.6);
+      }
+
+      &.loading {
+
+        &:before {
+          border-color: utils.getColor(--btn-danger-fg, 0.2);
+          border-bottom-color: utils.getColor(--btn-danger-fg);
+        }
       }
     }
-  }
-  
-  &.btn-outline-accent {
-    background-color: transparent;
-    border-color: utils.getColor(--btn-accent-bg);
-    color: color-mix(in srgb, utils.getColor(--foreground, .8) 70%, utils.getColor(--btn-accent-bg, .8) 30%);
 
-    &:hover {
-      background-color: utils.getColor(--btn-accent-hover-bg, .1);
+    &.btn-outline-accent {
+      background-color: transparent;
       border-color: utils.getColor(--btn-accent-bg);
-      color: color-mix(in srgb, utils.getColor(--foreground, .9) 80%, utils.getColor(--btn-accent-bg, .9) 20%);
-    }
-
-    &:active {
-      background-color: utils.getColor(--btn-accent-active-bg, .15);
-      border-color: utils.getColor(--btn-accent-active-bg);
-      color: color-mix(in srgb, utils.getColor(--foreground, .95) 85%, utils.getColor(--btn-accent-bg, .95) 15%);
-    }
-
-    &:disabled,
-    &[aria-disabled="true"] {
-      background-color: utils.getColor(--btn-accent-bg, .25);
-      border-color: utils.getColor(--btn-accent-bg, .25);
       color: color-mix(in srgb, utils.getColor(--foreground, .8) 70%, utils.getColor(--btn-accent-bg, .8) 30%);
-      filter: contrast(0.5);
-    }
 
-    &.loading {
-      border-color: utils.getColor(--btn-accent-bg);
-      color: utils.getColor(--btn-accent-bg);
+      &:hover {
+        background-color: utils.getColor(--btn-accent-hover-bg, .1);
+        border-color: utils.getColor(--btn-accent-bg);
+        color: color-mix(in srgb, utils.getColor(--foreground, .9) 80%, utils.getColor(--btn-accent-bg, .9) 20%);
+      }
 
-      &:before {
+      &:active {
+        background-color: utils.getColor(--btn-accent-active-bg, .15);
+        border-color: utils.getColor(--btn-accent-active-bg);
+        color: color-mix(in srgb, utils.getColor(--foreground, .95) 85%, utils.getColor(--btn-accent-bg, .95) 15%);
+      }
 
+      &:disabled,
+      &[aria-disabled="true"] {
+        background-color: utils.getColor(--btn-accent-bg, .25);
+        border-color: utils.getColor(--btn-accent-bg, .25);
+        color: color-mix(in srgb, utils.getColor(--foreground, .8) 70%, utils.getColor(--btn-accent-bg, .8) 30%);
+        filter: contrast(0.5);
+      }
+
+      &.loading {
+        border-color: utils.getColor(--btn-accent-bg);
+        color: utils.getColor(--btn-accent-bg);
+
+        &:before {
+          border-color: utils.getColor(--btn-accent-bg, 0.2);
+          border-bottom-color: utils.getColor(--btn-accent-bg);
+        }
       }
     }
-  }
 
-  &.btn-outline-primary {
-    background-color: transparent;
-    border-color: utils.getColor(--btn-primary-bg);
-    color: color-mix(in srgb, utils.getColor(--foreground, .8) 70%, utils.getColor(--btn-primary-bg, .8) 30%);
-
-    &:hover {
-      background-color: utils.getColor(--btn-primary-hover-bg, .1);
+    &.btn-outline-primary {
+      background-color: transparent;
       border-color: utils.getColor(--btn-primary-bg);
-      color: color-mix(in srgb, utils.getColor(--foreground, .9) 80%, utils.getColor(--btn-primary-bg, .9) 20%);
-    }
-
-    &:active {
-      background-color: utils.getColor(--btn-primary-active-bg, .15);
-      border-color: utils.getColor(--btn-primary-active-bg);
-      color: color-mix(in srgb, utils.getColor(--foreground, .95) 85%, utils.getColor(--btn-primary-bg, .95) 15%);
-    }
-
-    &:disabled,
-    &[aria-disabled="true"] {
-      background-color: utils.getColor(--btn-primary-bg, .25);
-      border-color: utils.getColor(--btn-primary-bg, .25);
       color: color-mix(in srgb, utils.getColor(--foreground, .8) 70%, utils.getColor(--btn-primary-bg, .8) 30%);
-      filter: contrast(0.5);
-    }
 
-    &.loading {
-      border-color: utils.getColor(--btn-primary-bg);
-      color: utils.getColor(--btn-primary-bg);
+      &:hover {
+        background-color: utils.getColor(--btn-primary-hover-bg, .1);
+        border-color: utils.getColor(--btn-primary-bg);
+        color: color-mix(in srgb, utils.getColor(--foreground, .9) 80%, utils.getColor(--btn-primary-bg, .9) 20%);
+      }
 
-      &:before {
+      &:active {
+        background-color: utils.getColor(--btn-primary-active-bg, .15);
+        border-color: utils.getColor(--btn-primary-active-bg);
+        color: color-mix(in srgb, utils.getColor(--foreground, .95) 85%, utils.getColor(--btn-primary-bg, .95) 15%);
+      }
 
+      &:disabled,
+      &[aria-disabled="true"] {
+        background-color: utils.getColor(--btn-primary-bg, .25);
+        border-color: utils.getColor(--btn-primary-bg, .25);
+        color: color-mix(in srgb, utils.getColor(--foreground, .8) 70%, utils.getColor(--btn-primary-bg, .8) 30%);
+        filter: contrast(0.5);
+      }
+
+      &.loading {
+        border-color: utils.getColor(--btn-primary-bg);
+        color: utils.getColor(--btn-primary-bg);
+
+        &:before {
+          border-color: utils.getColor(--btn-primary-bg, 0.1);
+          border-bottom-color: utils.getColor(--btn-primary-bg);
+        }
       }
     }
-  }
 
-  &.btn-outline-secondary {
-    background-color: transparent;
-    border-color: utils.getColor(--btn-secondary-bg);
-    color: color-mix(in srgb, utils.getColor(--foreground, .8) 70%, utils.getColor(--btn-secondary-bg, .8) 30%);
-
-    &:hover {
-      background-color: utils.getColor(--btn-secondary-hover-bg, .1);
+    &.btn-outline-secondary {
+      background-color: transparent;
       border-color: utils.getColor(--btn-secondary-bg);
-      color: color-mix(in srgb, utils.getColor(--foreground, .9) 80%, utils.getColor(--btn-secondary-bg, .9) 20%);
-    }
-
-    &:active {
-      background-color: utils.getColor(--btn-secondary-active-bg, .15);
-      border-color: utils.getColor(--btn-secondary-active-bg);
-      color: color-mix(in srgb, utils.getColor(--foreground, .95) 85%, utils.getColor(--btn-secondary-bg, .95) 15%);
-    }
-
-    &:disabled,
-    &[aria-disabled="true"] {
-      background-color: utils.getColor(--btn-secondary-bg, .25);
-      border-color: utils.getColor(--btn-secondary-bg, .25);
       color: color-mix(in srgb, utils.getColor(--foreground, .8) 70%, utils.getColor(--btn-secondary-bg, .8) 30%);
-      filter: contrast(0.5);
-    }
 
-    &.loading {
-      border-color: utils.getColor(--btn-secondary-bg);
-      color: utils.getColor(--btn-secondary-bg);
+      &:hover {
+        background-color: utils.getColor(--btn-secondary-hover-bg, .1);
+        border-color: utils.getColor(--btn-secondary-bg);
+        color: color-mix(in srgb, utils.getColor(--foreground, .9) 80%, utils.getColor(--btn-secondary-bg, .9) 20%);
+      }
 
-      &:before {
+      &:active {
+        background-color: utils.getColor(--btn-secondary-active-bg, .15);
+        border-color: utils.getColor(--btn-secondary-active-bg);
+        color: color-mix(in srgb, utils.getColor(--foreground, .95) 85%, utils.getColor(--btn-secondary-bg, .95) 15%);
+      }
 
+      &:disabled,
+      &[aria-disabled="true"] {
+        background-color: utils.getColor(--btn-secondary-bg, .25);
+        border-color: utils.getColor(--btn-secondary-bg, .25);
+        color: color-mix(in srgb, utils.getColor(--foreground, .8) 70%, utils.getColor(--btn-secondary-bg, .8) 30%);
+        filter: contrast(0.5);
+      }
+
+      &.loading {
+        border-color: utils.getColor(--btn-secondary-bg);
+        color: utils.getColor(--btn-secondary-bg);
+
+        &:before {
+          border-color: utils.getColor(--btn-secondary-bg, 0.2);
+          border-bottom-color: utils.getColor(--btn-secondary-bg);
+        }
       }
     }
-  }
 
-  &.btn-outline-danger {
-    background-color: transparent;
-    border-color: utils.getColor(--btn-danger-bg);
-    color: color-mix(in srgb, utils.getColor(--foreground, .8) 70%, utils.getColor(--btn-danger-bg, .8) 30%);
-
-    &:hover {
-      background-color: utils.getColor(--btn-danger-hover-bg, .1);
+    &.btn-outline-danger {
+      background-color: transparent;
       border-color: utils.getColor(--btn-danger-bg);
-      color: color-mix(in srgb, utils.getColor(--foreground, .9) 80%, utils.getColor(--btn-danger-bg, .9) 20%);
-    }
-
-    &:active {
-      background-color: utils.getColor(--btn-danger-active-bg, .15);
-      border-color: utils.getColor(--btn-danger-active-bg);
-      color: color-mix(in srgb, utils.getColor(--foreground, .95) 85%, utils.getColor(--btn-danger-bg, .95) 15%);
-    }
-
-    &:disabled,
-    &[aria-disabled="true"] {
-      background-color: utils.getColor(--btn-danger-bg, .25);
-      border-color: utils.getColor(--btn-danger-bg, .25);
       color: color-mix(in srgb, utils.getColor(--foreground, .8) 70%, utils.getColor(--btn-danger-bg, .8) 30%);
-      filter: contrast(0.5);
-    }
 
-    &.loading {
-      border-color: utils.getColor(--btn-danger-bg);
-      color: utils.getColor(--btn-danger-bg);
+      &:hover {
+        background-color: utils.getColor(--btn-danger-hover-bg, .1);
+        border-color: utils.getColor(--btn-danger-bg);
+        color: color-mix(in srgb, utils.getColor(--foreground, .9) 80%, utils.getColor(--btn-danger-bg, .9) 20%);
+      }
 
-      &:before {
+      &:active {
+        background-color: utils.getColor(--btn-danger-active-bg, .15);
+        border-color: utils.getColor(--btn-danger-active-bg);
+        color: color-mix(in srgb, utils.getColor(--foreground, .95) 85%, utils.getColor(--btn-danger-bg, .95) 15%);
+      }
 
+      &:disabled,
+      &[aria-disabled="true"] {
+        background-color: utils.getColor(--btn-danger-bg, .25);
+        border-color: utils.getColor(--btn-danger-bg, .25);
+        color: color-mix(in srgb, utils.getColor(--foreground, .8) 70%, utils.getColor(--btn-danger-bg, .8) 30%);
+        filter: contrast(0.5);
+      }
+
+      &.loading {
+        border-color: utils.getColor(--btn-danger-bg);
+        color: utils.getColor(--btn-danger-bg);
+
+        &:before {
+          border-color: utils.getColor(--btn-danger-bg, 0.2);
+          border-bottom-color: utils.getColor(--btn-danger-bg);
+        }
       }
     }
   }
 }
 
-@keyframes #{utils.$prefix}-spinner-animation {
-  0% { /* 0 - 30 */
-    transform: rotate(0deg);
-    clip-path: path(evenodd, "M 12 12 L 24 12 A 12 12 0 0 1 22.3923 18 L 12 12 Z");
-  }
-  10% { /* 18 - 90 */
-    transform: rotate(36deg);
-    clip-path: path(evenodd, "M 12 12 L 23.41268 15.7082 A 12 12 0 0 1 12 24 L 12 12 Z");
-  }
-  20% { /* 36 - 150 */
-    transform: rotate(72deg);
-    clip-path: path(evenodd, "M 12 12 L 21.7082 19.05342 A 12 12 0 0 1 1.6077 18 L 12 12 Z");
-  }
-  30% { /* 54 - 210 */
-    transform: rotate(108deg);
-    clip-path: path(evenodd, "M 12 12 L 19.05342 21.7082 A 12 12 0 1 1 1.6077 6 L 12 12 Z");
-  }
-  40% { /* 72 - 270 */
-    transform: rotate(144deg);
-    clip-path: path(evenodd, "M 12 12 L 15.7082 23.41268 A 12 12 0 1 1 12 0 L 12 12 Z");
-  }
-  50% { /* 90 - 330 */
-    transform: rotate(180deg);
-    clip-path: path(evenodd, "M 12 12 L 12 24 A 12 12 0 1 1 22.3923 6 L 12 12 Z");
-  }
-  60% { /* 144 - 342 */
-    transform: rotate(216deg);
-    clip-path: path(evenodd, "M 12 12 L 2.2918 19.05342 A 12 12 0 1 1 23.41268 8.2918 L 12 12 Z");
-  }
-  70% { /* 198 - 354 */
-    transform: rotate(252deg);
-    clip-path: path(evenodd, "M 12 12 L 0.58732 8.2918 A 12 12 0 1 1 23.93426 10.74566 L 12 12 Z");
-  }
-  80% { /* 252 - 366 */
-    transform: rotate(288deg);
-    clip-path: path(evenodd, "M 12 12 L 8.2918 0.58732 A 12 12 0 1 1 23.93426 13.25434 L 12 12 Z");
-  }
-  90% { /* 306 - 378 */
-    transform: rotate(324deg);
-    clip-path: path(evenodd, "M 12 12 L 19.05342 2.2918 A 12 12 0 1 1 23.41268 15.7082 L 12 12 Z");
-  }
-  100% { /* 360 - 390 */
-    transform: rotate(360deg);
-    clip-path: path(evenodd, "M 12 12 L 24 12 A 12 12 0 1 1 22.3923 18 L 12 12 Z");
-  }
-}

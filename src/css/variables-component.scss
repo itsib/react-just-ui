@@ -1,11 +1,8 @@
 @use "sass:map";
 @use 'sass:color';
-@use "mixins/utils" as utils;
-@use "./mixins/button";
+@use "./mixins/utils" as utils;
 
 $schemes: (light: (), dark: ()) !default;
-$light: map.get($schemes, "light");
-$dark: map.get($schemes, "dark");
 $form: (
     'height': 40px,
     'margin-top': 4px,
@@ -18,14 +15,6 @@ $form: (
     'font-label': .875rem,
     'font-sub': 12px,
 ) !default;
-$tooltip: (
-    'font-size': 12px,
-    'arrow-size': 0.5em,
-    'indent': 2px,
-    'hide-delay': 0s,
-    'show-delay': .4s,
-    'duration': .2s,
-) !default;
 $modal: (
     'border-width': 1px,
     'border-radius': .5em,
@@ -33,84 +22,62 @@ $modal: (
     'padding-y': .875rem,
 ) !default;
 
-@mixin defineColors ($name, $schemes) {
-  $scheme: map.get($schemes, $name);
+@layer colors, variables, base, components;
 
-  // Define all colors
-  @each $name, $value in $scheme {
-    @include utils.register($name, $value, "color");
+@layer colors {
+  @each $name, $scheme in $schemes {
+    $class-name: "";
+    @if ($name == "dark") {
+      $class-name: ".dark"
+    }
+
+    :root#{$class-name} {
+      @each $var-name, $value in $scheme {
+        @include utils.register($var-name, $value, "color");
+      }
+
+      // Forms
+      @include utils.register(--form-label, color.invert(map.get($scheme, 'foreground'), 10%), "color");
+      @include utils.register(--form-text, map.get($scheme, 'foreground'), "color");
+      @include utils.register(--form-placeholder, color.invert(map.get($scheme, 'foreground'), 50%), "color");
+      @include utils.register(--form-border, map.get($scheme, 'border'), "color");
+      @include utils.register(--form-bg, map.get($scheme, 'background'), "color");
+      @include utils.register(--form-focus-border, map.get($scheme, 'active'), "color");
+      @include utils.register(--form-focus-bg, map.get($scheme, 'background'), "color");
+      @include utils.register(--form-disabled-border, map.get($scheme, 'muted'), "color");
+      @include utils.register(--form-disabled-bg, map.get($scheme, 'muted'), "color");
+
+      // Modal
+      @include utils.register(--modal-bg, map.get($scheme, 'modal'), "color");
+    }
   }
-
-  $theme-color: map.get($scheme, 'theme');
-  $invert-theme-color: color.invert($theme-color);
-
-  // Buttons
-  @include button.colors("primary", map.get($scheme, 'primary'), map.get($scheme, 'foreground'));
-  @include button.colors("accent", map.get($scheme, 'accent'), map.get($scheme, 'foreground'));
-  @include button.colors("secondary", map.get($scheme, 'muted'), map.get($scheme, 'foreground'));
-  @include button.colors("danger", map.get($scheme, 'error'), map.get($scheme, 'foreground'));
-
-  // Forms
-  @include utils.register(--form-label, color.invert(map.get($scheme, 'foreground'), 10%), "color");
-  @include utils.register(--form-text, map.get($scheme, 'foreground'), "color");
-  @include utils.register(--form-placeholder, color.invert(map.get($scheme, 'foreground'), 50%), "color");
-  @include utils.register(--form-border, map.get($scheme, 'border'), "color");
-  @include utils.register(--form-bg, map.get($scheme, 'background'), "color");
-  @include utils.register(--form-focus-border, map.get($scheme, 'active'), "color");
-  @include utils.register(--form-focus-bg, map.get($scheme, 'background'), "color");
-  @include utils.register(--form-disabled-border, map.get($scheme, 'muted'), "color");
-  @include utils.register(--form-disabled-bg, map.get($scheme, 'muted'), "color");
-
-  // Tooltip
-  @include utils.register(--tooltip-text, map.get($scheme, 'foreground'), "color");
-  @include utils.register(--tooltip-bg, map.get($scheme, 'theme'), "color");
-  @include utils.register(--tooltip-border, color.invert(map.get($scheme, 'background'), 15%), "color");
-
-  // Modal
-  @include utils.register(--modal-bg, map.get($scheme, 'modal'), "color");
 }
 
-:root {
-  @include defineColors("light", $schemes);
-}
+@layer variables {
+  :root {
+    // Z index
+    @include utils.register(--modal, 1000, "z-index");
+    @include utils.register(--toast, 1050, "z-index");
+    @include utils.register(--dropdown, 1060, "z-index");
+    @include utils.register(--popover, 1070, "z-index");
+    @include utils.register(--tooltip, 1080, "z-index");
 
-:root.dark {
-  @include defineColors("dark", $schemes);
-}
+    // Forms
+    @include utils.register(--form-height, map.get($form, "height"));
+    @include utils.register(--form-font-base, map.get($form, "font-base"));
+    @include utils.register(--form-font-label, map.get($form, "font-label"));
+    @include utils.register(--form-font-sub, map.get($form, "font-sub"));
+    @include utils.register(--form-border-width, map.get($form, "border-width"));
+    @include utils.register(--form-border-radius, map.get($form, "border-radius"));
+    @include utils.register(--form-padding-x, map.get($form, "padding-x"));
+    @include utils.register(--form-padding-y, map.get($form, "padding-y"));
+    @include utils.register(--form-margin-top, map.get($form, "margin-top"));
+    @include utils.register(--form-margin-bottom, map.get($form, "margin-bottom"));
 
-:root {
-  // Z index
-  @include utils.register(--modal, 1000, "z-index");
-  @include utils.register(--toast, 1050, "z-index");
-  @include utils.register(--dropdown, 1060, "z-index");
-  @include utils.register(--popover, 1070, "z-index");
-  @include utils.register(--tooltip, 1080, "z-index");
-
-  // Tooltip
-  @include utils.register(--tooltip-font-size, map.get($tooltip, "font-size"));
-  @include utils.register(--tooltip-hide-delay, map.get($tooltip, "hide-delay"));
-  @include utils.register(--tooltip-show-delay, map.get($tooltip, "show-delay"));
-  @include utils.register(--tooltip-duration, map.get($tooltip, "duration"));
-
-  // Forms
-  @include utils.register(--form-height, map.get($form, "height"));
-  @include utils.register(--form-font-base, map.get($form, "font-base"));
-  @include utils.register(--form-font-label, map.get($form, "font-label"));
-  @include utils.register(--form-font-sub, map.get($form, "font-sub"));
-  @include utils.register(--form-border-width, map.get($form, "border-width"));
-  @include utils.register(--form-border-radius, map.get($form, "border-radius"));
-  @include utils.register(--form-padding-x, map.get($form, "padding-x"));
-  @include utils.register(--form-padding-y, map.get($form, "padding-y"));
-  @include utils.register(--form-margin-top, map.get($form, "margin-top"));
-  @include utils.register(--form-margin-bottom, map.get($form, "margin-bottom"));
-
-  // Modal
-  @include utils.register(--modal-border-width, map.get($modal, "border-width"));
-  @include utils.register(--modal-border-radius, map.get($modal, "border-radius"));
-  @include utils.register(--modal-padding-x, map.get($modal, "padding-x"));
-  @include utils.register(--modal-padding-y, map.get($modal, "padding-y"));
-}
-
-.#{utils.$prefix} * {
-  box-sizing: border-box;
+    // Modal
+    @include utils.register(--modal-border-width, map.get($modal, "border-width"));
+    @include utils.register(--modal-border-radius, map.get($modal, "border-radius"));
+    @include utils.register(--modal-padding-x, map.get($modal, "padding-x"));
+    @include utils.register(--modal-padding-y, map.get($modal, "padding-y"));
+  }
 }

@@ -43,23 +43,23 @@ $schemes: (
     'font-label': .875rem,
     'font-sub': 12px,
   ),
-  $tooltip: (
-    'font-size': 12px,
-    'hide-delay': 0s,
-    'show-delay': .4s,
-    'duration': .2s,
-  ),
 );
 
 @use '../css/scroll-compponent';
 
 @use '../css/tooltip-component' with (
+  $schemes: $schemes,
+  $font-size: 12px,
+  $hide-delay: 0s,
+  $show-delay: .4s,
+  $duration: .2s,
   $arrow-size: 0.5em,
   $padding: 0.5em 0.75em,
   $indent: 2px,
 );
 
 @use '../css/buttons-component' with (
+  $schemes: $schemes,
   $height: 40px,
   $padding: 0.25em 1em,
   $font: (

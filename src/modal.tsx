@@ -109,7 +109,7 @@ export function Modal({ isOpen, onDismiss, children }: PropsWithChildren<ModalPr
       className="__prefix__ __prefix__-modal-overlay"
       ref={overlayRef}
     >
-      <div aria-label="dialog content" className="__prefix__-modal-content">
+      <div aria-label="dialog content" role="dialog" className="__prefix__-modal-content">
         {children}
       </div>
     </div>,
