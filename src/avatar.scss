@@ -1,6 +1,7 @@
 .__prefix__.__prefix__-avatar {
   width: var(--__prefix__-avatar-size);
   height: var(--__prefix__-avatar-size);
+  box-sizing: border-box;
   aspect-ratio: 1;
   position: relative;
 
@@ -8,6 +9,7 @@
     width: var(--__prefix__-avatar-size);
     height: var(--__prefix__-avatar-size);
     border-radius: 999999px;
+    box-sizing: border-box;
     overflow: hidden;
     border: var(--__prefix__-avatar-border) solid rgb(var(--__prefix__c-background));
     background-color: rgb(var(--__prefix__c-background));
@@ -18,6 +20,7 @@
       width: calc(var(--__prefix__-avatar-size) - var(--__prefix__-avatar-border) * 2);
       height: calc(var(--__prefix__-avatar-size) - var(--__prefix__-avatar-border) * 2);
       border-radius: 999999px;
+      box-sizing: border-box;
       overflow: hidden;
       aspect-ratio: 1;
       display: block;

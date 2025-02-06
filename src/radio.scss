@@ -1,11 +1,13 @@
 @use "css-base/form-toggle-base";
 
 .__prefix__.__prefix__-radio {
+  box-sizing: border-box;
 
   .control {
     margin: 5px 10px;
     position: relative;
     cursor: pointer;
+    box-sizing: border-box;
     flex-shrink: 0;
     flex-grow: 0;
 
@@ -14,6 +16,7 @@
       margin: 0;
       width: inherit;
       height: inherit;
+      box-sizing: border-box;
       position: absolute;
       appearance: none;
       opacity: 0;
@@ -25,6 +28,7 @@
       height: inherit;
       position: absolute;
       z-index: 1;
+      box-sizing: border-box;
 
       .outline, .center {
         fill: none;

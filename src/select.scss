@@ -9,6 +9,7 @@
 
     .select {
       padding: var(--__prefix__v-form-padding-y) var(--__prefix__v-form-padding-x);
+      box-sizing: border-box;
     }
 
     .hidden-select {
@@ -79,6 +80,7 @@
   padding: var(--__prefix__v-form-padding-y) var(--__prefix__v-form-padding-x);
   color: rgb(var(--__prefix__c-list-text));
   user-select: none;
+  box-sizing: border-box;
   font-weight: normal;
   text-align: start;
   border-radius: calc(var(--__prefix__v-form-border-radius) - 1px);
@@ -104,6 +106,7 @@
     > * {
       width: 100%;
       height: 100%;
+      box-sizing: border-box;
     }
   }
 
@@ -129,11 +132,13 @@
 }
 
 .__prefix__.__prefix__-select-dropdown {
+  box-sizing: border-box;
 
   .__prefix__-list {
     overflow-y: auto;
     scroll-snap-type: y mandatory;
     box-shadow: 0 0 8px 3px rgb(var(--__prefix__-black) / .15);
+    box-sizing: border-box;
     position: absolute;
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -154,6 +159,7 @@
   }
 
   .__prefix__-list-item {
+    box-sizing: border-box;
     scroll-snap-align: start;
     cursor: pointer;
   }

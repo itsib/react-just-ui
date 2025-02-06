@@ -2,6 +2,7 @@
 @use "./css/mixins/spinner";
 
 .__prefix__.__prefix__-input {
+
   ::placeholder {
     @extend %placeholder;
   }

@@ -8,6 +8,7 @@
     cursor: pointer;
     flex-shrink: 0;
     flex-grow: 0;
+    box-sizing: border-box;
 
     input[type="checkbox"] {
       margin: 0;
@@ -23,6 +24,7 @@
         height: inherit;
         border: 2px solid var(--checkbox-border-color, rgb(var(--__prefix__c-foreground)));
         border-radius: 4px;
+        box-sizing: border-box;
         position: absolute;
         z-index: 1;
 
