@@ -45,7 +45,7 @@ $schemes: (
   ),
 );
 
-@use '../css/scroll-compponent';
+@use '../css/scroll-component';
 
 @use '../css/tooltip-component' with (
   $schemes: $schemes,

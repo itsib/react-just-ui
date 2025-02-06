@@ -1,6 +1,6 @@
 @use "mixins/utils" as utils;
 
-@layer base {
+@layer #{utils.$prefix}-base {
 
   .#{utils.$prefix}-scroll {
 

@@ -41,7 +41,7 @@ $ring-offset: 2px !default;
   @include utils.register(--btn-#{$name}-active-fg, $base-fg, "color");
 }
 
-@layer colors {
+@layer #{utils.$prefix}-colors {
   @each $name, $scheme in $schemes {
     $class-name: "";
     @if ($name == "dark") {
@@ -58,7 +58,7 @@ $ring-offset: 2px !default;
   }
 }
 
-@layer base {
+@layer #{utils.$prefix}-base {
 
   .btn {
     height: $height;
@@ -135,7 +135,7 @@ $ring-offset: 2px !default;
   }
 }
 
-@layer components {
+@layer #{utils.$prefix}-components {
 
   .btn {
 
