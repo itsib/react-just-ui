@@ -42,6 +42,7 @@
     height: inherit;
     border: 1px solid rgb(var(--__prefix__c-accent));
     border-radius: 999999px;
+    box-sizing: border-box;
     position: absolute;
     animation: 1.5s linear 0s infinite normal none running __prefix__-image-ripple;
     display: none;

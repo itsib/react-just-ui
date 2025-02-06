@@ -1,33 +1,30 @@
 @use "mixins/utils" as utils;
 
-@layer #{utils.$prefix}-base {
+.#{utils.$prefix}-scroll {
 
-  .#{utils.$prefix}-scroll {
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    transition: all .15s ease-in-out;
+  }
 
-    ::-webkit-scrollbar {
-      width: 4px;
-      height: 4px;
-      transition: all .15s ease-in-out;
-    }
+  ::-webkit-scrollbar-track {
+    padding: 4px 0;
+    position: relative;
+    background-color: transparent;
+  }
 
-    ::-webkit-scrollbar-track {
-      padding: 4px 0;
-      position: relative;
-      background-color: transparent;
-    }
+  ::-webkit-scrollbar-button {
+    height: 8px;
+    background-color: transparent;
+  }
 
-    ::-webkit-scrollbar-button {
-      height: 8px;
-      background-color: transparent;
-    }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: utils.getColor(--foreground, .5);
+  }
 
-    ::-webkit-scrollbar-thumb {
-      border-radius: 4px;
-      background-color: utils.getColor(--foreground, .5);
-    }
-
-    ::-webkit-scrollbar-corner {
-      display: none;
-    }
+  ::-webkit-scrollbar-corner {
+    display: none;
   }
 }

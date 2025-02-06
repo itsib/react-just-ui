@@ -22,9 +22,7 @@ $modal: (
     'padding-y': .875rem,
 ) !default;
 
-@layer #{utils.$prefix}-colors, #{utils.$prefix}-variables, #{utils.$prefix}-base, #{utils.$prefix}-components;
-
-@layer #{utils.$prefix}-colors {
+@layer #{utils.$prefix}-variables {
   @each $name, $scheme in $schemes {
     $class-name: "";
     @if ($name == "dark") {
@@ -58,9 +56,7 @@ $modal: (
       @include utils.register(--modal-bg, map.get($scheme, 'modal'), "color");
     }
   }
-}
 
-@layer #{utils.$prefix}-variables {
   :root {
     // Z index
     @include utils.register(--modal, 1000, "z-index");
