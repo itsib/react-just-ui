@@ -36,59 +36,10 @@ $dark: (
 
 @use '../css/scroll-component';
 @use '../css/z-index-component';
-@use '../css/loader-component' with (
-  $size: 7px,
-);
-
-@use "../css/forms-component" with (
-  $height: 40px,
-  $margin-top: 4px,
-  $margin-bottom: 2px,
-  $padding-x: .75rem,
-  $padding-y: .25rem,
-  $border-width: 1px,
-  $border-radius: .375rem,
-  $font-base: 1rem,
-  $font-label: .875rem,
-  $font-sub: 12px,
-);
-
-
-@use '../css/tooltip-component' with (
-  $font-size: 12px,
-  $hide-delay: 0s,
-  $show-delay: .4s,
-  $duration: .2s,
-  $arrow-size: 0.5rem,
-  $padding: 0.5rem 0.75rem,
-  $indent: 2px,
-);
-
-@use '../css/buttons-component' with (
-  $height: 40px,
-  $padding: 0.25rem 1rem,
-  $font-size: 1rem,
-  $font-weight: 400,
-  $line-height: 1.5,
-  $border-width: 2px,
-  $border-radius: .375rem,
-  $ring-width: 1px,
-  $ring-offset: 2px,
-  $dark: (
-    'foreground': map.get($dark, 'foreground'),
-    'accent': map.get($dark, 'accent'),
-    'primary': map.get($dark, 'primary'),
-    'secondary': map.get($dark, 'muted'),
-    'danger': map.get($dark, 'error'),
-  ),
-  $light: (
-    'foreground': map.get($light, 'foreground'),
-    'accent': map.get($light, 'accent'),
-    'primary': map.get($light, 'primary'),
-    'secondary': map.get($light, 'muted'),
-    'danger': map.get($light, 'error'),
-  ),
-);
+@use '../css/loader-component';
+@use "../css/forms-component";
+@use '../css/tooltip-component';
+@use '../css/buttons-component';
 
 
 

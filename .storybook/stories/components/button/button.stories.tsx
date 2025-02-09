@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { cn } from '../../../../src';
 import './button.stories.css';
 
 interface ButtonControls {
@@ -66,35 +65,35 @@ export const Basic: Story = {
 
         <div className="header">Outline</div>
 
-        <button type="button" className={cn('btn', 'btn btn-primary', 'w-full', { loading })} disabled={disabled}>
-          <span>Primary</span>
-        </button>
-
-        <button type="button" className={cn('btn', 'btn-outline-primary', 'w-full', { loading })} disabled={disabled}>
-          <span>Primary</span>
-        </button>
-
-        <button type="button" className={cn('btn', 'btn-accent', 'w-full', { loading })} disabled={disabled}>
+        <button type="button" className="btn btn-accent w-full" disabled={disabled} data-loading={loading}>
           <span>Accent</span>
         </button>
 
-        <button type="button" className={cn('btn', 'btn-outline-accent', 'w-full', { loading })} disabled={disabled}>
+        <button type="button" className="btn btn-outline-accent w-full" disabled={disabled} data-loading={loading}>
           <span>Accent</span>
         </button>
 
-        <button type="button" className={cn('btn', 'btn-secondary', 'w-full', { loading })} disabled={disabled}>
+        <button type="button" className="btn btn-primary w-full" disabled={disabled} data-loading={loading}>
+          <span>Primary</span>
+        </button>
+
+        <button type="button" className="btn btn-outline-primary w-full" disabled={disabled} data-loading={loading}>
+          <span>Primary</span>
+        </button>
+
+        <button type="button" className="btn btn-secondary w-full" disabled={disabled} data-loading={loading}>
           <span>Secondary</span>
         </button>
 
-        <button type="button" className={cn('btn', 'btn-outline-secondary', 'w-full', { loading })} disabled={disabled}>
+        <button type="button" className="btn btn-outline-secondary w-full" disabled={disabled} data-loading={loading}>
           <span>Secondary</span>
         </button>
 
-        <button type="button" className={cn('btn', 'btn-danger', 'w-full', { loading })} disabled={disabled}>
+        <button type="button" className="btn btn-danger w-full" disabled={disabled} data-loading={loading}>
           <span>Danger</span>
         </button>
 
-        <button type="button" className={cn('btn', 'btn-outline-danger', 'w-full', { loading })} disabled={disabled}>
+        <button type="button" className="btn btn-outline-danger w-full" disabled={disabled} data-loading={loading}>
           <span>Danger</span>
         </button>
       </section>

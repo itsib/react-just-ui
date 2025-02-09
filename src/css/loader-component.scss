@@ -1,10 +1,12 @@
 @use "./utilites/vars" as vars;
 
-$size: 7px !default;
+$bubbles-size: 7px !default;
+$spinner-size: 1.2rem !default;
 
 @layer #{vars.$prefix}-variables {
   :root {
-    @include vars.register(--bubbles-size, $size);
+    @include vars.register(--bubbles-size, $bubbles-size);
+    @include vars.register(--spinner-size, $spinner-size);
   }
 }
 
@@ -21,7 +23,7 @@ $size: 7px !default;
 
   & {
     left: calc((2em / 2) * -1);
-    top: calc(50% - ($size + 2.5em));
+    top: calc(50% - (vars.get(--bubbles-size) + 2.5em));
     margin-left: 50%;
     color: vars.getColor(--foreground, .7);
     position: relative;
@@ -44,7 +46,38 @@ $size: 7px !default;
   }
 }
 
+.#{vars.$prefix}-spinner,
+button[data-loading="true"]:not(:disabled) {
+
+  &:after {
+    content: " ";
+    top: 3px;
+    width: vars.get(--spinner-size);
+    height: vars.get(--spinner-size);
+    border-radius: 50%;
+    border: 2px solid color-mix(in srgb, currentColor 20%, transparent);
+    border-bottom-color: currentColor;
+    object-fit: cover;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    animation: 0.6s linear 0s infinite normal none running #{vars.$prefix}-spinner-animation;
+  }
+}
+
 @keyframes #{vars.$prefix}-bubbles-animation {
   0%, 80%, 100% { box-shadow: 0 2.5em 0 -1.3em }
   40% { box-shadow: 0 2.5em 0 0 }
+}
+
+@keyframes #{vars.$prefix}-spinner-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

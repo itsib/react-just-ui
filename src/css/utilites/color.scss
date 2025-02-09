@@ -1,0 +1,63 @@
+@use "sass:color";
+@use "sass:math";
+@use "sass:meta";
+@use "sass:map";
+
+@function powerNumber($number, $exp) {
+  $value: 1;
+
+  @if $exp > 0 {
+    @for $i from 1 through $exp {
+      $value: $value * $number;
+    }
+  } @else if $exp < 0 {
+    @for $i from 1 through -$exp {
+      $value: math.div($value, $number);
+    }
+  }
+
+  @return $value;
+}
+
+@function luminance($color) {
+  @if meta.type-of($color) != "color" {
+    @return 0.55;
+  }
+
+  $color-rgb: (
+      "red": color.channel($color, "red", $space: rgb),
+      "green": color.channel($color, "green", $space: rgb),
+      "blue": color.channel($color, "blue", $space: rgb),
+  );
+
+  @each $name, $value in $color-rgb {
+    $adjusted: 0;
+    $value: math.div($value, 255);
+
+    @if $value < 0.03928 {
+      $value: math.div($value, 12.92);
+    } @else {
+      $value: math.div($value + 0.055, 1.055);
+      $value: powerNumber($value, 2);
+    }
+
+    $color-rgb: map.merge(
+            $color-rgb,
+            (
+                $name: $value,
+            )
+    );
+  }
+
+  @return map.get($color-rgb, "red") * 0.2126
+    + map.get($color-rgb, "green") * 0.7152
+    + map.get($color-rgb, "blue") * 0.0722;
+}
+
+@function invert($color) {
+  @if luminance($color) > 0.55 {
+    @return rgb(0 0 0 / 0.7);
+  } @else {
+    @return rgb(255 255 255);
+  }
+}

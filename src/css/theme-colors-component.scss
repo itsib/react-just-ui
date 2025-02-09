@@ -1,6 +1,7 @@
 @use "sass:map";
 @use 'sass:color';
 @use "./utilites/vars" as vars;
+@use "./utilites/color" as colorUtils;
 
 $light: () !default;
 $dark: () !default;
@@ -26,6 +27,16 @@ $schemes: (
       @include vars.register(--tooltip-bg, map.get($scheme, 'theme'), "color");
       @include vars.register(--tooltip-border, color.invert(map.get($scheme, 'background'), 15%), "color");
 
+      // Buttons
+      @include vars.register(--btn-accent-bg, map.get($scheme, 'accent'), "color");
+      @include vars.register(--btn-accent-fg, colorUtils.invert(map.get($scheme, 'accent')), "color");
+      @include vars.register(--btn-primary-bg, map.get($scheme, 'primary'), "color");
+      @include vars.register(--btn-primary-fg, colorUtils.invert(map.get($scheme, 'primary')), "color");
+      @include vars.register(--btn-secondary-bg, map.get($scheme, 'secondary'), "color");
+      @include vars.register(--btn-secondary-fg, colorUtils.invert(map.get($scheme, 'secondary')), "color");
+      @include vars.register(--btn-danger-bg, map.get($scheme, 'error'), "color");
+      @include vars.register(--btn-danger-fg, colorUtils.invert(map.get($scheme, 'error')), "color");
+
       // Forms
       @include vars.register(--form-label, color.invert(map.get($scheme, 'foreground'), 10%), "color");
       @include vars.register(--form-text, map.get($scheme, 'foreground'), "color");
@@ -37,6 +48,7 @@ $schemes: (
       @include vars.register(--form-disabled-border, map.get($scheme, 'muted'), "color");
       @include vars.register(--form-disabled-bg, map.get($scheme, 'muted'), "color");
 
+      // List
       @include vars.register(--list-text, map.get($scheme, 'foreground'), "color");
       @include vars.register(--list-bg, map.get($scheme, 'background'), "color");
       @include vars.register(--list-hover-text, map.get($scheme, 'foreground'), "color");
