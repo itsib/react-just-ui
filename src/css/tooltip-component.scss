@@ -1,8 +1,6 @@
 @use "sass:map";
-@use 'sass:color';
 @use "./mixins/utils" as utils;
 
-$schemes: (light: (), dark: ()) !default;
 $font-size: 12px !default;
 $hide-delay: 0s !default;
 $show-delay: .4s !default;
@@ -12,19 +10,6 @@ $padding: 0.5em 0.75em !default;
 $indent: 2px !default;
 
 @layer #{utils.$prefix}-variables {
-  @each $name, $scheme in $schemes {
-    $class-name: "";
-    @if ($name == "dark") {
-      $class-name: ".dark"
-    }
-
-    :root#{$class-name} {
-      @include utils.register(--tooltip-text, map.get($scheme, 'foreground'), "color");
-      @include utils.register(--tooltip-bg, map.get($scheme, 'theme'), "color");
-      @include utils.register(--tooltip-border, color.invert(map.get($scheme, 'background'), 15%), "color");
-    }
-  }
-
   :root {
     @include utils.register(--tooltip-font-size, $font-size);
     @include utils.register(--tooltip-hide-delay, $hide-delay);

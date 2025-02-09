@@ -2,8 +2,8 @@ import { ForwardedRef, forwardRef, useEffect } from 'react';
 import type { BaseControlProps } from './types';
 import { Subscript } from './subscript';
 import { Label } from './label';
+import { cn } from './utils/cn';
 import './textarea.scss';
-import { cn } from './cn';
 
 export interface TextareaProps extends BaseControlProps<HTMLTextAreaElement> {
   /**

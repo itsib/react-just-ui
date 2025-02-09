@@ -9,9 +9,12 @@
  * @packageDocumentation
  */
 export * from './types';
-export * from './utils';
 export * from './validators';
-export * from './cn';
+
+export * from './utils/cn';
+export * from './utils/cyrb53';
+export * from './utils/sleep';
+export * from './utils/throttle';
 
 export * from './subscript';
 export * from './label';

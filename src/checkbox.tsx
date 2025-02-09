@@ -3,7 +3,7 @@ import { Label } from './label';
 import { Subscript } from './subscript';
 import { BaseToggleControlProps } from './types';
 import './checkbox.scss';
-import { cn } from './cn';
+import { cn } from './utils/cn';
 
 export type CheckboxProps = Omit<BaseToggleControlProps<HTMLInputElement>, 'value'>;
 

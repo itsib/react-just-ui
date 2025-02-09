@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import './button.stories.css';
 import { cn } from '../../../../src';
+import './button.stories.css';
 
 interface ButtonControls {
   disabled: boolean;

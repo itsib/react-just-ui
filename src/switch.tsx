@@ -2,8 +2,8 @@ import { CSSProperties, ForwardedRef, forwardRef } from 'react';
 import { BaseToggleControlProps } from './types';
 import { Label } from './label';
 import { Subscript } from './subscript';
+import { cn } from './utils/cn';
 import './switch.scss';
-import { cn } from './cn';
 
 const RATIO = 1.85;
 const PADDING = 3;

@@ -3,11 +3,15 @@
 @use "sass:color";
 @use "sass:math";
 
-$schemes: (light: (), dark: ()) !default;
+$light: () !default;
+$dark: () !default;
 $height: 40px !default;
 $padding: 0.5em 1em !default;
-$font: ("size": 1rem, "weight": 400, "height": 1.5) !default;
-$border: ("width": 1px, "radius": .375em) !default;
+$font-size: 1rem !default;
+$font-weight: 400 !default;
+$line-height: 1.5 !default;
+$border-width: 1px !default;
+$border-radius: .375em !default;
 $ring-width: 1px !default;
 $ring-offset: 2px !default;
 
@@ -42,34 +46,35 @@ $ring-offset: 2px !default;
 }
 
 @layer #{utils.$prefix}-variables {
-  @each $name, $scheme in $schemes {
-    $class-name: "";
-    @if ($name == "dark") {
-      $class-name: ".dark"
-    }
-
-    :root#{$class-name} {
-
-      @include defineBtnVars("primary", map.get($scheme, 'primary'), map.get($scheme, 'foreground'));
-      @include defineBtnVars("accent", map.get($scheme, 'accent'), map.get($scheme, 'foreground'));
-      @include defineBtnVars("secondary", map.get($scheme, 'muted'), map.get($scheme, 'foreground'));
-      @include defineBtnVars("danger", map.get($scheme, 'error'), map.get($scheme, 'foreground'));
-    }
-  }
-
   :root {
-    @include utils.register(--btn-radius, map.get($border, "radius"));
     @include utils.register(--btn-height, $height);
+    @include utils.register(--btn-radius, $border-radius);
+    @include utils.register(--btn-border-width, $border-width);
+    @include utils.register(--btn-font-size, $font-size);
+    @include utils.register(--btn-font-weight, $font-weight);
+    @include utils.register(--btn-line-height, $line-height);
 
+    // Colors
+    @include defineBtnVars("primary", map.get($light, 'primary'), map.get($light, 'foreground'));
+    @include defineBtnVars("accent", map.get($light, 'accent'), map.get($light, 'foreground'));
+    @include defineBtnVars("secondary", map.get($light, 'secondary'), map.get($light, 'foreground'));
+    @include defineBtnVars("danger", map.get($light, 'danger'), map.get($light, 'foreground'));
+
+    &.dark {
+      @include defineBtnVars("primary", map.get($dark, 'primary'), map.get($dark, 'foreground'));
+      @include defineBtnVars("accent", map.get($dark, 'accent'), map.get($dark, 'foreground'));
+      @include defineBtnVars("secondary", map.get($dark, 'secondary'), map.get($dark, 'foreground'));
+      @include defineBtnVars("danger", map.get($dark, 'danger'), map.get($dark, 'foreground'));
+    }
   }
 }
 
 .btn {
   height: utils.get(--btn-height);
   padding: $padding;
-  font-size: map.get($font, "size");
-  font-weight: map.get($font, "weight");
-  line-height: map.get($font, "height");
+  font-size: utils.get(--btn-font-size);
+  font-weight: utils.get(--btn-font-weight);
+  line-height: utils.get(--btn-line-height);
   color: utils.getColor(--foreground);
   text-align: center;
   text-decoration: none;
@@ -78,7 +83,7 @@ $ring-offset: 2px !default;
   cursor: pointer;
   display: inline-block;
   background-color: transparent;
-  border: map.get($border, "width") solid transparent;
+  border: utils.get(--btn-border-width) solid transparent;
   border-radius: utils.get(--btn-radius);
   transition:
       color .15s ease-in-out,

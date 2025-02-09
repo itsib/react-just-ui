@@ -1,79 +1,90 @@
-$schemes: (
-  light: (
-      'theme': rgb(255 255 255),
-      'background': rgb(255 255 255),
-      'foreground': rgb(0 0 0),
-      'accent': rgb(0 115 229),
-      'primary': rgb(24 24 27),
-      'secondary': rgb(198 198 198),
-      'error': rgb(228 54 54),
-      'active': rgb(38 38 38),
-      'border': rgb(208 208 211),
-      'muted': rgb(220 220 220),
-      'switch': rgb(155 155 159),
-      'modal': rgb(255 255 255),
-  ),
-  dark: (
-      'theme': rgb(0 0 0),
-      'background': rgb(29 29 29),
-      'foreground': rgb(255 255 255),
-      'accent': rgb(0 115 229),
-      'primary': rgb(250 250 250),
-      'secondary': rgb(39 39 42),
-      'error': rgb(228 54 54),
-      'active': rgb(212 212 212),
-      'border': rgb(78 78 78),
-      'muted': rgb(48 48 48),
-      'switch': rgb(65 65 65),
-      'modal': rgb(18 19 19),
-  )
+@use "sass:map";
+
+$light: (
+  'theme': rgb(255 255 255),
+  'background': rgb(255 255 255),
+  'foreground': rgb(0 0 0),
+  'accent': rgb(0 115 229),
+  'primary': rgb(24 24 27),
+  'secondary': rgb(198 198 198),
+  'error': rgb(228 54 54),
+  'active': rgb(38 38 38),
+  'border': rgb(208 208 211),
+  'muted': rgb(220 220 220),
+  'switch': rgb(155 155 159),
+  'modal': rgb(255 255 255),
+);
+$dark: (
+  'theme': rgb(0 0 0),
+  'background': rgb(29 29 29),
+  'foreground': rgb(255 255 255),
+  'accent': rgb(0 115 229),
+  'primary': rgb(250 250 250),
+  'secondary': rgb(39 39 42),
+  'error': rgb(228 54 54),
+  'active': rgb(212 212 212),
+  'border': rgb(78 78 78),
+  'muted': rgb(48 48 48),
+  'switch': rgb(65 65 65),
+  'modal': rgb(18 19 19),
 );
 
-@use "../css/variables-component" with (
-  $schemes: $schemes,
+@use "../css/theme-colors-component" with (
+  $light: $light,
+  $dark: $dark,
 );
+
+@use '../css/scroll-component';
+@use '../css/z-index-component';
 
 @use "../css/forms-component" with (
   $height: 40px,
   $margin-top: 4px,
   $margin-bottom: 2px,
-  $padding-x: .75em,
-  $padding-y: .25em,
+  $padding-x: .75rem,
+  $padding-y: .25rem,
   $border-width: 1px,
-  $border-radius: .375em,
+  $border-radius: .375rem,
   $font-base: 1rem,
   $font-label: .875rem,
   $font-sub: 12px,
 );
 
-@use '../css/scroll-component';
 
 @use '../css/tooltip-component' with (
-  $schemes: $schemes,
   $font-size: 12px,
   $hide-delay: 0s,
   $show-delay: .4s,
   $duration: .2s,
-  $arrow-size: 0.5em,
-  $padding: 0.5em 0.75em,
+  $arrow-size: 0.5rem,
+  $padding: 0.5rem 0.75rem,
   $indent: 2px,
 );
 
 @use '../css/buttons-component' with (
-  $schemes: $schemes,
   $height: 40px,
-  $padding: 0.25em 1em,
-  $font: (
-    "size": 1rem,
-    "weight": 400,
-    "height": 1.5,
-  ),
-  $border: (
-    "width": 2px,
-    "radius": .375em,
-  ),
+  $padding: 0.25rem 1rem,
+  $font-size: 1rem,
+  $font-weight: 400,
+  $line-height: 1.5,
+  $border-width: 2px,
+  $border-radius: .375rem,
   $ring-width: 1px,
   $ring-offset: 2px,
+  $dark: (
+    'foreground': map.get($dark, 'foreground'),
+    'accent': map.get($dark, 'accent'),
+    'primary': map.get($dark, 'primary'),
+    'secondary': map.get($dark, 'muted'),
+    'danger': map.get($dark, 'error'),
+  ),
+  $light: (
+    'foreground': map.get($light, 'foreground'),
+    'accent': map.get($light, 'accent'),
+    'primary': map.get($light, 'primary'),
+    'secondary': map.get($light, 'muted'),
+    'danger': map.get($light, 'error'),
+  ),
 );
 
 

@@ -3,7 +3,7 @@ import type { BaseControlProps } from './types';
 import { Subscript } from './subscript';
 import { Label } from './label';
 import './input.scss';
-import { cn } from './cn';
+import { cn } from './utils/cn';
 
 export type InputType = 'text' | 'password' | 'email' | 'search' | 'tel' | 'url' | 'number';
 

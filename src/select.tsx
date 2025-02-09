@@ -13,7 +13,7 @@ import { createPortal } from 'react-dom';
 import type { BaseControlProps, SelectOption } from './types';
 import { Subscript } from './subscript';
 import { Label } from './label';
-import { cn } from './cn';
+import { cn } from './utils/cn';
 import './select.scss';
 
 export interface SelectProps extends BaseControlProps<HTMLInputElement> {

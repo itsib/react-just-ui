@@ -2,7 +2,12 @@
 @use 'sass:color';
 @use "./mixins/utils" as utils;
 
-$schemes: (light: (), dark: ()) !default;
+$light: () !default;
+$dark: () !default;
+$schemes: (
+    light: $light,
+    dark: $dark,
+);
 
 @layer #{utils.$prefix}-variables {
   @each $name, $scheme in $schemes {
@@ -15,6 +20,11 @@ $schemes: (light: (), dark: ()) !default;
       @each $var-name, $value in $scheme {
         @include utils.register($var-name, $value, "color");
       }
+
+      // Tooltip
+      @include utils.register(--tooltip-text, map.get($scheme, 'foreground'), "color");
+      @include utils.register(--tooltip-bg, map.get($scheme, 'theme'), "color");
+      @include utils.register(--tooltip-border, color.invert(map.get($scheme, 'background'), 15%), "color");
 
       // Forms
       @include utils.register(--form-label, color.invert(map.get($scheme, 'foreground'), 10%), "color");
@@ -37,17 +47,5 @@ $schemes: (light: (), dark: ()) !default;
       // Modal
       @include utils.register(--modal-bg, map.get($scheme, 'modal'), "color");
     }
-  }
-
-  :root {
-    // Z index
-    @include utils.register(--modal, 1000, "z-index");
-    @include utils.register(--toast, 1050, "z-index");
-    @include utils.register(--dropdown, 1060, "z-index");
-    @include utils.register(--popover, 1070, "z-index");
-    @include utils.register(--tooltip, 1080, "z-index");
-
-    // Forms
-
   }
 }

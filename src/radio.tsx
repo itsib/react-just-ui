@@ -3,7 +3,7 @@ import { BaseToggleControlProps } from './types';
 import { Label } from './label';
 import { Subscript } from './subscript';
 import './radio.scss';
-import { cn } from './cn';
+import { cn } from './utils/cn';
 
 export interface RadioProps extends Omit<BaseToggleControlProps<HTMLInputElement>, 'value'> {
   /**

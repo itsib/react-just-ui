@@ -3,7 +3,7 @@ import type { BaseControlProps } from './types';
 import { Subscript } from './subscript';
 import { Label } from './label';
 import './image-input.scss';
-import { cn } from './cn';
+import { cn } from './utils/cn';
 
 export interface FileInputProps extends BaseControlProps<HTMLInputElement> {
   /**

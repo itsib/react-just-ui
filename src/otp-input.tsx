@@ -3,7 +3,7 @@ import type { BaseControlProps } from './types';
 import { Label } from './label';
 import { Subscript } from './subscript';
 import './otp-input.scss';
-import { cn } from './cn';
+import { cn } from './utils/cn';
 
 export interface OtpInputProps extends BaseControlProps<HTMLInputElement> {
   /**

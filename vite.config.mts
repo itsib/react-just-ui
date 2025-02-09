@@ -62,14 +62,6 @@ export default defineConfig(async ({ mode }) => {
             'react-dom': 'ReactDOM',
             'react/jsx-runtime': 'react/jsx-runtime',
           },
-          manualChunks: {
-            'utils/index': [
-              resolve(__dirname, 'src/utils/index.ts'),
-            ],
-            'cn/index': [
-              resolve(__dirname, 'src/cn/index.ts'),
-            ],
-          }
         },
       },
     },
@@ -103,18 +95,29 @@ export default defineConfig(async ({ mode }) => {
 });
 
 async function getEntries(): Promise<Record<string, string>> {
+  const components = await glob('src/!(*.d).{tsx,ts}', { cwd: __dirname });
+  const utilities = await glob('src/utils/!(*.d).ts', { cwd: __dirname });
+
   const entries: Record<string, string> = {};
-  // Search components
-  (await glob('src/!(*.d).{tsx,ts}', { cwd: __dirname })).reduce((acc, file) => {
-    const key = file.replace(/^src\//, '').replace(new RegExp(`${extname(file)}$`), '');
-    acc[key] = resolve(__dirname, file);
-    return acc;
-  }, entries);
+
+  // Components entries
+  for (let i = 0; i < components.length; i++) {
+    const component = components[i];
+    const name = component.replace(/^src\//, '').replace(new RegExp(`${extname(component)}$`), '');
+
+    entries[name] = resolve(__dirname, component);
+  }
+
+  // Utilities entries
+  for (let i = 0; i < utilities.length; i++) {
+    const utility = utilities[i];
+    const name = utility.replace(/^src\//, '').replace(new RegExp(`${extname(utility)}$`), '');
+
+    entries[name] = resolve(__dirname, utility);
+  }
 
   // Add other libs
   entries['validators/index'] = resolve(__dirname, 'src/validators/index.ts');
-  entries['utils/index'] = resolve(__dirname, 'src/utils/index.ts');
-  entries['cn/index'] = resolve(__dirname, 'src/cn/index.ts');
 
   return entries;
 }
