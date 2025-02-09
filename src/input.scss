@@ -1,20 +1,14 @@
-@use "css-base/form-controls-base";
-@use "./css/mixins/spinner";
+@use "./css-base/form-controls-base";
+@use "./css/mixins/loaders";
 
 .__prefix__.__prefix__-input {
 
-  ::placeholder {
-    @extend %placeholder;
-  }
-
   .control {
-    @extend %control;
-    @extend %control-normal;
+    display: flex;
+    justify-content: space-between;
+    align-self: stretch;
 
     > input {
-      @extend %input;
-
-      width: 100%;
       padding: var(--__prefix__v-form-padding-y) var(--__prefix__v-form-padding-x);
 
       &[type="password"] {
@@ -51,13 +45,10 @@
   &:focus-within {
 
     .control {
-      @extend %control-focused;
 
       .suffix, .prefix {
         background-color: rgb(var(--__prefix__c-form-focus-bg));
         border-color: rgb(var(--__prefix__c-form-focus-border));
-        box-shadow: 0 0 2px 0 rgb(var(--__prefix__c-form-focus-border)),
-        0 0 2px -1px inset rgb(var(--__prefix__c-form-focus-border));
       }
     }
   }
@@ -65,7 +56,6 @@
   &.error {
 
     > .control {
-      @extend %control-error;
 
       .suffix, .prefix {
         border-color: rgb(var(--__prefix__c-error));
@@ -77,21 +67,11 @@
   &.disabled {
 
     .control {
-      @extend %control-disabled;
 
       .suffix, .prefix {
         color: rgb(var(--__prefix__c-form-text) / .6);
         border-color: rgb(var(--__prefix__c-form-disabled-border));
         background-color: rgb(var(--__prefix__c-form-disabled-bg));
-        box-shadow: none;
-      }
-
-      > .prefix {
-        color: rgb(var(--__prefix__c-form-text) / .6);
-      }
-
-      > .suffix {
-        color: rgb(var(--__prefix__c-form-text) / .6);
       }
     }
 
@@ -106,9 +86,14 @@
   &.loading:not(.disabled) {
 
     .control {
-      @extend %control-normal;
+      border-color: rgb(var(--__prefix__c-form-disabled-border));
+      background-color: rgb(var(--__prefix__c-form-disabled-bg));
 
       > input {
+        display: none;
+      }
+
+      .suffix, .prefix {
         display: none;
       }
     }
@@ -120,6 +105,6 @@
       }
     }
 
-    @include spinner.spinner(".overlay", 7px);
+    @include loaders.bubbles(".overlay", 7px);
   }
 }

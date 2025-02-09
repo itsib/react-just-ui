@@ -11,21 +11,6 @@
   background-color: transparent;
 }
 
-%control {
-  height: var(--__prefix__v-form-height);
-  font-size: var(--__prefix__v-form-font-base);
-  color: rgb(var(--__prefix__c-form-text));
-  border-radius: var(--__prefix__v-form-border-radius);
-  outline: none;
-  box-sizing: border-box;
-  overflow: hidden;
-  display: flex;
-  position: relative;
-  align-items: stretch;
-  justify-content: space-between;
-  transition: box-shadow .15s ease-in-out, border-color .15s ease-in-out, background-color .15s ease-in-out;
-}
-
 %control-normal {
   background-color: rgb(var(--__prefix__c-form-bg));
   border: var(--__prefix__v-form-border-width) solid rgb(var(--__prefix__c-form-border));

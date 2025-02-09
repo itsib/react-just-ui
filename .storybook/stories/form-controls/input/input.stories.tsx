@@ -54,6 +54,12 @@ export const Basic: Story = {
     id: 'test-input',
     label: 'First Name',
     onChange: action('onChange'),
+    markRequired: false,
+  },
+  argTypes: {
+    markRequired: {
+      type: 'boolean'
+    }
   },
   render: function Render(args) {
     const [text, setText] = useState('')

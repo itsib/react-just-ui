@@ -1,27 +1,14 @@
-@use "css-base/form-controls-base";
-
 .__prefix__.__prefix__-otp-input {
 
-  .control-otp {
+  .controls-wrap {
+    height: var(--__prefix__v-otp-input-height, var(--__prefix__v-form-height));
 
-    .group {
+    .controls {
       height: inherit;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 0.5rem;
-
-      .symbol {
-        @extend %control;
-        @extend %control-normal;
-        width: calc(var(--__prefix__v-form-height) * 0.8);
-        aspect-ratio: 0.8;
-        text-align: center;
-
-        &:focus {
-          @extend %control-focused;
-        }
-      }
 
       .divider {
         margin: 0 3px;
@@ -43,32 +30,40 @@
           height: 0.3em;
         }
       }
+
+      .control {
+        height: inherit;
+        width: var(--__prefix__v-otp-input-width, calc(var(--__prefix__v-form-height) * 0.8));
+        aspect-ratio: 0.8;
+
+        input {
+          width: 100%;
+          text-align: center;
+        }
+
+        &:focus-within {
+          background-color: rgb(var(--__prefix__c-form-focus-bg));
+          border-color: rgb(var(--__prefix__c-form-focus-border));
+        }
+      }
     }
   }
 
   &.error {
 
-    .control-otp {
-
-      .group {
-
-        .symbol {
-          @extend %control-error;
-        }
-      }
+    .controls-wrap .controls .control {
+      border-color: rgb(var(--__prefix__c-error));
     }
   }
 
   &.disabled {
 
-    .control-otp {
-
-      .group {
-
-        .symbol {
-          @extend %control-disabled;
-        }
-      }
+    .controls-wrap .controls .control {
+      border-color: rgb(var(--__prefix__c-form-disabled-border));
+      background-color: rgb(var(--__prefix__c-form-disabled-bg));
+      pointer-events: none;
+      user-select: none;
+      opacity: .8;
     }
 
     .__prefix__-subscript {

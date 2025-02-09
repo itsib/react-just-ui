@@ -1,5 +1,5 @@
-@use "css-base/form-controls-base";
-@use "./css/mixins/spinner";
+@use "./css-base/form-controls-base";
+@use "./css/mixins/loaders";
 
 .__prefix__.__prefix__-textarea {
   ::placeholder {
@@ -7,7 +7,6 @@
   }
 
   .control {
-    @extend %control;
     @extend %control-normal;
     overflow: auto;
     width: 100%;
@@ -63,7 +62,7 @@
     .overlay {
       position: absolute;
       z-index: 2;
-      @include spinner.spinner(".spinner", 7px);
+      @include loaders.bubbles(".spinner", 7px);
     }
   }
 }

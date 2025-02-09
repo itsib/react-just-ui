@@ -3,6 +3,7 @@ import type { BaseControlProps } from './types';
 import { Label } from './label';
 import { Subscript } from './subscript';
 import './otp-input.scss';
+import { cn } from './cn';
 
 export interface OtpInputProps extends BaseControlProps<HTMLInputElement> {
   /**
@@ -18,6 +19,12 @@ export interface OtpInputProps extends BaseControlProps<HTMLInputElement> {
    * @public
    */
   layout?: string;
+  /**
+   * The height of the otp code input fields.
+   *
+   * @default var(--__prefix__v-form-height)
+   */
+  height?: number;
 }
 
 /**
@@ -27,7 +34,7 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
   props: OtpInputProps,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
-  const { id, className, label, hint, error, markRequired, layout = 'ddd-ddd', ..._props} = props;
+  const { id, className, label, hint, error, markRequired, layout = 'ddd-ddd', height, disabled, ..._props} = props;
   const callbacksRef = useRef(_props);
   callbacksRef.current = _props;
 
@@ -42,10 +49,22 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
         case ',':
           return <div key={`${id}-${key}`} className="divider d-dot"/>;
         default:
-          return <input type="text" key={`${id}-${key}`} id={`${id}-${index}`} data-index={index++} className="symbol" />
+          return (
+            <div key={`${id}-${key}`} className="control">
+              <input type="text"  id={`${id}-${index}`} data-index={index++} />
+            </div>
+          )
       }
     });
   }, [layout, id]);
+
+  const cssVariables = useMemo(() => {
+    if (!height) return {};
+    return {
+      ['--__prefix__v-otp-input-height']: `${height}px`,
+      ['--__prefix__v-otp-input-width']: `${Math.round(height * 0.8)}px`,
+    } as CSSProperties;
+  }, [height]);
 
   // Handle user input and resolve 6-letters code
   useEffect(() => {
@@ -325,13 +344,16 @@ export const OtpInput = forwardRef(function FormControlVerifyCode(
   }, [id, layout]);
 
   return (
-    <div className={`__prefix__ __prefix__-otp-input ${className || ''}${_props.disabled ? ' disabled' : ''}${error ? ' error' : ''}`}>
+    <div
+      style={cssVariables}
+      className={cn('__prefix__', '__prefix__-base-control', '__prefix__-otp-input', className, { disabled, error: !!error })}
+    >
       <Label id={id} label={label} required={markRequired} />
 
-      <div className="control-otp">
-        <input id={id} type="hidden" aria-invalid={error ? 'true' : 'false'} ref={ref} {..._props} style={{ color: 'white', backgroundColor: 'transparent' }} />
+      <div className="controls-wrap">
+        <input id={id} type="hidden" aria-invalid={error ? 'true' : 'false'} ref={ref} disabled={disabled} {..._props} style={{ color: 'white', backgroundColor: 'transparent' }} />
 
-        <div className="group" style={{ '--__prefix__v-form-width': 'calc(var(--__prefix__v-form-height) * 0.8)' } as CSSProperties}>
+        <div className="controls">
           {elements}
         </div>
       </div>

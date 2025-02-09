@@ -1,9 +1,10 @@
-@use "css-base/form-controls-base";
-@use "./css/mixins/spinner";
+@use "./css-base/form-controls-base";
+@use "./css/mixins/loaders";
 
 .__prefix__.__prefix__-image-input {
   --__prefix__v-preview-size: 60px;
 
+  width: auto;
   display: grid;
   grid-template-columns: var(--__prefix__v-preview-size) 1fr;
   column-gap: 1rem;
@@ -45,17 +46,18 @@
     }
 
     > img {
-      height: 100%;
-      width: auto;
+      height: inherit;
+      width: inherit;
+      object-fit: contain;
+      object-position: center;
     }
   }
 
   .control {
-    @extend %control;
-    @extend %control-normal;
+    display: flex;
+    align-items: stretch;
 
     input {
-      @extend %input;
       left: 0;
       right: 0;
       top: 0;
@@ -69,10 +71,21 @@
       }
     }
 
-    .file-name {
+    .fake-input {
+      width: 100%;
       padding: var(--__prefix__v-form-padding-y) var(--__prefix__v-form-padding-x);
       display: flex;
       align-items: center;
+      justify-content: end;
+      box-sizing: border-box;
+      direction: rtl;
+
+      span {
+        max-width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
 
       > .ps {
         color: rgb(var(--__prefix__c-form-placeholder) / .7);
@@ -81,36 +94,10 @@
     }
   }
 
-  .__prefix__-subscript {
-    grid-column: span 2;
-  }
-
   &:hover {
 
-    .preview {
-
-      .arrow {
-        animation-iteration-count: infinite;
-      }
-    }
-  }
-
-  &.no-preview {
-    display: flex;
-    flex-direction: column;
-  }
-
-  &:focus-within {
-
-    .control {
-      @extend %control-focused;
-    }
-  }
-
-  &.error {
-
-    .control {
-      @extend %control-focused;
+    .preview .arrow {
+      animation-iteration-count: infinite;
     }
   }
 
@@ -125,10 +112,6 @@
           animation-name: none;
         }
       }
-    }
-
-    .control {
-      @extend %control-disabled;
     }
 
     .__prefix__-subscript {
@@ -157,25 +140,30 @@
       }
     }
 
-    .control {
-      @extend %control-normal;
-    }
-
-    &.no-preview {
-
-      .file-name {
-        opacity: 0;
-      }
-
-      @include spinner.spinner(".overlay", 7px);
-    }
-
     .__prefix__-subscript {
 
       .error {
         display: none;
       }
     }
+  }
+
+  &.no-preview {
+    grid-template-columns: 1fr;
+
+    &.loading {
+
+      .control {
+        border-color: rgb(var(--__prefix__c-form-disabled-border));
+        background-color: rgb(var(--__prefix__c-form-disabled-bg));
+
+        .fake-input {
+          opacity: 0;
+        }
+      }
+    }
+
+    @include loaders.bubbles(".overlay", 7px);
   }
 }
 

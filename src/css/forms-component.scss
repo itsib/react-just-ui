@@ -1,0 +1,89 @@
+@use "./mixins/utils" as utils;
+
+$height: 40px !default;
+$margin-top: 4px !default;
+$margin-bottom: 2px !default;
+$padding-x: .75em !default;
+$padding-y: .25em !default;
+$border-width: 1px !default;
+$border-radius: .375em !default;
+$font-base: 1rem !default;
+$font-label: .875rem !default;
+$font-sub: 12px !default;
+
+@layer #{utils.$prefix}-variables {
+  :root {
+    @include utils.register(--form-height, $height);
+    @include utils.register(--form-font-base, $font-base);
+    @include utils.register(--form-font-label, $font-label);
+    @include utils.register(--form-font-sub, $font-sub);
+    @include utils.register(--form-border-width, $border-width);
+    @include utils.register(--form-border-radius, $border-radius);
+    @include utils.register(--form-padding-x, $padding-x);
+    @include utils.register(--form-padding-y, $padding-y);
+    @include utils.register(--form-margin-top, $margin-top);
+    @include utils.register(--form-margin-bottom, $margin-bottom);
+  }
+}
+
+.#{utils.$prefix}-base-control {
+  width: auto;
+
+  ::placeholder {
+    color: utils.getColor(--form-placeholder);
+    font-weight: 400;
+  }
+
+  input {
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    border: none;
+    outline: none;
+    font-size: inherit;
+    background-color: transparent;
+    box-sizing: border-box;
+  }
+
+  .control {
+    height: utils.get(--form-height);
+    font-size: utils.get(--form-font-base);
+    color: utils.getColor(--form-text);
+    border-radius: utils.get(--form-border-radius);
+    border-width: utils.get(--form-border-width);
+    border-style: solid;
+    outline: none;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    transition: border-color .15s ease-in-out, background-color .15s ease-in-out;
+    border-color: utils.getColor(--form-border);
+    background-color: utils.getColor(--form-bg);
+  }
+
+  &:focus-within {
+
+    > .control {
+      border-color: utils.getColor(--form-focus-border);
+      background-color: utils.getColor(--form-focus-bg);
+    }
+  }
+
+  &.error {
+
+    > .control {
+      border-color: utils.getColor(--error);
+    }
+  }
+
+  &.disabled {
+
+    > .control {
+      border-color: utils.getColor(--form-disabled-border);
+      background-color: utils.getColor(--form-disabled-bg);
+      pointer-events: none;
+      user-select: none;
+      opacity: .8;
+    }
+  }
+}

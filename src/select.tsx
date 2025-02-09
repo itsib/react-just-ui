@@ -13,6 +13,7 @@ import { createPortal } from 'react-dom';
 import type { BaseControlProps, SelectOption } from './types';
 import { Subscript } from './subscript';
 import { Label } from './label';
+import { cn } from './cn';
 import './select.scss';
 
 export interface SelectProps extends BaseControlProps<HTMLInputElement> {
@@ -82,7 +83,7 @@ export const Select = forwardRef(function Select(
   }, [id]);
 
   return (
-    <div className={`__prefix__ __prefix__-select ${className || ''}${disabled ? ' disabled' : ''}${loading ? ' loading' : ''}${error ? ' error' : ''}`}>
+    <div className={cn('__prefix__', '__prefix__-base-control', '__prefix__-select', className, { disabled, loading, error: !!error })}>
       <Label id={id} label={label} required={markRequired} />
 
       <div className="control" ref={controlRef} onClick={onClick}>

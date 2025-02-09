@@ -3,6 +3,7 @@ import type { BaseControlProps } from './types';
 import { Subscript } from './subscript';
 import { Label } from './label';
 import './image-input.scss';
+import { cn } from './cn';
 
 export interface FileInputProps extends BaseControlProps<HTMLInputElement> {
   /**
@@ -67,10 +68,10 @@ export const ImageInput = forwardRef(function FileInput(
   }, [id, noPreview]);
 
   return (
-    <div className={`__prefix__ __prefix__-image-input ${className || ''}${disabled ? ' disabled' : ''}${loading ? ' loading' : ''}${error ? ' error' : ''}${noPreview ? ' no-preview' : ''}`}>
+    <div className={cn('__prefix__', '__prefix__-base-control', '__prefix__-image-input', className, { disabled, loading, error: !!error, 'no-preview': noPreview })}>
       {!noPreview ? (
         <div className="preview">
-          {image ? (
+          {image && (disabled || !loading) ? (
             <img src={image} alt="preview" />
           ) : (
             <svg version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -98,7 +99,7 @@ export const ImageInput = forwardRef(function FileInput(
           {..._props}
         />
 
-        <div className="file-name">
+        <div className="fake-input">
           {filename ? (
             <span>{filename}</span>
           ) : (
@@ -106,6 +107,8 @@ export const ImageInput = forwardRef(function FileInput(
           )}
         </div>
       </div>
+
+      {!noPreview ? <div/> : null}
 
       <Subscript error={error} hint={hint} />
     </div>

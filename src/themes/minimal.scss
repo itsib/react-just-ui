@@ -31,18 +31,19 @@ $schemes: (
 
 @use "../css/variables-component" with (
   $schemes: $schemes,
-  $form: (
-    'height': 40px,
-    'margin-top': 4px,
-    'margin-bottom': 2px,
-    'padding-x': .75em,
-    'padding-y': .25em,
-    'border-width': 1px,
-    'border-radius': .375em,
-    'font-base': 1rem,
-    'font-label': .875rem,
-    'font-sub': 12px,
-  ),
+);
+
+@use "../css/forms-component" with (
+  $height: 40px,
+  $margin-top: 4px,
+  $margin-bottom: 2px,
+  $padding-x: .75em,
+  $padding-y: .25em,
+  $border-width: 1px,
+  $border-radius: .375em,
+  $font-base: 1rem,
+  $font-label: .875rem,
+  $font-sub: 12px,
 );
 
 @use '../css/scroll-component';

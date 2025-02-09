@@ -1,6 +1,6 @@
 @use "sass:math";
 
-@mixin spinner($selector: ".loader", $size: 7px) {
+@mixin bubbles($selector, $size: 7px) {
 
   #{$selector}, #{$selector}:before, #{$selector}:after {
     border-radius: 50%;

@@ -3,6 +3,7 @@ import type { BaseControlProps } from './types';
 import { Subscript } from './subscript';
 import { Label } from './label';
 import './input.scss';
+import { cn } from './cn';
 
 export type InputType = 'text' | 'password' | 'email' | 'search' | 'tel' | 'url' | 'number';
 
@@ -79,7 +80,7 @@ export const Input = forwardRef(function Input(
   }, [_type, id]);
 
   return (
-    <div className={`__prefix__ __prefix__-input${className ? ` ${className}` : ''}${disabled ? ' disabled' : ''}${loading ? ' loading' : ''}${error ? ' error' : ''}`}>
+    <div className={cn('__prefix__', '__prefix__-base-control', '__prefix__-input', className, { disabled, loading, error: !!error })}>
       <Label id={id} label={label} required={markRequired} />
 
       <div className="control">

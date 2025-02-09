@@ -15,9 +15,16 @@ const meta = {
       type: 'boolean',
       control: { type: 'boolean' },
     },
+    width: {
+      type: 'string',
+      control: {
+        type: 'text',
+      }
+    }
   },
   args: {
     isOpen: false,
+    width: '500'
   },
 } satisfies Meta<typeof Modal>;
 
@@ -28,13 +35,13 @@ type Story = StoryObj<typeof Modal>;
 export const Basic: Story = {
   args: {},
   render: function Render() {
-    const [args, setArgs] = useArgs<{ isOpen: boolean }>();
+    const [args, setArgs] = useArgs<{ isOpen: boolean, width: 500 }>();
 
     return (
       <div>
         <button type="button" className="btn btn-accent" onClick={() => setArgs({ ...args, isOpen: true })}>Open Modal</button>
-        <Modal isOpen={args.isOpen} onDismiss={() => setArgs({ ...args, isOpen: false })}>
-          <div className="modal" style={{ width: 500 }}>
+        <Modal width={args.width} isOpen={args.isOpen} onDismiss={() => setArgs({ ...args, isOpen: false })}>
+          <div className="modal">
             <div className="modal-header">
               <div className="title">
                 <span>Modal Header</span>

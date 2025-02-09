@@ -3,7 +3,7 @@ import type { StorybookConfig } from '@storybook/react-vite';
 const config: StorybookConfig = {
   core: {
     disableTelemetry: true,
-    disableWhatsNewNotifications: false,
+    disableWhatsNewNotifications: true,
     enableCrashReports: false,
     crossOriginIsolated: true,
   },

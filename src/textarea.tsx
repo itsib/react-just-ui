@@ -3,6 +3,7 @@ import type { BaseControlProps } from './types';
 import { Subscript } from './subscript';
 import { Label } from './label';
 import './textarea.scss';
+import { cn } from './cn';
 
 export interface TextareaProps extends BaseControlProps<HTMLTextAreaElement> {
   /**
@@ -170,7 +171,7 @@ export const Textarea = forwardRef(function Textarea(
   }, [loading, disabled, id]);
 
   return (
-    <div className={`__prefix__ __prefix__-textarea __prefix__-scroll ${className || ''}${disabled ? ' disabled' : ''}${loading ? ' loading' : ''}${error ? ' error' : ''}`}>
+    <div className={cn('__prefix__', '__prefix__-base-control', '__prefix__-textarea', '__prefix__-scroll', className, { disabled, loading, error: !!error })}>
       <Label id={id} label={label} required={markRequired} />
 
       <textarea

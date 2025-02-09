@@ -1,3 +1,12 @@
+@layer __prefix__-variables {
+  :root {
+    --__prefix__v-modal-border-radius: .5em;
+    --__prefix__v-modal-border-width: 1px;
+    --__prefix__v-modal-padding-x: 1rem;
+    --__prefix__v-modal-padding-y: .875rem;
+  }
+}
+
 .__prefix__.__prefix__-modal-overlay {
   top: 0;
   right: 0;
@@ -6,7 +15,7 @@
   padding: 60px 0;
   overflow: auto;
   box-sizing: border-box;
-  background: rgb(var(--__prefix__c-black) / 0.5);
+  background: rgb(0 0 0 / 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,30 +25,23 @@
   transition: opacity .3s ease-out;
 
   .__prefix__-modal-content {
-    width: unset;
+    width: var(--__prefix__v-modal-width);
     max-width: 90vw;
     margin: auto;
-    padding: 0;
-    background: rgb(var(--__prefix__c-modal-bg));
-    box-shadow: 0 0 0 1px rgb(var(--__prefix__c-white) / .05);
-    border-radius: var(--__prefix__v-modal-border-radius);
-    border: var(--__prefix__v-modal-border-width) solid transparent;
     box-sizing: border-box;
     opacity: 0;
     transform: translateY(-40px);
-    position: relative;
     transition: transform .3s ease-in, opacity .3s ease-in;
+    position: relative;
   }
 
   &.show {
     opacity: 1;
 
-
     .__prefix__-modal-content {
       opacity: 1;
       transform: translateY(0px);
       transition: transform .3s ease-out, opacity .3s ease-out;
-      box-sizing: border-box;
     }
   }
 }
@@ -48,9 +50,12 @@
   max-width: 100%;
   margin: 0;
   padding: 0;
-  border: 0.5px solid rgb(var(--modal-border-color) / 0.1);
+  background: rgb(var(--__prefix__c-modal-bg));
+  border: 0.5px solid rgb(var(--__prefix__c-modal-bg) / 0.1);
   border-radius: var(--__prefix__v-modal-border-radius);
+  box-shadow: 0 0 5px 0 rgb(255 255 255 / .01);
   box-sizing: border-box;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 
@@ -114,6 +119,5 @@
 
   .modal-content {
     padding: 0 var(--__prefix__v-modal-padding-x) var(--__prefix__v-modal-padding-y);
-    border-radius: 0 0 var(--__prefix__v-modal-border-radius) var(--__prefix__v-modal-border-radius);
   }
 }

@@ -3,6 +3,7 @@ import { BaseToggleControlProps } from './types';
 import { Label } from './label';
 import { Subscript } from './subscript';
 import './switch.scss';
+import { cn } from './cn';
 
 const RATIO = 1.85;
 const PADDING = 3;
@@ -24,7 +25,7 @@ export const Switch = forwardRef(function Switch(
 
   return (
     <div
-      className={`__prefix__ __prefix__-switch ${className || ''}${disabled ? ' disabled' : ''}${rowReverse ? ' row-reverse' : ' row'}`}
+      className={cn('__prefix__', '__prefix__-switch', className, { disabled }, rowReverse ? 'row-reverse' : 'row')}
       style={{
         '--__prefix__-switch-height': `${size}px`,
         '--__prefix__-switch-width': `${Math.round(size * RATIO / 2) * 2}px`,

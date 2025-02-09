@@ -1,4 +1,4 @@
-import { PropsWithChildren, useEffect, useRef, useState } from 'react';
+import { CSSProperties, PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import './modal.scss';
 
@@ -12,16 +12,21 @@ export interface ModalProps {
    * @param args
    */
   onDismiss: () => void;
+  /**
+   * Modal width in any css units
+   * @default 'fit-content'
+   */
+  width?: number | string;
 }
 
 /**
  * Modal is used to show a dialog or a box when you click a button.
- * @param isOpen
- * @param onDismiss
- * @param children
+ *
  * @constructor
  */
-export function Modal({ isOpen, onDismiss, children }: PropsWithChildren<ModalProps>) {
+export function Modal(props: PropsWithChildren<ModalProps>) {
+  const { isOpen, onDismiss, width, children } = props;
+  const modalWidth = typeof width === 'number' || (typeof width === 'string' && /^\d+$/.test(width)) ? `${width}px` : width ? width : 'fit-content';
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const [isShow, setIsShow] = useState(false);
 
@@ -53,6 +58,7 @@ export function Modal({ isOpen, onDismiss, children }: PropsWithChildren<ModalPr
     fakeOverlay.innerHTML = overlay.innerHTML;
     fakeOverlay.style.display = 'flex';
     fakeOverlay.style.position = 'fixed';
+    fakeOverlay.style.setProperty('--__prefix__v-modal-width', modalWidth)
 
     document.body.appendChild(fakeOverlay);
 
@@ -68,7 +74,7 @@ export function Modal({ isOpen, onDismiss, children }: PropsWithChildren<ModalPr
 
       fakeOverlay.classList.remove('show');
     }, 10);
-  }, [isOpen]);
+  }, [isOpen, modalWidth]);
 
   // Dismiss
   useEffect(() => {
@@ -107,6 +113,9 @@ export function Modal({ isOpen, onDismiss, children }: PropsWithChildren<ModalPr
     <div
       aria-label="dialog overlay"
       className="__prefix__ __prefix__-modal-overlay"
+      style={{
+        '--__prefix__v-modal-width': modalWidth,
+      } as CSSProperties}
       ref={overlayRef}
     >
       <div aria-label="dialog content" role="dialog" className="__prefix__-modal-content">

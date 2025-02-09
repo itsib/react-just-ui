@@ -9,17 +9,23 @@ type Story = StoryObj<typeof OtpInput>;
 export default {
   title: 'Form Controls/OTP Input',
   component: OtpInput,
-  argTypes: {
-    label: {
-      control: { type: 'text' },
-    },
-  },
   args: {
     value: '',
     layout: 'ddd-ddd',
     disabled: false,
     hint: '',
   },
+  argTypes: {
+    label: {
+      control: { type: 'text' },
+    },
+    error: {
+      control: {
+        type: 'object',
+      }
+    }
+  },
+
 } satisfies Meta<typeof OtpInput>;
 
 export const Basic: Story = {

@@ -6,7 +6,7 @@ export interface SimpleDemoProps extends Omit<OtpInputProps, 'onChange' | 'value
 
 }
 
-export const SimpleDemo = memo(function SimpleDemo({ label, id, disabled, layout }: SimpleDemoProps) {
+export const SimpleDemo = memo(function SimpleDemo({ label, id, disabled, layout, ...props }: SimpleDemoProps) {
   const { register } = useForm<{ otp: string }>({
     defaultValues: {
       otp: ''
@@ -20,6 +20,7 @@ export const SimpleDemo = memo(function SimpleDemo({ label, id, disabled, layout
         label={label}
         disabled={disabled}
         layout={layout}
+        {...props}
         {...register('otp', {
           required: 'Field is required',
         })}
