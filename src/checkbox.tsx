@@ -3,6 +3,7 @@ import { Label } from './label';
 import { Subscript } from './subscript';
 import { BaseToggleControlProps } from './types';
 import './checkbox.scss';
+import { cn } from './cn';
 
 export type CheckboxProps = Omit<BaseToggleControlProps<HTMLInputElement>, 'value'>;
 
@@ -19,7 +20,7 @@ export const Checkbox = forwardRef(function Checkbox(
   const { id, label, hint, className, style, checked, rowReverse, error, disabled, markRequired, size = 20, ...props } = _props;
 
   return (
-    <div className={`__prefix__ __prefix__-checkbox ${className || ''}${disabled ? ' disabled' : ''}${rowReverse ? ' row-reverse' : ' row'}`} style={style}>
+    <div className={cn('__prefix__', '__prefix__-base-toggle', '__prefix__-checkbox', className, rowReverse ? 'row-reverse' : 'row', { disabled })} style={style}>
       <Label id={id} label={label} required={markRequired} />
 
       <div className="control" style={{ width: `${size}px`, height: `${size}px` }}>

@@ -1,5 +1,3 @@
-@use "css-base/form-toggle-base";
-
 .__prefix__.__prefix__-checkbox {
 
   .control {
@@ -77,8 +75,6 @@
       cursor: default;
     }
   }
-
-  @extend %base-toggle;
 }
 
 @keyframes __prefix__-checkbox-on-ease {

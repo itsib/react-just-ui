@@ -25,7 +25,7 @@ export const Switch = forwardRef(function Switch(
 
   return (
     <div
-      className={cn('__prefix__', '__prefix__-switch', className, { disabled }, rowReverse ? 'row-reverse' : 'row')}
+      className={cn('__prefix__', '__prefix__-base-toggle', '__prefix__-switch', className, { disabled }, rowReverse ? 'row-reverse' : 'row')}
       style={{
         '--__prefix__-switch-height': `${size}px`,
         '--__prefix__-switch-width': `${Math.round(size * RATIO / 2) * 2}px`,

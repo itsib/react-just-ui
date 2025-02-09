@@ -1,13 +1,8 @@
-@use "./css-base/form-controls-base";
-@use "./css/mixins/loaders";
+  @use "./css/mixins/loaders";
 
 .__prefix__.__prefix__-textarea {
-  ::placeholder {
-    @extend %placeholder;
-  }
 
   .control {
-    @extend %control-normal;
     overflow: auto;
     width: 100%;
     line-height: 1.3;
@@ -16,40 +11,36 @@
     padding: var(--__prefix__v-form-padding-x) var(--__prefix__v-form-padding-x);
   }
 
-  &:focus-within {
-
-    textarea.control {
-      @extend %control-focused;
-    }
-  }
-
-  &.error {
-
-    textarea.control {
-      @extend %control-error;
-    }
-  }
-
   &.disabled {
 
     textarea.control {
-      @extend %control-disabled;
+      border-color: rgb(var(--__prefix__c-form-disabled-border));
+      background-color: rgb(var(--__prefix__c-form-disabled-bg));
+    }
+
+    .__prefix__-subscript {
+
+      > .error {
+        display: none;
+      }
     }
   }
 
   &.loading:not(.disabled) {
 
     ::placeholder {
-      color: transparent;
+      color: rgb(var(--__prefix__c-form-disabled-bg));
     }
 
     textarea.control {
-      @extend %control-normal;
+      border-color: rgb(var(--__prefix__c-form-disabled-border));
+      background-color: rgb(var(--__prefix__c-form-disabled-bg));
       line-height: 1;
       outline: none;
-      color: transparent;
+      color: rgb(var(--__prefix__c-form-disabled-bg));
       pointer-events: none;
       overflow: hidden;
+      user-select: none;
     }
 
     .__prefix__-subscript {

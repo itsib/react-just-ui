@@ -1,10 +1,8 @@
-@use "./css-base/form-controls-base";
 @use "./css/mixins/loaders";
 
 .__prefix__.__prefix__-select {
 
   .control {
-    @extend %control-normal;
 
     .select {
       padding: var(--__prefix__v-form-padding-y) var(--__prefix__v-form-padding-x);
@@ -24,24 +22,17 @@
     }
   }
 
-  &:focus-within {
-
-    .control {
-      @extend %control-focused;
-    }
-  }
-
-  &.error {
-
-    .control {
-      @extend %control-error;
-    }
-  }
-
   &.disabled {
 
     .control {
-      @extend %control-disabled;
+
+      > .select {
+        background-color: transparent;
+
+        .mark {
+          visibility: hidden;
+        }
+      }
     }
 
     .__prefix__-subscript {
@@ -55,7 +46,8 @@
   &.loading:not(.disabled) {
 
     .control {
-      @extend %control-normal;
+      border-color: rgb(var(--__prefix__c-form-disabled-border));
+      background-color: rgb(var(--__prefix__c-form-disabled-bg));
 
       > .select {
         display: none;

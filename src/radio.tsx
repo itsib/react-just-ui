@@ -3,6 +3,7 @@ import { BaseToggleControlProps } from './types';
 import { Label } from './label';
 import { Subscript } from './subscript';
 import './radio.scss';
+import { cn } from './cn';
 
 export interface RadioProps extends Omit<BaseToggleControlProps<HTMLInputElement>, 'value'> {
   /**
@@ -40,7 +41,7 @@ export const Radio = forwardRef(function Checkbox(
   const { id, label, hint, className, rowReverse, size = 18, error, disabled, markRequired, ...props } = _props;
 
   return (
-    <div className={`__prefix__ __prefix__-radio ${className || ''}${disabled ? ' disabled' : ''}${rowReverse ? ' row-reverse' : ' row'}`}>
+    <div className={cn('__prefix__', '__prefix__-base-toggle', '__prefix__-radio', className, rowReverse ? 'row-reverse' : 'row', { disabled })}>
       <Label id={id} label={label} required={markRequired} />
 
       <div className="control" style={{ width: `${size}px`, height: `${size}px` }}>
