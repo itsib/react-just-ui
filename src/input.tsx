@@ -84,7 +84,7 @@ export const Input = forwardRef(function Input(
       <Label id={id} label={label} required={markRequired} />
 
       <div className="control">
-        {!disabled && loading ? <div className="overlay"></div> : null}
+        {!disabled && loading ? <div className="__prefix__-bubbles" /> : null}
         {prefix ? typeof prefix === 'string' ? <div className="prefix">{prefix}</div> : prefix : null}
         <input
           id={id}

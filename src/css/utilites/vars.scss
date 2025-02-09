@@ -1,6 +1,6 @@
-@use "sass:string";
 @use "sass:color";
 @use "sass:math";
+@use "sass:string";
 @use "config:prefix" as config;
 
 $prefix: #{config.$prefix};
@@ -59,3 +59,4 @@ $prefix: #{config.$prefix};
     @return string.unquote("rgb(var(--#{$prefix}c-#{$key}) / #{$opacity})");
   }
 }
+

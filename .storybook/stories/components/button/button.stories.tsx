@@ -8,12 +8,15 @@ interface ButtonControls {
 }
 
 const description = `
-Tooltip provides a text label that is displayed 
-when the user hovers over or longpresses an element. 
-The tooltip element is implemented in pure css, 
-without using javascript code. It is configured 
-by native css variables, data attributes and tooltip 
-text defines in aria-label attribute.
+<p>
+The button component is a standard HTML \\<button\\> element styled using css. 
+It is configured using several css classes and css variables. Does not use javascript code. 
+</p>
+
+<p>
+In order for the loading indicator to display correctly, the button content must be 
+wrapped in an HTML tag. This is necessary to hide the content of the button.
+</p>
 `;
 
 const meta = {
@@ -59,39 +62,39 @@ export const Basic: Story = {
   render: function Render({ disabled, loading }) {
     return (
       <section className="button-stories">
-        <div className="header">Normal</div>
+        <div className="header">Default</div>
 
         <div className="header">Outline</div>
 
-        <button className={`btn btn-primary w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
+        <button type="button" className={cn('btn', 'btn btn-primary', 'w-full', { loading })} disabled={disabled}>
           <span>Primary</span>
         </button>
 
-        <button className={`btn btn-outline-primary w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
+        <button type="button" className={cn('btn', 'btn-outline-primary', 'w-full', { loading })} disabled={disabled}>
           <span>Primary</span>
         </button>
 
-        <button className={`btn btn-accent w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
+        <button type="button" className={cn('btn', 'btn-accent', 'w-full', { loading })} disabled={disabled}>
           <span>Accent</span>
         </button>
 
-        <button className={`btn btn-outline-accent w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
+        <button type="button" className={cn('btn', 'btn-outline-accent', 'w-full', { loading })} disabled={disabled}>
           <span>Accent</span>
         </button>
 
-        <button className={`btn btn-secondary w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
+        <button type="button" className={cn('btn', 'btn-secondary', 'w-full', { loading })} disabled={disabled}>
           <span>Secondary</span>
         </button>
 
-        <button className={`btn btn-outline-secondary w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
+        <button type="button" className={cn('btn', 'btn-outline-secondary', 'w-full', { loading })} disabled={disabled}>
           <span>Secondary</span>
         </button>
 
-        <button className={cn('btn btn-danger w-full', { loading })} disabled={disabled}>
+        <button type="button" className={cn('btn', 'btn-danger', 'w-full', { loading })} disabled={disabled}>
           <span>Danger</span>
         </button>
 
-        <button className={`btn btn-outline-danger w-full ${loading ? 'loading' : ''}`} disabled={disabled}>
+        <button type="button" className={cn('btn', 'btn-outline-danger', 'w-full', { loading })} disabled={disabled}>
           <span>Danger</span>
         </button>
       </section>

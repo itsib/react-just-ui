@@ -1,0 +1,50 @@
+@use "./utilites/vars" as vars;
+
+$size: 7px !default;
+
+@layer #{vars.$prefix}-variables {
+  :root {
+    @include vars.register(--bubbles-size, $size);
+  }
+}
+
+.#{vars.$prefix}-bubbles {
+
+  &, &:before, &:after {
+    border-radius: 50%;
+    width: 2em;
+    min-width: 2em;
+    height: 2em;
+    animation-fill-mode: both;
+    animation: #{vars.$prefix}-bubbles-animation 1.5s infinite ease-in-out;
+  }
+
+  & {
+    left: calc((2em / 2) * -1);
+    top: calc(50% - ($size + 2.5em));
+    margin-left: 50%;
+    color: vars.getColor(--foreground, .7);
+    position: relative;
+    font-size: vars.get(--bubbles-size);
+    text-indent: -9999em;
+    transform: translateZ(0);
+    animation-delay: -0.16s;
+  }
+  &:before, &:after {
+    content: " ";
+    position: absolute;
+    top: 0;
+  }
+  &:before {
+    left: -3.5em;
+    animation-delay: -0.32s;
+  }
+  &:after {
+    left: 3.5em;
+  }
+}
+
+@keyframes #{vars.$prefix}-bubbles-animation {
+  0%, 80%, 100% { box-shadow: 0 2.5em 0 -1.3em }
+  40% { box-shadow: 0 2.5em 0 0 }
+}

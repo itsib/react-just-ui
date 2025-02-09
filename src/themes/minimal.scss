@@ -36,6 +36,9 @@ $dark: (
 
 @use '../css/scroll-component';
 @use '../css/z-index-component';
+@use '../css/loader-component' with (
+  $size: 7px,
+);
 
 @use "../css/forms-component" with (
   $height: 40px,

@@ -160,7 +160,7 @@ export const Textarea = forwardRef(function Textarea(
     overlay.classList.add('overlay');
 
     const spinner = document.createElement('div');
-    spinner.classList.add('spinner')
+    spinner.classList.add('__prefix__-bubbles')
     overlay.append(spinner)
 
     textarea.parentElement!.insertBefore(overlay, textarea);

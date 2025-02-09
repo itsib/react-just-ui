@@ -87,7 +87,7 @@ export const Select = forwardRef(function Select(
       <Label id={id} label={label} required={markRequired} />
 
       <div className="control" ref={controlRef} onClick={onClick}>
-        {loading && !disabled ? <div className="overlay" /> : null}
+        {loading && !disabled ? <div className="__prefix__-bubbles" /> : null}
         <input id={id} type="hidden" className="hidden-select" disabled={disabled} ref={ref} {..._props} />
 
         <div className="__prefix__ __prefix__-select-option select">

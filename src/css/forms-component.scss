@@ -1,4 +1,4 @@
-@use "./mixins/utils" as utils;
+@use "./utilites/vars" as vars;
 
 $height: 40px !default;
 $margin-top: 4px !default;
@@ -11,26 +11,26 @@ $font-base: 1rem !default;
 $font-label: .875rem !default;
 $font-sub: 12px !default;
 
-@layer #{utils.$prefix}-variables {
+@layer #{vars.$prefix}-variables {
   :root {
-    @include utils.register(--form-height, $height);
-    @include utils.register(--form-font-base, $font-base);
-    @include utils.register(--form-font-label, $font-label);
-    @include utils.register(--form-font-sub, $font-sub);
-    @include utils.register(--form-border-width, $border-width);
-    @include utils.register(--form-border-radius, $border-radius);
-    @include utils.register(--form-padding-x, $padding-x);
-    @include utils.register(--form-padding-y, $padding-y);
-    @include utils.register(--form-margin-top, $margin-top);
-    @include utils.register(--form-margin-bottom, $margin-bottom);
+    @include vars.register(--form-height, $height);
+    @include vars.register(--form-font-base, $font-base);
+    @include vars.register(--form-font-label, $font-label);
+    @include vars.register(--form-font-sub, $font-sub);
+    @include vars.register(--form-border-width, $border-width);
+    @include vars.register(--form-border-radius, $border-radius);
+    @include vars.register(--form-padding-x, $padding-x);
+    @include vars.register(--form-padding-y, $padding-y);
+    @include vars.register(--form-margin-top, $margin-top);
+    @include vars.register(--form-margin-bottom, $margin-bottom);
   }
 }
 
-.#{utils.$prefix}-base-control {
+.#{vars.$prefix}-base-control {
   width: auto;
 
   ::placeholder {
-    color: utils.getColor(--form-placeholder);
+    color: vars.getColor(--form-placeholder);
     font-weight: 400;
   }
 
@@ -46,41 +46,41 @@ $font-sub: 12px !default;
   }
 
   .control {
-    height: utils.get(--form-height);
-    font-size: utils.get(--form-font-base);
-    color: utils.getColor(--form-text);
-    border-radius: utils.get(--form-border-radius);
-    border-width: utils.get(--form-border-width);
+    height: vars.get(--form-height);
+    font-size: vars.get(--form-font-base);
+    color: vars.getColor(--form-text);
+    border-radius: vars.get(--form-border-radius);
+    border-width: vars.get(--form-border-width);
     border-style: solid;
     outline: none;
     box-sizing: border-box;
     overflow: hidden;
     position: relative;
     transition: border-color .15s ease-in-out, background-color .15s ease-in-out;
-    border-color: utils.getColor(--form-border);
-    background-color: utils.getColor(--form-bg);
+    border-color: vars.getColor(--form-border);
+    background-color: vars.getColor(--form-bg);
   }
 
   &:focus-within {
 
     > .control {
-      border-color: utils.getColor(--form-focus-border);
-      background-color: utils.getColor(--form-focus-bg);
+      border-color: vars.getColor(--form-focus-border);
+      background-color: vars.getColor(--form-focus-bg);
     }
   }
 
   &.error {
 
     > .control {
-      border-color: utils.getColor(--error);
+      border-color: vars.getColor(--error);
     }
   }
 
   &.disabled {
 
     > .control {
-      border-color: utils.getColor(--form-disabled-border);
-      background-color: utils.getColor(--form-disabled-bg);
+      border-color: vars.getColor(--form-disabled-border);
+      background-color: vars.getColor(--form-disabled-bg);
       pointer-events: none;
       user-select: none;
       opacity: .8;
@@ -88,7 +88,7 @@ $font-sub: 12px !default;
   }
 }
 
-.#{utils.$prefix}-base-toggle {
+.#{vars.$prefix}-base-toggle {
 
   &.row, &.row-reverse {
     display: flex;

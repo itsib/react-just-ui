@@ -1,5 +1,3 @@
-  @use "./css/mixins/loaders";
-
 .__prefix__.__prefix__-textarea {
 
   .control {
@@ -53,7 +51,6 @@
     .overlay {
       position: absolute;
       z-index: 2;
-      @include loaders.bubbles(".spinner", 7px);
     }
   }
 }

@@ -88,7 +88,7 @@ export const ImageInput = forwardRef(function FileInput(
       <Label id={id} label={label} required={markRequired}/>
 
       <div className="control">
-        {!disabled && loading && noPreview ? <div className="overlay"></div> : null}
+        {!disabled && loading && noPreview ? <div className="__prefix__-bubbles"></div> : null}
         <input
           id={id}
           type="file"

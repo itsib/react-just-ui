@@ -1,11 +1,11 @@
-@use "./mixins/utils" as utils;
+@use "./utilites/vars" as vars;
 
-@layer #{utils.$prefix}-variables {
+@layer #{vars.$prefix}-variables {
   :root {
-    @include utils.register(--modal, 1000, "z-index");
-    @include utils.register(--toast, 1050, "z-index");
-    @include utils.register(--dropdown, 1060, "z-index");
-    @include utils.register(--popover, 1070, "z-index");
-    @include utils.register(--tooltip, 1080, "z-index");
+    @include vars.register(--modal, 1000, "z-index");
+    @include vars.register(--toast, 1050, "z-index");
+    @include vars.register(--dropdown, 1060, "z-index");
+    @include vars.register(--popover, 1070, "z-index");
+    @include vars.register(--tooltip, 1080, "z-index");
   }
 }

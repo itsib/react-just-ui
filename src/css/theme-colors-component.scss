@@ -1,6 +1,6 @@
 @use "sass:map";
 @use 'sass:color';
-@use "./mixins/utils" as utils;
+@use "./utilites/vars" as vars;
 
 $light: () !default;
 $dark: () !default;
@@ -9,7 +9,7 @@ $schemes: (
     dark: $dark,
 );
 
-@layer #{utils.$prefix}-variables {
+@layer #{vars.$prefix}-variables {
   @each $name, $scheme in $schemes {
     $class-name: "";
     @if ($name == "dark") {
@@ -18,34 +18,34 @@ $schemes: (
 
     :root#{$class-name} {
       @each $var-name, $value in $scheme {
-        @include utils.register($var-name, $value, "color");
+        @include vars.register($var-name, $value, "color");
       }
 
       // Tooltip
-      @include utils.register(--tooltip-text, map.get($scheme, 'foreground'), "color");
-      @include utils.register(--tooltip-bg, map.get($scheme, 'theme'), "color");
-      @include utils.register(--tooltip-border, color.invert(map.get($scheme, 'background'), 15%), "color");
+      @include vars.register(--tooltip-text, map.get($scheme, 'foreground'), "color");
+      @include vars.register(--tooltip-bg, map.get($scheme, 'theme'), "color");
+      @include vars.register(--tooltip-border, color.invert(map.get($scheme, 'background'), 15%), "color");
 
       // Forms
-      @include utils.register(--form-label, color.invert(map.get($scheme, 'foreground'), 10%), "color");
-      @include utils.register(--form-text, map.get($scheme, 'foreground'), "color");
-      @include utils.register(--form-placeholder, color.invert(map.get($scheme, 'foreground'), 50%), "color");
-      @include utils.register(--form-border, map.get($scheme, 'border'), "color");
-      @include utils.register(--form-bg, map.get($scheme, 'background'), "color");
-      @include utils.register(--form-focus-border, map.get($scheme, 'active'), "color");
-      @include utils.register(--form-focus-bg, map.get($scheme, 'background'), "color");
-      @include utils.register(--form-disabled-border, map.get($scheme, 'muted'), "color");
-      @include utils.register(--form-disabled-bg, map.get($scheme, 'muted'), "color");
+      @include vars.register(--form-label, color.invert(map.get($scheme, 'foreground'), 10%), "color");
+      @include vars.register(--form-text, map.get($scheme, 'foreground'), "color");
+      @include vars.register(--form-placeholder, color.invert(map.get($scheme, 'foreground'), 50%), "color");
+      @include vars.register(--form-border, map.get($scheme, 'border'), "color");
+      @include vars.register(--form-bg, map.get($scheme, 'background'), "color");
+      @include vars.register(--form-focus-border, map.get($scheme, 'active'), "color");
+      @include vars.register(--form-focus-bg, map.get($scheme, 'background'), "color");
+      @include vars.register(--form-disabled-border, map.get($scheme, 'muted'), "color");
+      @include vars.register(--form-disabled-bg, map.get($scheme, 'muted'), "color");
 
-      @include utils.register(--list-text, map.get($scheme, 'foreground'), "color");
-      @include utils.register(--list-bg, map.get($scheme, 'background'), "color");
-      @include utils.register(--list-hover-text, map.get($scheme, 'foreground'), "color");
-      @include utils.register(--list-hover-bg, color.invert(map.get($scheme, 'background'), 9%), "color");
-      @include utils.register(--list-active-text, map.get($scheme, 'foreground'), "color");
-      @include utils.register(--list-active-bg, map.get($scheme, 'background'), "color");
+      @include vars.register(--list-text, map.get($scheme, 'foreground'), "color");
+      @include vars.register(--list-bg, map.get($scheme, 'background'), "color");
+      @include vars.register(--list-hover-text, map.get($scheme, 'foreground'), "color");
+      @include vars.register(--list-hover-bg, color.invert(map.get($scheme, 'background'), 9%), "color");
+      @include vars.register(--list-active-text, map.get($scheme, 'foreground'), "color");
+      @include vars.register(--list-active-bg, map.get($scheme, 'background'), "color");
 
       // Modal
-      @include utils.register(--modal-bg, map.get($scheme, 'modal'), "color");
+      @include vars.register(--modal-bg, map.get($scheme, 'modal'), "color");
     }
   }
 }

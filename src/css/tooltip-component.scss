@@ -1,5 +1,5 @@
 @use "sass:map";
-@use "./mixins/utils" as utils;
+@use "./utilites/vars" as vars;
 
 $font-size: 12px !default;
 $hide-delay: 0s !default;
@@ -9,12 +9,12 @@ $arrow-size: 0.5em !default;
 $padding: 0.5em 0.75em !default;
 $indent: 2px !default;
 
-@layer #{utils.$prefix}-variables {
+@layer #{vars.$prefix}-variables {
   :root {
-    @include utils.register(--tooltip-font-size, $font-size);
-    @include utils.register(--tooltip-hide-delay, $hide-delay);
-    @include utils.register(--tooltip-show-delay, $show-delay);
-    @include utils.register(--tooltip-duration, $duration);
+    @include vars.register(--tooltip-font-size, $font-size);
+    @include vars.register(--tooltip-hide-delay, $hide-delay);
+    @include vars.register(--tooltip-show-delay, $show-delay);
+    @include vars.register(--tooltip-duration, $duration);
   }
 }
 
@@ -47,16 +47,16 @@ $indent: 2px !default;
       width: max-content;
       max-width: 180px;
       padding: $padding;
-      color: utils.getColor(--tooltip-text);
+      color: vars.getColor(--tooltip-text);
       text-wrap: balance;
       white-space: pre-wrap;
       line-height: 1.2;
       font-weight: 400;
-      background-color: utils.getColor(--tooltip-bg);
+      background-color: vars.getColor(--tooltip-bg);
       border-radius: 4px;
-      border: 1px solid utils.getColor(--tooltip-border);
-      box-shadow: 0 0 5px 0 utils.getColor(--tooltip-border, 0.8);
-      z-index: utils.get(--tooltip, "z-index");
+      border: 1px solid vars.getColor(--tooltip-border);
+      box-shadow: 0 0 5px 0 vars.getColor(--tooltip-border, 0.8);
+      z-index: vars.get(--tooltip, "z-index");
     }
 
     &:before {
@@ -64,27 +64,27 @@ $indent: 2px !default;
       height: 0;
       width: 0;
       border: $arrow-size solid transparent;
-      z-index: calc(#{utils.get(--tooltip, "z-index")} + 1);
+      z-index: calc(#{vars.get(--tooltip, "z-index")} + 1);
     }
 
     &:after, &:before {
       box-sizing: border-box;
       user-select: none;
-      font-size: utils.get(--tooltip-font-size);
+      font-size: vars.get(--tooltip-font-size);
       opacity: 0;
       display: block;
       pointer-events: none;
       position: absolute;
-      transition-duration: utils.get(--tooltip-duration);
+      transition-duration: vars.get(--tooltip-duration);
       transition-timing-function: ease;
-      transition-delay: utils.get(--tooltip-hide-delay);
+      transition-delay: vars.get(--tooltip-hide-delay);
     }
 
     &:hover {
 
       &:after, &:before {
         opacity: 1;
-        transition-delay: utils.get(--tooltip-show-delay);
+        transition-delay: vars.get(--tooltip-show-delay);
       }
     }
   }
@@ -98,9 +98,9 @@ $indent: 2px !default;
 
     &:before {
       margin-bottom: $indent;
-      border-top-color: utils.getColor(--tooltip-bg);
-      filter: drop-shadow(0 1px 0px utils.getColor(--tooltip-border))
-      drop-shadow(0 1px 1px utils.getColor(--tooltip-border));
+      border-top-color: vars.getColor(--tooltip-bg);
+      filter: drop-shadow(0 1px 0px vars.getColor(--tooltip-border))
+      drop-shadow(0 1px 1px vars.getColor(--tooltip-border));
       transform: translate(-50%, -2px);
     }
 
@@ -127,9 +127,9 @@ $indent: 2px !default;
 
     &::before {
       margin-top: $indent;
-      border-bottom-color: utils.getColor(--tooltip-bg);
-      filter: drop-shadow(0 -1px 0px utils.getColor(--tooltip-border))
-      drop-shadow(0 -1px 1px utils.getColor(--tooltip-border));
+      border-bottom-color: vars.getColor(--tooltip-bg);
+      filter: drop-shadow(0 -1px 0px vars.getColor(--tooltip-border))
+      drop-shadow(0 -1px 1px vars.getColor(--tooltip-border));
       transform: translate(-50%, 2px);
     }
 
@@ -156,9 +156,9 @@ $indent: 2px !default;
 
     &::before {
       margin-right: $indent;
-      border-left-color: utils.getColor(--tooltip-bg);
-      filter: drop-shadow(1px 0 0px utils.getColor(--tooltip-border))
-      drop-shadow(1px 0 1px utils.getColor(--tooltip-border));
+      border-left-color: vars.getColor(--tooltip-bg);
+      filter: drop-shadow(1px 0 0px vars.getColor(--tooltip-border))
+      drop-shadow(1px 0 1px vars.getColor(--tooltip-border));
       transform: translate(-2px, -50%);
     }
 
@@ -186,9 +186,9 @@ $indent: 2px !default;
 
     &::before {
       margin-left: $indent;
-      border-right-color: utils.getColor(--tooltip-bg);
-      filter: drop-shadow(-1px 0 0px utils.getColor(--tooltip-border))
-      drop-shadow(-1px 0 1px utils.getColor(--tooltip-border));
+      border-right-color: vars.getColor(--tooltip-bg);
+      filter: drop-shadow(-1px 0 0px vars.getColor(--tooltip-border))
+      drop-shadow(-1px 0 1px vars.getColor(--tooltip-border));
       transform: translate(2px, -50%);
     }
 

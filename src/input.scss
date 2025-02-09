@@ -1,5 +1,3 @@
-@use "./css/mixins/loaders";
-
 .__prefix__.__prefix__-input {
 
   .control {
@@ -103,7 +101,5 @@
         display: none;
       }
     }
-
-    @include loaders.bubbles(".overlay", 7px);
   }
 }
