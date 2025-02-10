@@ -2,8 +2,8 @@ import { type ForwardedRef, forwardRef, useEffect, type ReactNode } from 'react'
 import type { BaseControlProps } from './types';
 import { Subscript } from './subscript';
 import { Label } from './label';
-import './input.scss';
 import { cn } from './utils/cn';
+import './input.scss';
 
 export type InputType = 'text' | 'password' | 'email' | 'search' | 'tel' | 'url' | 'number';
 

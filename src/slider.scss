@@ -1,0 +1,97 @@
+.__prefix__.__prefix__-slider {
+  --slider-thumb-start: 0px;
+  --slider-thumb-end: 0px;
+  --slider-track-width: 6px;
+  --slider-thumb-size: 14px;
+  --slider-ripple-size: calc(var(--slider-thumb-size) * 2);
+  --slider-track-top: calc(var(--slider-track-width) / 2 * -1);
+
+
+  .control {
+    width: 100%;
+
+    .__prefix__-slider-backdrop {
+      height: calc(var(--slider-thumb-size) + 2px);
+      padding: 1px 0;
+
+      .__prefix__-slider-rail {
+        height: 0;
+        width: 100%;
+        margin: calc((var(--slider-thumb-size) / 2) + 1px) 0;
+        box-sizing: content-box;
+        position: relative;
+
+        .track {
+          top: var(--slider-track-top);
+          height: var(--slider-track-width);
+          width: 100%;
+          background-color: rgb(var(--__prefix__c-form-border));
+          border-radius: 9999px;
+          position: absolute;
+        }
+
+        .track-active {
+          left: var(--slider-thumb-start);
+          width: calc(var(--slider-thumb-end) - var(--slider-thumb-start));
+          top: var(--slider-track-top);
+          height: var(--slider-track-width);
+          background-color: rgb(var(--__prefix__c-accent));
+          border-radius: 9999px;
+          position: absolute;
+        }
+
+        .thumb {
+          left: var(--slider-thumb-end);
+          top: 0;
+          width: 0;
+          height: 0;
+          position: absolute;
+          outline: none;
+
+          .drag {
+            width: var(--slider-thumb-size);
+            height: var(--slider-thumb-size);
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background-color: rgb(var(--__prefix__c-theme-inverted));
+            box-shadow: 0 0 0 1px rgb(0 0 0 / 0.2);
+          }
+
+          &:before {
+            content: " ";
+            left: 0;
+            top: 0;
+            width: calc(var(--slider-thumb-size) - 2px);
+            height: calc(var(--slider-thumb-size) - 2px);
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background-color: rgb(var(--__prefix__c-accent));
+            opacity: 0;
+            transition: all 0.2s ease-out;
+            display: block;
+            position: absolute;
+          }
+
+          &:hover {
+
+            &:before {
+              width: var(--slider-ripple-size);
+              height: var(--slider-ripple-size);
+              opacity: 0.1;
+            }
+          }
+
+          &.grub {
+
+            &:before {
+              width: var(--slider-ripple-size);
+              height: var(--slider-ripple-size);
+              transition: all 0.1s ease-in;
+              opacity: 0.3;
+            }
+          }
+        }
+      }
+    }
+  }
+}

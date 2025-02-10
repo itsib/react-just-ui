@@ -9,7 +9,7 @@ import { ValidationError } from './validation-error';
  */
 export type BaseControlProps<Element extends HTMLElement> = {
   /**
-   * Unique identificator in the form element
+   * Unique string fot identification the form element
    */
   id: string;
   /**

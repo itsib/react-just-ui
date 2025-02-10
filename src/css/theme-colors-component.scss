@@ -21,6 +21,7 @@ $schemes: (
       @each $var-name, $value in $scheme {
         @include vars.register($var-name, $value, "color");
       }
+      @include vars.register(--theme-inverted, color.invert(map.get($scheme, 'theme')), "color");
 
       // Tooltip
       @include vars.register(--tooltip-text, map.get($scheme, 'foreground'), "color");
