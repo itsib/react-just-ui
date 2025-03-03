@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import './button.stories.css';
 
 interface ButtonControls {
   disabled: boolean;

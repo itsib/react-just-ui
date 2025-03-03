@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { cyrb53 } from '../../src';
 
-describe('utils/hash-cyrb53.ts', () => {
+describe('utils/cyrb53.ts', () => {
   describe('#cyrb53Hash', () => {
     it('hash should same', () => {
       const hashA = cyrb53('string:11111', 1);

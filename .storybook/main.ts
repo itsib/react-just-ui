@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite';
+import './addons';
 
 const config: StorybookConfig = {
   core: {
@@ -18,7 +19,14 @@ const config: StorybookConfig = {
   ],
   addons: [
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
+    '@storybook/addon-actions',
+    '@storybook/addon-controls',
+    '@storybook/addon-docs',
+    '@storybook/addon-highlight',
+    '@storybook/addon-measure',
+    '@storybook/addon-outline',
+    '@storybook/addon-toolbars',
+    '@storybook/addon-viewport',
     '@storybook/addon-interactions',
     '@storybook/addon-themes',
   ],

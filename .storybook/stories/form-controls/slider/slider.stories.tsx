@@ -1,27 +1,60 @@
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { useArgs } from '@storybook/preview-api';
+import { ChangeEvent } from 'react';
 import { Slider } from '../../../../src/slider';
 
 const meta = {
   title: 'Form Controls/Slider',
   component: Slider,
-  parameters: {
-    controls: {
-      sort: 'alpha',
-    }
+  args: {
+    size: 'md',
+    orient: 'horizontal',
+    dual: false,
+    disabled: false,
+    markRequired: false,
+    min: 0,
+    max: 100,
+    step: 1,
+    hint: '',
   },
   argTypes: {
-    // id: { required: true, type: 'string' },
     label: {
       control: { type: 'text' },
     },
+    size: {
+      type: 'string',
+      control: {
+        type: 'radio',
+      },
+      options: ['sm', 'md', 'lg'],
+    },
+    orient: {
+      control: {
+        type: 'inline-radio',
+      },
+      options: ['vertical', 'horizontal'],
+    },
+    markRequired: {
+      type: 'boolean'
+    },
+    dual: {
+      type: 'boolean'
+    },
+    min: {
+      type: 'number',
+      control: { type: 'number' },
+    },
+    max: {
+      type: 'number',
+      control: { type: 'number' },
+    },
+    step: {
+      type: 'number',
+      control: { type: 'number' },
+    },
   },
-  args: {
-    value: '0',
-    disabled: false,
-    hint: '',
-  },
+
   tags: ['autodocs'],
 } satisfies Meta<typeof Slider>;
 
@@ -32,22 +65,38 @@ type Story = StoryObj<typeof Slider>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Basic: Story = {
   args: {
-    id: 'test-slider',
-    label: 'Tune Volume',
+    value: '50',
+    id: 'slider-1',
+    label: 'Volume',
     onChange: action('onChange'),
-    markRequired: false,
-  },
-  argTypes: {
-    markRequired: {
-      type: 'boolean'
-    }
   },
   render: function Render(args) {
-    const [text, setText] = useState('')
+    const [{ value }, updateArgs] = useArgs();
+
+    const { id, dual, markRequired, size, orient, onChange: _onChange, ...props } = args;
+
+    function onChange(event: ChangeEvent<HTMLInputElement>) {
+      updateArgs({ value: event.target.value });
+    }
+
+    const totalSize = size === 'sm' ? 180 : (size === 'md' ? 200 : 240);
 
     return (
-      <div style={{ width: 300 }}>
-        <Slider {...args} value={text} size="md" onChange={e => setText((e.target as any).value)} />
+      <div>
+        <Slider
+          id={id}
+          dual={dual}
+          markRequired={markRequired}
+          size={size}
+          value={value}
+          onChange={onChange}
+          tabIndex={1}
+          orient={orient}
+          style={orient === 'horizontal' ? { width: totalSize } : { height: totalSize }}
+          {...props}
+        />
+
+        {/*<input id="range-native" type="range" {...props} value={value} onChange={onChange} />*/}
       </div>
     );
   }

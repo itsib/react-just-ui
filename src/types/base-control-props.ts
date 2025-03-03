@@ -23,6 +23,8 @@ export type BaseControlProps<Element extends HTMLElement> = {
   label?: string | ReactNode;
   /**
    * Adds the red asterisk symbol "*" to the label
+   *
+   * @default false
    */
   markRequired?: boolean;
   /**
@@ -40,6 +42,8 @@ export type BaseControlProps<Element extends HTMLElement> = {
   error?: ValidationError | false;
   /**
    * Whether the control is disabled
+   *
+   * @default false
    */
   disabled?: boolean;
   /**

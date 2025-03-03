@@ -59,6 +59,9 @@ $schemes: (
 
       // Modal
       @include vars.register(--modal-bg, map.get($scheme, 'modal'), "color");
+
+      // Slider
+      @include vars.register(--slider-thumb, rgb(255 255 255), "color");
     }
   }
 }

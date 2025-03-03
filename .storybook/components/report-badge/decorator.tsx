@@ -37,7 +37,7 @@ export const decorator: DecoratorFunction<ReactRenderer> = (
   }, [mode]);
 
   const report = useMemo(() => {
-    const ids = componentId.split('-');
+    const ids = componentId.split('-') as string[];
     const key = ids.find(id => id in reports.modules);
 
     return key && reports.modules[key] as ModuleReport | undefined;

@@ -1,7 +1,7 @@
 import { Preview } from '@storybook/react';
 import DocumentationTemplate from './templates/documentation-template.mdx';
 import { decorator as reportDecorator, loader as reportLoader } from './components/report-badge';
-import { decorator as themeDecorator } from './components/switch-theme';
+import { decorator as addonThemeDecorator } from './addons';
 import theme from './theme';
 import '../src/themes/minimal.scss';
 import './styles.scss';
@@ -10,21 +10,18 @@ const preview: Preview = {
   tags: ['autodocs'],
   decorators: [
     reportDecorator,
-    themeDecorator,
+    addonThemeDecorator,
   ],
   loaders: [
     reportLoader,
   ],
   parameters: {
-    layout: 'none',
+    layout: 'fullscreen',
     disableSaveFromUI: true,
-    backgrounds: {
-      default: 'dark',
-      values: [
-        { name: 'dark', value: '#151515' },
-        { name: 'light', value: '#F7F9F2' },
-      ],
-    },
+    isDarkMode: [
+      { name: 'dark', value: '#151515' },
+      { name: 'light', value: '#F7F9F2' },
+    ],
     controls: {
       sort: 'requiredFirst',
       matchers: {
@@ -43,6 +40,14 @@ const preview: Preview = {
       page: DocumentationTemplate,
     },
   },
+  globalTypes: {
+    isDarkMode: {
+      type: 'boolean',
+    },
+  },
+  initialGlobals: {
+    isDarkMode: true,
+  }
 };
 
 export default preview;

@@ -1,279 +1,993 @@
 {
   "total": {
     "js": [
-      35067,
-      14382
+      5742717,
+      1671865
     ],
     "css": [
-      36828,
-      9411
+      75720,
+      13798
     ],
     "cjs": [
-      25629,
-      12983
+      0,
+      0
     ]
   },
   "modules": {
-    "avatar": {
-      "js": [
-        2681,
-        1139
-      ],
-      "css": [
-        1735,
-        576
-      ],
-      "cjs": [
-        1822,
-        1006
-      ]
-    },
-    "checkbox": {
-      "js": [
-        1408,
-        658
-      ],
-      "css": [
-        1435,
-        512
-      ],
-      "cjs": [
-        1064,
-        602
-      ]
-    },
-    "image-input": {
-      "js": [
-        2982,
-        1296
-      ],
-      "css": [
-        2921,
-        919
-      ],
-      "cjs": [
-        2221,
-        1173
-      ]
-    },
-    "index": {
-      "js": [
-        1343,
-        510
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        1247,
-        463
-      ]
-    },
-    "input": {
-      "js": [
-        1782,
-        792
-      ],
-      "css": [
-        1947,
-        512
-      ],
-      "cjs": [
-        1285,
-        696
-      ]
-    },
-    "label": {
-      "js": [
-        391,
-        257
-      ],
-      "css": [
-        272,
-        172
-      ],
-      "cjs": [
-        353,
-        259
-      ]
-    },
-    "modal": {
-      "js": [
-        2013,
-        844
-      ],
-      "css": [
-        2161,
-        737
-      ],
-      "cjs": [
-        1578,
-        754
-      ]
-    },
-    "otp-input": {
-      "js": [
-        6793,
-        2173
-      ],
-      "css": [
-        1369,
-        428
-      ],
-      "cjs": [
-        4288,
-        1847
-      ]
-    },
-    "radio": {
-      "js": [
-        1428,
-        634
-      ],
-      "css": [
-        1214,
-        445
-      ],
-      "cjs": [
-        1042,
-        577
-      ]
-    },
-    "select": {
-      "js": [
-        6100,
-        2270
-      ],
-      "css": [
-        2698,
-        808
-      ],
-      "cjs": [
-        4357,
-        1970
-      ]
-    },
-    "subscript": {
-      "js": [
-        941,
-        430
-      ],
-      "css": [
-        728,
-        356
-      ],
-      "cjs": [
-        720,
-        398
-      ]
-    },
-    "switch": {
-      "js": [
-        1403,
-        619
-      ],
-      "css": [
-        1343,
-        469
-      ],
-      "cjs": [
-        1041,
-        549
-      ]
-    },
-    "textarea": {
-      "js": [
-        3201,
-        1383
-      ],
-      "css": [
-        921,
-        319
-      ],
-      "cjs": [
-        2309,
-        1205
-      ]
-    },
-    "validators": {
-      "js": [
-        1265,
-        545
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        1038,
-        544
-      ]
-    },
-    "utils/cn": {
-      "js": [
-        605,
-        303
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        474,
-        307
-      ]
-    },
-    "utils/cyrb53": {
-      "js": [
-        459,
-        285
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        441,
-        306
-      ]
-    },
-    "utils/sleep": {
-      "js": [
-        96,
-        105
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        156,
-        151
-      ]
-    },
-    "utils/throttle": {
-      "js": [
-        176,
-        139
-      ],
-      "css": [
-        0,
-        0
-      ],
-      "cjs": [
-        193,
-        176
-      ]
-    },
     "theme/minimal": {
       "js": [
         0,
         0
       ],
       "css": [
-        18084,
-        3158
+        16047,
+        3003
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "sb-manager/globals-module-info": {
+      "js": [
+        23301,
+        3931
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "sb-manager/globals-runtime": {
+      "js": [
+        1442479,
+        376911
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "sb-manager/globals": {
+      "js": [
+        2428,
+        576
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "sb-manager/runtime": {
+      "js": [
+        412905,
+        107811
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "sb-addons/viewport-8/manager-bundle": {
+      "js": [
+        16735,
+        6800
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "sb-addons/toolbars-7/manager-bundle": {
+      "js": [
+        5389,
+        2581
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "sb-addons/themes-10/manager-bundle": {
+      "js": [
+        7765,
+        3649
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "sb-addons/storybook-core-core-server-presets-0/common-manager-bundle": {
+      "js": [
+        1229,
+        708
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "sb-addons/storybook-11/manager-bundle": {
+      "js": [
+        3799,
+        2137
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "sb-addons/outline-6/manager-bundle": {
+      "js": [
+        6587,
+        3090
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "sb-addons/measure-5/manager-bundle": {
+      "js": [
+        6545,
+        3053
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "sb-addons/links-1/manager-bundle": {
+      "js": [
+        988,
+        587
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "sb-addons/interactions-9/manager-bundle": {
+      "js": [
+        297312,
+        98131
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "sb-addons/docs-4/manager-bundle": {
+      "js": [
+        382975,
+        121827
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "sb-addons/controls-3/manager-bundle": {
+      "js": [
+        420769,
+        134637
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "sb-addons/actions-2/manager-bundle": {
+      "js": [
+        48636,
+        16075
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "fonts/inter/style": {
+      "js": [
+        0,
+        0
+      ],
+      "css": [
+        5114,
+        442
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "fonts/icon-font/icon-font": {
+      "js": [
+        0,
+        0
+      ],
+      "css": [
+        7122,
+        1349
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "fonts/code-mono/style": {
+      "js": [
+        0,
+        0
+      ],
+      "css": [
+        6867,
+        476
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/Color-YHDXOIA2-CK__pZC5": {
+      "js": [
+        29288,
+        11006
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/DocsRenderer-CFRXHY34-BndZApyG": {
+      "js": [
+        1464,
+        729
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/avatar.stories-CLqKg9JQ": {
+      "js": [
+        1782,
+        759
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/button-D2X21guM": {
+      "js": [
+        0,
+        0
+      ],
+      "css": [
+        170,
+        152
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/button.stories-BIuAMv5i": {
+      "js": [
+        6885,
+        1146
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/checkbox.stories-Cn1MejiZ": {
+      "js": [
+        3442,
+        1457
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/chunk-XP5HYGXS-D5tuasO7": {
+      "js": [
+        715,
+        404
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/entry-preview-CXjK_WGI": {
+      "js": [
+        29766,
+        9693
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/entry-preview-docs-Ca3HoQzc": {
+      "js": [
+        247072,
+        73411
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/get-started-CzVvtbMW": {
+      "js": [
+        3463,
+        1226
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/iframe-C90WPXWC": {
+      "js": [
+        215431,
+        72528
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/image-input.stories-DkzzaH9t": {
+      "js": [
+        1836,
+        914
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets-A9wcCZQ5": {
+      "js": [
+        1605,
+        902
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets-B-lxVbXh": {
+      "js": [
+        2955,
+        1452
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets-BM0gtWul": {
+      "js": [
+        661329,
+        156440
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets-CnHy7ftH": {
+      "js": [
+        126,
+        116
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets-DmM0KDA7": {
+      "js": [
+        7903,
+        3057
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets-DrFu-skq": {
+      "js": [
+        767,
+        467
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets-DtdGm34v": {
+      "js": [
+        873712,
+        273046
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets-Dytf1aFS": {
+      "js": [
+        53728,
+        15552
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets-nLeaPAJ8": {
+      "js": [
+        3892,
+        1517
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets.esm-BUbIAJfd": {
+      "js": [
+        21749,
+        8368
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/input.stories-Brlu2Jyp": {
+      "js": [
+        2055,
+        967
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/jsx-dev-runtime-DQoZ_wfB": {
+      "js": [
+        469,
+        323
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/label-AztnTMw0": {
+      "js": [
+        0,
+        0
+      ],
+      "css": [
+        999,
+        430
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/label-BwB-gfx0": {
+      "js": [
+        2575,
+        939
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/modal-64o9NVgN": {
+      "js": [
+        56799,
+        11536
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/modal-7_RInSfW": {
+      "js": [
+        0,
+        0
+      ],
+      "css": [
+        17735,
+        3528
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/modal.stories-D4a9wkAF": {
+      "js": [
+        4984,
+        1408
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/otp-input.stories-ack9BVUb": {
+      "js": [
+        4611,
+        1401
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/preview-BBWR9nbA": {
+      "js": [
+        8117,
+        3096
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/preview-BWzBA1C2": {
+      "js": [
+        7623,
+        1563
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/preview-BaoH-L4j": {
+      "js": [
+        2753,
+        1382
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/preview-CK8bFOD5": {
+      "js": [
+        0,
+        0
+      ],
+      "css": [
+        17852,
+        3573
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/preview-CVgpLj3b": {
+      "js": [
+        54,
+        74
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/preview-CkCCiBSq": {
+      "js": [
+        896,
+        559
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/preview-CvbIS5ZJ": {
+      "js": [
+        184,
+        158
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/preview-DGUiP6tS": {
+      "js": [
+        711,
+        495
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/preview-DHQbi4pV": {
+      "js": [
+        608,
+        421
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/preview-DaXChYpb": {
+      "js": [
+        163,
+        160
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/preview-DksrC6Cr": {
+      "js": [
+        198075,
+        64386
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/radio.stories-DH2Bnugu": {
+      "js": [
+        3920,
+        1263
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/react-18-DnlBflf9": {
+      "js": [
+        173417,
+        55142
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/select.stories-2O9sI6Gu": {
+      "js": [
+        2578,
+        1131
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/slider-Brgc6jDD": {
+      "js": [
+        0,
+        0
+      ],
+      "css": [
+        3814,
+        845
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/slider.stories-CsL83AI3": {
+      "js": [
+        11983,
+        4390
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/switch.stories-DqB_w2Eo": {
+      "js": [
+        1578,
+        831
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/textarea.stories-BarE4anM": {
+      "js": [
+        2171,
+        988
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/tooltip.stories-ZIzGlLs_": {
+      "js": [
+        6834,
+        2130
+      ],
+      "css": [
+        0,
+        0
+      ],
+      "cjs": [
+        0,
+        0
+      ]
+    },
+    "assets/v4-CtRu48qb": {
+      "js": [
+        807,
+        428
+      ],
+      "css": [
+        0,
+        0
       ],
       "cjs": [
         0,
